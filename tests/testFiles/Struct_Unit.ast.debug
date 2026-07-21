@@ -1,0 +1,7 @@
+RonDocument {
+  Value: RonUnitStruct {
+    Name: RonIdentifier {
+      Value: "Struct"
+    }
+  }
+}

@@ -1,0 +1,138 @@
+(* RonFile *)
+
+RON = [extensions], ws, value, ws;
+
+(* Whitespace and comments *)
+
+ws = { ws_single | comment };
+ws_single = "\n" | "\t" | "\r" | " " | U+000B | U+000C | U+0085 | U+200E | U+200F | U+2028 | U+2029;
+comment = ["//", { no_newline }, "\n"] | ["/*", nested_block_comment, "*/"];
+nested_block_comment = { ? any characters except "/*" or "*/" ? }, [ "/*", nested_block_comment, "*/", nested_block_comment ];
+
+(* Commas *)
+
+comma = ws, ",", ws;
+
+(* Extensions *)
+
+extensions = { "#", ws, "!", ws, "[", ws, extensions_inner, ws, "]", ws };
+extensions_inner = "enable", ws, "(", extension_name, { comma, extension_name }, [comma], ws, ")";
+
+(* Value *)
+
+value = integer | byte | float | string | byte_string | char | bool | option | list | map | tuple | struct | enum_variant | range;
+
+(* Numbers *)
+
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+digit_binary = "0" | "1";
+digit_octal = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7";
+digit_hexadecimal = digit | "A" | "a" | "B" | "b" | "C" | "c" | "D" | "d" | "E" | "e" | "F" | "f";
+
+unsigned_binary = "0b", digit_binary, { digit_binary | "_" };
+unsigned_octal = "0o", digit_octal, { digit_octal | "_" };
+unsigned_hexadecimal = "0x", digit_hexadecimal, { digit_hexadecimal | "_" };
+unsigned_decimal = digit, { digit | "_" };
+unsigned = unsigned_binary | unsigned_octal | unsigned_hexadecimal | unsigned_decimal;
+
+integer_suffix = ("i", "u"), ("8", "16", "32", "64", "128");
+integer = ["+" | "-"], unsigned, [integer_suffix];
+
+byte = "b", "'", byte_content, "'";
+byte_content = ascii | ("\\", (escape_ascii | escape_byte));
+
+float_int = digit, { digit | "_" };
+float_std = digit, { digit | "_" }, ".", [digit, { digit | "_" }];
+float_frac = ".", digit, { digit | "_" };
+(* Note: Should be { "_" }, digit, { digit | "_" } *)
+float_exp = ("e" | "E"), ["+" | "-"], { digit | "_" }, digit, { digit | "_" };
+float_num = (float_int | float_std | float_frac), [float_exp];
+float_suffix = "f", ("32", "64");
+float = ["+" | "-"], ("inf" | "NaN" | float_num), [float_suffix];
+
+number = integer | byte | float;
+
+(* Strings *)
+
+escape_ascii = "'" | "\"" | "\\" | "n" | "r" | "t" | "0";
+escape_byte = "x", digit_hexadecimal, digit_hexadecimal;
+escape_unicode = "u", "{" digit_hexadecimal, [digit_hexadecimal, [digit_hexadecimal, [digit_hexadecimal, [digit_hexadecimal, [digit_hexadecimal]]]]] "}";
+
+string_escape = "\\", (escape_ascii | escape_byte | escape_unicode);
+string_std = "\"", { no_double_quotation_marks | string_escape }, "\"";
+string_raw_content = ("#", string_raw_content, "#") | "\"", { unicode_non_greedy }, "\"";
+string_raw = "r", string_raw_content;
+
+string = string_std | string_raw;
+
+
+
+
+
+
+
+(* Byte String *)
+
+byte_string = byte_string_std | byte_string_raw;
+byte_string_std = "b\"", { no_double_quotation_marks | string_escape }, "\"";
+byte_string_raw = "br", string_raw_content;
+
+(* Char *)
+
+char = "'", (no_apostrophe | "\\\\" | "\\'"), "'";
+
+(* Boolean *)
+
+bool = "true" | "false";
+
+(* Optional *)
+
+option = "None" | option_some;
+option_some = "Some", ws, "(", ws, value, ws, ")";
+
+(* Range *)
+
+range = range_from_to_inclusive | range_from_to_exclusive | range_from | range_to_inclusive | range_to_exclusive | range_full;
+range_from_to_inclusive = number, ws, "..=", ws, number;
+range_from_to_exclusive = number, ws, "..", ws, number;
+range_from = number, ws, "..";
+range_to_inclusive = "..=", ws, number;
+range_to_exclusive = "..", ws, number;
+range_full = "..";
+
+(* List *)
+
+list = "[", [value, { comma, value }, [comma]], "]";
+
+(* Map *)
+
+map = "{", [map_entry, { comma, map_entry }, [comma]], "}";
+map_entry = value, ws, ":", ws, value;
+
+(* Tuple *)
+
+tuple = "(", [value, { comma, value }, [comma]], ")";
+
+(* Struct *)
+
+struct = unit_struct | tuple_struct | named_struct;
+unit_struct = ident | "()";
+tuple_struct = [ident], ws, tuple;
+named_struct = [ident], ws, "(", ws, [named_field, { comma, named_field }, [comma]], ")";
+named_field = ident, ws, ":", ws, value;
+
+(* Enum *)
+
+enum_variant = enum_variant_unit | enum_variant_tuple | enum_variant_named;
+enum_variant_unit = ident;
+enum_variant_tuple = ident, ws, tuple;
+enum_variant_named = ident, ws, "(", [named_field, { comma, named_field }, [comma]], ")";
+
+(* Identifier *)
+
+ident = ident_std | ident_raw;
+ident_std = ident_std_first, { ident_std_rest };
+ident_std_first = XID_Start | "_";
+ident_std_rest = XID_Continue;
+ident_raw = "r", "#", ident_raw_rest, { ident_raw_rest };
+ident_raw_rest = ident_std_rest | "." | "+" | "-";

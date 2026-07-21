@@ -1,0 +1,14 @@
+RonDocument {
+  Value: RonTupleStruct {
+    Name: RonIdentifier {
+      Value: "Struct"
+    },
+    Values: RonTuple {
+      Values: [
+        RonBool {
+          Value: False
+        }
+      ]
+    }
+  }
+}
