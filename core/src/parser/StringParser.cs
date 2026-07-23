@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using CriusNyx.Util;
 using Superpower;
 using Superpower.Parsers;
@@ -7,13 +8,19 @@ public abstract class StringContent
   public abstract string Evaluate();
 }
 
+[DebugPrint]
 public class StringValue(StringContent[] content) : RonElement
 {
+  [DebugField]
   public StringContent[] content = content;
+
+  public string Evaluate() => content.Select(x => x.Evaluate()).StringJoin();
 };
 
+[DebugPrint]
 public class StringLit(string value) : StringContent
 {
+  [DebugField]
   public string value = value;
 
   public override string Evaluate()
@@ -22,54 +29,91 @@ public class StringLit(string value) : StringContent
   }
 }
 
+[DebugPrint]
 public class AsciiEscape(char source) : StringContent
 {
+  [DebugField]
   public char? source = source;
 
   public override string Evaluate()
   {
-    throw new NotImplementedException();
+    return source switch
+    {
+      '\'' => "'",
+      '"' => "\"",
+      '\\' => "\\",
+      'n' => "\n",
+      'r' => "\r",
+      't' => "\t",
+      '0' => "\0",
+      _ => throw new NotImplementedException(),
+    };
   }
 }
 
+[DebugPrint]
 public class ByteEscape(char left, char right) : StringContent
 {
+  [DebugField]
   public char? left = left;
+
+  [DebugField]
   public char? right = right;
 
   public override string Evaluate()
   {
-    throw new NotImplementedException();
+    char l = (char)left.NotNull("left")!;
+    char r = (char)right.NotNull("left")!;
+    var b = byte.Parse([l, r], System.Globalization.NumberStyles.HexNumber);
+    return ((char)b).ToString();
   }
 }
 
+[DebugPrint]
 public class UnicodeEscape(string source) : StringContent
 {
+  [DebugField]
   public string source = source;
 
   public override string Evaluate()
   {
-    throw new NotImplementedException();
+    uint u = uint.Parse(source, System.Globalization.NumberStyles.HexNumber);
+    if (u >= 0x10000 && u <= 0x10FFFF)
+    {
+      uint uPrime = u - 0x10000;
+      uint high = (uPrime >> 10) + 0xD800;
+      uint low = (uPrime & 0x3ff) + 0xDC00;
+      return new string([(char)high, (char)low]);
+    }
+    else if (u <= 0xD7FF || (u >= 0xE000 && u <= 0xFFFF))
+    {
+      return new string([(char)u]);
+    }
+    throw new InvalidOperationException();
   }
 }
 
+[DebugPrint]
 public class StringRawContent(StringContent content) : StringContent
 {
+  [DebugField]
   public StringContent content = content;
 
   public override string Evaluate()
   {
-    throw new NotImplementedException();
+    return content.Evaluate();
   }
 }
 
+[DebugPrint]
 public class StringRawLit(string source) : StringContent
 {
+  [DebugField]
   public string source = source;
 
   public override string Evaluate()
   {
-    throw new NotImplementedException();
+    return source;
   }
 }
 

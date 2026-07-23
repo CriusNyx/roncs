@@ -1,3 +1,4 @@
+using CriusNyx.Util;
 using DeepEqual.Syntax;
 using Superpower;
 
@@ -100,5 +101,30 @@ public class StringParserTests
     );
     var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
     expected.ShouldDeepEqual(parsed);
+  }
+
+  [Theory]
+  public void CanParseUnicodeString(string source) { }
+
+  [Theory]
+  [TestCase("\"\"", "")]
+  [TestCase("\"Hello\"", "Hello")]
+  [TestCase("\"\\u{41}\"", "A")]
+  [TestCase("\"\\u{1F339}\"", "🌹")]
+  [TestCase("\"\\u{4F55}\"", "何")]
+  [TestCase("\"\\'\"", "'")]
+  [TestCase("\"\\\"\"", "\"")]
+  [TestCase("\"\\\\\"", "\\")]
+  [TestCase("\"\\n\"", "\n")]
+  [TestCase("\"\\r\"", "\r")]
+  [TestCase("\"\\t\"", "\t")]
+  [TestCase("\"\\0\"", "\0")]
+  [TestCase("r\"\\0\"", "\\0")]
+  [TestCase("r#\"\\0\"#", "\\0")]
+  public void CanDecodeString(string source, string expected)
+  {
+    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var stringVal = parsed.As<RonDocument>()?.Value?.As<StringValue>()?.Evaluate();
+    Assert.That(stringVal, Is.EqualTo(expected));
   }
 }
