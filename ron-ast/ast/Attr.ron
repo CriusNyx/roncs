@@ -1,0 +1,87 @@
+Document(
+    source: "#![name=\"value\"]\n\nStruct",
+    leading: Trivia(
+        span: None,
+        whitespace: "",
+        comments: [],
+    ),
+    attributes: [
+        Attribute(
+            span: Span(
+                start: Position(
+                    line: 1,
+                    col: 1,
+                ),
+                end: Position(
+                    line: 1,
+                    col: 17,
+                ),
+                start_offset: 0,
+                end_offset: 16,
+            ),
+            leading: Trivia(
+                span: None,
+                whitespace: "",
+                comments: [],
+            ),
+            name: "name",
+            content: Value("\"value\""),
+        ),
+    ],
+    pre_value: Trivia(
+        span: Some(Span(
+            start: Position(
+                line: 1,
+                col: 17,
+            ),
+            end: Position(
+                line: 3,
+                col: 1,
+            ),
+            start_offset: 16,
+            end_offset: 18,
+        )),
+        whitespace: "\n\n",
+        comments: [],
+    ),
+    value: Some(Struct(StructExpr(
+        span: Span(
+            start: Position(
+                line: 3,
+                col: 1,
+            ),
+            end: Position(
+                line: 3,
+                col: 7,
+            ),
+            start_offset: 18,
+            end_offset: 24,
+        ),
+        name: Ident(
+            span: Span(
+                start: Position(
+                    line: 3,
+                    col: 1,
+                ),
+                end: Position(
+                    line: 3,
+                    col: 7,
+                ),
+                start_offset: 18,
+                end_offset: 24,
+            ),
+            name: "Struct",
+        ),
+        pre_body: Trivia(
+            span: None,
+            whitespace: "",
+            comments: [],
+        ),
+        body: None,
+    ))),
+    trailing: Trivia(
+        span: None,
+        whitespace: "",
+        comments: [],
+    ),
+)

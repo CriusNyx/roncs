@@ -1,0 +1,80 @@
+Document(
+    source: "// Hello World\n  \n// Hello World Again\n  \n// Ahh",
+    leading: Trivia(
+        span: Some(Span(
+            start: Position(
+                line: 1,
+                col: 1,
+            ),
+            end: Position(
+                line: 5,
+                col: 7,
+            ),
+            start_offset: 0,
+            end_offset: 48,
+        )),
+        whitespace: "\n  \n",
+        comments: [
+            Comment(
+                span: Span(
+                    start: Position(
+                        line: 1,
+                        col: 1,
+                    ),
+                    end: Position(
+                        line: 1,
+                        col: 15,
+                    ),
+                    start_offset: 0,
+                    end_offset: 14,
+                ),
+                text: "// Hello World",
+                kind: Line,
+            ),
+            Comment(
+                span: Span(
+                    start: Position(
+                        line: 3,
+                        col: 1,
+                    ),
+                    end: Position(
+                        line: 3,
+                        col: 21,
+                    ),
+                    start_offset: 18,
+                    end_offset: 38,
+                ),
+                text: "// Hello World Again",
+                kind: Line,
+            ),
+            Comment(
+                span: Span(
+                    start: Position(
+                        line: 5,
+                        col: 1,
+                    ),
+                    end: Position(
+                        line: 5,
+                        col: 7,
+                    ),
+                    start_offset: 42,
+                    end_offset: 48,
+                ),
+                text: "// Ahh",
+                kind: Line,
+            ),
+        ],
+    ),
+    attributes: [],
+    pre_value: Trivia(
+        span: None,
+        whitespace: "",
+        comments: [],
+    ),
+    value: None,
+    trailing: Trivia(
+        span: None,
+        whitespace: "",
+        comments: [],
+    ),
+)

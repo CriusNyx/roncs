@@ -1,0 +1,1631 @@
+{
+  "source": "GameConfig( // optional struct name\n    window_size: (800, 600),\n    window_title: \"PAC-MAN\",\n    fullscreen: false,\n\n    mouse_sensitivity: 1.4,\n    key_bindings: {\n        \"up\": Up,\n        \"down\": Down,\n        \"left\": Left,\n        \"right\": Right,\n\n        // Uncomment to enable WASD controls\n        /*\n        \"W\": Up,\n        \"S\": Down,\n        \"A\": Left,\n        \"D\": Right,\n        */\n    },\n\n    difficulty_options: (\n        start_difficulty: Easy,\n        adaptive: false,\n    ),\n)",
+  "leading": {
+    "span": null,
+    "whitespace": "",
+    "comments": []
+  },
+  "attributes": [],
+  "pre_value": {
+    "span": null,
+    "whitespace": "",
+    "comments": []
+  },
+  "value": {
+    "Struct": {
+      "span": {
+        "start": {
+          "line": 1,
+          "col": 1
+        },
+        "end": {
+          "line": 26,
+          "col": 2
+        },
+        "start_offset": 0,
+        "end_offset": 494
+      },
+      "name": {
+        "span": {
+          "start": {
+            "line": 1,
+            "col": 1
+          },
+          "end": {
+            "line": 1,
+            "col": 11
+          },
+          "start_offset": 0,
+          "end_offset": 10
+        },
+        "name": "GameConfig"
+      },
+      "pre_body": {
+        "span": null,
+        "whitespace": "",
+        "comments": []
+      },
+      "body": {
+        "Fields": {
+          "open_brace": {
+            "start": {
+              "line": 1,
+              "col": 11
+            },
+            "end": {
+              "line": 1,
+              "col": 12
+            },
+            "start_offset": 10,
+            "end_offset": 11
+          },
+          "leading": {
+            "span": null,
+            "whitespace": "",
+            "comments": []
+          },
+          "fields": [
+            {
+              "leading": {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "col": 12
+                  },
+                  "end": {
+                    "line": 2,
+                    "col": 5
+                  },
+                  "start_offset": 11,
+                  "end_offset": 40
+                },
+                "whitespace": " ",
+                "comments": [
+                  {
+                    "span": {
+                      "start": {
+                        "line": 1,
+                        "col": 13
+                      },
+                      "end": {
+                        "line": 1,
+                        "col": 36
+                      },
+                      "start_offset": 12,
+                      "end_offset": 35
+                    },
+                    "text": "// optional struct name",
+                    "kind": "Line"
+                  }
+                ]
+              },
+              "name": {
+                "span": {
+                  "start": {
+                    "line": 2,
+                    "col": 5
+                  },
+                  "end": {
+                    "line": 2,
+                    "col": 16
+                  },
+                  "start_offset": 40,
+                  "end_offset": 51
+                },
+                "name": "window_size"
+              },
+              "pre_colon": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "colon": {
+                "start": {
+                  "line": 2,
+                  "col": 16
+                },
+                "end": {
+                  "line": 2,
+                  "col": 17
+                },
+                "start_offset": 51,
+                "end_offset": 52
+              },
+              "post_colon": {
+                "span": {
+                  "start": {
+                    "line": 2,
+                    "col": 17
+                  },
+                  "end": {
+                    "line": 2,
+                    "col": 18
+                  },
+                  "start_offset": 52,
+                  "end_offset": 53
+                },
+                "whitespace": " ",
+                "comments": []
+              },
+              "value": {
+                "Tuple": {
+                  "span": {
+                    "start": {
+                      "line": 2,
+                      "col": 18
+                    },
+                    "end": {
+                      "line": 2,
+                      "col": 28
+                    },
+                    "start_offset": 53,
+                    "end_offset": 63
+                  },
+                  "open_paren": {
+                    "start": {
+                      "line": 2,
+                      "col": 18
+                    },
+                    "end": {
+                      "line": 2,
+                      "col": 19
+                    },
+                    "start_offset": 53,
+                    "end_offset": 54
+                  },
+                  "leading": {
+                    "span": null,
+                    "whitespace": "",
+                    "comments": []
+                  },
+                  "elements": [
+                    {
+                      "leading": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "expr": {
+                        "Number": {
+                          "span": {
+                            "start": {
+                              "line": 2,
+                              "col": 19
+                            },
+                            "end": {
+                              "line": 2,
+                              "col": 22
+                            },
+                            "start_offset": 54,
+                            "end_offset": 57
+                          },
+                          "raw": "800",
+                          "kind": "Integer"
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": {
+                        "start": {
+                          "line": 2,
+                          "col": 22
+                        },
+                        "end": {
+                          "line": 2,
+                          "col": 23
+                        },
+                        "start_offset": 57,
+                        "end_offset": 58
+                      }
+                    },
+                    {
+                      "leading": {
+                        "span": {
+                          "start": {
+                            "line": 2,
+                            "col": 23
+                          },
+                          "end": {
+                            "line": 2,
+                            "col": 24
+                          },
+                          "start_offset": 58,
+                          "end_offset": 59
+                        },
+                        "whitespace": " ",
+                        "comments": []
+                      },
+                      "expr": {
+                        "Number": {
+                          "span": {
+                            "start": {
+                              "line": 2,
+                              "col": 24
+                            },
+                            "end": {
+                              "line": 2,
+                              "col": 27
+                            },
+                            "start_offset": 59,
+                            "end_offset": 62
+                          },
+                          "raw": "600",
+                          "kind": "Integer"
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": null
+                    }
+                  ],
+                  "trailing": {
+                    "span": null,
+                    "whitespace": "",
+                    "comments": []
+                  },
+                  "close_paren": {
+                    "start": {
+                      "line": 2,
+                      "col": 27
+                    },
+                    "end": {
+                      "line": 2,
+                      "col": 28
+                    },
+                    "start_offset": 62,
+                    "end_offset": 63
+                  }
+                }
+              },
+              "trailing": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "comma": {
+                "start": {
+                  "line": 2,
+                  "col": 28
+                },
+                "end": {
+                  "line": 2,
+                  "col": 29
+                },
+                "start_offset": 63,
+                "end_offset": 64
+              }
+            },
+            {
+              "leading": {
+                "span": {
+                  "start": {
+                    "line": 2,
+                    "col": 29
+                  },
+                  "end": {
+                    "line": 3,
+                    "col": 5
+                  },
+                  "start_offset": 64,
+                  "end_offset": 69
+                },
+                "whitespace": "\n    ",
+                "comments": []
+              },
+              "name": {
+                "span": {
+                  "start": {
+                    "line": 3,
+                    "col": 5
+                  },
+                  "end": {
+                    "line": 3,
+                    "col": 17
+                  },
+                  "start_offset": 69,
+                  "end_offset": 81
+                },
+                "name": "window_title"
+              },
+              "pre_colon": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "colon": {
+                "start": {
+                  "line": 3,
+                  "col": 17
+                },
+                "end": {
+                  "line": 3,
+                  "col": 18
+                },
+                "start_offset": 81,
+                "end_offset": 82
+              },
+              "post_colon": {
+                "span": {
+                  "start": {
+                    "line": 3,
+                    "col": 18
+                  },
+                  "end": {
+                    "line": 3,
+                    "col": 19
+                  },
+                  "start_offset": 82,
+                  "end_offset": 83
+                },
+                "whitespace": " ",
+                "comments": []
+              },
+              "value": {
+                "String": {
+                  "span": {
+                    "start": {
+                      "line": 3,
+                      "col": 19
+                    },
+                    "end": {
+                      "line": 3,
+                      "col": 28
+                    },
+                    "start_offset": 83,
+                    "end_offset": 92
+                  },
+                  "raw": "\"PAC-MAN\"",
+                  "value": "PAC-MAN",
+                  "kind": "Regular"
+                }
+              },
+              "trailing": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "comma": {
+                "start": {
+                  "line": 3,
+                  "col": 28
+                },
+                "end": {
+                  "line": 3,
+                  "col": 29
+                },
+                "start_offset": 92,
+                "end_offset": 93
+              }
+            },
+            {
+              "leading": {
+                "span": {
+                  "start": {
+                    "line": 3,
+                    "col": 29
+                  },
+                  "end": {
+                    "line": 4,
+                    "col": 5
+                  },
+                  "start_offset": 93,
+                  "end_offset": 98
+                },
+                "whitespace": "\n    ",
+                "comments": []
+              },
+              "name": {
+                "span": {
+                  "start": {
+                    "line": 4,
+                    "col": 5
+                  },
+                  "end": {
+                    "line": 4,
+                    "col": 15
+                  },
+                  "start_offset": 98,
+                  "end_offset": 108
+                },
+                "name": "fullscreen"
+              },
+              "pre_colon": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "colon": {
+                "start": {
+                  "line": 4,
+                  "col": 15
+                },
+                "end": {
+                  "line": 4,
+                  "col": 16
+                },
+                "start_offset": 108,
+                "end_offset": 109
+              },
+              "post_colon": {
+                "span": {
+                  "start": {
+                    "line": 4,
+                    "col": 16
+                  },
+                  "end": {
+                    "line": 4,
+                    "col": 17
+                  },
+                  "start_offset": 109,
+                  "end_offset": 110
+                },
+                "whitespace": " ",
+                "comments": []
+              },
+              "value": {
+                "Bool": {
+                  "span": {
+                    "start": {
+                      "line": 4,
+                      "col": 17
+                    },
+                    "end": {
+                      "line": 4,
+                      "col": 22
+                    },
+                    "start_offset": 110,
+                    "end_offset": 115
+                  },
+                  "value": false
+                }
+              },
+              "trailing": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "comma": {
+                "start": {
+                  "line": 4,
+                  "col": 22
+                },
+                "end": {
+                  "line": 4,
+                  "col": 23
+                },
+                "start_offset": 115,
+                "end_offset": 116
+              }
+            },
+            {
+              "leading": {
+                "span": {
+                  "start": {
+                    "line": 4,
+                    "col": 23
+                  },
+                  "end": {
+                    "line": 6,
+                    "col": 5
+                  },
+                  "start_offset": 116,
+                  "end_offset": 122
+                },
+                "whitespace": "\n\n    ",
+                "comments": []
+              },
+              "name": {
+                "span": {
+                  "start": {
+                    "line": 6,
+                    "col": 5
+                  },
+                  "end": {
+                    "line": 6,
+                    "col": 22
+                  },
+                  "start_offset": 122,
+                  "end_offset": 139
+                },
+                "name": "mouse_sensitivity"
+              },
+              "pre_colon": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "colon": {
+                "start": {
+                  "line": 6,
+                  "col": 22
+                },
+                "end": {
+                  "line": 6,
+                  "col": 23
+                },
+                "start_offset": 139,
+                "end_offset": 140
+              },
+              "post_colon": {
+                "span": {
+                  "start": {
+                    "line": 6,
+                    "col": 23
+                  },
+                  "end": {
+                    "line": 6,
+                    "col": 24
+                  },
+                  "start_offset": 140,
+                  "end_offset": 141
+                },
+                "whitespace": " ",
+                "comments": []
+              },
+              "value": {
+                "Number": {
+                  "span": {
+                    "start": {
+                      "line": 6,
+                      "col": 24
+                    },
+                    "end": {
+                      "line": 6,
+                      "col": 27
+                    },
+                    "start_offset": 141,
+                    "end_offset": 144
+                  },
+                  "raw": "1.4",
+                  "kind": "Float"
+                }
+              },
+              "trailing": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "comma": {
+                "start": {
+                  "line": 6,
+                  "col": 27
+                },
+                "end": {
+                  "line": 6,
+                  "col": 28
+                },
+                "start_offset": 144,
+                "end_offset": 145
+              }
+            },
+            {
+              "leading": {
+                "span": {
+                  "start": {
+                    "line": 6,
+                    "col": 28
+                  },
+                  "end": {
+                    "line": 7,
+                    "col": 5
+                  },
+                  "start_offset": 145,
+                  "end_offset": 150
+                },
+                "whitespace": "\n    ",
+                "comments": []
+              },
+              "name": {
+                "span": {
+                  "start": {
+                    "line": 7,
+                    "col": 5
+                  },
+                  "end": {
+                    "line": 7,
+                    "col": 17
+                  },
+                  "start_offset": 150,
+                  "end_offset": 162
+                },
+                "name": "key_bindings"
+              },
+              "pre_colon": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "colon": {
+                "start": {
+                  "line": 7,
+                  "col": 17
+                },
+                "end": {
+                  "line": 7,
+                  "col": 18
+                },
+                "start_offset": 162,
+                "end_offset": 163
+              },
+              "post_colon": {
+                "span": {
+                  "start": {
+                    "line": 7,
+                    "col": 18
+                  },
+                  "end": {
+                    "line": 7,
+                    "col": 19
+                  },
+                  "start_offset": 163,
+                  "end_offset": 164
+                },
+                "whitespace": " ",
+                "comments": []
+              },
+              "value": {
+                "Map": {
+                  "span": {
+                    "start": {
+                      "line": 7,
+                      "col": 19
+                    },
+                    "end": {
+                      "line": 20,
+                      "col": 6
+                    },
+                    "start_offset": 164,
+                    "end_offset": 400
+                  },
+                  "open_brace": {
+                    "start": {
+                      "line": 7,
+                      "col": 19
+                    },
+                    "end": {
+                      "line": 7,
+                      "col": 20
+                    },
+                    "start_offset": 164,
+                    "end_offset": 165
+                  },
+                  "leading": {
+                    "span": null,
+                    "whitespace": "",
+                    "comments": []
+                  },
+                  "entries": [
+                    {
+                      "leading": {
+                        "span": {
+                          "start": {
+                            "line": 7,
+                            "col": 20
+                          },
+                          "end": {
+                            "line": 8,
+                            "col": 9
+                          },
+                          "start_offset": 165,
+                          "end_offset": 174
+                        },
+                        "whitespace": "\n        ",
+                        "comments": []
+                      },
+                      "key": {
+                        "String": {
+                          "span": {
+                            "start": {
+                              "line": 8,
+                              "col": 9
+                            },
+                            "end": {
+                              "line": 8,
+                              "col": 13
+                            },
+                            "start_offset": 174,
+                            "end_offset": 178
+                          },
+                          "raw": "\"up\"",
+                          "value": "up",
+                          "kind": "Regular"
+                        }
+                      },
+                      "pre_colon": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "colon": {
+                        "start": {
+                          "line": 8,
+                          "col": 13
+                        },
+                        "end": {
+                          "line": 8,
+                          "col": 14
+                        },
+                        "start_offset": 178,
+                        "end_offset": 179
+                      },
+                      "post_colon": {
+                        "span": {
+                          "start": {
+                            "line": 8,
+                            "col": 14
+                          },
+                          "end": {
+                            "line": 8,
+                            "col": 15
+                          },
+                          "start_offset": 179,
+                          "end_offset": 180
+                        },
+                        "whitespace": " ",
+                        "comments": []
+                      },
+                      "value": {
+                        "Struct": {
+                          "span": {
+                            "start": {
+                              "line": 8,
+                              "col": 15
+                            },
+                            "end": {
+                              "line": 8,
+                              "col": 17
+                            },
+                            "start_offset": 180,
+                            "end_offset": 182
+                          },
+                          "name": {
+                            "span": {
+                              "start": {
+                                "line": 8,
+                                "col": 15
+                              },
+                              "end": {
+                                "line": 8,
+                                "col": 17
+                              },
+                              "start_offset": 180,
+                              "end_offset": 182
+                            },
+                            "name": "Up"
+                          },
+                          "pre_body": {
+                            "span": null,
+                            "whitespace": "",
+                            "comments": []
+                          },
+                          "body": null
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": {
+                        "start": {
+                          "line": 8,
+                          "col": 17
+                        },
+                        "end": {
+                          "line": 8,
+                          "col": 18
+                        },
+                        "start_offset": 182,
+                        "end_offset": 183
+                      }
+                    },
+                    {
+                      "leading": {
+                        "span": {
+                          "start": {
+                            "line": 8,
+                            "col": 18
+                          },
+                          "end": {
+                            "line": 9,
+                            "col": 9
+                          },
+                          "start_offset": 183,
+                          "end_offset": 192
+                        },
+                        "whitespace": "\n        ",
+                        "comments": []
+                      },
+                      "key": {
+                        "String": {
+                          "span": {
+                            "start": {
+                              "line": 9,
+                              "col": 9
+                            },
+                            "end": {
+                              "line": 9,
+                              "col": 15
+                            },
+                            "start_offset": 192,
+                            "end_offset": 198
+                          },
+                          "raw": "\"down\"",
+                          "value": "down",
+                          "kind": "Regular"
+                        }
+                      },
+                      "pre_colon": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "colon": {
+                        "start": {
+                          "line": 9,
+                          "col": 15
+                        },
+                        "end": {
+                          "line": 9,
+                          "col": 16
+                        },
+                        "start_offset": 198,
+                        "end_offset": 199
+                      },
+                      "post_colon": {
+                        "span": {
+                          "start": {
+                            "line": 9,
+                            "col": 16
+                          },
+                          "end": {
+                            "line": 9,
+                            "col": 17
+                          },
+                          "start_offset": 199,
+                          "end_offset": 200
+                        },
+                        "whitespace": " ",
+                        "comments": []
+                      },
+                      "value": {
+                        "Struct": {
+                          "span": {
+                            "start": {
+                              "line": 9,
+                              "col": 17
+                            },
+                            "end": {
+                              "line": 9,
+                              "col": 21
+                            },
+                            "start_offset": 200,
+                            "end_offset": 204
+                          },
+                          "name": {
+                            "span": {
+                              "start": {
+                                "line": 9,
+                                "col": 17
+                              },
+                              "end": {
+                                "line": 9,
+                                "col": 21
+                              },
+                              "start_offset": 200,
+                              "end_offset": 204
+                            },
+                            "name": "Down"
+                          },
+                          "pre_body": {
+                            "span": null,
+                            "whitespace": "",
+                            "comments": []
+                          },
+                          "body": null
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": {
+                        "start": {
+                          "line": 9,
+                          "col": 21
+                        },
+                        "end": {
+                          "line": 9,
+                          "col": 22
+                        },
+                        "start_offset": 204,
+                        "end_offset": 205
+                      }
+                    },
+                    {
+                      "leading": {
+                        "span": {
+                          "start": {
+                            "line": 9,
+                            "col": 22
+                          },
+                          "end": {
+                            "line": 10,
+                            "col": 9
+                          },
+                          "start_offset": 205,
+                          "end_offset": 214
+                        },
+                        "whitespace": "\n        ",
+                        "comments": []
+                      },
+                      "key": {
+                        "String": {
+                          "span": {
+                            "start": {
+                              "line": 10,
+                              "col": 9
+                            },
+                            "end": {
+                              "line": 10,
+                              "col": 15
+                            },
+                            "start_offset": 214,
+                            "end_offset": 220
+                          },
+                          "raw": "\"left\"",
+                          "value": "left",
+                          "kind": "Regular"
+                        }
+                      },
+                      "pre_colon": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "colon": {
+                        "start": {
+                          "line": 10,
+                          "col": 15
+                        },
+                        "end": {
+                          "line": 10,
+                          "col": 16
+                        },
+                        "start_offset": 220,
+                        "end_offset": 221
+                      },
+                      "post_colon": {
+                        "span": {
+                          "start": {
+                            "line": 10,
+                            "col": 16
+                          },
+                          "end": {
+                            "line": 10,
+                            "col": 17
+                          },
+                          "start_offset": 221,
+                          "end_offset": 222
+                        },
+                        "whitespace": " ",
+                        "comments": []
+                      },
+                      "value": {
+                        "Struct": {
+                          "span": {
+                            "start": {
+                              "line": 10,
+                              "col": 17
+                            },
+                            "end": {
+                              "line": 10,
+                              "col": 21
+                            },
+                            "start_offset": 222,
+                            "end_offset": 226
+                          },
+                          "name": {
+                            "span": {
+                              "start": {
+                                "line": 10,
+                                "col": 17
+                              },
+                              "end": {
+                                "line": 10,
+                                "col": 21
+                              },
+                              "start_offset": 222,
+                              "end_offset": 226
+                            },
+                            "name": "Left"
+                          },
+                          "pre_body": {
+                            "span": null,
+                            "whitespace": "",
+                            "comments": []
+                          },
+                          "body": null
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": {
+                        "start": {
+                          "line": 10,
+                          "col": 21
+                        },
+                        "end": {
+                          "line": 10,
+                          "col": 22
+                        },
+                        "start_offset": 226,
+                        "end_offset": 227
+                      }
+                    },
+                    {
+                      "leading": {
+                        "span": {
+                          "start": {
+                            "line": 10,
+                            "col": 22
+                          },
+                          "end": {
+                            "line": 11,
+                            "col": 9
+                          },
+                          "start_offset": 227,
+                          "end_offset": 236
+                        },
+                        "whitespace": "\n        ",
+                        "comments": []
+                      },
+                      "key": {
+                        "String": {
+                          "span": {
+                            "start": {
+                              "line": 11,
+                              "col": 9
+                            },
+                            "end": {
+                              "line": 11,
+                              "col": 16
+                            },
+                            "start_offset": 236,
+                            "end_offset": 243
+                          },
+                          "raw": "\"right\"",
+                          "value": "right",
+                          "kind": "Regular"
+                        }
+                      },
+                      "pre_colon": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "colon": {
+                        "start": {
+                          "line": 11,
+                          "col": 16
+                        },
+                        "end": {
+                          "line": 11,
+                          "col": 17
+                        },
+                        "start_offset": 243,
+                        "end_offset": 244
+                      },
+                      "post_colon": {
+                        "span": {
+                          "start": {
+                            "line": 11,
+                            "col": 17
+                          },
+                          "end": {
+                            "line": 11,
+                            "col": 18
+                          },
+                          "start_offset": 244,
+                          "end_offset": 245
+                        },
+                        "whitespace": " ",
+                        "comments": []
+                      },
+                      "value": {
+                        "Struct": {
+                          "span": {
+                            "start": {
+                              "line": 11,
+                              "col": 18
+                            },
+                            "end": {
+                              "line": 11,
+                              "col": 23
+                            },
+                            "start_offset": 245,
+                            "end_offset": 250
+                          },
+                          "name": {
+                            "span": {
+                              "start": {
+                                "line": 11,
+                                "col": 18
+                              },
+                              "end": {
+                                "line": 11,
+                                "col": 23
+                              },
+                              "start_offset": 245,
+                              "end_offset": 250
+                            },
+                            "name": "Right"
+                          },
+                          "pre_body": {
+                            "span": null,
+                            "whitespace": "",
+                            "comments": []
+                          },
+                          "body": null
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": {
+                        "start": {
+                          "line": 11,
+                          "col": 23
+                        },
+                        "end": {
+                          "line": 11,
+                          "col": 24
+                        },
+                        "start_offset": 250,
+                        "end_offset": 251
+                      }
+                    }
+                  ],
+                  "trailing": {
+                    "span": null,
+                    "whitespace": "",
+                    "comments": []
+                  },
+                  "close_brace": {
+                    "start": {
+                      "line": 20,
+                      "col": 5
+                    },
+                    "end": {
+                      "line": 20,
+                      "col": 6
+                    },
+                    "start_offset": 399,
+                    "end_offset": 400
+                  }
+                }
+              },
+              "trailing": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "comma": {
+                "start": {
+                  "line": 20,
+                  "col": 6
+                },
+                "end": {
+                  "line": 20,
+                  "col": 7
+                },
+                "start_offset": 400,
+                "end_offset": 401
+              }
+            },
+            {
+              "leading": {
+                "span": {
+                  "start": {
+                    "line": 20,
+                    "col": 7
+                  },
+                  "end": {
+                    "line": 22,
+                    "col": 5
+                  },
+                  "start_offset": 401,
+                  "end_offset": 407
+                },
+                "whitespace": "\n\n    ",
+                "comments": []
+              },
+              "name": {
+                "span": {
+                  "start": {
+                    "line": 22,
+                    "col": 5
+                  },
+                  "end": {
+                    "line": 22,
+                    "col": 23
+                  },
+                  "start_offset": 407,
+                  "end_offset": 425
+                },
+                "name": "difficulty_options"
+              },
+              "pre_colon": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "colon": {
+                "start": {
+                  "line": 22,
+                  "col": 23
+                },
+                "end": {
+                  "line": 22,
+                  "col": 24
+                },
+                "start_offset": 425,
+                "end_offset": 426
+              },
+              "post_colon": {
+                "span": {
+                  "start": {
+                    "line": 22,
+                    "col": 24
+                  },
+                  "end": {
+                    "line": 22,
+                    "col": 25
+                  },
+                  "start_offset": 426,
+                  "end_offset": 427
+                },
+                "whitespace": " ",
+                "comments": []
+              },
+              "value": {
+                "AnonStruct": {
+                  "span": {
+                    "start": {
+                      "line": 22,
+                      "col": 25
+                    },
+                    "end": {
+                      "line": 25,
+                      "col": 6
+                    },
+                    "start_offset": 427,
+                    "end_offset": 491
+                  },
+                  "open_paren": {
+                    "start": {
+                      "line": 22,
+                      "col": 25
+                    },
+                    "end": {
+                      "line": 22,
+                      "col": 26
+                    },
+                    "start_offset": 427,
+                    "end_offset": 428
+                  },
+                  "leading": {
+                    "span": null,
+                    "whitespace": "",
+                    "comments": []
+                  },
+                  "fields": [
+                    {
+                      "leading": {
+                        "span": {
+                          "start": {
+                            "line": 22,
+                            "col": 26
+                          },
+                          "end": {
+                            "line": 23,
+                            "col": 9
+                          },
+                          "start_offset": 428,
+                          "end_offset": 437
+                        },
+                        "whitespace": "\n        ",
+                        "comments": []
+                      },
+                      "name": {
+                        "span": {
+                          "start": {
+                            "line": 23,
+                            "col": 9
+                          },
+                          "end": {
+                            "line": 23,
+                            "col": 25
+                          },
+                          "start_offset": 437,
+                          "end_offset": 453
+                        },
+                        "name": "start_difficulty"
+                      },
+                      "pre_colon": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "colon": {
+                        "start": {
+                          "line": 23,
+                          "col": 25
+                        },
+                        "end": {
+                          "line": 23,
+                          "col": 26
+                        },
+                        "start_offset": 453,
+                        "end_offset": 454
+                      },
+                      "post_colon": {
+                        "span": {
+                          "start": {
+                            "line": 23,
+                            "col": 26
+                          },
+                          "end": {
+                            "line": 23,
+                            "col": 27
+                          },
+                          "start_offset": 454,
+                          "end_offset": 455
+                        },
+                        "whitespace": " ",
+                        "comments": []
+                      },
+                      "value": {
+                        "Struct": {
+                          "span": {
+                            "start": {
+                              "line": 23,
+                              "col": 27
+                            },
+                            "end": {
+                              "line": 23,
+                              "col": 31
+                            },
+                            "start_offset": 455,
+                            "end_offset": 459
+                          },
+                          "name": {
+                            "span": {
+                              "start": {
+                                "line": 23,
+                                "col": 27
+                              },
+                              "end": {
+                                "line": 23,
+                                "col": 31
+                              },
+                              "start_offset": 455,
+                              "end_offset": 459
+                            },
+                            "name": "Easy"
+                          },
+                          "pre_body": {
+                            "span": null,
+                            "whitespace": "",
+                            "comments": []
+                          },
+                          "body": null
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": {
+                        "start": {
+                          "line": 23,
+                          "col": 31
+                        },
+                        "end": {
+                          "line": 23,
+                          "col": 32
+                        },
+                        "start_offset": 459,
+                        "end_offset": 460
+                      }
+                    },
+                    {
+                      "leading": {
+                        "span": {
+                          "start": {
+                            "line": 23,
+                            "col": 32
+                          },
+                          "end": {
+                            "line": 24,
+                            "col": 9
+                          },
+                          "start_offset": 460,
+                          "end_offset": 469
+                        },
+                        "whitespace": "\n        ",
+                        "comments": []
+                      },
+                      "name": {
+                        "span": {
+                          "start": {
+                            "line": 24,
+                            "col": 9
+                          },
+                          "end": {
+                            "line": 24,
+                            "col": 17
+                          },
+                          "start_offset": 469,
+                          "end_offset": 477
+                        },
+                        "name": "adaptive"
+                      },
+                      "pre_colon": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "colon": {
+                        "start": {
+                          "line": 24,
+                          "col": 17
+                        },
+                        "end": {
+                          "line": 24,
+                          "col": 18
+                        },
+                        "start_offset": 477,
+                        "end_offset": 478
+                      },
+                      "post_colon": {
+                        "span": {
+                          "start": {
+                            "line": 24,
+                            "col": 18
+                          },
+                          "end": {
+                            "line": 24,
+                            "col": 19
+                          },
+                          "start_offset": 478,
+                          "end_offset": 479
+                        },
+                        "whitespace": " ",
+                        "comments": []
+                      },
+                      "value": {
+                        "Bool": {
+                          "span": {
+                            "start": {
+                              "line": 24,
+                              "col": 19
+                            },
+                            "end": {
+                              "line": 24,
+                              "col": 24
+                            },
+                            "start_offset": 479,
+                            "end_offset": 484
+                          },
+                          "value": false
+                        }
+                      },
+                      "trailing": {
+                        "span": null,
+                        "whitespace": "",
+                        "comments": []
+                      },
+                      "comma": {
+                        "start": {
+                          "line": 24,
+                          "col": 24
+                        },
+                        "end": {
+                          "line": 24,
+                          "col": 25
+                        },
+                        "start_offset": 484,
+                        "end_offset": 485
+                      }
+                    }
+                  ],
+                  "trailing": {
+                    "span": null,
+                    "whitespace": "",
+                    "comments": []
+                  },
+                  "close_paren": {
+                    "start": {
+                      "line": 25,
+                      "col": 5
+                    },
+                    "end": {
+                      "line": 25,
+                      "col": 6
+                    },
+                    "start_offset": 490,
+                    "end_offset": 491
+                  }
+                }
+              },
+              "trailing": {
+                "span": null,
+                "whitespace": "",
+                "comments": []
+              },
+              "comma": {
+                "start": {
+                  "line": 25,
+                  "col": 6
+                },
+                "end": {
+                  "line": 25,
+                  "col": 7
+                },
+                "start_offset": 491,
+                "end_offset": 492
+              }
+            }
+          ],
+          "trailing": {
+            "span": {
+              "start": {
+                "line": 25,
+                "col": 7
+              },
+              "end": {
+                "line": 26,
+                "col": 1
+              },
+              "start_offset": 492,
+              "end_offset": 493
+            },
+            "whitespace": "\n",
+            "comments": []
+          },
+          "close_brace": {
+            "start": {
+              "line": 26,
+              "col": 1
+            },
+            "end": {
+              "line": 26,
+              "col": 2
+            },
+            "start_offset": 493,
+            "end_offset": 494
+          }
+        }
+      }
+    }
+  },
+  "trailing": {
+    "span": null,
+    "whitespace": "",
+    "comments": []
+  }
+}

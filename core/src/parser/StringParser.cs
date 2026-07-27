@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using CriusNyx.Util;
+using Ron;
 using Superpower;
 using Superpower.Parsers;
 
@@ -9,7 +10,7 @@ public abstract class StringContent
 }
 
 [DebugPrint]
-public class StringValue(StringContent[] content) : RonElement
+public class StringValue(StringContent[] content)
 {
   [DebugField]
   public StringContent[] content = content;
@@ -169,7 +170,7 @@ public static class StringParser
       StringEscape_Parser.Try(),
       Character
         .Except('"')
-        .AsString(true)
+        .AsString()
         .Select(characters => new StringLit(characters) as StringContent)
     )
     .Many()
@@ -186,6 +187,7 @@ public static class StringParser
       Character
         .Except('"')
         .AsString()
+        .OptionalOrDefault("")
         .Between(Character.EqualTo('"'))
         .Select(value => new StringRawLit(value) as StringContent)
     )
@@ -198,5 +200,32 @@ public static class StringParser
   public static TextParser<StringValue> String_Parser = Parse.OneOf(
     StringSTD_Parser,
     StringRaw_Parser
+  );
+
+  public static TextParser<StringExpr> StringStdExpr_Parser =
+    from start in MoreParsers.Position
+    from content in StringSTD_Parser
+    from end in MoreParsers.Position
+    select new StringExpr
+    {
+      span = RonSpan.From(start, end),
+      value = content.Evaluate(),
+      stringKind = StringKind.Regular,
+    };
+
+  public static TextParser<StringExpr> StringRawExpr_Parser =
+    from start in MoreParsers.Position
+    from content in StringRaw_Parser
+    from end in MoreParsers.Position
+    select new StringExpr
+    {
+      span = RonSpan.From(start, end),
+      value = content.Evaluate(),
+      stringKind = StringKind.Raw,
+    };
+
+  public static TextParser<StringExpr> StringExpr_Parser = Parse.OneOf(
+    StringStdExpr_Parser,
+    StringRawExpr_Parser
   );
 }

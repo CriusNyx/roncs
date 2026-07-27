@@ -22,7 +22,7 @@
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
     <None Update="testFiles/*.ron" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="testFiles/*.ast.debug" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="ast/*.ast" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

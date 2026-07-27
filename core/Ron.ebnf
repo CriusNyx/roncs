@@ -65,12 +65,6 @@ string_raw = "r", string_raw_content;
 
 string = string_std | string_raw;
 
-
-
-
-
-
-
 (* Byte String *)
 
 byte_string = byte_string_std | byte_string_raw;

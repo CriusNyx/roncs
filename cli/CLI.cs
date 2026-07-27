@@ -13,12 +13,12 @@ void GenerateRegressionTests(ParseResult parsed)
 
   foreach (var testFile in testFiles)
   {
-    var text = File.ReadAllText(testFile).Trim();
-    var ronDoc = Ron.Parse(text);
-    var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(testFile);
-    var newFileName = $"{fileNameWithoutExtension}.ast.debug";
-    var newFilePath = Path.Join(testFile, $"../{newFileName}");
-    File.WriteAllText(newFilePath, ronDoc.Debug());
+    // var text = File.ReadAllText(testFile).Trim();
+    // var ronDoc = Ron.Parse(text);
+    // var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(testFile);
+    // var newFileName = $"{fileNameWithoutExtension}.ast";
+    // var newFilePath = Path.Join(testFile, $"../../ast/{newFileName}");
+    // File.WriteAllText(newFilePath, ronDoc.Debug());
   }
 }
 

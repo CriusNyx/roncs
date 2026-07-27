@@ -1,2 +1,0 @@
-[Serializable]
-public class RonElement { }

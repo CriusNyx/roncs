@@ -1,0 +1,36 @@
+Document(
+    source: "\"Hello World!\"",
+    leading: Trivia(
+        span: None,
+        whitespace: "",
+        comments: [],
+    ),
+    attributes: [],
+    pre_value: Trivia(
+        span: None,
+        whitespace: "",
+        comments: [],
+    ),
+    value: Some(String(StringExpr(
+        span: Span(
+            start: Position(
+                line: 1,
+                col: 1,
+            ),
+            end: Position(
+                line: 1,
+                col: 15,
+            ),
+            start_offset: 0,
+            end_offset: 14,
+        ),
+        raw: "\"Hello World!\"",
+        value: "Hello World!",
+        kind: Regular,
+    ))),
+    trailing: Trivia(
+        span: None,
+        whitespace: "",
+        comments: [],
+    ),
+)

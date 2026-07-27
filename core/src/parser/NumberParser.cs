@@ -1,14 +1,30 @@
+using System.Collections;
+using Ron;
 using Superpower;
-using Superpower.Model;
 using Superpower.Parsers;
 
-public abstract class NumberValue : RonElement { }
+public abstract class NumberValue
+{
+  public abstract string GenerateSource();
+}
 
 #region Unsigned Value
 public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null) : NumberValue
 {
   public UnsignedPrefix? prefix = prefix;
   public string? digits = digits;
+
+  public override string GenerateSource()
+  {
+    return digits
+      + prefix switch
+      {
+        UnsignedPrefix.binary => "0b",
+        UnsignedPrefix.hex => "0x",
+        UnsignedPrefix.octal => "0o",
+        _ => "",
+      };
+  }
 }
 
 public enum UnsignedPrefix
@@ -44,6 +60,11 @@ public class IntegerValue(
   public char? sign = sign;
   public UnsignedValue? digits = digits;
   public IntegerSuffix? integerSuffix = integerSuffix;
+
+  public override string GenerateSource()
+  {
+    return sign + digits?.GenerateSource() + integerSuffix;
+  }
 }
 #endregion
 
@@ -51,6 +72,11 @@ public class IntegerValue(
 public class ByteValue(string source) : NumberValue
 {
   public string source = source;
+
+  public override string GenerateSource()
+  {
+    return source;
+  }
 }
 #endregion
 
@@ -60,14 +86,24 @@ public class FloatExponent(char? e, char? sign, string? digits)
   public char? e = e;
   public char? sign = sign;
   public string? digits = digits;
+
+  public string GenerateSource()
+  {
+    return e + sign + digits;
+  }
 }
 
-public abstract class FloatNum { };
+public abstract class FloatNum : NumberValue { };
 
 public class StandardFloatNum(string? digits, FloatExponent? exponent) : FloatNum
 {
   public string? digits = digits;
   public FloatExponent? exponent = exponent;
+
+  public override string GenerateSource()
+  {
+    return digits + exponent?.GenerateSource();
+  }
 }
 
 public enum SpecialFloatNumType
@@ -79,6 +115,11 @@ public enum SpecialFloatNumType
 public class SpecialFloatNum(SpecialFloatNumType? type) : FloatNum
 {
   public SpecialFloatNumType? type = type;
+
+  public override string GenerateSource()
+  {
+    return type.ToString() ?? "";
+  }
 }
 
 public enum FloatSuffix
@@ -93,6 +134,11 @@ public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? su
   public char? sign = sign;
   public FloatNum? num = num;
   public FloatSuffix? suffix = suffix;
+
+  public override string GenerateSource()
+  {
+    return sign + num?.GenerateSource() + suffix;
+  }
 }
 #endregion
 
@@ -137,7 +183,7 @@ public static class NumberParser
 
   #region Integer
   public static TextParser<IntegerSuffix> IntegerSuffix_Parser =
-    ParseExtensions.EnumParser<IntegerSuffix>();
+    MoreParsers.EnumParser<IntegerSuffix>();
 
   public static TextParser<IntegerValue> Integer_Parser =
     from sign in Character.In('-', '+').OrNull()
@@ -184,7 +230,7 @@ public static class NumberParser
   public static TextParser<FloatExponent> FloatExp_Parser =
     from e in Character.In('e', 'E')
     from sign in Character.In('-', '+').OrNull()
-    from leading in Character.EqualTo('_').AsString()
+    from leading in Character.EqualTo('_').AsString()!.OptionalOrDefault()
     from digits in StringParser.Digit_Parser.AsDigitString()
     select new FloatExponent(e, sign, leading + digits);
 
@@ -193,7 +239,7 @@ public static class NumberParser
     from exponent in FloatExp_Parser!.OptionalOrDefault()
     select new StandardFloatNum(digits, exponent) as FloatNum;
 
-  public static TextParser<FloatNum> SpecialFloatNum_Parser = ParseExtensions
+  public static TextParser<FloatNum> SpecialFloatNum_Parser = MoreParsers
     .EnumParser<SpecialFloatNumType>()
     .Select(value => new SpecialFloatNum(value) as FloatNum);
 
@@ -205,7 +251,7 @@ public static class NumberParser
   public static TextParser<FloatValue> Float_Parser =
     from sign in Character.In('+', '-').OrNull()
     from num in FloatNum_Parser
-    from suffix in ParseExtensions.EnumParser<FloatSuffix>().OrNull()
+    from suffix in MoreParsers.EnumParser<FloatSuffix>().OrNull()
     select new FloatValue(sign, num, suffix);
 
   public static TextParser<NumberValue> Number_Parser = Parse.OneOf(
@@ -214,7 +260,7 @@ public static class NumberParser
       .ThenIgnore(
         Parse.Not(
           Parse.OneOf(
-            ParseExtensions.EnumParser<FloatSuffix>().Ignore(),
+            MoreParsers.EnumParser<FloatSuffix>().Ignore(),
             Character.In('.', 'e', 'E').Ignore()
           )
         )
@@ -231,39 +277,9 @@ public static class NumberParser
     return Parse.OneOf(source, Character.EqualTo('_'));
   }
 
-  public static TextParser<string> Concat(
-    this TextParser<char> original,
-    TextParser<char> next = null!
-  )
-  {
-    if (next is not null)
-    {
-      return original.Then(first => next.Many().Select((rest) => new string([first, .. rest])));
-    }
-    else
-    {
-      return original.Many().AsString();
-    }
-  }
-
   public static TextParser<string> AsDigitString(this TextParser<char> digits)
   {
     return digits.Concat(digits.OrUnderscore());
-  }
-
-  public static TextParser<string> AsString(this TextParser<IEnumerable<char>> source)
-  {
-    return source.Select(chars => new string(chars.ToArray()));
-  }
-
-  public static TextParser<string> AsString(this TextParser<char[]> charParser)
-  {
-    return charParser.Select(chars => new string(chars));
-  }
-
-  public static TextParser<string> AsString(this TextParser<TextSpan> source)
-  {
-    return source.Select(x => x.ToStringValue());
   }
 
   public static TextParser<UnsignedValue> AsUnsignedValue<T>(this TextParser<T> source)
@@ -276,17 +292,6 @@ public static class NumberParser
     where T : NumberValue
   {
     return source.Select(x => x as NumberValue);
-  }
-
-  public static TextParser<Struct?> OrNull<Struct>(this TextParser<Struct> source)
-    where Struct : struct
-  {
-    return source.Select(x => (Struct?)x).OptionalOrDefault();
-  }
-
-  public static TextParser<object> Ignore<T>(this TextParser<T> source)
-  {
-    return source.Value(null as object)!;
   }
 
   public static string ToPrefixString(this UnsignedPrefix? prefix)
@@ -304,4 +309,43 @@ public static class NumberParser
     }
   }
   #endregion
+
+  public static TextParser<NumberExpr> NumberExpr_Parser =
+    from start in MoreParsers.Position
+    from num in Number_Parser
+    from end in MoreParsers.Position
+    select NumberExprFromNumberValue(RonSpan.From(start, end), num);
+
+  private static NumberExpr NumberExprFromNumberValue(RonSpan span, NumberValue value)
+  {
+    if (value is IntegerValue intVal)
+    {
+      return new NumberExpr
+      {
+        kind = intVal.sign == '-' ? NumberKind.NegativeInteger : NumberKind.Integer,
+        span = span,
+        raw = value.GenerateSource(),
+      };
+    }
+    else if (value is SpecialFloatNum)
+    {
+      return new NumberExpr
+      {
+        kind = NumberKind.SpecialFloat,
+        span = span,
+        raw = value.GenerateSource(),
+      };
+    }
+    else if (value is StandardFloatNum)
+    {
+      return new NumberExpr
+      {
+        kind = NumberKind.Float,
+        span = span,
+        raw = value.GenerateSource(),
+      };
+    }
+    else
+      throw new InvalidOperationException();
+  }
 }

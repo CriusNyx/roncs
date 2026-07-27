@@ -1,0 +1,160 @@
+RonDocument {
+  Value: RonNamedValueStruct {
+    Name: RonIdentifier {
+      Value: "GameConfig"
+    },
+    Values: [
+      RonNamedValue {
+        name: RonIdentifier {
+          Value: "window_size"
+        },
+        value: RonTuple {
+          Values: [
+            IntegerValue {
+              sign: null,
+              digits: UnsignedValue {
+                prefix: null,
+                digits: "800"
+              },
+              integerSuffix: null
+            },
+            IntegerValue {
+              sign: null,
+              digits: UnsignedValue {
+                prefix: null,
+                digits: "600"
+              },
+              integerSuffix: null
+            }
+          ]
+        }
+      },
+      RonNamedValue {
+        name: RonIdentifier {
+          Value: "window_title"
+        },
+        value: StringValue {
+          content: [
+            StringLit {
+              value: "PAC-MAN"
+            }
+          ]
+        }
+      },
+      RonNamedValue {
+        name: RonIdentifier {
+          Value: "fullscreen"
+        },
+        value: RonBool {
+          Value: False
+        }
+      },
+      RonNamedValue {
+        name: RonIdentifier {
+          Value: "mouse_sensitivity"
+        },
+        value: FloatValue {
+          sign: null,
+          num: StandardFloatNum {
+            digits: "1.4",
+            exponent: null
+          },
+          suffix: null
+        }
+      },
+      RonNamedValue {
+        name: RonIdentifier {
+          Value: "key_bindings"
+        },
+        value: RonMap {
+          Values: [
+            RonMapItem {
+              Key: StringValue {
+                content: [
+                  StringLit {
+                    value: "up"
+                  }
+                ]
+              },
+              Value: RonUnitStruct {
+                Name: RonIdentifier {
+                  Value: "Up"
+                }
+              }
+            },
+            RonMapItem {
+              Key: StringValue {
+                content: [
+                  StringLit {
+                    value: "down"
+                  }
+                ]
+              },
+              Value: RonUnitStruct {
+                Name: RonIdentifier {
+                  Value: "Down"
+                }
+              }
+            },
+            RonMapItem {
+              Key: StringValue {
+                content: [
+                  StringLit {
+                    value: "left"
+                  }
+                ]
+              },
+              Value: RonUnitStruct {
+                Name: RonIdentifier {
+                  Value: "Left"
+                }
+              }
+            },
+            RonMapItem {
+              Key: StringValue {
+                content: [
+                  StringLit {
+                    value: "right"
+                  }
+                ]
+              },
+              Value: RonUnitStruct {
+                Name: RonIdentifier {
+                  Value: "Right"
+                }
+              }
+            }
+          ]
+        }
+      },
+      RonNamedValue {
+        name: RonIdentifier {
+          Value: "difficulty_options"
+        },
+        value: RonNamedValueStruct {
+          Name: null,
+          Values: [
+            RonNamedValue {
+              name: RonIdentifier {
+                Value: "start_difficulty"
+              },
+              value: RonUnitStruct {
+                Name: RonIdentifier {
+                  Value: "Easy"
+                }
+              }
+            },
+            RonNamedValue {
+              name: RonIdentifier {
+                Value: "adaptive"
+              },
+              value: RonBool {
+                Value: False
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
