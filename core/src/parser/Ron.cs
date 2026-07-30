@@ -2,7 +2,9 @@ using CriusNyx.Util;
 using Superpower;
 using Superpower.Model;
 
-public static class Ron
+namespace RonCS;
+
+public static partial class Ron
 {
   public static TokenList<RonTokenKind> Tokenize(string source)
   {
@@ -17,5 +19,12 @@ public static class Ron
   public static RonDocument Parse(string source)
   {
     return Parse(Tokenize(source));
+  }
+
+  public static object Deserialize(string source, Type? hint)
+  {
+    var document = Parse(source);
+    var deserialized = RonSerializer.Deserialize(document, hint);
+    return deserialized;
   }
 }

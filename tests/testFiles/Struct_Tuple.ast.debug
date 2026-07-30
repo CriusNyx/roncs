@@ -1,9 +1,6 @@
 RonDocument {
   Value: RonTupleStruct {
-    Name: RonIdentifier {
-      Value: "Struct"
-    },
-    Values: RonTuple {
+    Body: RonTuple {
       Values: [
         RonBool {
           Value: False

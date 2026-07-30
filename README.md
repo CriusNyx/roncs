@@ -2,7 +2,8 @@
 
 ## Parser
 
-Consider copying the EBNF file directrly for already implemented parsers instead of trying to be clever.
+Consider copying the EBNF file directrly for already implemented parsers instead
+of trying to be clever.
 
 - [?] Extension Parser
   - [ ] I'm not sure what this means
@@ -31,11 +32,18 @@ Consider copying the EBNF file directrly for already implemented parsers instead
 
 ## Serializer/Deserializer
 
-- [ ] RonFromAttribute
-- [ ] RonToAttribute
+- [ ] Implement Serializer
+- [x] Implement Prototype Deserializer
+- [ ] Implement Property Deserializer
+
+## Serializer/Deserializer Attributes
+
+- [x] RonFromAttribute
+- [x] RonIntoAttribute
+- [x] Memoize RonFrom RonInto
 - [ ] Specify Ron type coercion
 - [ ] Attribute to control serialization of fields
 - [ ] RonProxy Attribute
 - [ ] RonField
-- [ ] RonProperty
+- [ ] RonProperty (what for?)
 - [ ] Implement circular serialization check

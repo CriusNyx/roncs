@@ -1,14 +1,16 @@
 RonDocument {
-  Value: RonMap {
-    Values: [
-      RonMapItem {
-        Key: RonBool {
-          Value: True
-        },
-        Value: RonBool {
-          Value: True
+  Value: RonMapStruct {
+    MapBody: RonMap {
+      Values: [
+        RonMapItem {
+          Key: RonBool {
+            Value: True
+          },
+          Value: RonBool {
+            Value: True
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }

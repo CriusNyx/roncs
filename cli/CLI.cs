@@ -1,5 +1,6 @@
 ﻿using System.CommandLine;
 using CriusNyx.Util;
+using RonCS;
 
 void GenerateRegressionTests(ParseResult parsed)
 {

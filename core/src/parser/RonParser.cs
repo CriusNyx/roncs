@@ -2,10 +2,12 @@ using CriusNyx.Util;
 using Superpower;
 using Superpower.Parsers;
 using MultiParser = Superpower.TokenListParser<
-  RonTokenKind,
+  RonCS.RonTokenKind,
   System.Collections.Generic.IEnumerable<RonElement>
 >;
-using TParser = Superpower.TokenListParser<RonTokenKind, RonElement>;
+using TParser = Superpower.TokenListParser<RonCS.RonTokenKind, RonElement>;
+
+namespace RonCS;
 
 public static class RonParser
 {
@@ -18,6 +20,7 @@ public static class RonParser
       .Select(x => new RonIdentifier(x.ToStringValue()) as RonElement),
     Token
       .EqualTo(RonTokenKind.RawIdentifier)
+      .ThenIgnore(Parse.Not(Token.EqualTo(RonTokenKind.String)))
       .Select(x => new RonRawIdentifier(x.ToStringValue()) as RonElement)
   );
 
@@ -27,10 +30,13 @@ public static class RonParser
   /// </summary>
   public static TParser Value = Parse.Ref(() =>
     Parse.OneOf(
-      Option.NotNull("Option"),
-      Tuple.NotNull("Tuple"),
-      Struct.NotNull("Struct"),
       Primitive.NotNull("Primitive"),
+      Option.NotNull("Option"),
+      Tuple.NotNull("Tuple").Try(),
+      Some.NotNull("Some"),
+      None.NotNull("None"),
+      Struct.NotNull("Struct"),
+      List.NotNull("List"),
       Map.NotNull("Map")
     )
   );
@@ -126,9 +132,18 @@ public static class RonParser
   /// NamedFieldStruct = Identifier '(' [NamedValueSet] ')';
   /// </summary>
   public static TParser NameFieldStruct =
-    from name in Identifier
+    from name in Identifier!.OptionalOrDefault()
     from body in NamedValueSet.Parenthesized()
     select new RonNamedValueStruct(name, body.ToArray()) as RonElement;
+
+  /// <summary>
+  /// Summary
+  /// MapStruct = Identifier Map
+  /// </summary>
+  public static TParser MapStruct =
+    from name in Identifier!.OptionalOrDefault()
+    from body in Map
+    select new RonMapStruct(name, body) as RonElement;
 
   /// <summary>
   /// UnitStruct = Identifier;
@@ -140,7 +155,12 @@ public static class RonParser
   /// <summary>
   /// Struct = TupleStruct | NamedFieldStruct | UnitStruct;
   /// </summary>
-  public static TParser Struct = Parse.OneOf(TupleStruct.Try(), NameFieldStruct.Try(), UnitStruct);
+  public static TParser Struct = Parse.OneOf(
+    TupleStruct.Try(),
+    NameFieldStruct.Try(),
+    MapStruct.Try(),
+    UnitStruct
+  );
 
   // Primitive Values
   /// <summary>

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CriusNyxUtil" Version="0.0.43" />
+    <PackageReference Include="CriusNyxUtil" Version="0.0.44" />
     <PackageReference Include="System.CommandLine" Version="2.0.10" />
   </ItemGroup>
 

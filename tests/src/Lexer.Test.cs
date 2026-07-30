@@ -1,4 +1,6 @@
-namespace Lexer;
+using RonCS;
+
+namespace RonTests;
 
 public class LexerTests
 {

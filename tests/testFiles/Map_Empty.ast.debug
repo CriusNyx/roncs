@@ -1,7 +1,9 @@
 RonDocument {
-  Value: RonMap {
-    Values: [
-      
-    ]
+  Value: RonMapStruct {
+    MapBody: RonMap {
+      Values: [
+        
+      ]
+    }
   }
 }

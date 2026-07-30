@@ -2,6 +2,8 @@ using CriusNyx.Util;
 using Superpower;
 using Superpower.Parsers;
 
+namespace RonCS;
+
 public static class ParseExtensions
 {
   public static TextParser<T> ThenIgnore<T, U>(this TextParser<T> self, TextParser<U> other)

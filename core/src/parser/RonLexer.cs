@@ -4,6 +4,8 @@ using Superpower.Model;
 using Superpower.Parsers;
 using Superpower.Tokenizers;
 
+namespace RonCS;
+
 public enum RonTokenKind
 {
   // Symbols

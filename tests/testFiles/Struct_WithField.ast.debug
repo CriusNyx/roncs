@@ -1,8 +1,5 @@
 RonDocument {
   Value: RonNamedValueStruct {
-    Name: RonIdentifier {
-      Value: "Struct"
-    },
     Values: [
       RonNamedValue {
         name: RonIdentifier {

@@ -1,13 +1,14 @@
 using System.Text.RegularExpressions;
 using CriusNyx.Util;
 using DeepEqual.Syntax;
+using RonCS;
 using Superpower;
 
-namespace NumberParserTests;
+namespace RonTests;
 
 public class NumberParserTests
 {
-  public static IEnumerable<object?[]> IntegerTestCases
+  public static IEnumerable<(char?, UnsignedPrefix?, string, IntegerSuffix?)> IntegerTestCases
   {
     get
     {
@@ -20,36 +21,42 @@ public class NumberParserTests
         var suffix in Enum.GetValues<IntegerSuffix>().WhereAs<IntegerSuffix?>().Concat([null])
       )
       {
-        yield return [sign, prefix, digits, suffix];
+        yield return (sign, prefix, digits, suffix)!;
       }
     }
   }
 
-  [Theory]
-  [TestCaseSource(nameof(IntegerTestCases))]
-  public void IntegerParsesCorrectly(
-    char? sign,
-    UnsignedPrefix? prefix,
-    string digits,
-    IntegerSuffix? suffix
-  )
+  [Test]
+  public void IntegerParsesCorrectly()
   {
-    string source = $"{sign}{prefix.ToPrefixString()}{digits}{suffix}";
-    var parser = NumberParser.Number_Parser.AtEnd();
+    foreach (var (sign, prefix, digits, suffix) in IntegerTestCases)
+    {
+      string source = $"{sign}{prefix.ToPrefixString()}{digits}{suffix}";
+      var parser = NumberParser.Number_Parser.AtEnd();
 
-    if (GetIntegerBase(digits) > GetIntegerBase(prefix))
-    {
-      Assert.Throws<ParseException>(() => parser.Parse(source));
-    }
-    else
-    {
-      var expected = new IntegerValue(sign, new(prefix, digits), suffix);
-      var actual = parser.Parse(source);
-      actual.ShouldDeepEqual(expected);
+      if (GetIntegerBase(digits) > GetIntegerBase(prefix))
+      {
+        Assert.Throws<ParseException>(() => parser.Parse(source));
+      }
+      else
+      {
+        var expected = new IntegerValue(sign, new(prefix, digits), suffix);
+        var actual = parser.Parse(source);
+        actual.ShouldDeepEqual(expected);
+      }
     }
   }
 
-  public static IEnumerable<object?[]> StandardFloatParsesCorrectlyParams
+  public static IEnumerable<(
+    char?,
+    string?,
+    bool,
+    string?,
+    char?,
+    char?,
+    string?,
+    FloatSuffix?
+  )> StandardFloatParsesCorrectlyParams
   {
     get
     {
@@ -87,8 +94,7 @@ public class NumberParserTests
         {
           continue;
         }
-        yield return
-        [
+        yield return (
           sign,
           beforeDecimal,
           withDecimal,
@@ -96,45 +102,55 @@ public class NumberParserTests
           exponentChar,
           exponentSign,
           exponentDigits,
-          suffix,
-        ];
+          suffix
+        );
       }
     }
   }
 
-  [Theory]
-  [TestCaseSource(nameof(StandardFloatParsesCorrectlyParams))]
-  public void StandardFloatParsesCorrectly(
-    char? sign,
-    string? digitsBeforeDecimal,
-    bool decimalPoint,
-    string? digitsAfterDecimal,
-    char? exponentChar,
-    char? exponentSign,
-    string? exponentDigits,
-    FloatSuffix? suffix
-  )
+  [Test]
+  public void StandardFloatParsesCorrectly()
   {
-    string decChar = decimalPoint ? "." : "";
+    foreach (
+      var (
+        sign,
+        digitsBeforeDecimal,
+        decimalPoint,
+        digitsAfterDecimal,
+        exponentChar,
+        exponentSign,
+        exponentDigits,
+        suffix
+      ) in StandardFloatParsesCorrectlyParams
+    )
+    {
+      string decChar = decimalPoint ? "." : "";
 
-    string source =
-      $"{sign}{digitsBeforeDecimal}{decChar}{digitsAfterDecimal}{exponentChar}{exponentSign}{exponentDigits}{suffix}";
+      string source =
+        $"{sign}{digitsBeforeDecimal}{decChar}{digitsAfterDecimal}{exponentChar}{exponentSign}{exponentDigits}{suffix}";
 
-    var expected = new FloatValue(
-      sign,
-      new StandardFloatNum(
-        $"{digitsBeforeDecimal}{decChar}{digitsAfterDecimal}",
-        exponentChar != null ? new FloatExponent(exponentChar, exponentSign, exponentDigits) : null
-      ),
-      suffix
-    );
+      var expected = new FloatValue(
+        sign,
+        new StandardFloatNum(
+          $"{digitsBeforeDecimal}{decChar}{digitsAfterDecimal}",
+          exponentChar != null
+            ? new FloatExponent(exponentChar, exponentSign, exponentDigits)
+            : null
+        ),
+        suffix
+      );
 
-    var actual = NumberParser.Number_Parser.Parse(source);
+      var actual = NumberParser.Number_Parser.Parse(source);
 
-    actual.ShouldDeepEqual(expected);
+      actual.ShouldDeepEqual(expected);
+    }
   }
 
-  public static IEnumerable<object?[]> SpecialFloatParsesCorrectlyData
+  public static IEnumerable<(
+    char?,
+    SpecialFloatNumType,
+    FloatSuffix?
+  )> SpecialFloatParsesCorrectlyData
   {
     get
     {
@@ -148,19 +164,21 @@ public class NumberParserTests
       )
       foreach (var suffix in new FloatSuffix?[] { FloatSuffix.f32, FloatSuffix.f64, null })
       {
-        yield return [c, specialType, suffix];
+        yield return (c, specialType, suffix);
       }
     }
   }
 
-  [Theory]
-  [TestCaseSource(nameof(SpecialFloatParsesCorrectlyData))]
-  public void SpecialFloatParsesCorrectly(char? sign, SpecialFloatNumType type, FloatSuffix? suffix)
+  [Test]
+  public void SpecialFloatParsesCorrectly()
   {
-    string source = $"{sign}{type}{suffix}";
-    var parsed = NumberParser.Number_Parser.Parse(source);
-    var expected = new FloatValue(sign, new SpecialFloatNum(type), suffix);
-    parsed.ShouldDeepEqual(expected);
+    foreach (var (sign, type, suffix) in SpecialFloatParsesCorrectlyData)
+    {
+      string source = $"{sign}{type}{suffix}";
+      var parsed = NumberParser.Number_Parser.Parse(source);
+      var expected = new FloatValue(sign, new SpecialFloatNum(type), suffix);
+      parsed.ShouldDeepEqual(expected);
+    }
   }
 
   private static int GetIntegerBase(UnsignedPrefix? prefix)
