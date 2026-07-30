@@ -42,20 +42,4 @@ public static class ReflectionExtensions
   {
     return t.GetConstructor(parameters.Select(x => x.GetType()).ToArray())?.Invoke(parameters);
   }
-
-  public static bool Match<T>(this IEnumerable<T> types, params Func<T, bool>[] patterns)
-  {
-    if (types.Count() != patterns.Length)
-    {
-      return false;
-    }
-    foreach (var (type, pattern) in types.Zip(patterns))
-    {
-      if (!pattern(type))
-      {
-        return false;
-      }
-    }
-    return true;
-  }
 }

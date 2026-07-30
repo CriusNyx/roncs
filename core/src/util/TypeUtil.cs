@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using CriusNyx.Util;
 
 public enum SignKind
 {

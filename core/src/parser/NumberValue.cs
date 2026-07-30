@@ -17,7 +17,7 @@ public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null)
 
   public override string ValueString()
   {
-    return digits?.ToDecimalString(GetBase()) ?? "";
+    return digits?.ToBase10String(GetBase()) ?? "";
   }
 
   private int GetBase()
@@ -240,24 +240,5 @@ public static class NumberValueExtensions
       null => null,
       _ => throw UnknownEnumException.Create(suffix),
     };
-  }
-
-  public static string CSPrefix(this UnsignedPrefix? prefix)
-  {
-    switch (prefix)
-    {
-      case UnsignedPrefix.binary:
-        return "0b";
-      case UnsignedPrefix.hex:
-        return "0x";
-      // CS Does not have an octal prefix. :'(
-      // I will have to do a base conversion on the source string.
-      case UnsignedPrefix.octal:
-        throw new InvalidOperationException();
-      case null:
-        return "";
-      default:
-        throw new InvalidCastException();
-    }
   }
 }

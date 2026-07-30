@@ -24,6 +24,7 @@ of trying to be clever.
 - [x] Struct Parser
 - [x] Enum (N/A for C#) Parser
 - [x] Identifier Parser
+- [ ] Add trivia (problem for another time)
 - [ ] Fuzz Test
 
 ## AST Printer
@@ -41,6 +42,7 @@ of trying to be clever.
 - [x] RonFromAttribute
 - [x] RonIntoAttribute
 - [x] Memoize RonFrom RonInto
+- [ ] Specify AST (It doesn't match the RON RS AST exactly)
 - [ ] Specify Ron type coercion
 - [ ] Attribute to control serialization of fields
 - [ ] RonProxy Attribute

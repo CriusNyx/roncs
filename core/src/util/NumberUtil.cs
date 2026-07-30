@@ -2,7 +2,13 @@ using System.Numerics;
 
 public static class NumberUtil
 {
-  public static string ToDecimalString(this string source, int @base)
+  /// <summary>
+  /// Convert string in any base to base 10.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <param name="base"></param>
+  /// <returns></returns>
+  public static string ToBase10String(this string source, int @base)
   {
     source = source.Replace("_", "");
     if (@base == 10)

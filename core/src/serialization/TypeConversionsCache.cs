@@ -3,14 +3,29 @@ using CriusNyx.Util;
 
 public class TypeConversionCache
 {
+  /// <summary>
+  /// Store known type converters.
+  /// </summary>
   private static Dictionary<(Type, Type), Func<object, object>> cache =
     new Dictionary<(Type, Type), Func<object, object>>();
 
+  /// <summary>
+  /// Get type converter for type.
+  /// </summary>
+  /// <param name="fromType"></param>
+  /// <param name="intoType"></param>
+  /// <returns></returns>
   public static Func<object, object> GetConverter(Type fromType, Type intoType)
   {
     return cache.GetOrSet((fromType, intoType), () => _GetConverter(fromType, intoType));
   }
 
+  /// <summary>
+  /// Create memoized type converter.
+  /// </summary>
+  /// <param name="fromType"></param>
+  /// <param name="intoType"></param>
+  /// <returns></returns>
   private static Func<object, object> _GetConverter(Type fromType, Type intoType)
   {
     if (
