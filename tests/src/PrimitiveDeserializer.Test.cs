@@ -29,6 +29,10 @@ public class PrimitiveDeserializerTests
   [TestCase("0x0u8", (byte)0x0)]
   [TestCase("0xAu8", (byte)0xA)]
   [TestCase("0xABu8", (byte)0xAB)]
+  // char byte
+  [TestCase("b'a'", (byte)'a')]
+  [TestCase("b'\\\\'", (byte)'\\')]
+  [TestCase("b'\\xFF'", (byte)0xff)]
   // sbyte
   [TestCase("-0b1i8", (sbyte)-0b1)]
   [TestCase("-0b10i8", (sbyte)-0b10)]

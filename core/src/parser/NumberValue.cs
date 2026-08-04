@@ -2,11 +2,11 @@ using CriusNyx.Util;
 
 namespace RonCS;
 
-public abstract class NumberValue : RonElement
+public interface NumberValue
 {
-  public abstract string ValueString();
-  public abstract object Parse(Type? hint);
-  public abstract Type? CSType();
+  public string ValueString();
+  public object EvaluateNumber(Type? hint);
+  public Type? CSType();
 }
 
 #region Unsigned Value
@@ -15,7 +15,7 @@ public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null)
   public UnsignedPrefix? prefix = prefix;
   public string? digits = digits;
 
-  public override string ValueString()
+  public string ValueString()
   {
     return digits?.ToBase10String(GetBase()) ?? "";
   }
@@ -37,14 +37,19 @@ public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null)
     }
   }
 
-  public override object Parse(Type? hint)
+  public object EvaluateNumber(Type? hint)
   {
     throw new InvalidOperationException();
   }
 
-  public override Type? CSType()
+  public Type? CSType()
   {
     throw new NotImplementedException();
+  }
+
+  public string Serialize()
+  {
+    return $"{prefix}{digits}";
   }
 }
 
@@ -76,18 +81,18 @@ public class IntegerValue(
   char? sign = null,
   UnsignedValue? digits = null,
   IntegerSuffix? integerSuffix = null
-) : NumberValue
+) : RonElement, NumberValue
 {
   public char? sign = sign;
   public UnsignedValue? digits = digits;
   public IntegerSuffix? integerSuffix = integerSuffix;
 
-  public override string ValueString()
+  public string ValueString()
   {
     return sign + digits?.ValueString();
   }
 
-  public override object Parse(Type? hint)
+  public object EvaluateNumber(Type? hint)
   {
     var parseType = hint ?? integerSuffix.CSType();
     if (parseType == null)
@@ -102,34 +107,17 @@ public class IntegerValue(
     return parser?.Invoke(ValueString()).NotNull()!;
   }
 
-  public override Type? CSType()
+  public Type? CSType()
   {
     return integerSuffix.CSType();
   }
-}
-#endregion
 
-#region Byte Value
-public class ByteValue(string source) : NumberValue
-{
-  public string source = source;
-
-  public override string ValueString()
+  public override string RonPrint(RonPrintOptions options)
   {
-    // TODO: I think this is wrong.
-    return source;
-  }
-
-  public override object Parse(Type? hint)
-  {
-    throw new NotImplementedException();
-  }
-
-  public override Type? CSType()
-  {
-    return typeof(byte);
+    return $"{sign}{digits?.Serialize()}{integerSuffix}";
   }
 }
+
 #endregion
 
 #region Float Value
@@ -143,11 +131,17 @@ public class FloatExponent(char? e, char? sign, string? digits)
   {
     return $"{e}{sign}{digits}";
   }
+
+  public string Serialize()
+  {
+    return $"e{sign}{digits}";
+  }
 }
 
 public abstract class FloatNum
 {
   public abstract string ValueString();
+  public abstract string Serialize();
 };
 
 public class StandardFloatNum(string? digits, FloatExponent? exponent) : FloatNum
@@ -158,6 +152,11 @@ public class StandardFloatNum(string? digits, FloatExponent? exponent) : FloatNu
   public override string ValueString()
   {
     return digits + exponent?.ValueString();
+  }
+
+  public override string Serialize()
+  {
+    return $"{digits}{exponent?.Serialize()}";
   }
 }
 
@@ -171,9 +170,14 @@ public class SpecialFloatNum(SpecialFloatNumType? type) : FloatNum
 {
   public SpecialFloatNumType? type = type;
 
+  public override string Serialize()
+  {
+    return type.NotNull(nameof(type)).ToString().NotNull(nameof(type));
+  }
+
   public override string ValueString()
   {
-    return type.ToString() ?? "";
+    return type?.ToString() ?? "";
   }
 }
 
@@ -184,27 +188,33 @@ public enum FloatSuffix
 }
 
 public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? suffix = null)
-  : NumberValue
+  : RonElement,
+    NumberValue
 {
   public char? sign = sign;
   public FloatNum? num = num;
   public FloatSuffix? suffix = suffix;
 
-  public override string ValueString()
+  public string ValueString()
   {
     return sign + num?.ValueString();
   }
 
-  public override object Parse(Type? hint)
+  public object EvaluateNumber(Type? hint)
   {
     var csType = suffix.CSType() ?? hint;
     var parser = csType.GetNumberParser().NotNull();
     return parser?.Invoke(ValueString()).NotNull()!;
   }
 
-  public override Type? CSType()
+  public Type? CSType()
   {
     return suffix?.GetType();
+  }
+
+  public override string RonPrint(RonPrintOptions options)
+  {
+    return $"{sign}{num?.Serialize()}{suffix}";
   }
 }
 #endregion

@@ -17,11 +17,11 @@ public static class RonParser
   public static TParser Identifier = Parse.OneOf(
     Token
       .EqualTo(RonTokenKind.Identifier)
-      .Select(x => new RonIdentifier(x.ToStringValue()) as RonElement),
+      .Select(x => new RonIdentifier(x.ToStringValue()).AsNotNull<RonElement>()),
     Token
       .EqualTo(RonTokenKind.RawIdentifier)
       .ThenIgnore(Parse.Not(Token.EqualTo(RonTokenKind.String)))
-      .Select(x => new RonRawIdentifier(x.ToStringValue()) as RonElement)
+      .Select(x => new RonRawIdentifier(x.ToStringValue()).AsNotNull<RonElement>())
   );
 
   // Value
@@ -48,12 +48,14 @@ public static class RonParser
   public static TParser Some = Token
     .EqualTo(RonTokenKind.Some)
     .IgnoreThen(Value.Parenthesized())
-    .Select(value => new RonSome(value) as RonElement);
+    .Select(value => new RonSome(value).AsNotNull<RonElement>());
 
   /// <summary>
   /// None = 'None';
   /// </summary>
-  public static TParser None = Token.EqualTo(RonTokenKind.None).Value(new RonNone() as RonElement);
+  public static TParser None = Token
+    .EqualTo(RonTokenKind.None)
+    .Value(new RonNone().AsNotNull<RonElement>());
 
   /// <summary>
   /// Option = Some | None;
@@ -74,7 +76,9 @@ public static class RonParser
   /// </summary>
   public static TParser NamedValue = Identifier
     .ThenIgnore(Token.EqualTo(RonTokenKind.Colon))
-    .Then((ident) => Value.Select((value) => new RonNamedValue(ident, value) as RonElement));
+    .Then(
+      (ident) => Value.Select((value) => new RonNamedValue(ident, value).AsNotNull<RonElement>())
+    );
 
   /// <summary>
   /// NamedValueSet = NamedValue { ',' NamedValue } [',']
@@ -91,7 +95,7 @@ public static class RonParser
     from key in Value
     from colon in Token.EqualTo(RonTokenKind.Colon)
     from value in Value
-    select new RonMapItem(key, value) as RonElement;
+    select new RonMapItem(key, value).AsNotNull<RonElement>();
 
   /// <summary>
   /// MapItemSet = { MapItem } [','];
@@ -106,11 +110,11 @@ public static class RonParser
   /// </summary>
   public static TParser Map = MapItemSet
     .InCurly()
-    .Select(values => new RonMap(values.ToArray()) as RonElement);
+    .Select(values => new RonMap(values.ToArray()).AsNotNull<RonElement>());
 
   public static TParser List = ValueSet
     .InSquare()
-    .Select(values => new RonList(values.ToArray()) as RonElement);
+    .Select(values => new RonList(values.ToArray()).AsNotNull<RonElement>());
 
   // Collections
   /// <summary>
@@ -118,7 +122,7 @@ public static class RonParser
   /// </summary>
   public static TParser Tuple =
     from body in ValueSet.Parenthesized()
-    select new RonTuple(body.ToArray()) as RonElement;
+    select new RonTuple(body.ToArray()).AsNotNull<RonElement>();
 
   /// <summary>
   /// TupleStruct = Identifier Tuple;
@@ -126,7 +130,7 @@ public static class RonParser
   public static TParser TupleStruct =
     from name in Identifier
     from body in Tuple
-    select new RonTupleStruct(name, body) as RonElement;
+    select new RonTupleStruct(name, body).AsNotNull<RonElement>();
 
   /// <summary>
   /// NamedFieldStruct = Identifier '(' [NamedValueSet] ')';
@@ -134,7 +138,7 @@ public static class RonParser
   public static TParser NameFieldStruct =
     from name in Identifier!.OptionalOrDefault()
     from body in NamedValueSet.Parenthesized()
-    select new RonNamedValueStruct(name, body.ToArray()) as RonElement;
+    select new RonNamedValueStruct(name, body.ToArray()).AsNotNull<RonElement>();
 
   /// <summary>
   /// Summary
@@ -176,7 +180,9 @@ public static class RonParser
   /// </summary>
   public static TParser Number = Token
     .EqualTo(RonTokenKind.Number)
-    .Select(x => NumberParser.Number_Parser.Parse(x.ToStringValue()) as RonElement);
+    .Select(x =>
+      NumberParser.Number_Parser.Parse(x.ToStringValue()).AsNotNull<RonElement>("Number")
+    );
 
   public static TokenListParser<RonTokenKind, RonRangeOperator> RangeOperatorExclusive = Token
     .EqualTo(RonTokenKind.RangeExclusive)

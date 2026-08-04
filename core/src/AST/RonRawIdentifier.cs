@@ -11,4 +11,9 @@ public class RonRawIdentifier(string? value = null) : RonElement, IIdentifier
   {
     return value.NotNull("Identifier");
   }
+
+  public override string RonPrint(RonPrintOptions options)
+  {
+    return $"r#{value}";
+  }
 }

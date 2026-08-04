@@ -1,3 +1,4 @@
+using CriusNyx.Results;
 using CriusNyx.Util;
 
 public enum RonRangeOperator
@@ -21,4 +22,9 @@ public class RonRange(
 
   [DebugField]
   public RonElement? upper = upper;
+
+  public override string RonPrint(RonPrintOptions options)
+  {
+    return lower?.RonPrint(options) + op + upper?.RonPrint(options);
+  }
 }

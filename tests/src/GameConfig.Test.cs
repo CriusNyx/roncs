@@ -98,7 +98,7 @@ public class GameConfigTests
       },
     };
 
-    var actual = RonSerializer.Deserialize(Ron.Parse(Source), typeof(GameConfig));
+    var actual = Ron.Deserialize(Ron.Parse(Source), typeof(GameConfig));
     actual.ShouldDeepEqual(expected);
   }
 }

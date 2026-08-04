@@ -1,5 +1,8 @@
 [Serializable]
-public class RonElement { }
+public abstract class RonElement
+{
+  public abstract string RonPrint(RonPrintOptions options);
+}
 
 public static class RonElementExtensions
 {

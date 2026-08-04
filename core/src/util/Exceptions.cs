@@ -10,3 +10,12 @@ public class UnknownEnumException
     return new UnknownEnumException<T>(value);
   }
 }
+
+public static class ExceptionExtensions
+{
+  public static UnknownEnumException<T> AsEnumException<T>(this T value)
+    where T : Enum
+  {
+    return UnknownEnumException.Create(value);
+  }
+}

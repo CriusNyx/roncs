@@ -4,7 +4,7 @@ using CriusNyx.Util;
 
 namespace RonCS;
 
-public class SerializationContext(SerializationContext? parentContext = null)
+public partial class SerializationContext(SerializationContext? parentContext = null)
 {
   public readonly HashSet<Type> RonTypes = new();
   private SerializationContext? parentContext = parentContext;
@@ -31,7 +31,7 @@ public class SerializationContext(SerializationContext? parentContext = null)
     {
       RonDocument doc => DeserializeElement(doc.Value!, typeHint),
       StringValue str => str.Evaluate(),
-      NumberValue numValue => numValue.Parse(typeHint),
+      NumberValue numValue => numValue.EvaluateNumber(typeHint),
       RonBool boolVal => boolVal.Value,
       RonSome some => DeserializeElement(some.value, typeHint),
       RonNone => null!,

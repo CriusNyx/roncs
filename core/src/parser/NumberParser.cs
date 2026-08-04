@@ -1,3 +1,4 @@
+using CriusNyx.Util;
 using Superpower;
 using Superpower.Model;
 using Superpower.Parsers;
@@ -58,11 +59,15 @@ public static class NumberParser
 
   public static TextParser<ByteValue> EscapedByte_Parser =
     from escape in Character.EqualTo('\\')
-    from content in Parse.OneOf(StringParser.EscapeByte_Parser, StringParser.EscapeUnicode_Parser)
-    select new ByteValue(escape + content.Evaluate());
+    from content in Parse.OneOf(
+      StringParser.EscapeByte_Parser,
+      StringParser.EscapeAscii_Parser,
+      StringParser.EscapeUnicode_Parser
+    )
+    select new ByteValue(content.AsNotNull<NumberValue>("content"));
 
   public static TextParser<ByteValue> ByteAscii_Parser = Character.AnyChar.Select(
-    c => new ByteValue(c.ToString())
+    c => new ByteValue(new AsciiLiteral(c))
   );
 
   public static TextParser<ByteValue> ByteContent_Parser = Parse.OneOf(
@@ -99,11 +104,11 @@ public static class NumberParser
   public static TextParser<FloatNum> StandardFloatNum_Parser =
     from digits in Parse.OneOf(FloatInt_Parser.Try(), FloatStd_Parser, FloatFrac_Parser)
     from exponent in FloatExp_Parser!.OptionalOrDefault()
-    select new StandardFloatNum(digits, exponent) as FloatNum;
+    select new StandardFloatNum(digits, exponent).AsNotNull<FloatNum>();
 
   public static TextParser<FloatNum> SpecialFloatNum_Parser = ParseExtensions
     .EnumParser<SpecialFloatNumType>()
-    .Select(value => new SpecialFloatNum(value) as FloatNum);
+    .Select(value => new SpecialFloatNum(value).AsNotNull<FloatNum>());
 
   public static TextParser<FloatNum> FloatNum_Parser = Parse.OneOf(
     StandardFloatNum_Parser,
@@ -117,6 +122,7 @@ public static class NumberParser
     select new FloatValue(sign, num, suffix);
 
   public static TextParser<NumberValue> Number_Parser = Parse.OneOf(
+    Byte_Parser.Try().AsNumberValue(),
     Integer_Parser
       .AsNumberValue()
       .ThenIgnore(
@@ -128,7 +134,6 @@ public static class NumberParser
         )
       )
       .Try(),
-    Byte_Parser.Try().AsNumberValue(),
     Float_Parser.AsNumberValue()
   );
   #endregion
@@ -177,13 +182,13 @@ public static class NumberParser
   public static TextParser<UnsignedValue> AsUnsignedValue<T>(this TextParser<T> source)
     where T : UnsignedValue
   {
-    return source.Select(x => x as UnsignedValue);
+    return source.Select(x => x.AsNotNull<UnsignedValue>());
   }
 
   public static TextParser<NumberValue> AsNumberValue<T>(this TextParser<T> source)
     where T : NumberValue
   {
-    return source.Select(x => x as NumberValue);
+    return source.Select(x => x.AsNotNull<NumberValue>());
   }
 
   public static TextParser<Struct?> OrNull<Struct>(this TextParser<Struct> source)

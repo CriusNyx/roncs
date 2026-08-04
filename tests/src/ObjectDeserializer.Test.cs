@@ -64,7 +64,7 @@ public class ObjectDeserializerTests
   [SetUp]
   public void Setup()
   {
-    RonSerializer.RegisterTypes(
+    Ron.RegisterTypes(
       typeof(EmptyClass),
       typeof(SimpleClass),
       typeof(NestedClass),
@@ -220,7 +220,7 @@ public class ObjectDeserializerTests
   public void CanDeserializeObject(string ron, Type typeHint, object expected)
   {
     var ast = Ron.Parse(ron);
-    var actual = RonSerializer.Deserialize(ast, typeHint);
+    var actual = Ron.Deserialize(ast, typeHint);
     actual.ShouldDeepEqual(expected);
   }
 }

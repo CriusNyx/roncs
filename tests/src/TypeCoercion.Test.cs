@@ -40,7 +40,7 @@ public class TypeCoercionTests
   [SetUp]
   public void Setup()
   {
-    RonSerializer.RegisterTypes(
+    Ron.RegisterTypes(
       typeof(HasFromAttr),
       typeof(ForFromAttr),
       typeof(ForIntoAttr),
