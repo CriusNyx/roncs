@@ -149,4 +149,9 @@ public partial class SerializationContext
   {
     converterCache[type] = new ListConverter();
   }
+
+  public void RegisterDictionaryType(Type type)
+  {
+    converterCache[type] = new DictionaryConverter();
+  }
 }

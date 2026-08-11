@@ -54,12 +54,21 @@ public static partial class Ron
   }
 
   /// <summary>
-  /// Register a type as a list.
+  /// Register a type to serialize as a list.
   /// </summary>
   /// <param name="type"></param>
   public static void RegisterListType(Type type)
   {
     globalContext.RegisterListType(type);
+  }
+
+  /// <summary>
+  /// Register a type to serialize as a dictionary.
+  /// </summary>
+  /// <param name="type"></param>
+  public static void RegisterDictionaryType(Type type)
+  {
+    globalContext.RegisterDictionaryType(type);
   }
 
   /// <summary>
