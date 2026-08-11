@@ -146,7 +146,7 @@ public class ListConverter : TypeSerializerConverter
 {
   public RonElement ToAST(SerializationContext context, object source)
   {
-    var list = source.AsNotNull<IList>(nameof(source)).Cast<object>();
+    var list = source.RonConvert<IList>().Cast<object>();
     var elements = list.Select(element => context.ToAST(element));
     return new RonList(elements.ToArray());
   }
@@ -157,7 +157,7 @@ public class DictionaryConverter : TypeSerializerConverter
   public RonElement ToAST(SerializationContext context, object source)
   {
     var elements = new List<RonElement>();
-    var dict = source.AsNotNull<IDictionary>(nameof(source));
+    var dict = source.RonConvert<IDictionary>();
     foreach (var key in dict.Keys)
     {
       var value = dict[key];
@@ -169,5 +169,15 @@ public class DictionaryConverter : TypeSerializerConverter
       );
     }
     return new RonMap(elements.ToArray());
+  }
+}
+
+public class ProxyConverter(Type target) : TypeSerializerConverter
+{
+  public readonly Type Target = target;
+
+  public RonElement ToAST(SerializationContext context, object source)
+  {
+    return context.ToAST(source.RonConvert(Target));
   }
 }

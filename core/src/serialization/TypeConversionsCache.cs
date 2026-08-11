@@ -9,6 +9,18 @@ public class TypeConversionCache
   private static Dictionary<(Type, Type), Func<object, object>> cache =
     new Dictionary<(Type, Type), Func<object, object>>();
 
+  public static object ConvertTo(object source, Type target)
+  {
+    // It might be intended that it converts to null.
+    return GetConverter(source.GetType(), target)?.Invoke(source)!;
+  }
+
+  public static T ConvertTo<T>(object source)
+  {
+    // It might be intended that it converts to null.
+    return (T)ConvertTo(source, typeof(T));
+  }
+
   /// <summary>
   /// Get type converter for type.
   /// </summary>
@@ -60,5 +72,18 @@ public class TypeConversionCache
       return (source) => into.Invoke(source, [])!;
     }
     return (source) => source;
+  }
+}
+
+public static class TypeConversionExtensions
+{
+  public static T RonConvert<T>(this object source)
+  {
+    return TypeConversionCache.ConvertTo<T>(source);
+  }
+
+  public static object RonConvert(this object source, Type t)
+  {
+    return TypeConversionCache.ConvertTo(source, t);
   }
 }
