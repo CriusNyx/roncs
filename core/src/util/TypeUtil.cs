@@ -175,14 +175,29 @@ public static class TypeUtil
     return null;
   }
 
+  public static Type MakeGeneral(this Type type)
+  {
+    return type.IsGenericType ? type.GetGenericTypeDefinition() : type;
+  }
+
   public static bool IsEnumerable(this Type type)
   {
     return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>);
   }
 
+  public static bool IsList(this Type type)
+  {
+    return type.MakeGeneral() == typeof(List<>);
+  }
+
   public static bool IsDictionaryType(this Type type)
   {
     return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IDictionary<,>);
+  }
+
+  public static bool IsListType(this Type type)
+  {
+    return type.IsArray || type.IsEnumerable() || type.IsList();
   }
 
   public static Type? GetListType(this Type type)

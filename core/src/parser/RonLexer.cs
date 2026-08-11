@@ -107,19 +107,7 @@ public class RonLexer
       .Match(Span.EqualTo("Some"), RonTokenKind.Some)
       .Match(Span.EqualTo("None"), RonTokenKind.None)
       // Character
-      .Match(
-        Character
-          .EqualTo('\'')
-          .IgnoreThen(
-            Parse.OneOf(
-              Span.EqualTo(@"\'").Value(true).Try(),
-              Span.EqualTo(@"\\").Value(true),
-              Character.Except('\'').Value(true)
-            )
-          )
-          .IgnoreThen(Character.EqualTo('\'')),
-        RonTokenKind.Char
-      )
+      .Match(StringParser.Char_Parser, RonTokenKind.Char)
       // Identifier
       .Match(
         Span.EqualTo("r#")

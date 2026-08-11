@@ -3,48 +3,6 @@ using RonCS;
 
 namespace RonTests;
 
-public class Vector2Int()
-{
-  public int x;
-  public int y;
-
-  public Vector2Int(int x, int y)
-    : this()
-  {
-    this.x = x;
-    this.y = y;
-  }
-}
-
-public enum InputAction
-{
-  Up,
-  Down,
-  Left,
-  Right,
-}
-
-public enum Difficulty
-{
-  Easy,
-}
-
-public class DifficultyOptions
-{
-  public Difficulty start_difficulty;
-  public bool adaptive;
-}
-
-public class GameConfig
-{
-  public Vector2Int window_size = null!;
-  public string window_title = null!;
-  public bool fullscreen;
-  public float mouse_sensitivity;
-  public Dictionary<string, InputAction> key_bindings = null!;
-  public DifficultyOptions difficulty_options = null!;
-}
-
 public class GameConfigTests
 {
   public static string Source =

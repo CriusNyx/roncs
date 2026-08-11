@@ -240,11 +240,21 @@ public static class RonParser
     .EqualTo(RonTokenKind.String)
     .Select(token => StringParser.String_Parser.Parse(token.ToStringValue()) as RonElement);
 
+  public static TParser Char = Token
+    .EqualTo(RonTokenKind.Char)
+    .Select(token => StringParser.Char_Parser.Parse(token.ToStringValue()));
+
   /// <summary>
   /// Primitive = Boolean;
   /// </summary>
   // Range must appear first because we must check ranges before numbers.
-  public static TParser Primitive = Parse.OneOf(Range.Try(), Number.Try(), String.Try(), Boolean);
+  public static TParser Primitive = Parse.OneOf(
+    Range.Try(),
+    Number.Try(),
+    String.Try(),
+    Char,
+    Boolean
+  );
 
   /// <summary>
   /// Ron = Extensions Value;

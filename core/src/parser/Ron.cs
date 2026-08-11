@@ -44,6 +44,25 @@ public static partial class Ron
   }
 
   /// <summary>
+  /// Register a serialization converter for a known type.
+  /// </summary>
+  /// <param name="type"></param>
+  /// <param name="converter"></param>
+  public static void RegisterTypeConverter(Type type, TypeSerializerConverter converter)
+  {
+    globalContext.RegisterTypeConverter(type, converter);
+  }
+
+  /// <summary>
+  /// Register a type as a list.
+  /// </summary>
+  /// <param name="type"></param>
+  public static void RegisterListType(Type type)
+  {
+    globalContext.RegisterListType(type);
+  }
+
+  /// <summary>
   /// Deserialize the ron element.
   /// </summary>
   /// <param name="element"></param>
@@ -52,5 +71,11 @@ public static partial class Ron
   public static object Deserialize(RonElement element, Type? typeHint)
   {
     return globalContext.DeserializeElement(element, typeHint);
+  }
+
+  public static string Serialize(object source, RonPrintOptions options = null!)
+  {
+    options = options ?? RonPrintOptions.Compact();
+    return globalContext.ToAST(source).RonPrint(options);
   }
 }

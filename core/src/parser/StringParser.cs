@@ -22,6 +22,14 @@ public static class StringParser
   public static TextParser<char> DigitHexDecimal_Parser = Character.HexDigit;
   #endregion
 
+  public static TextParser<RonElement> Char_Parser = Parse
+    .OneOf(
+      Span.EqualTo("\\'").Value(new RonChar('\'') as RonElement).Try(),
+      Span.EqualTo("\\\\").Value(new RonChar('\\') as RonElement).Try(),
+      Character.Except('\\').Select(c => new RonChar(c) as RonElement)
+    )
+    .Between(Character.EqualTo('\''));
+
   public static TextParser<StringContent> EscapeAscii_Parser = Character
     .In('\'', '"', '\\', 'n', 'r', 't', '0')
     .Select(x => new AsciiEscape(x) as StringContent);

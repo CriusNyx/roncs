@@ -33,6 +33,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       StringValue str => str.Evaluate(),
       NumberValue numValue => numValue.EvaluateNumber(typeHint),
       RonBool boolVal => boolVal.Value,
+      RonChar charVal => charVal.Value,
       RonSome some => DeserializeElement(some.value, typeHint),
       RonNone => null!,
       RonUnitStruct unitStruct => DeserializeUnitClass(typeHint.NotNull("typeHint"), unitStruct),

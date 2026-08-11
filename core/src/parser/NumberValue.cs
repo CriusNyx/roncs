@@ -200,8 +200,53 @@ public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? su
     return sign + num?.ValueString();
   }
 
+  private object EvaluateSpecialNum(SpecialFloatNum specialNum, Type? hint)
+  {
+    if (specialNum.type == SpecialFloatNumType.inf)
+    {
+      if (hint == typeof(float))
+      {
+        if (sign == '-')
+        {
+          return float.NegativeInfinity;
+        }
+        else
+        {
+          return float.PositiveInfinity;
+        }
+      }
+      else
+      {
+        if (sign == '-')
+        {
+          return double.NegativeInfinity;
+        }
+        else
+        {
+          return double.PositiveInfinity;
+        }
+      }
+    }
+    else if (specialNum.type == SpecialFloatNumType.NaN)
+    {
+      if (hint == typeof(float))
+      {
+        return float.NaN;
+      }
+      else
+      {
+        return double.NaN;
+      }
+    }
+    throw new InvalidOperationException();
+  }
+
   public object EvaluateNumber(Type? hint)
   {
+    if (num is SpecialFloatNum specialNum)
+    {
+      return EvaluateSpecialNum(specialNum, hint);
+    }
     var csType = suffix.CSType() ?? hint;
     var parser = csType.GetNumberParser().NotNull();
     return parser?.Invoke(ValueString()).NotNull()!;

@@ -107,9 +107,6 @@ public class StringParserTests
   }
 
   [Theory]
-  public void CanParseUnicodeString(string source) { }
-
-  [Theory]
   [TestCase("\"\"", "")]
   [TestCase("\"Hello\"", "Hello")]
   [TestCase("\"\\u{41}\"", "A")]
@@ -129,5 +126,16 @@ public class StringParserTests
     var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
     var stringVal = parsed.As<RonDocument>()?.Value?.As<StringValue>()?.Evaluate();
     Assert.That(stringVal, Is.EqualTo(expected));
+  }
+
+  [Theory]
+  [TestCase("\'a\'", 'a')]
+  [TestCase("\'\\\'\'", '\'')]
+  [TestCase("\'\\\\\'", '\\')]
+  public void CanParseChar(string source, char expected)
+  {
+    var parsed = Ron.Parse(source);
+    var c = parsed.Value.AsNotNull<RonChar>().Value;
+    Assert.That(c, Is.EqualTo(expected));
   }
 }

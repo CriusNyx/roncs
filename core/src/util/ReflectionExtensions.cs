@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
 using CriusNyx.Util;
 
 public static class ReflectionExtensions
