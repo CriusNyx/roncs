@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Text.RegularExpressions;
-using CriusNyx.Util.Reflection;
 
 namespace RonTests;
 
@@ -15,6 +14,41 @@ public class SimpleClass
 public class NestedClass
 {
   public SimpleClass simpleClass = null!;
+}
+
+public class PropertyClass
+{
+  public string Value
+  {
+    get => value;
+    set => this.value = value;
+  }
+
+  private string value = null!;
+}
+
+public class VectorPropertyClass
+{
+  public Vector3 Value
+  {
+    get => Vector3.Parse(value);
+    set => this.value = value.ToString();
+  }
+
+  private string value = null!;
+}
+
+public class StringBackedVector
+{
+  [RonExclude]
+  public Vector3 Value
+  {
+    get => Vector3.Parse(value);
+    set => this.value = value.ToString();
+  }
+
+  [RonInclude]
+  private string value = null!;
 }
 
 public class ParentClass { }

@@ -44,6 +44,17 @@ public class ObjectSerializerTests
         "TypeWithProxy(vectorValue:\"(1, 2, 3)\")",
       ];
       yield return [new StringList("Hello", new("World")), "[\"Hello\",\"World\"]"];
+      yield return [new PropertyClass { Value = "Foo" }, "PropertyClass(Value:\"Foo\")"];
+      yield return
+      [
+        new VectorPropertyClass { Value = new Vector3(1, 2, 3) },
+        "VectorPropertyClass(Value:Vector3(x:1f32,y:2f32,z:3f32))",
+      ];
+      yield return
+      [
+        new StringBackedVector { Value = new Vector3(1, 2, 3) },
+        "StringBackedVector(value:\"(1, 2, 3)\")",
+      ];
     }
   }
 
