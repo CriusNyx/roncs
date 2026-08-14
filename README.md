@@ -8,9 +8,9 @@ of trying to be clever.
 - [?] Extension Parser
   - [ ] I'm not sure what this means
 - [x] String Parser
-  - [ ] Tests
-- [?] Check Char Lexer
-  - [ ] Tests
+  - [x] Tests
+- [x] Check Char Lexer
+  - [x] Tests
 - [x] ByteString Lexer
 - [x] Numeric Lexers
   - [x] Int
@@ -33,7 +33,7 @@ of trying to be clever.
 
 ## Serializer/Deserializer
 
-- [ ] Implement Serializer
+- [x] Implement Serializer
 - [x] Implement Prototype Deserializer
 - [ ] Implement Property Deserializer
 
@@ -45,7 +45,9 @@ of trying to be clever.
 - [ ] Specify AST (It doesn't match the RON RS AST exactly)
 - [ ] Specify Ron type coercion
 - [ ] Attribute to control serialization of fields
-- [ ] RonProxy Attribute
+- [x] RonProxy Attribute
 - [ ] RonField
+- [x] RonList Attribute
+- [x] RonDict Attribute
 - [ ] RonProperty (what for?)
 - [ ] Implement circular serialization check
