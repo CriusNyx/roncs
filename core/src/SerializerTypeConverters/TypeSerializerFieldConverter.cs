@@ -1,4 +1,4 @@
-using RonCS;
+namespace RonCS;
 
 internal interface TypeSerializerFieldConverter
 {
