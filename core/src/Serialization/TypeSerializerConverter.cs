@@ -67,12 +67,14 @@ public interface TypeSerializerConverter
   )
   {
     List<TypeSerializerFieldConverter> list = new List<TypeSerializerFieldConverter>();
-    foreach (var field in type.GetFields().Where(x => x.IsPublic && !x.IsStatic))
+    foreach (
+      var field in type.GetFieldsAndProperties((BindingFlags)(-1)).Where(x => x.IsRonMember())
+    )
     {
       list.Add(
-        new FieldInfoSerializer(
+        new MemberInfoSerializer(
           field,
-          FieldInfoSerializer.GetFieldConverterForFieldType(field.FieldType)
+          MemberInfoSerializer.GetFieldConverterForFieldType(field.MemberValueType())
         )
       );
     }

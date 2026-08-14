@@ -119,12 +119,12 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     if (element is RonNamedValue namedValue)
     {
       var fieldName = namedValue.name.IdentifierName().NotNull("fieldName");
-      var fieldInfo = type.GetField(fieldName).NotNull("fieldInfo");
+      var fieldInfo = type.GetRonField(fieldName).NotNull("fieldInfo");
       var fieldValue = DeserializeElement(
         namedValue.value.NotNull("namedValue.value"),
-        fieldInfo.FieldType
+        fieldInfo.MemberValueType()
       );
-      fieldInfo.SetValue(instance, fieldValue);
+      fieldInfo.AssignMember(instance, fieldValue);
     }
     return instance;
   }

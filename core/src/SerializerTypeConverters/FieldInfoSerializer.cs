@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace RonCS;
 
-internal class FieldInfoSerializer(FieldInfo field, TypeSerializerConverter? converter)
+internal class MemberInfoSerializer(MemberInfo field, TypeSerializerConverter? converter)
   : TypeSerializerFieldConverter
 {
   private TypeSerializerConverter? converter = converter;
@@ -11,7 +11,8 @@ internal class FieldInfoSerializer(FieldInfo field, TypeSerializerConverter? con
   {
     return new RonNamedValue(
       new RonIdentifier(field.Name),
-      converter?.ToAST(context, field.GetValue(source)!) ?? context.ToAST(field.GetValue(source))
+      converter?.ToAST(context, field.GetMemberValue(source)!)
+        ?? context.ToAST(field.GetMemberValue(source))
     );
   }
 
