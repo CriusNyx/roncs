@@ -1,5 +1,3 @@
-using Superpower.Parsers;
-
 public static class XID
 {
   public static (char, char)[] XID_Start =

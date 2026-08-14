@@ -1,7 +1,7 @@
 using System.Reflection;
 using CriusNyx.Util;
 
-public class TypeConversionCache
+internal class TypeConversionCache
 {
   /// <summary>
   /// Store known type converters.
@@ -70,6 +70,20 @@ public class TypeConversionCache
     )
     {
       return (source) => into.Invoke(source, [])!;
+    }
+    if (
+      fromType
+        .GetMethods()
+        .FirstOrDefault(method =>
+          method.IsStatic
+          && method.GetCustomAttribute<RonIntoAttribute>() is RonIntoAttribute
+          && method.ReturnType.IsAssignableTo(intoType)
+          && method.GetParameters().Match(x => x.ParameterType == fromType)
+        )
+      is MethodInfo staticInto
+    )
+    {
+      return (source) => staticInto.Invoke(null, [source])!;
     }
     return (source) => source;
   }

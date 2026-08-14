@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Reflection;
-using CriusNyx.Util;
-using RonCS;
+
+namespace RonCS;
 
 public interface TypeSerializerConverter
 {
@@ -9,13 +9,18 @@ public interface TypeSerializerConverter
 
   public static TypeSerializerConverter? CreateTypeConverterFromTypeAttrs(Type type)
   {
-    foreach (var attr in type.GetCustomAttributes())
+    if (type.GetCustomAttribute<RonListAttribute>() is RonListAttribute)
     {
-      if (attr is RonListAttribute)
-      {
-        return new ListConverter();
-      }
+      return new ListConverter();
     }
+    if (type.GetCustomAttribute<RonProxyAttribute>() is RonProxyAttribute proxy)
+    {
+      return new ProxyConverter(
+        proxy.Proxy,
+        CreateTypeConverterForTypeWithFields(proxy.Proxy, type.Name)
+      );
+    }
+
     return null;
   }
 
@@ -56,7 +61,10 @@ public interface TypeSerializerConverter
     return null;
   }
 
-  public static TypeSerializerConverter CreateTypeConverterForTypeWithFields(Type type)
+  public static TypeSerializerConverter CreateTypeConverterForTypeWithFields(
+    Type type,
+    string? typeName
+  )
   {
     List<TypeSerializerFieldConverter> list = new List<TypeSerializerFieldConverter>();
     foreach (var field in type.GetFields().Where(x => x.IsPublic && !x.IsStatic))
@@ -74,7 +82,7 @@ public interface TypeSerializerConverter
       return new TupleUnitConverter(type.Name);
     }
 
-    return new ObjectSerializerConverter(type.Name, list.ToArray());
+    return new ObjectSerializerConverter(typeName ?? type.Name, list.ToArray());
   }
 
   public static TypeSerializerConverter CreateTypeConverterForObjectType(Type type)
@@ -92,92 +100,6 @@ public interface TypeSerializerConverter
     {
       return dictConverter;
     }
-    return CreateTypeConverterForTypeWithFields(type);
-  }
-}
-
-public interface TypeSerializerFieldConverter
-{
-  public RonElement FieldElementForObject(SerializationContext context, object source);
-}
-
-public class TupleUnitConverter(string name) : TypeSerializerConverter
-{
-  public RonElement ToAST(SerializationContext context, object source)
-  {
-    return new RonUnitStruct(new RonIdentifier(name));
-  }
-}
-
-public class ObjectSerializerConverter(string objectName, TypeSerializerFieldConverter[] converters)
-  : TypeSerializerConverter
-{
-  public RonElement ToAST(SerializationContext context, object source)
-  {
-    var fields = converters.Select(x => x.FieldElementForObject(context, source)).ToArray();
-    return new RonNamedValueStruct(new RonIdentifier(objectName), fields);
-  }
-}
-
-public class FieldInfoSerializer(FieldInfo field, TypeSerializerConverter? converter)
-  : TypeSerializerFieldConverter
-{
-  private TypeSerializerConverter? converter = converter;
-
-  public RonElement FieldElementForObject(SerializationContext context, object source)
-  {
-    return new RonNamedValue(
-      new RonIdentifier(field.Name),
-      converter?.ToAST(context, field.GetValue(source)!) ?? context.ToAST(field.GetValue(source))
-    );
-  }
-
-  public static TypeSerializerConverter? GetFieldConverterForFieldType(Type type)
-  {
-    if (type.IsListType())
-    {
-      return new ListConverter();
-    }
-    return null;
-  }
-}
-
-public class ListConverter : TypeSerializerConverter
-{
-  public RonElement ToAST(SerializationContext context, object source)
-  {
-    var list = source.RonConvert<IList>().Cast<object>();
-    var elements = list.Select(element => context.ToAST(element));
-    return new RonList(elements.ToArray());
-  }
-}
-
-public class DictionaryConverter : TypeSerializerConverter
-{
-  public RonElement ToAST(SerializationContext context, object source)
-  {
-    var elements = new List<RonElement>();
-    var dict = source.RonConvert<IDictionary>();
-    foreach (var key in dict.Keys)
-    {
-      var value = dict[key];
-      elements.Add(
-        new RonMapItem(
-          new StringValue(new StringLit(key.ToString().NotNull())),
-          context.ToAST(value)
-        )
-      );
-    }
-    return new RonMap(elements.ToArray());
-  }
-}
-
-public class ProxyConverter(Type target) : TypeSerializerConverter
-{
-  public readonly Type Target = target;
-
-  public RonElement ToAST(SerializationContext context, object source)
-  {
-    return context.ToAST(source.RonConvert(Target));
+    return CreateTypeConverterForTypeWithFields(type, null);
   }
 }

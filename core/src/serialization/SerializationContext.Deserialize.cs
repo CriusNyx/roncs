@@ -284,17 +284,17 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   {
     if (RonTypes.TryFind((x) => x.Name == name, out var result))
     {
-      return result;
+      return GetIntermediateType(result);
     }
     if (parentContext?.GetTypeFromName(name, backupType) is Type type)
     {
-      return type;
+      return GetIntermediateType(type);
     }
     if (name != null && name.ToLower() != backupType?.Name.ToLower())
     {
       throw new InvalidOperationException();
     }
-    return backupType;
+    return GetIntermediateType(backupType);
   }
 
   /// <summary>
@@ -302,8 +302,12 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="targetType"></param>
   /// <returns></returns>
-  public Type GetIntermediateType(Type targetType)
+  public Type? GetIntermediateType(Type? targetType)
   {
+    if (targetType?.GetCustomAttribute<RonProxyAttribute>() is RonProxyAttribute proxyAttr)
+    {
+      return proxyAttr.Proxy;
+    }
     return targetType;
   }
 
@@ -392,7 +396,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       return source;
     }
 
-    return TypeConversionCache.GetConverter(sourceType, targetType)(source);
+    return source.RonConvert(targetType);
   }
 
   /// <summary>
