@@ -38,6 +38,12 @@ public class ObjectSerializerTests
         new Dictionary<string, Vector3> { { "key", new Vector3(1, 2, 3) } },
         "{\"key\":Vector3(x:1f32,y:2f32,z:3f32)}",
       ];
+      yield return
+      [
+        new TypeWithProxy { vector = new Vector3(1, 2, 3) },
+        "TypeWithProxy(vectorValue:\"(1, 2, 3)\")",
+      ];
+      yield return [new StringList("Hello", new("World")), "[\"Hello\",\"World\"]"];
     }
   }
 
