@@ -1,3 +1,4 @@
+using CriusNyx.Results;
 using CriusNyx.Util;
 using Superpower;
 using Superpower.Model;
@@ -8,26 +9,65 @@ public static partial class Ron
 {
   static SerializationContext globalContext = SerializationContext.CreateGlobalContext();
 
-  public static TokenList<RonTokenKind> Tokenize(string source)
+  public static Result<TokenList<RonTokenKind>, Exception> TokenizeResult(string source)
   {
     return RonLexer.Tokenize(source);
   }
 
-  public static RonDocument Parse(TokenList<RonTokenKind> tokenList)
+  public static Result<RonDocument, Exception> ParseResult(
+    Result<TokenList<RonTokenKind>, Exception> tokenResult
+  )
   {
-    return RonParser.Ron.Parse(tokenList).AsNotNull<RonDocument>("Parsed");
+    return tokenResult.AndThen(tokenList =>
+      RonParser
+        .Ron.Select(x => x.AsNotNull<RonDocument>())
+        .TryParse(tokenList)
+        .IntoResult((x) => throw new NotImplementedException())
+    );
+  }
+
+  public static Result<RonDocument, Exception> ParseResult(string source)
+  {
+    return ParseResult(TokenizeResult(source));
   }
 
   public static RonDocument Parse(string source)
   {
-    return Parse(Tokenize(source));
+    return ParseResult(source).Unwrap();
+  }
+
+  public static bool TryParse(string source, out RonDocument document)
+  {
+    var result = ParseResult(source);
+    if (result.IsOk())
+    {
+      document = result.Unwrap();
+      return true;
+    }
+    document = null!;
+    return false;
+  }
+
+  public static Result<object, Exception> DeserializeResult(string source, Type? hint)
+  {
+    return DeserializeResult(ParseResult(source), hint);
   }
 
   public static object Deserialize(string source, Type? hint)
   {
-    var document = Parse(source);
-    var deserialized = Deserialize(document, hint);
-    return deserialized;
+    return DeserializeResult(source, hint).Unwrap();
+  }
+
+  public static bool TryDeserialize(string source, Type? hint, out object output)
+  {
+    var result = DeserializeResult(source, hint);
+    if (result.IsOk())
+    {
+      output = result.Unwrap();
+      return true;
+    }
+    output = null!;
+    return false;
   }
 
   /// <summary>
@@ -77,9 +117,12 @@ public static partial class Ron
   /// <param name="element"></param>
   /// <param name="typeHint"></param>
   /// <returns></returns>
-  public static object Deserialize(RonElement element, Type? typeHint)
+  public static Result<object, Exception> DeserializeResult(
+    Result<RonDocument, Exception> parseResult,
+    Type? typeHint
+  )
   {
-    return globalContext.DeserializeElement(element, typeHint);
+    return parseResult.Map(doc => globalContext.DeserializeElement(doc, typeHint));
   }
 
   public static string Serialize(object source, RonPrintOptions options = null!)

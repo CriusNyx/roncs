@@ -164,8 +164,7 @@ public class ObjectDeserializerTests
   [TestCaseSource(nameof(ObjectTestData))]
   public void CanDeserializeObject(string ron, Type typeHint, object expected)
   {
-    var ast = Ron.Parse(ron);
-    var actual = Ron.Deserialize(ast, typeHint);
+    var actual = Ron.Deserialize(ron, typeHint);
     actual.ShouldDeepEqual(expected);
   }
 }

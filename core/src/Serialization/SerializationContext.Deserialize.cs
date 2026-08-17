@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Reflection;
+using CriusNyx.Results;
 using CriusNyx.Util;
 
 namespace RonCS;
@@ -71,6 +72,10 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       .NotNull("actualType");
 
     var constructor = actualType.GetConstructor([]);
+    if (constructor == null)
+    {
+      throw new NoConstructorInstructionException(typeHint);
+    }
     var output = constructor?.Invoke([]);
 
     return output!;
@@ -97,7 +102,11 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   {
     var actualType = GetTypeFromName(element.Name.IdentifierName(), typeHint).NotNull("actualType");
     var constructor = actualType.GetConstructor([]);
-    var output = constructor?.Invoke([]);
+    if (constructor == null)
+    {
+      throw new NoConstructorInstructionException(actualType);
+    }
+    var output = constructor.Invoke([]);
 
     foreach (var field in element.Values.NotNull("Values"))
     {
@@ -241,6 +250,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       .Construct()
       .AsNotNull<IDictionary>("values");
 
+    // Deserialize values.
     foreach (var element in map.Values.NotNull(nameof(map.Values)))
     {
       if (element is RonMapItem mapItem)
@@ -251,14 +261,17 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       }
     }
 
+    // Return the elements themselves if they are directly assignable to the output.
     if (values.GetType() == typeHint || typeHint == dictType)
     {
       return values;
     }
+    // Find a constructor for the dictionary type and invoke it.
     if (typeHint.GetConstructor([dictType]) is ConstructorInfo dictCons)
     {
       return dictCons.Invoke([values]);
     }
+    // Find a constructor that accepts a key value pair, and invoke it.
     if (
       typeHint.GetConstructor([
         typeof(IEnumerable<>).MakeGenericType([
@@ -270,7 +283,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     {
       return listCons.Invoke([values]);
     }
-    throw new NotImplementedException();
+    throw new NoDictionaryConstructorException(typeHint);
   }
 
   /// <summary>
@@ -410,4 +423,16 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       context.RegisterType(typeof(object));
     });
   }
+}
+
+public class NoConstructorInstructionException(Type type) : Exception
+{
+  public override string Message =>
+    $"Expected {type} to have a parameterless constructor, but it does not.";
+}
+
+public class NoDictionaryConstructorException(Type type) : Exception
+{
+  public override string Message =>
+    $"Expected {type} to have a constructor that accepts a dictionary, or a set of key value pairs, but it does not.";
 }

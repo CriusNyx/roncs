@@ -55,6 +55,21 @@ public class ObjectSerializerTests
         new StringBackedVector { Value = new Vector3(1, 2, 3) },
         "StringBackedVector(value:\"(1, 2, 3)\")",
       ];
+      yield return
+      [
+        NotRonList.From(["Hello", "World"])!,
+        "NotRonList(value:\"Hello\",next:NotRonList(value:\"World\",next:None))",
+      ];
+      yield return
+      [
+        new HasEnumerable { values = NotRonList.From(["Hello", "World"])! },
+        "HasEnumerable(values:[\"Hello\",\"World\"])",
+      ];
+      yield return
+      [
+        new HasNotRonList { values = NotRonList.From(["Hello", "World"])! },
+        "HasNotRonList(values:NotRonList(value:\"Hello\",next:NotRonList(value:\"World\",next:None)))",
+      ];
     }
   }
 

@@ -225,10 +225,79 @@ public class StringList : IEnumerable<string>
   }
 
   [RonFrom]
-  public static StringList? Create(IEnumerable<string> values)
+  public static StringList? From(IEnumerable<string> values)
   {
     return values
       .Reverse()
       .Aggregate(null as StringList, (prev, curr) => new StringList(curr, prev));
   }
+}
+
+public class NotRonListEnumerator(NotRonList cursor) : IEnumerator<string>
+{
+  NotRonList? head = cursor;
+  NotRonList? cursor = cursor;
+  public string Current { get; private set; } = null!;
+
+  object IEnumerator.Current => Current;
+
+  public void Dispose() { }
+
+  public bool MoveNext()
+  {
+    if (cursor == null)
+    {
+      return false;
+    }
+    Current = cursor.value;
+    cursor = cursor.next;
+    return true;
+  }
+
+  public void Reset()
+  {
+    cursor = head;
+    Current = null!;
+  }
+}
+
+public class NotRonList() : IEnumerable<string>
+{
+  public string value = null!;
+  public NotRonList? next;
+
+  public NotRonList(string value, NotRonList? next = null)
+    : this()
+  {
+    this.value = value;
+    this.next = next;
+  }
+
+  [RonFrom]
+  public static NotRonList? From(IEnumerable<string> values)
+  {
+    return values
+      .Reverse()
+      .Aggregate(null as NotRonList, (prev, curr) => new NotRonList(curr, prev));
+  }
+
+  public IEnumerator<string> GetEnumerator()
+  {
+    return new NotRonListEnumerator(this);
+  }
+
+  IEnumerator IEnumerable.GetEnumerator()
+  {
+    return new NotRonListEnumerator(this);
+  }
+}
+
+public class HasEnumerable
+{
+  public IEnumerable<string> values = null!;
+}
+
+public class HasNotRonList
+{
+  public NotRonList values = null!;
 }

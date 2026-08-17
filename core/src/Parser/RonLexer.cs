@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+using CriusNyx.Results;
 using CriusNyx.Util;
 using Superpower;
 using Superpower.Model;
@@ -44,6 +46,11 @@ public enum RonTokenKind
   Identifier,
   RawIdentifier,
 };
+
+public class LexerException(Result<TokenList<RonTokenKind>> errorResult) : Exception
+{
+  public readonly Result<TokenList<RonTokenKind>> errorResult = errorResult;
+}
 
 public class RonLexer
 {
@@ -124,8 +131,13 @@ public class RonLexer
       )
       .Build();
 
+  public static Result<TokenList<RonTokenKind>, Exception> TokenizeResult(string source)
+  {
+    return Tokenizer.TryTokenize(source).IntoResult((x) => new LexerException(x));
+  }
+
   public static TokenList<RonTokenKind> Tokenize(string source)
   {
-    return Tokenizer.Tokenize(source);
+    return TokenizeResult(source).Unwrap();
   }
 }
