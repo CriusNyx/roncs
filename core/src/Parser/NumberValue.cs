@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using CriusNyx.Util;
 
 namespace RonCS;
@@ -44,7 +45,7 @@ public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null)
 
   public Type? CSType()
   {
-    throw new NotImplementedException();
+    throw RonException.CreateNotImplemented(nameof(CSType));
   }
 
   public string Serialize()
@@ -254,7 +255,7 @@ public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? su
 
   public Type? CSType()
   {
-    return suffix?.GetType();
+    return suffix.CSType();
   }
 
   public override string RonPrint(RonPrintOptions options)

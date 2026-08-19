@@ -63,6 +63,27 @@ public class ChildClassB : ParentClass
   public string bar = null!;
 }
 
+public class VectorTuple()
+{
+  public float x;
+  public float y;
+  public float z;
+
+  public VectorTuple(float x, float y, float z)
+    : this()
+  {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+
+  [RonTuple]
+  public object[] IntoRonTuple()
+  {
+    return [x, y, z];
+  }
+}
+
 public class Vector3()
 {
   public float x;

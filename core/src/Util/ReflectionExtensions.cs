@@ -1,13 +1,12 @@
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
 using CriusNyx.Util;
 
 public static class ReflectionExtensions
 {
-  public static T Match<T>(this IEnumerable<T> options, Type?[] types)
+  public static T? Match<T>(this IEnumerable<T> options, Type?[] types)
     where T : MethodBase
   {
-    return options.First(x => IsMatch(x, types));
+    return options.FirstOrDefault(x => IsMatch(x, types));
   }
 
   private static bool IsMatch(MethodBase method, Type?[] types)
@@ -23,7 +22,7 @@ public static class ReflectionExtensions
       {
         continue;
       }
-      if (type.IsAssignableTo(param.NotNull().GetType()))
+      if (type.IsAssignableTo(param.NotNull().ParameterType))
       {
         continue;
       }

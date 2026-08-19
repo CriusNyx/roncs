@@ -112,7 +112,7 @@ public class ObjectDeserializerTests
       ];
       yield return
       [
-        "[(), (1, 2, 3)])",
+        "[(), (1, 2, 3)]",
         typeof(List<Vector3>),
         new Vector3[] { new Vector3(), new Vector3(1, 2, 3) },
       ];
@@ -157,6 +157,8 @@ public class ObjectDeserializerTests
       ];
       yield return ["""Some((1, 2, 3))""", typeof(Vector3), new Vector3(1, 2, 3)];
       yield return ["""None""", typeof(Vector3), null!];
+      yield return ["""VectorTuple(1, 2, 3)""", typeof(VectorTuple), new VectorTuple(1, 2, 3)];
+      yield return ["""(1, 2, 3)""", typeof(VectorTuple), new VectorTuple(1, 2, 3)];
     }
   }
 

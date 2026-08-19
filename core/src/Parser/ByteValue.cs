@@ -23,7 +23,7 @@ public class ByteValue(NumberValue inner) : RonElement, NumberValue
 
   public override string RonPrint(RonPrintOptions options)
   {
-    throw new NotImplementedException();
+    throw RonException.CreateNotImplemented(nameof(RonPrint), options);
   }
 }
 
@@ -58,7 +58,7 @@ public class AsciiEscape(char source) : StringContent, NumberValue
       'r' => "\r",
       't' => "\t",
       '0' => "\0",
-      _ => throw new NotImplementedException(),
+      _ => throw RonException.CreateNotImplemented(nameof(EvaluateString)),
     };
   }
 
@@ -69,7 +69,7 @@ public class AsciiEscape(char source) : StringContent, NumberValue
 
   public string ValueString()
   {
-    throw new NotImplementedException();
+    throw RonException.CreateNotImplemented(nameof(ValueString));
   }
 }
 
@@ -107,7 +107,7 @@ public class ByteEscape(char left, char right) : StringContent, NumberValue
 
   public string ValueString()
   {
-    throw new NotImplementedException();
+    throw RonException.CreateNotImplemented(nameof(ValueString));
   }
 }
 

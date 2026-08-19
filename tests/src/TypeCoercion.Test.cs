@@ -73,6 +73,6 @@ public class TypeCoercionTests
   {
     var actual = Ron.Deserialize(ronSource, targetType);
     actual.ShouldDeepEqual(expected);
-    Assert.That(actual.GetType(), Is.EqualTo(expected.GetType()));
+    Assert.That(actual?.GetType(), Is.EqualTo(expected.GetType()));
   }
 }

@@ -20,6 +20,20 @@ public interface TypeSerializerConverter
         CreateTypeConverterForTypeWithFields(proxy.Proxy, type.Name)
       );
     }
+    if (
+      type.GetMethods().FirstOrDefault(x => x.GetCustomAttribute<RonTupleAttribute>() != null)
+      is MethodInfo method
+    )
+    {
+      return new TupleMethodConverter(type.Name, method);
+    }
+    if (
+      type.GetProperties().FirstOrDefault(x => x.GetCustomAttribute<RonTupleAttribute>() != null)
+      is PropertyInfo property
+    )
+    {
+      return new TuplePropertyConverter(type.Name, property);
+    }
 
     return null;
   }

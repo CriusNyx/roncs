@@ -208,6 +208,6 @@ public class NumberParserTests
     {
       return 16;
     }
-    throw new NotImplementedException();
+    throw RonException.CreateNotImplemented(nameof(GetIntegerBase));
   }
 }

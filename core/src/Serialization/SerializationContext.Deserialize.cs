@@ -1,6 +1,9 @@
 using System.Collections;
+using System.Data;
 using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 using CriusNyx.Results;
+using CriusNyx.Results.Extensions;
 using CriusNyx.Util;
 
 namespace RonCS;
@@ -26,33 +29,44 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <returns></returns>
   /// <exception cref="NotImplementedException"></exception>
-  public object DeserializeElement(RonElement? element, Type? typeHint)
+  public Result<object?, Exception> DeserializeElement(
+    RonElement? element,
+    Type? typeHint,
+    string path
+  )
   {
-    var output = element switch
+    Result<object?, Exception> Ok(object? value)
     {
-      RonDocument doc => DeserializeElement(doc.Value!, typeHint),
-      StringValue str => str.Evaluate(),
-      NumberValue numValue => numValue.EvaluateNumber(typeHint),
-      RonBool boolVal => boolVal.Value,
-      RonChar charVal => charVal.Value,
-      RonSome some => DeserializeElement(some.value, typeHint),
-      RonNone => null!,
+      return Result.Ok<object?, Exception>(value);
+    }
+
+    Result<object?, Exception> output = element switch
+    {
+      RonDocument doc => DeserializeElement(doc.Value!, typeHint, path),
+      StringValue str => Ok(str.Evaluate()),
+      NumberValue numValue => Ok(numValue.EvaluateNumber(typeHint)),
+      RonBool boolVal => Ok(boolVal.Value),
+      RonChar charVal => Ok(charVal.Value),
+      RonSome some => DeserializeElement(some.value, typeHint, path),
+      RonNone => Ok(null),
       RonUnitStruct unitStruct => DeserializeUnitClass(typeHint.NotNull("typeHint"), unitStruct),
       RonNamedValueStruct ronNamedValueStruct => DeserializeNamedValueClass(
         typeHint,
-        ronNamedValueStruct
+        ronNamedValueStruct,
+        path
       ),
-      RonTupleStruct tupleStruct => DeserializeTupleStructClass(typeHint, tupleStruct),
+      RonTupleStruct tupleStruct => DeserializeTupleStructClass(typeHint, tupleStruct, path),
       RonMapStruct mapStruct => DeserializeElement(
         mapStruct.MapBody,
-        GetTypeFromName(mapStruct.Name.IdentifierName(), typeHint)
+        GetTypeFromName(mapStruct.Name.IdentifierName(), typeHint),
+        path
       ),
-      RonTuple tuple => DeserializeTupleClassBody(typeHint.NotNull("typeHint"), tuple),
-      RonList list => DeserializeList(typeHint.NotNull("typeHint"), list),
-      RonMap map => DeserializeMap(map, typeHint),
-      _ => throw new NotImplementedException(),
+      RonTuple tuple => DeserializeTupleClassBody(typeHint.NotNull("typeHint"), tuple, path),
+      RonList list => DeserializeList(typeHint.NotNull("typeHint"), list, path),
+      RonMap map => DeserializeMap(map, typeHint, path),
+      _ => RonException.CreateNotImplemented(nameof(DeserializeElement)).AsErr<Exception>(),
     };
-    return ConvertType(output, typeHint)!;
+    return output.Map(x => ConvertType(x, typeHint!))!;
   }
 
   /// <summary>
@@ -61,7 +75,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="unitStruct"></param>
   /// <returns></returns>
-  public object DeserializeUnitClass(Type typeHint, RonUnitStruct unitStruct)
+  public Result<object?, Exception> DeserializeUnitClass(Type typeHint, RonUnitStruct unitStruct)
   {
     if (typeHint.IsEnum)
     {
@@ -74,11 +88,11 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     var constructor = actualType.GetConstructor([]);
     if (constructor == null)
     {
-      throw new NoConstructorInstructionException(typeHint);
+      throw new NoEmptyConstructorException(typeHint);
     }
     var output = constructor?.Invoke([]);
 
-    return output!;
+    return output.AsOk();
   }
 
   /// <summary>
@@ -87,9 +101,9 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="enumType"></param>
   /// <param name="identifier"></param>
   /// <returns></returns>
-  public object DeserializeEnum(Type enumType, RonElement identifier)
+  public Result<object?, Exception> DeserializeEnum(Type enumType, RonElement identifier)
   {
-    return Enum.Parse(enumType, identifier.IdentifierName().NotNull(nameof(identifier)));
+    return Enum.Parse(enumType, identifier.IdentifierName().NotNull(nameof(identifier))).AsOk()!;
   }
 
   /// <summary>
@@ -98,22 +112,31 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="element"></param>
   /// <returns></returns>
-  public object DeserializeNamedValueClass(Type? typeHint, RonNamedValueStruct element)
+  public Result<object?, Exception> DeserializeNamedValueClass(
+    Type? typeHint,
+    RonNamedValueStruct element,
+    string path
+  )
   {
-    var actualType = GetTypeFromName(element.Name.IdentifierName(), typeHint).NotNull("actualType");
+    var typeName = element.Name.IdentifierName();
+    var actualType = GetTypeFromName(typeName, typeHint).NotNull("actualType");
     var constructor = actualType.GetConstructor([]);
     if (constructor == null)
     {
-      throw new NoConstructorInstructionException(actualType);
+      throw new NoEmptyConstructorException(actualType);
     }
     var output = constructor.Invoke([]);
 
     foreach (var field in element.Values.NotNull("Values"))
     {
-      DeserializeClassField(field, output.NotNull());
+      var fieldResult = DeserializeClassField(field, output.NotNull(), $"{path}:{typeName}");
+      if (fieldResult.IsErr())
+      {
+        return fieldResult;
+      }
     }
 
-    return output!;
+    return output.AsOk()!;
   }
 
   /// <summary>
@@ -122,20 +145,36 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="element"></param>
   /// <param name="instance"></param>
   /// <returns></returns>
-  public object DeserializeClassField(RonElement element, object instance)
+  public Result<object?, Exception> DeserializeClassField(
+    RonElement element,
+    object instance,
+    string path
+  )
   {
     Type type = instance.GetType();
     if (element is RonNamedValue namedValue)
     {
       var fieldName = namedValue.name.IdentifierName().NotNull("fieldName");
-      var fieldInfo = type.GetRonField(fieldName).NotNull("fieldInfo");
-      var fieldValue = DeserializeElement(
+      var fieldInfo = type.GetRonField(fieldName);
+      if (fieldInfo == null)
+      {
+        return new DeserializationException(
+          new NoFieldOrPropertyException($"{path}.{fieldName}", type, fieldName)
+        ).AsErr<Exception>();
+      }
+      var fieldValueResult = DeserializeElement(
         namedValue.value.NotNull("namedValue.value"),
-        fieldInfo.MemberValueType()
+        fieldInfo.MemberValueType(),
+        $"{path}.{fieldName}"
       );
-      fieldInfo.AssignMember(instance, fieldValue);
+      if (fieldValueResult.IsErr())
+      {
+        return fieldValueResult;
+      }
+
+      fieldInfo.AssignMember(instance, fieldValueResult.Unwrap()!);
     }
-    return instance;
+    return instance.AsOk()!;
   }
 
   /// <summary>
@@ -144,12 +183,16 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="element"></param>
   /// <returns></returns>
-  public object DeserializeTupleStructClass(Type? typeHint, RonTupleStruct element)
+  public Result<object?, Exception> DeserializeTupleStructClass(
+    Type? typeHint,
+    RonTupleStruct element,
+    string path
+  )
   {
     var body = element.Body.AsNotNull<RonTuple>();
 
     var actualType = GetTypeFromName(element.Name.IdentifierName(), typeHint).NotNull("actualType");
-    return DeserializeTupleClassBody(actualType, body);
+    return DeserializeTupleClassBody(actualType, body, path);
   }
 
   /// <summary>
@@ -158,8 +201,13 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="body"></param>
   /// <returns></returns>
-  public object DeserializeTupleClassBody(Type typeHint, RonTuple body)
+  public Result<object?, Exception> DeserializeTupleClassBody(
+    Type typeHint,
+    RonTuple body,
+    string path
+  )
   {
+    // TODO: This should not throw. It should return an error result.
     // the argument types.
     Type?[] inferredArgumentTypes = body.Values.NotNull().Select(InferType).ToArray();
     var constructor = typeHint
@@ -174,13 +222,14 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       .OuterZip(body.Values.NotNull("body.Values"));
 
     // Deserialize the arguments using the constructor parameters.
-    var args = argsWithTypes
+    var argsResult = argsWithTypes
       .Where(x => x.left != null)
-      .Select(x => DeserializeElement(x.right, x.left))
-      .ToArray();
+      .Select(x => DeserializeElement(x.right, x.left, path))
+      .Collect();
 
-    // Invoke the constructor with the parameters.
-    return constructor.Invoke(args);
+    return argsResult
+      .Map(args => constructor.Invoke(args.ToArray()))
+      .MapErr(err => DeserializationException.FromOthers(err) as Exception)!;
   }
 
   /// <summary>
@@ -189,7 +238,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="list"></param>
   /// <returns></returns>
-  public object DeserializeList(Type? typeHint, RonList list)
+  public Result<object?, Exception> DeserializeList(Type? typeHint, RonList list, string path)
   {
     // Null checking
     typeHint = typeHint.NotNull(nameof(typeHint));
@@ -198,29 +247,43 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     var listElementType = typeHint.GetListType().NotNull("typeHint.GetListType()")!;
 
     // Deserialize list elements.
-    var elements = list
+    var elementsResult = list
       .Values.NotNull(nameof(list.Values))
-      .Select(x => DeserializeElement(x, listElementType));
+      .WithIndex()
+      .NotNull(nameof(list.Values))
+      .Select((pair) => DeserializeElement(pair.value, listElementType, $"{path}[{pair.index}]"))
+      .Collect();
 
     // Create the output array.
-    var array = Array.CreateInstance(listElementType, elements.Count());
-    foreach (var (element, index) in elements.WithIndex())
+    var arrayResult = elementsResult.Map(elements =>
     {
-      array.SetValue(element, index);
-    }
+      var array = Array.CreateInstance(listElementType, elements.Count());
+      foreach (var (element, index) in elements.WithIndex())
+      {
+        array.SetValue(element, index);
+      }
+      return array;
+    });
 
     // Attempt to initialize the type using an IEnumerable
     // This makes it possible to deserialize Lists and HashSets.
-    if (
-      typeHint.GetConstructor([typeof(IEnumerable<>).MakeGenericType(listElementType)])
-      is ConstructorInfo cons
-    )
-    {
-      return cons?.Invoke([array])!;
-    }
+    return arrayResult
+      .Map(
+        (array) =>
+        {
+          if (
+            typeHint.GetConstructor([typeof(IEnumerable<>).MakeGenericType(listElementType)])
+            is ConstructorInfo cons
+          )
+          {
+            return cons.Invoke([array])!;
+          }
 
-    // Return the raw array otherwise.
-    return array;
+          // Return the raw array otherwise.
+          return array;
+        }
+      )
+      .MapErr<Exception>(DeserializationException.FromOthers)!;
   }
 
   /// <summary>
@@ -230,7 +293,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <returns></returns>
   /// <exception cref="NotImplementedException"></exception>
-  public object DeserializeMap(RonMap map, Type? typeHint)
+  public Result<object?, Exception> DeserializeMap(RonMap map, Type? typeHint, string path)
   {
     // Null check
     typeHint = typeHint.NotNull(nameof(typeHint));
@@ -250,26 +313,40 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       .Construct()
       .AsNotNull<IDictionary>("values");
 
+    List<Exception> errors = new List<Exception>();
+
     // Deserialize values.
     foreach (var element in map.Values.NotNull(nameof(map.Values)))
     {
       if (element is RonMapItem mapItem)
       {
         var key = mapItem.Key.AsNotNull<StringValue>(nameof(mapItem.Key)).Evaluate();
-        var value = DeserializeElement(mapItem.Value, valueType);
-        values.Add(key!, value);
+        var value = DeserializeElement(mapItem.Value, valueType, $"{path}[\"{key}\"]");
+        if (value.IsErr())
+        {
+          errors.Add(value.UnwrapErr());
+        }
+        else
+        {
+          values.Add(key!, value.Unwrap());
+        }
       }
+    }
+
+    if (errors.Count > 0)
+    {
+      return DeserializationException.FromOthers(errors).AsErr<Exception>();
     }
 
     // Return the elements themselves if they are directly assignable to the output.
     if (values.GetType() == typeHint || typeHint == dictType)
     {
-      return values;
+      return values.AsOk<object?>();
     }
     // Find a constructor for the dictionary type and invoke it.
     if (typeHint.GetConstructor([dictType]) is ConstructorInfo dictCons)
     {
-      return dictCons.Invoke([values]);
+      return dictCons.Invoke([values]).AsOk<object?>();
     }
     // Find a constructor that accepts a key value pair, and invoke it.
     if (
@@ -281,7 +358,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       is ConstructorInfo listCons
     )
     {
-      return listCons.Invoke([values]);
+      return listCons.Invoke([values]).AsOk<object?>();
     }
     throw new NoDictionaryConstructorException(typeHint);
   }
@@ -351,7 +428,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       RonNone => null,
       RonTuple => null,
       null => null,
-      _ => throw new NotImplementedException(),
+      _ => throw new NotImplementedForArgumentTypeException(nameof(InferType), element.GetType()),
     };
   }
 
@@ -423,16 +500,4 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       context.RegisterType(typeof(object));
     });
   }
-}
-
-public class NoConstructorInstructionException(Type type) : Exception
-{
-  public override string Message =>
-    $"Expected {type} to have a parameterless constructor, but it does not.";
-}
-
-public class NoDictionaryConstructorException(Type type) : Exception
-{
-  public override string Message =>
-    $"Expected {type} to have a constructor that accepts a dictionary, or a set of key value pairs, but it does not.";
 }

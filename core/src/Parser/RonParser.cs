@@ -259,7 +259,7 @@ public static class RonParser
   /// <summary>
   /// Ron = Extensions Value;
   /// </summary>
-  public static TParser Ron = Value.Select(value => new RonDocument(value) as RonElement);
+  public static TParser Ron = Value.AtEnd().Select(value => new RonDocument(value) as RonElement);
 }
 
 internal static class RonParserExtensions

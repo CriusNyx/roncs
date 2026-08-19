@@ -137,7 +137,7 @@ public partial class SerializationContext
         .MinBy([dec.ToString(), Solve(dec.ToString("e"))], x => x.NotNull().Length)
         .NotNull();
     }
-    throw new NotImplementedException();
+    throw RonException.CreateNotImplemented(nameof(ShortestRound));
   }
 
   public void RegisterTypeConverter(Type type, TypeSerializerConverter converter)

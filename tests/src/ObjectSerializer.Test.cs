@@ -70,6 +70,7 @@ public class ObjectSerializerTests
         new HasNotRonList { values = NotRonList.From(["Hello", "World"])! },
         "HasNotRonList(values:NotRonList(value:\"Hello\",next:NotRonList(value:\"World\",next:None)))",
       ];
+      yield return [new VectorTuple(1, 2, 3), "VectorTuple(1f32,2f32,3f32)"];
     }
   }
 
