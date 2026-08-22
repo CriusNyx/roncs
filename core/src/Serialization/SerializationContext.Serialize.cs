@@ -139,19 +139,4 @@ public partial class SerializationContext
     }
     throw RonException.CreateNotImplemented(nameof(ShortestRound));
   }
-
-  public void RegisterTypeConverter(Type type, TypeSerializerConverter converter)
-  {
-    converterCache[type] = converter;
-  }
-
-  public void RegisterListType(Type type)
-  {
-    converterCache[type] = new ListConverter();
-  }
-
-  public void RegisterDictionaryType(Type type)
-  {
-    converterCache[type] = new DictionaryConverter();
-  }
 }

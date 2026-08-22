@@ -1,0 +1,292 @@
+# API
+
+The public API for Ron.
+
+Note, many of these methods also exist on SerializationContext, and they can be 
+called on a local serialization context rather then the library itself to enable
+these for only that context.
+
+## Serialize
+
+Serialize a Ron string from an object.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class Vector3{
+  public float x;
+  public float y;
+  public float z;
+}
+
+var value = new Vector3{
+  x = 1,
+  y = 2,
+  z = 3
+};
+
+var ron = Ron.Serialize(value);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Vector3(
+  x: 1f32,
+  y: 2f32,
+  z: 3f32
+)
+```
+</CodeBlock>
+</CodeExample>
+
+## Deserialize
+
+Convert a ron string back into a CS object.
+
+<CodeExample>
+
+<CodeBlock lang='C#'>
+```cs
+var value = Ron.Deserialize<Vector3>();
+
+// Will be the same as 
+// new Vector3{
+//   x = 1,
+//   y = 2,
+//   z = 3
+// };
+
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Vector3(
+  x: 1f32,
+  y: 2f32,
+  z: 3f32
+)
+```
+</CodeBlock>
+</CodeExample>
+
+## Register Type
+
+Register a polymorphic type that Ron may encounter when attempting to 
+deserialize a type.
+
+RonCS is not able to automatically find child class types when trying to 
+deserialize an object of a parent classes type.
+
+Therefore we have to register any types which may be unexpected during
+deserialization.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+Ron.RegisterType(
+  typeof(Sequence), 
+  typeof(FindFood),
+  typeof(NavigateTo),
+  typeof(Acquire)
+);
+
+AIBehavior behaviorTree = Ron.Deserialize<AIBehavior>(
+  ron
+);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```ts
+Sequence(
+  children: [
+    FindFood(
+      variableName: "food"
+    ),
+    NavigateTo(
+      target: "food"
+    ),
+    Acquire(
+      target: "food"
+    )
+  ]
+)
+```
+</CodeBlock>
+</CodeExample>
+
+## RegisterTypeConverter
+
+Register a custom type converter for serializing an object as a ron element.
+
+## RegisterListType
+
+Register a type that Ron should always serialize as a list.
+
+Ron will attempt to convert the type to an `IEnumerable` before serializing it,
+and will attempt to use the RonConvert algorithm to convert it back to it's 
+original type.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class LinkedList: IEnumerable<Vector3>{
+  public LinkedList? next;
+  
+  public LinkedList(IEnumerable<Vector3> original){
+    ...
+  }
+
+  public IEnumerator GetEnumerator(){
+    ...
+  }
+
+  public IEnumerator<Vector3> GetEnumerator(){
+    ...
+  }
+}
+
+Ron.RegisterListType(typeof(LinkedList));
+
+var list = new LinkedList(new Vector3[]{
+  Vector3.Zero, 
+  Vector3.One
+});
+
+var ron = Ron.Serialize(list);
+var newList = Ron.Deserialize<LinkedList>(ron);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+[
+  Vector3(
+    x: 0f32,
+    y: 0f32,
+    z: 0f32
+  ),
+  Vector3(
+    x: 1f32,
+    y: 1f32,
+    z: 1f32
+  ),
+]
+```
+</CodeBlock>
+</CodeExample>
+
+## RegisterDictionaryType
+
+Register a type that should be serialized or deserialized as a dictionary.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class MySet{
+  public Dictionary<string, string> values;
+  
+  [RonInto]
+  public IDictionary<string, string> ToDictionary(){
+    return values;
+  }
+  
+  [RonFrom]
+  public MySet(
+    Dictionary<string, string> values
+  ){
+    return new MySet{
+      values = values
+    };
+  }
+}
+
+var value = new MySet{
+  values = new Dictionary<string, string>(){
+    { "Hello", "World" }
+  }
+};
+
+Ron.RegisterDictionaryType(typeof(MySet));
+
+var ron = Ron.Serialize(values);
+var deserialized = Ron.Deserialize<MySet>(ron);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+{
+  "Hello": "World"
+}
+```
+</CodeBlock>
+</CodeExample>
+
+## RegisterTupleConverter
+
+Will register a converter that allows the type to be serialized as a tuple.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+Ron.RegisterTupleConverter(
+  (Vector3 v) => new object[]{v.x, v.y, v.z}
+);
+Ron.Serialize(new Vector3(1, 2, 3));
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Vector3(1f32, 2f32, 3f32)
+```
+</CodeBlock>
+</CodeExample>
+
+## RegisterProxyType
+
+Will register a type to use as a proxy for serialization and deserialization.
+Will use the RonConvert algorithm to convert to and from the proxy type.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class StringVector{
+
+  public string value;
+
+  [RonInto]
+  public Vector3 Into(){
+    return Vector3.Parse(value);
+  }
+
+  [RonFrom]
+  public static StringVector From(
+    Vector3 original;
+  ){
+    return new StringVector{
+      value = original.ToString()
+    };
+  }
+}
+
+Ron.RegisterProxyType(
+  typeof(Vector3), 
+  typeof(StringVector)
+);
+
+Ron.Serialize(new Vector3(1, 2, 3));
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Vector3(
+  value: "(1, 2, 3)"
+)
+```
+</CodeBlock>
+</CodeExample>

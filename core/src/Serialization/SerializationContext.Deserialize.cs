@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Data;
 using System.Reflection;
-using System.Runtime.ConstrainedExecution;
 using CriusNyx.Results;
 using CriusNyx.Results.Extensions;
 using CriusNyx.Util;
@@ -11,16 +10,8 @@ namespace RonCS;
 public partial class SerializationContext(SerializationContext? parentContext = null)
 {
   public readonly HashSet<Type> RonTypes = new();
+  public readonly Dictionary<Type, Type> proxyTypes = new Dictionary<Type, Type>();
   private SerializationContext? parentContext = parentContext;
-
-  /// <summary>
-  /// Register a new known type
-  /// </summary>
-  /// <param name="type"></param>
-  public void RegisterType(Type type)
-  {
-    RonTypes.Add(type);
-  }
 
   /// <summary>
   /// Deserialize a ron element
@@ -125,18 +116,18 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     {
       throw new NoEmptyConstructorException(actualType);
     }
-    var output = constructor.Invoke([]);
+    var instance = constructor.Invoke([]);
 
     foreach (var field in element.Values.NotNull("Values"))
     {
-      var fieldResult = DeserializeClassField(field, output.NotNull(), $"{path}:{typeName}");
+      var fieldResult = DeserializeClassField(field, instance.NotNull(), $"{path}:{typeName}");
       if (fieldResult.IsErr())
       {
         return fieldResult;
       }
     }
 
-    return output.AsOk()!;
+    return instance.AsOk()!;
   }
 
   /// <summary>
@@ -376,6 +367,10 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     {
       return GetIntermediateType(result);
     }
+    if (proxyTypes.TryFindByKey((x) => x.Name == name, out var proxyResult))
+    {
+      return proxyResult;
+    }
     if (parentContext?.GetTypeFromName(name, backupType) is Type type)
     {
       return GetIntermediateType(type);
@@ -394,7 +389,15 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <returns></returns>
   public Type? GetIntermediateType(Type? targetType)
   {
-    if (targetType?.GetCustomAttribute<RonProxyAttribute>() is RonProxyAttribute proxyAttr)
+    if (targetType == null)
+    {
+      return null;
+    }
+    if (proxyTypes.TryGetValue(targetType, out var proxyType))
+    {
+      return proxyType;
+    }
+    if (targetType.GetCustomAttribute<RonProxyAttribute>() is RonProxyAttribute proxyAttr)
     {
       return proxyAttr.Proxy;
     }

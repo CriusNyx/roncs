@@ -1,0 +1,54 @@
+## RonProxy
+
+Apply to a class to auto-convert it to another class for serialization
+and deserialization.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+// Will be converted to a StringVector
+// when serialized
+
+// Will be converted from a StringVector
+// when deserialized
+
+// See RonInto and RonFrom for 
+// info about serialization.
+[RonProxy(typeof(StringVector))]
+public class Vector3{
+  public float x;
+  public float y;
+  public float z;
+}
+
+public class StringVector{
+  public string value;
+  
+  [RonFrom]
+  public static StringVector From(
+    Vector3 source
+  ){
+    return new StringVector{
+      value = source.ToString();
+    };
+  }
+
+  [RonInto]
+  public Vector3 IntoVector(){
+    return Vector3.Parse(value);
+  };
+}
+
+var vector = Vector3.One;
+var ron = Ron.Serialize(vector);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Vector3(
+  value: "(1, 1, 1)";
+)
+```
+</CodeBlock>
+</CodeExample>

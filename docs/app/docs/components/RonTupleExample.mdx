@@ -1,0 +1,55 @@
+## RonTuple
+
+Apply this to a method to convert this 
+type into a tuple before serializing.
+
+When deserializing Ron will look for a
+matching constructor to deserialize the 
+type.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class Vector3{
+  public float x;
+  public float y;
+  public float z;
+
+  // This constructor will be used to 
+  // Deserialize the Vector3
+  public Vector3(
+    float x, 
+    float y, 
+    float z
+  ){
+    ...
+  }
+
+  [RonTuple]
+  public object[] ToTuple(){
+    return [x, y, z];
+  }
+}
+
+var value = Vector3.One;
+var ron = Ron.Serialize();
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Vector3(
+  1f32, 
+  1f32, 
+  1f32
+)
+
+// Without RonTuple
+Vector3(
+  x: 1f32,
+  y: 1f32,
+  z: 1f32
+)
+```
+</CodeBlock>
+</CodeExample>

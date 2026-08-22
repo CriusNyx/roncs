@@ -6,10 +6,10 @@ namespace RonTests;
 
 public class ObjectDeserializerTests
 {
-  [SetUp]
+  [OneTimeSetUp]
   public void Setup()
   {
-    Ron.RegisterTypes(
+    Ron.RegisterType(
       typeof(EmptyClass),
       typeof(SimpleClass),
       typeof(NestedClass),
@@ -21,6 +21,14 @@ public class ObjectDeserializerTests
       typeof(WithDict),
       typeof(CreateWithDict)
     );
+
+    Ron.RegisterProxyType(typeof(DoesNotHaveProxyType), typeof(CustomProxyDoesNotHaveProxy));
+  }
+
+  [OneTimeTearDown]
+  public void Teardown()
+  {
+    Ron.ResetGlobalContext();
   }
 
   public static IEnumerable<object[]> ObjectTestData
@@ -159,6 +167,12 @@ public class ObjectDeserializerTests
       yield return ["""None""", typeof(Vector3), null!];
       yield return ["""VectorTuple(1, 2, 3)""", typeof(VectorTuple), new VectorTuple(1, 2, 3)];
       yield return ["""(1, 2, 3)""", typeof(VectorTuple), new VectorTuple(1, 2, 3)];
+      yield return
+      [
+        """DoesNotHaveProxyType(value:"(1, 2, 3)")""",
+        typeof(DoesNotHaveProxyType),
+        new DoesNotHaveProxyType { value = new Vector3(1, 2, 3) },
+      ];
     }
   }
 

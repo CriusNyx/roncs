@@ -1,9 +1,31 @@
+## !!steps Ron
+
+* Easy to read
+* Supports types and comments
+
+```ts ! george.js
+// An AI behavior tree represented in RON.
+Sequence(
+  children: [
+    FindFood(
+      variableName: "food"
+    ),
+    NavigateTo(
+      target: "food"
+    ),
+    Acquire(
+      target: "food"
+    )
+  ]
+)
+```
+
 ## !!steps C#
 
 Example source code in C#
 
 ```cs ! george.cs
-// Here is what our C# object looks like
+// The same AI Behavior tree represented in C#.
 AIBehavior behaviorTree = new Sequence{
   children = [
     new FindFood{
@@ -16,30 +38,5 @@ AIBehavior behaviorTree = new Sequence{
       target = "food"
     }
   ]
-}
-
-Ron.Serialize(behaviorTree);
+};
 ```
-
-## !!steps Ron
-
-* Easy to read
-* Supports types and comments
-
-```rs ! george.js
-// AI behavior tree
-Sequence(
-  children: [
-    FindFood(
-      variableName: "food"
-    ),
-    NavigateTo(
-      target: "food"
-    )
-    Acquire(
-      target: "food"
-    )
-  ]
-)
-```
-

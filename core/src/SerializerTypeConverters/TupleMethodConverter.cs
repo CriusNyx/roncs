@@ -30,3 +30,16 @@ public class TuplePropertyConverter(string name, PropertyInfo property) : TypeSe
     );
   }
 }
+
+public class TupleFunctionConverter(string name, Func<object, object[]> converter)
+  : TypeSerializerConverter
+{
+  public RonElement ToAST(SerializationContext context, object source)
+  {
+    var result = converter.Invoke(source).AsNotNull<object[]>($"{source.GetType()}.${name}");
+    return new RonTupleStruct(
+      new RonIdentifier(name),
+      new RonTuple(result.Select(x => context.ToAST(x)).ToArray())
+    );
+  }
+}

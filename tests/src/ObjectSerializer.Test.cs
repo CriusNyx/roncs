@@ -5,6 +5,31 @@ namespace RonTests;
 
 public class ObjectSerializerTests
 {
+  [OneTimeSetUp]
+  public void Setup()
+  {
+    Ron.RegisterType(
+      typeof(EmptyClass),
+      typeof(SimpleClass),
+      typeof(NestedClass),
+      typeof(ParentClass),
+      typeof(ChildClassA),
+      typeof(ChildClassB),
+      typeof(Vector3),
+      typeof(VectorList),
+      typeof(WithDict),
+      typeof(CreateWithDict)
+    );
+
+    Ron.RegisterProxyType(typeof(DoesNotHaveProxyType), typeof(CustomProxyDoesNotHaveProxy));
+  }
+
+  [OneTimeTearDown]
+  public void Teardown()
+  {
+    Ron.ResetGlobalContext();
+  }
+
   public static IEnumerable<object[]> ObjectSerializerTestData
   {
     get
@@ -71,6 +96,11 @@ public class ObjectSerializerTests
         "HasNotRonList(values:NotRonList(value:\"Hello\",next:NotRonList(value:\"World\",next:None)))",
       ];
       yield return [new VectorTuple(1, 2, 3), "VectorTuple(1f32,2f32,3f32)"];
+      yield return
+      [
+        new DoesNotHaveProxyType { value = new Vector3(1, 2, 3) },
+        "DoesNotHaveProxyType(value:\"(1, 2, 3)\")",
+      ];
     }
   }
 

@@ -13,4 +13,22 @@ public static class SetExtensions
     result = default!;
     return false;
   }
+
+  public static bool TryFindByKey<T, V>(
+    this IDictionary<T, V> dict,
+    Func<T, bool> keyPredicate,
+    out V result
+  )
+  {
+    foreach (var (key, value) in dict)
+    {
+      if (keyPredicate(key))
+      {
+        result = value;
+        return true;
+      }
+    }
+    result = default!;
+    return false;
+  }
 }

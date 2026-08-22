@@ -1,0 +1,35 @@
+## RonFrom
+
+Can be applied to a static method to convert the parameter type into the return
+type.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class Vector3{
+  public float x;
+  public float y;
+  public float z;
+
+  [RonFrom]
+  public static Vector3 From(string source){
+    return Vector3.Parse(source);
+  }
+}
+
+public class Point{
+  public Vector3 position;
+}
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Point(
+  // Vector3.From will be called 
+  // to deserialize this field.
+  position: "(1, 2, 3)"
+)
+```
+</CodeBlock>
+</CodeExample>

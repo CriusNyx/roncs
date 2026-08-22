@@ -1,0 +1,44 @@
+## RonMap
+
+Can be applied to a class to make that class serialized as a map.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+[RonMap]
+public class MySet: IDictionary<string, string>{
+
+  public Dictionary<string, string> values;
+
+  // This constructor will be used to 
+  // deserialize MySet.
+  public MySet(IDictionary<string, string> source){
+    values = source.ToDictionary();
+  }
+
+  // This method will be used to 
+  // serialize MySet.
+  [RonInto]
+  public IDictionary<string, string> IntoDictionary(){
+    return values;
+  }
+}
+
+var set = new MySet{
+  values = new Dictionary<string, string>(){
+    {"Hello": "World"}
+  }
+};
+
+var ron = Ron.Serialize(set);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+{
+  "Hello": "World"
+}
+```
+</CodeBlock>
+</CodeExample>

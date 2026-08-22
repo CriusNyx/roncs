@@ -96,8 +96,8 @@ public static class TypeConversionExtensions
     return TypeConversionCache.ConvertTo<T>(source);
   }
 
-  public static object RonConvert(this object source, Type t)
+  public static object RonConvert(this object source, Type targetType)
   {
-    return TypeConversionCache.ConvertTo(source, t);
+    return TypeConversionCache.ConvertTo(source, targetType);
   }
 }

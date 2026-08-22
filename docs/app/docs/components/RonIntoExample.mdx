@@ -1,0 +1,67 @@
+
+## RonInto
+
+Can be applied to a method to allow type conversion from this type into the 
+return type of that method.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class StringVector{
+  public string value;
+
+  [RonInto]
+  public Vector3 IntoVector(){
+    return Vector3.Parse(value);
+  }
+}
+
+public class Point {
+  Vector3 position;
+}
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Point(
+  // When deserialized StringVector will 
+  // be converted to a Vector3
+  position: StringVector(
+    value: "(1, 2, 3)"
+  )
+)
+```
+</CodeBlock>
+</CodeExample>
+
+Can also be applied to a static method. Will convert the parameter type into the
+return type.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class StringVector{
+  public string value;
+
+  // This also works.
+  [RonInto]
+  public static Vector3 IntoVector(
+    StringVector source
+  ) {
+    return Vector3.Parse(value);
+  }
+}
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+Point(
+  position: StringVector(
+    value: "(1, 2, 3)"
+  )
+)
+```
+</CodeBlock>
+</CodeExample>

@@ -1,5 +1,8 @@
 using System.Collections;
+using System.Net;
+using System.Numerics;
 using System.Text.RegularExpressions;
+using CriusNyx.Util.Reflection;
 
 namespace RonTests;
 
@@ -321,4 +324,26 @@ public class HasEnumerable
 public class HasNotRonList
 {
   public NotRonList values = null!;
+}
+
+public class DoesNotHaveProxyType
+{
+  public Vector3 value = null!;
+}
+
+public class CustomProxyDoesNotHaveProxy
+{
+  public string value = null!;
+
+  [RonFrom]
+  public static CustomProxyDoesNotHaveProxy From(DoesNotHaveProxyType source)
+  {
+    return new CustomProxyDoesNotHaveProxy { value = source.value.ToString() };
+  }
+
+  [RonInto]
+  public DoesNotHaveProxyType IntoOriginal()
+  {
+    return new DoesNotHaveProxyType { value = Vector3.Parse(value) };
+  }
 }

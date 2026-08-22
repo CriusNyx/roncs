@@ -1,0 +1,101 @@
+## RonList
+
+Can be applied to a class to make that class serialize as a field.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+[RonList]
+public class VectorLinkedList: IEnumerable<Vector3>
+{
+  public VectorLinkedList next;
+
+  // This constructor will be used to 
+  // deserialize the list.
+  public VectorLinkedList(
+    IEnumerable<Vector3> list
+  ){
+    ...
+  }
+
+  // This will be used to serialize 
+  // the list.
+  public IEnumerator GetEnumerator(){
+    ...
+  }
+
+  public IEnumerator<Vector3> GetEnumerator(){
+    ...
+  }
+}
+
+var list = new VectorLinkedList(
+  new Vector3[]{Vector3.Zero, Vector3.One}
+);
+
+var serialized = Ron.Serialize(list);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+[
+  Vector3(
+    x: 0f32,
+    y: 0f32,
+    z: 0f32
+  ), 
+  Vector3(
+    x: 1f32,
+    y: 1f32,
+    z: 1f32
+  )
+]
+```
+</CodeBlock>
+</CodeExample>
+
+Can be applied to a field to make the field serialize as a list.
+
+<CodeExample>
+<CodeBlock lang='C#'>
+```cs
+public class PointCloud {
+
+  // Will be serialized as a list.
+  [RonList]
+  public VectorLinkedList points;
+}
+
+var pointCloud = new PointCloud{
+  points = new VectorLinkedList(
+    new Vector3[]{
+      Vector3.Zero,
+      Vector3.One
+    }
+  )
+};
+
+var ron = Ron.Serialize(pointCloud);
+```
+</CodeBlock>
+
+<CodeBlock lang='Ron'>
+```rs
+PointCloud(
+  points: [
+    Vector3(
+      x: 0f32,
+      y: 0f32,
+      z: 0f32
+    ),
+    Vector3(
+      x: 1f32,
+      y: 1f32,
+      z: 1f32
+    )
+  ]
+)
+```
+</CodeBlock>
+</CodeExample>
