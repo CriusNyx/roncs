@@ -14,6 +14,11 @@ public class SimpleClass
   public int bar;
 }
 
+public class HasValue
+{
+  public object value;
+}
+
 public class NestedClass
 {
   public SimpleClass simpleClass = null!;

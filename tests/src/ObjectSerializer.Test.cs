@@ -52,6 +52,7 @@ public class ObjectSerializerTests
       yield return [new ChildClassA { foo = "Hello" }, "ChildClassA(foo:\"Hello\")"];
       yield return [new ChildClassB { bar = "World" }, "ChildClassB(bar:\"World\")"];
       yield return [new Vector3(1, 2, 3), "Vector3(x:1,y:2,z:3)"];
+      yield return [new Vector3(0.1f, 0.2f, 0.3f), "Vector3(x:0.1,y:0.2,z:0.3)"];
       yield return
       [
         new VectorList { values = [new Vector3(1, 2, 3)] },
@@ -100,6 +101,13 @@ public class ObjectSerializerTests
       [
         new DoesNotHaveProxyType { value = new Vector3(1, 2, 3) },
         "DoesNotHaveProxyType(value:\"(1, 2, 3)\")",
+      ];
+      yield return [new HasValue { value = 1 }, "HasValue(value:1i32)"];
+      yield return [new HasValue { value = 1.0 }, "HasValue(value:1f64)"];
+      yield return
+      [
+        new HasValue { value = new Vector3(1, 2, 3) },
+        "HasValue(value:Vector3(x:1,y:2,z:3))",
       ];
     }
   }

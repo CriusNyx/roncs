@@ -100,7 +100,7 @@ public class IntegerValue(
     {
       throw new InvalidOperationException();
     }
-    var parser = parseType.GetNumberParser();
+    var parser = parseType.GetNumberParser() ?? integerSuffix.CSType().GetNumberParser();
     if (parser == null)
     {
       throw new InvalidOperationException();

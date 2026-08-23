@@ -88,6 +88,7 @@ public class ObjectDeserializerTests
       yield return ["Vector3()", typeof(object), new Vector3()];
       yield return ["()", typeof(Vector3), new Vector3()];
       yield return ["Vector3(1, 2, 3)", typeof(object), new Vector3(1, 2, 3)];
+      yield return ["Vector3(0.1, 0.2, 0.3)", typeof(object), new Vector3(0.1f, 0.2f, 0.3f)];
       yield return ["(1, 2, 3)", typeof(Vector3), new Vector3(1, 2, 3)];
       yield return ["[]", typeof(object[]), new object[] { }];
       yield return ["[]", typeof(int[]), new object[] { }];
@@ -172,6 +173,12 @@ public class ObjectDeserializerTests
         """DoesNotHaveProxyType(value:"(1, 2, 3)")""",
         typeof(DoesNotHaveProxyType),
         new DoesNotHaveProxyType { value = new Vector3(1, 2, 3) },
+      ];
+      yield return
+      [
+        "HasValue(value:Vector3(1,2,3))",
+        typeof(HasValue),
+        new HasValue { value = new Vector3(1, 2, 3) },
       ];
     }
   }
