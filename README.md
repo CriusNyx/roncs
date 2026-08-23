@@ -6,6 +6,7 @@ Consider copying the EBNF file directrly for already implemented parsers instead
 of trying to be clever.
 
 - [?] Extension Parser
+  - [ ] Push parser extensions to Superpower
   - [ ] I'm not sure what this means
 - [x] String Parser
   - [x] Tests

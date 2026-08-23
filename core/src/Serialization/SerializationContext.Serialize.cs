@@ -9,11 +9,29 @@ public partial class SerializationContext
   private static Dictionary<Type, TypeSerializerConverter> converterCache =
     new Dictionary<Type, TypeSerializerConverter>();
 
-  public RonElement ToAST(object? source)
+  public RonElement ToAST(object? source, Type? fieldType = null)
   {
     if (source is null)
     {
       return new RonNone();
+    }
+
+    IntegerSuffix? IntType(IntegerSuffix suffix)
+    {
+      if (source.GetType() == fieldType)
+      {
+        return null;
+      }
+      return suffix;
+    }
+
+    FloatSuffix? FloatType(FloatSuffix suffix)
+    {
+      if (source.GetType() == fieldType)
+      {
+        return null;
+      }
+      return suffix;
     }
 
     return source switch
@@ -26,20 +44,20 @@ public partial class SerializationContext
       string str => new StringValue([new StringLit(str)]),
 
       // Integers
-      byte value => CreateIntValue(value, IntegerSuffix.u8),
-      sbyte value => CreateIntValue(value, IntegerSuffix.i8),
-      short value => CreateIntValue(value, IntegerSuffix.i16),
-      ushort value => CreateIntValue(value, IntegerSuffix.u16),
-      int value => CreateIntValue(value, IntegerSuffix.i32),
-      uint value => CreateIntValue(value, IntegerSuffix.u32),
+      byte value => CreateIntValue(value, IntType(IntegerSuffix.u8)),
+      sbyte value => CreateIntValue(value, IntType(IntegerSuffix.i8)),
+      short value => CreateIntValue(value, IntType(IntegerSuffix.i16)),
+      ushort value => CreateIntValue(value, IntType(IntegerSuffix.u16)),
+      int value => CreateIntValue(value, IntType(IntegerSuffix.i32)),
+      uint value => CreateIntValue(value, IntType(IntegerSuffix.u32)),
       nint value => CreateIntValue(value, null),
       nuint value => CreateIntValue(value, null),
-      long value => CreateIntValue(value, IntegerSuffix.i64),
-      ulong value => CreateIntValue(value, IntegerSuffix.u64),
+      long value => CreateIntValue(value, IntType(IntegerSuffix.i64)),
+      ulong value => CreateIntValue(value, IntType(IntegerSuffix.u64)),
 
       // Floats and decimals
-      float value => CreateFloatValue(value, FloatSuffix.f32),
-      double value => CreateFloatValue(value, FloatSuffix.f64),
+      float value => CreateFloatValue(value, FloatType(FloatSuffix.f32)),
+      double value => CreateFloatValue(value, FloatType(FloatSuffix.f64)),
       decimal value => CreateFloatValue(value, null),
 
       // Objects

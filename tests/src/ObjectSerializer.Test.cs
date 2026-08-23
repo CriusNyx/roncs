@@ -37,7 +37,7 @@ public class ObjectSerializerTests
       yield return
       [
         new SimpleClass { foo = "Hello", bar = -1 },
-        "SimpleClass(foo:\"Hello\",bar:-1i32)",
+        "SimpleClass(foo:\"Hello\",bar:-1)",
       ];
       yield return [new EmptyClass { }, "EmptyClass"];
       yield return [new NestedClass { simpleClass = null! }, "NestedClass(simpleClass:None)"];
@@ -47,21 +47,21 @@ public class ObjectSerializerTests
         {
           simpleClass = new SimpleClass { foo = "Hello", bar = -1 },
         },
-        "NestedClass(simpleClass:SimpleClass(foo:\"Hello\",bar:-1i32))",
+        "NestedClass(simpleClass:SimpleClass(foo:\"Hello\",bar:-1))",
       ];
       yield return [new ChildClassA { foo = "Hello" }, "ChildClassA(foo:\"Hello\")"];
       yield return [new ChildClassB { bar = "World" }, "ChildClassB(bar:\"World\")"];
-      yield return [new Vector3(1, 2, 3), "Vector3(x:1f32,y:2f32,z:3f32)"];
+      yield return [new Vector3(1, 2, 3), "Vector3(x:1,y:2,z:3)"];
       yield return
       [
         new VectorList { values = [new Vector3(1, 2, 3)] },
-        "VectorList(values:[Vector3(x:1f32,y:2f32,z:3f32)])",
+        "VectorList(values:[Vector3(x:1,y:2,z:3)])",
       ];
-      yield return [new Vector3[] { new Vector3(1, 2, 3) }, "[Vector3(x:1f32,y:2f32,z:3f32)]"];
+      yield return [new Vector3[] { new Vector3(1, 2, 3) }, "[Vector3(x:1,y:2,z:3)]"];
       yield return
       [
         new Dictionary<string, Vector3> { { "key", new Vector3(1, 2, 3) } },
-        "{\"key\":Vector3(x:1f32,y:2f32,z:3f32)}",
+        "{\"key\":Vector3(x:1,y:2,z:3)}",
       ];
       yield return
       [
@@ -73,7 +73,7 @@ public class ObjectSerializerTests
       yield return
       [
         new VectorPropertyClass { Value = new Vector3(1, 2, 3) },
-        "VectorPropertyClass(Value:Vector3(x:1f32,y:2f32,z:3f32))",
+        "VectorPropertyClass(Value:Vector3(x:1,y:2,z:3))",
       ];
       yield return
       [

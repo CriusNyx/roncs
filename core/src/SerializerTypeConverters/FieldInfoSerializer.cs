@@ -12,7 +12,7 @@ internal class MemberInfoSerializer(MemberInfo field, TypeSerializerConverter? c
     return new RonNamedValue(
       new RonIdentifier(field.Name),
       converter?.ToAST(context, field.GetMemberValue(source)!)
-        ?? context.ToAST(field.GetMemberValue(source))
+        ?? context.ToAST(field.GetMemberValue(source), field.MemberValueType())
     );
   }
 
