@@ -1,6 +1,9 @@
 using CriusNyx.Util;
+using RonCS.AST;
 using Superpower;
 using Superpower.Parsers;
+// This file is seeing System.Net.Http.StringContent for some reason.
+using StringContent = RonCS.AST.StringContent;
 
 namespace RonCS;
 

@@ -1,3 +1,5 @@
+namespace RonCS;
+
 /// <summary>
 /// Marks a class or field as a list.
 /// </summary>

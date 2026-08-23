@@ -1,6 +1,6 @@
 using CriusNyx.Util;
 
-namespace RonCS;
+namespace RonCS.Exceptions;
 
 public static class RonException
 {

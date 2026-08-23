@@ -1,3 +1,5 @@
+namespace RonCS;
+
 public enum RonPrintMode
 {
   Compact,

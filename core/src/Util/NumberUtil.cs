@@ -1,5 +1,7 @@
 using System.Numerics;
 
+namespace RonCS;
+
 public static class NumberUtil
 {
   /// <summary>

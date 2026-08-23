@@ -1,3 +1,5 @@
+namespace RonCS.AST;
+
 public class RonChar(char value) : RonElement
 {
   public char Value = value;

@@ -1,3 +1,5 @@
+namespace RonCS.AST;
+
 [Serializable]
 public abstract class RonElement
 {

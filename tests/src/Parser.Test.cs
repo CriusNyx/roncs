@@ -1,7 +1,8 @@
 using DeepEqual.Syntax;
 using RonCS;
+using RonCS.AST;
 using Superpower;
-using static RonBuilder;
+using static RonCS.AST.RonBuilder;
 
 namespace RonTests;
 

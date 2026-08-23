@@ -1,5 +1,7 @@
 using CriusNyx.Util;
 
+namespace RonCS.AST;
+
 [Serializable]
 [DebugPrint]
 public class RonBool(bool value = false) : RonElement

@@ -1,3 +1,5 @@
+namespace RonCS;
+
 public class UnknownEnumException<T>(T? value) : Exception
 {
   public override string Message => $"Unexpected enum of type {value}";

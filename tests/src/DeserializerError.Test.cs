@@ -1,5 +1,6 @@
 using CriusNyx.Util;
 using RonCS;
+using RonCS.Exceptions;
 
 namespace RonTests;
 

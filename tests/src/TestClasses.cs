@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Net;
-using System.Numerics;
 using System.Text.RegularExpressions;
-using CriusNyx.Util.Reflection;
+using RonCS;
 
 namespace RonTests;
 
@@ -16,7 +14,7 @@ public class SimpleClass
 
 public class HasValue
 {
-  public object value;
+  public object value = null!;
 }
 
 public class NestedClass

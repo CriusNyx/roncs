@@ -1,6 +1,7 @@
 using CriusNyx.Util;
+using RonCS.Exceptions;
 
-namespace RonCS;
+namespace RonCS.AST;
 
 public class ByteValue(NumberValue inner) : RonElement, NumberValue
 {

@@ -1,7 +1,7 @@
 using CriusNyx.Util;
 using Superpower;
 
-namespace RonCS;
+namespace RonCS.AST;
 
 public interface StringContent
 {

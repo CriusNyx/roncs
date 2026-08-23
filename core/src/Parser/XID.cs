@@ -1,3 +1,5 @@
+namespace RonCS;
+
 public static class XID
 {
   public static (char, char)[] XID_Start =

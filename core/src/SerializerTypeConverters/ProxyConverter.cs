@@ -1,3 +1,5 @@
+using RonCS.AST;
+
 namespace RonCS;
 
 internal class ProxyConverter(Type proxyType, TypeSerializerConverter targetConverter)

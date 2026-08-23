@@ -1,5 +1,7 @@
 using CriusNyx.Util;
 
+namespace RonCS.AST;
+
 interface IIdentifier
 {
   string Value();

@@ -1,4 +1,4 @@
-namespace RonCS;
+namespace RonCS.Exceptions;
 
 public class NoEmptyConstructorException(Type type) : Exception
 {

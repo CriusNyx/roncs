@@ -1,6 +1,8 @@
 using System.Reflection;
 using CriusNyx.Util;
 
+namespace RonCS;
+
 public static class ReflectionExtensions
 {
   public static T? Match<T>(this IEnumerable<T> options, Type?[] types)

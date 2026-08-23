@@ -1,5 +1,7 @@
 using CriusNyx.Util;
 
+namespace RonCS.Exceptions;
+
 public class DeserializationException(params DeserializationExceptionReason[] reasons) : Exception
 {
   public readonly IEnumerable<DeserializationExceptionReason> Reasons = reasons.ToArray();

@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices;
 
+namespace RonCS;
+
 public enum SignKind
 {
   Unsigned = 0,

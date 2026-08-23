@@ -1,3 +1,5 @@
+namespace RonCS;
+
 public static class SetExtensions
 {
   public static bool TryFind<T>(this ISet<T> set, Func<T, bool> predicate, out T result)

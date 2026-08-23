@@ -1,6 +1,6 @@
 using Superpower.Model;
 
-namespace RonCS;
+namespace RonCS.Exceptions;
 
 public class LexerException(Result<TokenList<RonTokenKind>> errorResult) : Exception
 {

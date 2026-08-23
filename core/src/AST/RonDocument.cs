@@ -1,5 +1,7 @@
 using CriusNyx.Util;
 
+namespace RonCS.AST;
+
 [DebugPrint]
 [Serializable]
 public class RonDocument(RonElement? value) : RonElement

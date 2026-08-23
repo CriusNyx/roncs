@@ -1,3 +1,5 @@
+namespace RonCS.AST;
+
 public static class RonBuilder
 {
   public static RonSome Some(RonElement value)

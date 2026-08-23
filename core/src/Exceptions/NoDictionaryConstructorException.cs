@@ -1,4 +1,4 @@
-namespace RonCS;
+namespace RonCS.Exceptions;
 
 public class NoDictionaryConstructorException(Type type) : Exception
 {

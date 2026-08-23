@@ -1,6 +1,8 @@
 using System.Reflection;
 using CriusNyx.Util;
 
+namespace RonCS;
+
 internal class TypeConversionCache
 {
   /// <summary>

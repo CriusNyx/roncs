@@ -1,3 +1,5 @@
+namespace RonCS;
+
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Property)]
 public class RonProxyAttribute(Type proxy) : Attribute
 {

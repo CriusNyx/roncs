@@ -2,6 +2,8 @@ using System.Text.RegularExpressions;
 using CriusNyx.Util;
 using DeepEqual.Syntax;
 using RonCS;
+using RonCS.AST;
+using RonCS.Exceptions;
 using Superpower;
 
 namespace RonTests;

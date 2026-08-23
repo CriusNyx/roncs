@@ -1,11 +1,12 @@
 using CriusNyx.Util;
+using RonCS.AST;
 using Superpower;
 using Superpower.Parsers;
 using MultiParser = Superpower.TokenListParser<
   RonCS.RonTokenKind,
-  System.Collections.Generic.IEnumerable<RonElement>
+  System.Collections.Generic.IEnumerable<RonCS.AST.RonElement>
 >;
-using TParser = Superpower.TokenListParser<RonCS.RonTokenKind, RonElement>;
+using TParser = Superpower.TokenListParser<RonCS.RonTokenKind, RonCS.AST.RonElement>;
 
 namespace RonCS;
 

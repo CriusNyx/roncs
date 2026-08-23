@@ -1,5 +1,6 @@
 using DeepEqual.Syntax;
 using RonCS;
+using RonCS.AST;
 
 namespace RonTests;
 
