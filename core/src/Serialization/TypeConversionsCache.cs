@@ -11,12 +11,24 @@ internal class TypeConversionCache
   private static Dictionary<(Type, Type), Func<object, object>> cache =
     new Dictionary<(Type, Type), Func<object, object>>();
 
+  /// <summary>
+  /// Convert the object to the target type using any known conversion between the two.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <param name="target"></param>
+  /// <returns></returns>
   public static object ConvertTo(object source, Type target)
   {
     // It might be intended that it converts to null.
     return GetConverter(source.GetType(), target)?.Invoke(source)!;
   }
 
+  /// <summary>
+  /// Convert the element to the target type T.
+  /// </summary>
+  /// <typeparam name="T"></typeparam>
+  /// <param name="source"></param>
+  /// <returns></returns>
   public static T ConvertTo<T>(object source)
   {
     // It might be intended that it converts to null.
@@ -93,11 +105,23 @@ internal class TypeConversionCache
 
 public static class TypeConversionExtensions
 {
+  /// <summary>
+  /// Use the RonConvert algorithm to convert the element to the type T.
+  /// </summary>
+  /// <typeparam name="T"></typeparam>
+  /// <param name="source"></param>
+  /// <returns></returns>
   public static T RonConvert<T>(this object source)
   {
     return TypeConversionCache.ConvertTo<T>(source);
   }
 
+  /// <summary>
+  /// Use the RonConvert algorithm to convert the element to the type T.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <param name="targetType"></param>
+  /// <returns></returns>
   public static object RonConvert(this object source, Type targetType)
   {
     return TypeConversionCache.ConvertTo(source, targetType);

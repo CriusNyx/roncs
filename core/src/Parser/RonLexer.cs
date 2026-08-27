@@ -9,6 +9,9 @@ using Superpower.Tokenizers;
 
 namespace RonCS;
 
+/// <summary>
+/// Tokens for the RON language.
+/// </summary>
 public enum RonTokenKind
 {
   // Symbols

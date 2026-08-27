@@ -2,25 +2,39 @@ using CriusNyx.Util;
 
 namespace RonCS.AST;
 
+/// <summary>
+/// A value that has an identifier.
+/// </summary>
 interface IIdentifier
 {
-  string Value();
+  /// <summary>
+  /// The string name of the identifier.
+  /// </summary>
+  /// <returns></returns>
+  string IdentifierName();
 }
 
+/// <summary>
+/// AST element for a ron identifier.
+/// </summary>
+/// <param name="name"></param>
 [DebugPrint]
 [Serializable]
-public class RonIdentifier(string? value = null) : RonElement, IIdentifier
+public class RonIdentifier(string? name = null) : RonElement, IIdentifier
 {
+  /// <summary>
+  /// The name of the identifier.
+  /// </summary>
   [DebugField]
-  public string? Value = value;
+  public string? Name = name;
 
   public override string RonPrint(RonPrintOptions options)
   {
-    return Value ?? "";
+    return Name ?? "";
   }
 
-  string IIdentifier.Value()
+  string IIdentifier.IdentifierName()
   {
-    return Value.NotNull("Value");
+    return Name.NotNull("Value");
   }
 }

@@ -11,8 +11,19 @@ namespace RonCS;
 
 public partial class SerializationContext(SerializationContext? parentContext = null)
 {
+  /// <summary>
+  /// Set of types recognized by this serialization context.
+  /// </summary>
   public readonly HashSet<Type> RonTypes = new();
+
+  /// <summary>
+  /// Proxy types recognized by this serialization context.
+  /// </summary>
   public readonly Dictionary<Type, Type> proxyTypes = new Dictionary<Type, Type>();
+
+  /// <summary>
+  /// The parent serializtion context to inherrit.
+  /// </summary>
   private SerializationContext? parentContext = parentContext;
 
   /// <summary>
@@ -120,7 +131,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     }
     var instance = constructor.Invoke([]);
 
-    foreach (var field in element.Values.NotNull("Values"))
+    foreach (var field in element.Body.NotNull("Values"))
     {
       var fieldResult = DeserializeClassField(field, instance.NotNull(), $"{path}:{typeName}");
       if (fieldResult.IsErr())
@@ -205,7 +216,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     Type?[] inferredArgumentTypes = body.Values.NotNull().Select(InferType).ToArray();
     var constructor = typeHint
       .GetConstructors()
-      .Match(inferredArgumentTypes)
+      .MatchFirst(inferredArgumentTypes)
       .NotNull("constructor");
 
     // Find a constructor which can probably be executed with the provided arguments.
@@ -421,8 +432,8 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       StringValue => typeof(string),
       NumberValue numVal => numVal.CSType(),
       RonDocument doc => InferType(doc.Value.NotNull("doc.value")),
-      RonIdentifier ident => GetTypeFromName(ident.Value, null),
-      RonRawIdentifier ident => GetTypeFromName(ident.value, null),
+      RonIdentifier ident => GetTypeFromName(ident.Name, null),
+      RonRawIdentifier ident => GetTypeFromName(ident.Name, null),
       RonSome some => InferType(some.value!),
       RonRange => typeof(Range),
       RonStruct ronStruct => InferType(ronStruct.Name),

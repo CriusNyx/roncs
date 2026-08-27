@@ -2,6 +2,10 @@ using CriusNyx.Util;
 
 namespace RonCS.AST;
 
+/// <summary>
+/// AST element for a RonBool
+/// </summary>
+/// <param name="value"></param>
 [Serializable]
 [DebugPrint]
 public class RonBool(bool value = false) : RonElement

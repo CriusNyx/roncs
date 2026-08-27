@@ -1,5 +1,9 @@
 namespace RonCS.Exceptions;
 
+/// <summary>
+/// Deserialized object could not be constructed because there is no parameterless constructor.
+/// </summary>
+/// <param name="type"></param>
 public class NoEmptyConstructorException(Type type) : Exception
 {
   public override string Message =>

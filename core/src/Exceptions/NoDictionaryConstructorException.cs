@@ -1,5 +1,9 @@
 namespace RonCS.Exceptions;
 
+/// <summary>
+/// Indicates that the type could not be initialized because it does not have a constructor with a dictionary type argument.
+/// </summary>
+/// <param name="type"></param>
 public class NoDictionaryConstructorException(Type type) : Exception
 {
   public override string Message =>

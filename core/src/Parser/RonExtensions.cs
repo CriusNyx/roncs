@@ -8,6 +8,11 @@ namespace RonCS;
 
 internal static class RonExtensions
 {
+  /// <summary>
+  /// Convert a parse result to a Ron result.
+  /// </summary>
+  /// <param name="tokenizerResult"></param>
+  /// <returns></returns>
   public static Result<RonDocument, Exception> FromParseResult(
     this TokenListParserResult<RonTokenKind, RonDocument> tokenizerResult
   )

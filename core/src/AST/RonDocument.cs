@@ -2,6 +2,10 @@ using CriusNyx.Util;
 
 namespace RonCS.AST;
 
+/// <summary>
+/// AST element for a ron document.
+/// </summary>
+/// <param name="value"></param>
 [DebugPrint]
 [Serializable]
 public class RonDocument(RonElement? value) : RonElement

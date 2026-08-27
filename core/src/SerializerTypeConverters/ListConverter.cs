@@ -3,6 +3,9 @@ using RonCS.AST;
 
 namespace RonCS;
 
+/// <summary>
+/// Type converter for a list.
+/// </summary>
 internal class ListConverter : TypeSerializerConverter
 {
   public RonElement ToAST(SerializationContext context, object source)

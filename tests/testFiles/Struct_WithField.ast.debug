@@ -1,6 +1,6 @@
 RonDocument {
   Value: RonNamedValueStruct {
-    Values: [
+    Body: [
       RonNamedValue {
         name: RonIdentifier {
           Value: "field"

@@ -3,15 +3,34 @@ using Superpower;
 
 namespace RonCS.AST;
 
+/// <summary>
+/// Represents part of a string.
+/// </summary>
 public interface StringContent
 {
+  /// <summary>
+  /// Evaluate the element as a C# string.
+  /// </summary>
+  /// <returns></returns>
   string EvaluateString();
+
+  /// <summary>
+  /// Convert the element to a RON string.
+  /// </summary>
+  /// <returns></returns>
   string Serialize();
 }
 
+/// <summary>
+/// AST element representing a string.
+/// </summary>
+/// <param name="content"></param>
 [DebugPrint]
 public class StringValue(params StringContent[] content) : RonElement
 {
+  /// <summary>
+  /// The content of the RON string.
+  /// </summary>
   [DebugField]
   public StringContent[] content = content;
 
@@ -23,6 +42,10 @@ public class StringValue(params StringContent[] content) : RonElement
   }
 };
 
+/// <summary>
+/// Literal string content.
+/// </summary>
+/// <param name="value"></param>
 [DebugPrint]
 public class StringLit(string value) : StringContent
 {
@@ -40,9 +63,16 @@ public class StringLit(string value) : StringContent
   }
 }
 
+/// <summary>
+/// Unicode escape content.
+/// </summary>
+/// <param name="source"></param>
 [DebugPrint]
 public class UnicodeEscape(string source) : StringContent
 {
+  /// <summary>
+  /// RON source code.
+  /// </summary>
   [DebugField]
   public string source = source;
 
@@ -69,6 +99,10 @@ public class UnicodeEscape(string source) : StringContent
   }
 }
 
+/// <summary>
+/// Raw string.
+/// </summary>
+/// <param name="content"></param>
 [DebugPrint]
 public class StringRawContent(StringContent content) : StringContent
 {
@@ -86,6 +120,10 @@ public class StringRawContent(StringContent content) : StringContent
   }
 }
 
+/// <summary>
+/// Raw string literal.
+/// </summary>
+/// <param name="source"></param>
 [DebugPrint]
 public class StringRawLit(string source) : StringContent
 {

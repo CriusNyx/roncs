@@ -1,20 +1,47 @@
 using CriusNyx.Util;
-using RonCS.AST;
 using RonCS.Exceptions;
 
 namespace RonCS.AST;
 
 public interface NumberValue
 {
+  /// <summary>
+  /// String representing the value of the number.
+  /// Used for C# type conversion.
+  /// </summary>
+  /// <returns></returns>
   public string ValueString();
+
+  /// <summary>
+  /// Convert the value to a number.
+  /// </summary>
+  /// <param name="hint"></param>
+  /// <returns></returns>
   public object EvaluateNumber(Type? hint);
+
+  /// <summary>
+  /// CS type for the element if it is unambiguous.
+  /// </summary>
+  /// <returns></returns>
   public Type? CSType();
 }
 
 #region Unsigned Value
+/// <summary>
+/// Unsigned integer value.
+/// </summary>
+/// <param name="prefix"></param>
+/// <param name="digits"></param>
 public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null) : NumberValue
 {
+  /// <summary>
+  /// Unsigned prefix value.
+  /// </summary>
   public UnsignedPrefix? prefix = prefix;
+
+  /// <summary>
+  /// The digits for the unsigned value.
+  /// </summary>
   public string? digits = digits;
 
   public string ValueString()
@@ -22,6 +49,11 @@ public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null)
     return digits?.ToBase10String(GetBase()) ?? "";
   }
 
+  /// <summary>
+  /// Get the base for the number.
+  /// </summary>
+  /// <returns></returns>
+  /// <exception cref="InvalidOperationException"></exception>
   private int GetBase()
   {
     switch (prefix)
@@ -49,12 +81,19 @@ public class UnsignedValue(UnsignedPrefix? prefix = null, string? digits = null)
     throw RonException.CreateNotImplemented(nameof(CSType));
   }
 
+  /// <summary>
+  /// Convert the number to a Ron string.
+  /// </summary>
+  /// <returns></returns>
   public string Serialize()
   {
     return $"{prefix}{digits}";
   }
 }
 
+/// <summary>
+/// Prefix for unsigned number, indicating the base.
+/// </summary>
 public enum UnsignedPrefix
 {
   binary = 2,
@@ -65,6 +104,9 @@ public enum UnsignedPrefix
 #endregion
 
 #region Integer Value
+/// <summary>
+/// Suffix for an integer, indicating the bit width and sign.
+/// </summary>
 public enum IntegerSuffix
 {
   i8,
@@ -79,14 +121,31 @@ public enum IntegerSuffix
   u128,
 }
 
+/// <summary>
+/// AST element for an integer value.
+/// </summary>
+/// <param name="sign"></param>
+/// <param name="digits"></param>
+/// <param name="integerSuffix"></param>
 public class IntegerValue(
   char? sign = null,
   UnsignedValue? digits = null,
   IntegerSuffix? integerSuffix = null
 ) : RonElement, NumberValue
 {
+  /// <summary>
+  /// Integer sign, is provided.
+  /// </summary>
   public char? sign = sign;
+
+  /// <summary>
+  /// The digits for the number.
+  /// </summary>
   public UnsignedValue? digits = digits;
+
+  /// <summary>
+  /// The suffix for the number.
+  /// </summary>
   public IntegerSuffix? integerSuffix = integerSuffix;
 
   public string ValueString()
@@ -123,32 +182,81 @@ public class IntegerValue(
 #endregion
 
 #region Float Value
+/// <summary>
+/// AST element for a float exponent.
+/// </summary>
+/// <param name="e"></param>
+/// <param name="sign"></param>
+/// <param name="digits"></param>
 public class FloatExponent(char? e, char? sign, string? digits)
 {
+  /// <summary>
+  /// Exponent character if provided
+  /// </summary>
   public char? e = e;
+
+  /// <summary>
+  /// Sign.
+  /// </summary>
   public char? sign = sign;
+
+  /// <summary>
+  /// Digits
+  /// </summary>
   public string? digits = digits;
 
+  /// <summary>
+  /// Get a value string representing the number in C#.
+  /// </summary>
+  /// <returns></returns>
   public string ValueString()
   {
     return $"{e}{sign}{digits}";
   }
 
+  /// <summary>
+  /// Convert the element to a Ron string.
+  /// </summary>
+  /// <returns></returns>
   public string Serialize()
   {
     return $"e{sign}{digits}";
   }
 }
 
+/// <summary>
+/// Base class for differentiating standard and special float numbers.
+/// </summary>
 public abstract class FloatNum
 {
+  /// <summary>
+  /// Get a string representing the value of the element.
+  /// </summary>
+  /// <returns></returns>
   public abstract string ValueString();
+
+  /// <summary>
+  /// Convert the element to a Ron string.
+  /// </summary>
+  /// <returns></returns>
   public abstract string Serialize();
 };
 
+/// <summary>
+/// AST element representing a standard float number.
+/// </summary>
+/// <param name="digits"></param>
+/// <param name="exponent"></param>
 public class StandardFloatNum(string? digits, FloatExponent? exponent) : FloatNum
 {
+  /// <summary>
+  /// The digits of the float, if provided.
+  /// </summary>
   public string? digits = digits;
+
+  /// <summary>
+  /// The exponent of the float, if provided.
+  /// </summary>
   public FloatExponent? exponent = exponent;
 
   public override string ValueString()
@@ -162,14 +270,24 @@ public class StandardFloatNum(string? digits, FloatExponent? exponent) : FloatNu
   }
 }
 
+/// <summary>
+/// Type of a special float.
+/// </summary>
 public enum SpecialFloatNumType
 {
   inf,
   NaN,
 }
 
+/// <summary>
+/// AST element for a special float number.
+/// </summary>
+/// <param name="type"></param>
 public class SpecialFloatNum(SpecialFloatNumType? type) : FloatNum
 {
+  /// <summary>
+  /// The type of the float.
+  /// </summary>
   public SpecialFloatNumType? type = type;
 
   public override string Serialize()
@@ -183,18 +301,38 @@ public class SpecialFloatNum(SpecialFloatNumType? type) : FloatNum
   }
 }
 
+/// <summary>
+/// The suffix of a float, indicating the bit size.
+/// </summary>
 public enum FloatSuffix
 {
   f32,
   f64,
 }
 
+/// <summary>
+/// AST element representing a float value.
+/// </summary>
+/// <param name="sign"></param>
+/// <param name="num"></param>
+/// <param name="suffix"></param>
 public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? suffix = null)
   : RonElement,
     NumberValue
 {
+  /// <summary>
+  /// Sign of the float
+  /// </summary>
   public char? sign = sign;
+
+  /// <summary>
+  /// The number value of the float.
+  /// </summary>
   public FloatNum? num = num;
+
+  /// <summary>
+  /// The suffix of the float.
+  /// </summary>
   public FloatSuffix? suffix = suffix;
 
   public string ValueString()
@@ -202,6 +340,13 @@ public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? su
     return sign + num?.ValueString();
   }
 
+  /// <summary>
+  /// Evaluate the float if it is a special number type.
+  /// </summary>
+  /// <param name="specialNum"></param>
+  /// <param name="hint"></param>
+  /// <returns></returns>
+  /// <exception cref="InvalidOperationException"></exception>
   private object EvaluateSpecialNum(SpecialFloatNum specialNum, Type? hint)
   {
     if (specialNum.type == SpecialFloatNumType.inf)
@@ -243,6 +388,11 @@ public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? su
     throw new InvalidOperationException();
   }
 
+  /// <summary>
+  /// Evaluate the number into a C# type.
+  /// </summary>
+  /// <param name="hint"></param>
+  /// <returns></returns>
   public object EvaluateNumber(Type? hint)
   {
     if (num is SpecialFloatNum specialNum)
@@ -269,6 +419,11 @@ public class FloatValue(char? sign = null, FloatNum? num = null, FloatSuffix? su
 
 public static class NumberValueExtensions
 {
+  /// <summary>
+  /// Get the CS type for the number suffix if it is unambiguous.
+  /// </summary>
+  /// <param name="suffix"></param>
+  /// <returns></returns>
   public static Type? CSType(this IntegerSuffix? suffix)
   {
     return suffix switch
@@ -288,6 +443,11 @@ public static class NumberValueExtensions
     };
   }
 
+  /// <summary>
+  /// Get the C# type if it is unambiguous.
+  /// </summary>
+  /// <param name="suffix"></param>
+  /// <returns></returns>
   public static Type? CSType(this FloatSuffix? suffix)
   {
     return suffix switch

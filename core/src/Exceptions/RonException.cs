@@ -2,6 +2,9 @@ using CriusNyx.Util;
 
 namespace RonCS.Exceptions;
 
+/// <summary>
+/// Base class for ron exceptions.
+/// </summary>
 public static class RonException
 {
   public static NotImplementedException CreateNotImplemented(

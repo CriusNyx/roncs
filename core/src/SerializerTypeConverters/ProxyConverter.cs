@@ -2,6 +2,11 @@ using RonCS.AST;
 
 namespace RonCS;
 
+/// <summary>
+/// Type converter for proxy.
+/// </summary>
+/// <param name="proxyType"></param>
+/// <param name="targetConverter"></param>
 internal class ProxyConverter(Type proxyType, TypeSerializerConverter targetConverter)
   : TypeSerializerConverter
 {

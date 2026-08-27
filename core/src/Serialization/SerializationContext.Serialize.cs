@@ -8,9 +8,19 @@ namespace RonCS;
 
 public partial class SerializationContext
 {
+  /// <summary>
+  /// Memoized converters to use.
+  /// </summary>
   private static Dictionary<Type, TypeSerializerConverter> converterCache =
     new Dictionary<Type, TypeSerializerConverter>();
 
+  /// <summary>
+  /// Convert the object to a Ron AST.
+  /// If field type is provided it will allow for inference for the element.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <param name="fieldType"></param>
+  /// <returns></returns>
   public RonElement ToAST(object? source, Type? fieldType = null)
   {
     if (source is null)
@@ -72,6 +82,12 @@ public partial class SerializationContext
     };
   }
 
+  /// <summary>
+  /// Create a Ron integer element.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <param name="suffix"></param>
+  /// <returns></returns>
   private static IntegerValue CreateIntValue(object source, IntegerSuffix? suffix)
   {
     return new IntegerValue(
@@ -81,6 +97,12 @@ public partial class SerializationContext
     );
   }
 
+  /// <summary>
+  /// Create a Ron float element.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <param name="suffix"></param>
+  /// <returns></returns>
   private static FloatValue CreateFloatValue(object source, FloatSuffix? suffix)
   {
     var asDouble = Convert.ToDouble(source);
@@ -103,6 +125,11 @@ public partial class SerializationContext
     return output;
   }
 
+  /// <summary>
+  /// Determine the shortest round trippable string.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <returns></returns>
   private static string ShortestRound(object source)
   {
     string Solve(string science)

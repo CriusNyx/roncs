@@ -3,6 +3,11 @@ using RonCS.AST;
 
 namespace RonCS;
 
+/// <summary>
+/// Type converter for a member.s
+/// </summary>
+/// <param name="field"></param>
+/// <param name="converter"></param>
 internal class MemberInfoSerializer(MemberInfo field, TypeSerializerConverter? converter)
   : TypeSerializerFieldConverter
 {

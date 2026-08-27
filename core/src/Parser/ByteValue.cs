@@ -3,6 +3,10 @@ using RonCS.Exceptions;
 
 namespace RonCS.AST;
 
+/// <summary>
+/// AST element for a byte value.
+/// </summary>
+/// <param name="inner"></param>
 public class ByteValue(NumberValue inner) : RonElement, NumberValue
 {
   public NumberValue inner = inner;

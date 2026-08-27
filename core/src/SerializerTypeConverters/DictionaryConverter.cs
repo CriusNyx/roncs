@@ -4,6 +4,9 @@ using RonCS.AST;
 
 namespace RonCS;
 
+/// <summary>
+/// Converter for a dictionary type.
+/// </summary>
 internal class DictionaryConverter : TypeSerializerConverter
 {
   public RonElement ToAST(SerializationContext context, object source)

@@ -4,6 +4,11 @@ using RonCS.AST;
 
 namespace RonCS;
 
+/// <summary>
+/// Type converter for a method that returns a tuple.
+/// </summary>
+/// <param name="name"></param>
+/// <param name="method"></param>
 public class TupleMethodConverter(string name, MethodInfo method) : TypeSerializerConverter
 {
   public RonElement ToAST(SerializationContext context, object source)
@@ -18,6 +23,11 @@ public class TupleMethodConverter(string name, MethodInfo method) : TypeSerializ
   }
 }
 
+/// <summary>
+/// Type converter for a property that returns a tuple.
+/// </summary>
+/// <param name="name"></param>
+/// <param name="property"></param>
 public class TuplePropertyConverter(string name, PropertyInfo property) : TypeSerializerConverter
 {
   public RonElement ToAST(SerializationContext context, object source)
@@ -32,6 +42,11 @@ public class TuplePropertyConverter(string name, PropertyInfo property) : TypeSe
   }
 }
 
+/// <summary>
+/// Type converter for a function that returns a tuple.
+/// </summary>
+/// <param name="name"></param>
+/// <param name="converter"></param>
 public class TupleFunctionConverter(string name, Func<object, object[]> converter)
   : TypeSerializerConverter
 {

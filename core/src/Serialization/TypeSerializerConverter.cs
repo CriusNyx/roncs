@@ -6,8 +6,20 @@ namespace RonCS;
 
 public interface TypeSerializerConverter
 {
+  /// <summary>
+  /// Convert the source object to an AST node.
+  /// </summary>
+  /// <param name="context"></param>
+  /// <param name="source"></param>
+  /// <returns></returns>
   public RonElement ToAST(SerializationContext context, object source);
 
+  /// <summary>
+  /// Create a type converter from attributes if possible.
+  /// If no type converter can be created return null.
+  /// </summary>
+  /// <param name="type"></param>
+  /// <returns></returns>
   public static TypeSerializerConverter? CreateTypeConverterFromTypeAttrs(Type type)
   {
     if (type.GetCustomAttribute<RonListAttribute>() is RonListAttribute)
@@ -39,6 +51,11 @@ public interface TypeSerializerConverter
     return null;
   }
 
+  /// <summary>
+  /// Create type converter for a list type if possible. Return null otherwise.
+  /// </summary>
+  /// <param name="type"></param>
+  /// <returns></returns>
   public static TypeSerializerConverter? CreateTypeConverterForList(Type type)
   {
     // Check if it's a native array.
@@ -62,6 +79,11 @@ public interface TypeSerializerConverter
     return null;
   }
 
+  /// <summary>
+  /// Create a type converter for a dictionary type.
+  /// </summary>
+  /// <param name="type"></param>
+  /// <returns></returns>
   public static TypeSerializerConverter? CreateTypeConverterForDictionary(Type type)
   {
     var general = type.MakeGeneral();
@@ -76,6 +98,12 @@ public interface TypeSerializerConverter
     return null;
   }
 
+  /// <summary>
+  /// Create type converter for a type that has fields.
+  /// </summary>
+  /// <param name="type"></param>
+  /// <param name="typeName"></param>
+  /// <returns></returns>
   public static TypeSerializerConverter CreateTypeConverterForTypeWithFields(
     Type type,
     string? typeName
@@ -102,6 +130,11 @@ public interface TypeSerializerConverter
     return new ObjectSerializerConverter(typeName ?? type.Name, list.ToArray());
   }
 
+  /// <summary>
+  /// Create type converter for an object type.
+  /// </summary>
+  /// <param name="type"></param>
+  /// <returns></returns>
   public static TypeSerializerConverter CreateTypeConverterForObjectType(Type type)
   {
     // Create converter from attribute.

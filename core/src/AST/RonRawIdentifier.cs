@@ -2,20 +2,27 @@ using CriusNyx.Util;
 
 namespace RonCS.AST;
 
+/// <summary>
+/// AST element for a raw identifier.
+/// </summary>
+/// <param name="name"></param>
 [DebugPrint]
 [Serializable]
-public class RonRawIdentifier(string? value = null) : RonElement, IIdentifier
+public class RonRawIdentifier(string? name = null) : RonElement, IIdentifier
 {
+  /// <summary>
+  /// The name of the identifier.
+  /// </summary>
   [DebugField]
-  public string? value = value;
+  public string? Name = name;
 
-  public string Value()
+  public string IdentifierName()
   {
-    return value.NotNull("Identifier");
+    return Name.NotNull("Identifier");
   }
 
   public override string RonPrint(RonPrintOptions options)
   {
-    return $"r#{value}";
+    return $"r#{Name}";
   }
 }
