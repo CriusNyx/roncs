@@ -4,14 +4,14 @@ import { Intro } from './examples'
 
 <Intro/>
 
-Ron CS provides a serializer/deserializer for Ron and C#, 
+Ron CS is a serializer/deserializer library for Ron and C#, 
 letting you convert C# objects into Ron files, 
 and Ron files back into C# objects.
 
 Compared to JSON and XML, Ron is more human readable and has built in type names.
 
 For most types that your program uses they can be serialized using `Ron.Serialize(o)` 
-and Deserialized with `Ron.Deserialize<MyType>(o)`.
+and Deserialized with `Ron.Deserialize<MyType>(ronString)`.
 
 <div className='flex flex-col w-full items-center [&>p]:!my-0'>
   <span>For additional features check out the [docs](./docs)</span>

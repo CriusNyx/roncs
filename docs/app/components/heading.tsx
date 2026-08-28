@@ -9,7 +9,7 @@ function headingSlug(children: ReactNode | ReactNode[]): string | undefined {
       .reduce((prev, curr) => `${prev}_${curr}`)
   }
   if (_.isString(children)) {
-    return children.toLowerCase()
+    return children.toLowerCase().replaceAll(/[^a-z*]/g, "")
   }
   return undefined
 }
