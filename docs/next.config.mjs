@@ -1,10 +1,12 @@
 import { remarkCodeHike, recmaCodeHike } from "codehike/mdx"
 import createMDX from "@next/mdx"
+import {visit} from 'unist-util-visit'; 
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions`` to include MDX files
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  output: 'export',
   // Optionally, add any other Next.js config below
 }
 
