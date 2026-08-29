@@ -158,7 +158,7 @@ public static class RonBuilder
   /// </summary>
   /// <param name="value"></param>
   /// <returns></returns>
-  public static RonDocument Ron(RonElement value)
+  public static RonDocument Doc(RonElement value)
   {
     return new RonDocument(value);
   }

@@ -42,10 +42,12 @@ public class DeserializerErrorTests
     string expectedErrorPath
   )
   {
-    var result = Ron.DeserializeResult(ronString, ronType);
-    Assert.That(result.IsErr());
-    var exception = result.UnwrapErr().AsNotNull<DeserializationException>();
-    var reasons = exception.Reasons;
+    Assert.False(Ron.TryDeserialize(ronString, ronType, out var _, out var exception));
+
+    Assert.That(exception, Is.TypeOf<DeserializationException>());
+
+    var deserializationException = exception.AsNotNull<DeserializationException>();
+    var reasons = deserializationException.Reasons;
     var ronPath = reasons.First().ronPath;
     Assert.That(ronPath, Is.EqualTo(expectedErrorPath));
   }

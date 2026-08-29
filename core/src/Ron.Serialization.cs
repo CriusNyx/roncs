@@ -1,5 +1,5 @@
-using CriusNyx.Results;
 using RonCS.AST;
+using RonCS.Exceptions;
 using Superpower;
 using Superpower.Model;
 
@@ -10,42 +10,21 @@ public static partial class Ron
   static SerializationContext globalContext = SerializationContext.CreateGlobalContext();
 
   /// <summary>
-  /// Tokenize the input, returning a result.
+  /// Try to tokenize the input.
+  /// If successful returns the result.
+  /// Otherwise returns the exception.
   /// </summary>
   /// <param name="source"></param>
+  /// <param name="result"></param>
+  /// <param name="exception"></param>
   /// <returns></returns>
-  public static Result<TokenList<RonTokenKind>, Exception> TokenizeResult(string source)
-  {
-    return RonLexer.TokenizeResult(source);
-  }
-
-  /// <summary>
-  /// Parse the input, returning a result.
-  /// </summary>
-  /// <param name="tokenResult"></param>
-  /// <returns></returns>
-  /// <exception cref="NotImplementedException"></exception>
-  public static Result<RonDocument, Exception> ParseResult(
-    Result<TokenList<RonTokenKind>, Exception> tokenResult
+  public static bool TryTokenize(
+    string source,
+    out TokenList<RonTokenKind> result,
+    out Exception exception
   )
   {
-    return tokenResult.AndThen(tokenList =>
-    {
-      return RonParser
-        .Ron.Select(x => x.AsNotNull<RonDocument>())
-        .TryParse(tokenList)
-        .FromParseResult();
-    });
-  }
-
-  /// <summary>
-  /// Parse the input, returning a result.
-  /// </summary>
-  /// <param name="source"></param>
-  /// <returns></returns>
-  public static Result<RonDocument, Exception> ParseResult(string source)
-  {
-    return ParseResult(TokenizeResult(source));
+    return RonLexer.TryTokenize(source, out result, out exception);
   }
 
   /// <summary>
@@ -55,11 +34,14 @@ public static partial class Ron
   /// <returns></returns>
   public static RonDocument Parse(string source)
   {
-    return ParseResult(source)
-      .UnwrapOrElse(x =>
-      {
-        throw x;
-      });
+    if (TryParse(source, out var doc, out var exception))
+    {
+      return doc;
+    }
+    else
+    {
+      throw exception;
+    }
   }
 
   /// <summary>
@@ -83,25 +65,24 @@ public static partial class Ron
   {
     document = null!;
     exception = null!;
-    var result = ParseResult(source);
-    if (result.IsOk())
+
+    if (!TryTokenize(source, out var tokenList, out exception))
     {
-      document = result.Unwrap();
+      return false;
+    }
+
+    var result = RonParser.Ron.Select(x => x.AsNotNull<RonDocument>()).TryParse(tokenList);
+
+    if (result.HasValue)
+    {
+      document = result.Value;
       return true;
     }
-    exception = result.UnwrapErr();
-    return false;
-  }
-
-  /// <summary>
-  /// Deserialize the source as a result.
-  /// </summary>
-  /// <param name="source"></param>
-  /// <param name="hint"></param>
-  /// <returns></returns>
-  public static Result<object?, Exception> DeserializeResult(string source, Type? hint)
-  {
-    return DeserializeResult(ParseResult(source), hint);
+    else
+    {
+      exception = new RonParseException(result);
+      return false;
+    }
   }
 
   /// <summary>
@@ -112,7 +93,11 @@ public static partial class Ron
   /// <returns></returns>
   public static object? Deserialize(string source, Type? hint)
   {
-    return DeserializeResult(source, hint).Unwrap();
+    if (TryDeserialize(source, hint, out var o, out var exception))
+    {
+      return o;
+    }
+    throw exception;
   }
 
   /// <summary>
@@ -144,28 +129,20 @@ public static partial class Ron
   {
     output = null;
     exception = null!;
-    var result = DeserializeResult(source, typeHint);
-    if (result.IsOk())
+
+    if (!TryParse(source, out var doc, out exception))
     {
-      output = result.Unwrap();
+      return false;
+    }
+
+    var result = globalContext.DeserializeElement(doc, typeHint, "");
+    if (result.isSuccess)
+    {
+      output = result.value;
       return true;
     }
-    exception = result.UnwrapErr();
+    exception = result.exception;
     return false;
-  }
-
-  /// <summary>
-  /// Deserialize the ron element.
-  /// </summary>
-  /// <param name="element"></param>
-  /// <param name="typeHint"></param>
-  /// <returns></returns>
-  public static Result<object?, Exception> DeserializeResult(
-    Result<RonDocument, Exception> parseResult,
-    Type? typeHint
-  )
-  {
-    return parseResult.AndThen(doc => globalContext.DeserializeElement(doc, typeHint, ""));
   }
 
   /// <summary>

@@ -19,10 +19,9 @@ public class LexErrorTests
   [TestCaseSource(nameof(InvalidInputReturnsCorrectError_Data))]
   public void InvalidInputReturnsCorrectError(string input)
   {
-    var parsed = Ron.ParseResult(input);
+    Assert.False(Ron.TryParse(input, out var doc, out var exception));
 
-    Assert.That(parsed.IsErr());
-    Assert.That(parsed.UnwrapErr(), Is.TypeOf<LexerException>());
+    Assert.That(exception, Is.TypeOf<LexerException>());
     Assert.Throws<LexerException>(() => Ron.Parse(input));
   }
 }

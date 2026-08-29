@@ -1,5 +1,3 @@
-using CriusNyx.Results;
-using CriusNyx.Results.Extensions;
 using RonCS.Exceptions;
 using Superpower;
 using Superpower.Model;
@@ -129,30 +127,37 @@ public class RonLexer
       )
       .Build();
 
-  public static Result<TokenList<RonTokenKind>, Exception> TokenizeResult(string source)
+  public static bool TryTokenize(
+    string source,
+    out TokenList<RonTokenKind> tokens,
+    out Exception exception
+  )
   {
-    return Tokenizer.TryTokenize(source).FromLexerResult();
+    tokens = default;
+    exception = null!;
+
+    var result = Tokenizer.TryTokenize(source);
+    if (result.HasValue)
+    {
+      tokens = result.Value;
+      return true;
+    }
+    else
+    {
+      exception = new LexerException(result);
+      return false;
+    }
   }
 
   public static TokenList<RonTokenKind> Tokenize(string source)
   {
-    return TokenizeResult(source).Unwrap();
-  }
-}
-
-internal static class LexerExtensions
-{
-  public static Result<TokenList<RonTokenKind>, Exception> FromLexerResult(
-    this Result<TokenList<RonTokenKind>> result
-  )
-  {
-    if (result.HasValue)
+    if (TryTokenize(source, out var list, out var exception))
     {
-      return result.Value.AsOk();
+      return list;
     }
     else
     {
-      return new LexerException(result).AsErr<Exception>();
+      throw exception;
     }
   }
 }

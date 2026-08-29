@@ -20,7 +20,7 @@ public class StringParserTests
   {
     string source = $"\"\\{escaped}\"";
     var expected = new RonDocument(new StringValue([new AsciiEscape(escaped)]));
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     expected.ShouldDeepEqual(parsed);
   }
 
@@ -37,7 +37,7 @@ public class StringParserTests
   {
     string source = $"\"\\x{hex}\"";
     var expected = new RonDocument(new StringValue([new ByteEscape(hex[0], hex[1])]));
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     expected.ShouldDeepEqual(parsed);
   }
 
@@ -46,7 +46,7 @@ public class StringParserTests
   {
     string source = $"\"\"";
     var expected = new RonDocument(new StringValue([]));
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     expected.ShouldDeepEqual(parsed);
   }
 
@@ -57,7 +57,7 @@ public class StringParserTests
   {
     string source = $"\"{content}\"";
     var expected = new RonDocument(new StringValue([new StringLit(content)]));
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     expected.ShouldDeepEqual(parsed);
   }
 
@@ -71,7 +71,7 @@ public class StringParserTests
   {
     string source = $"r\"{content}\"";
     var expected = new RonDocument(new StringValue([new StringRawLit(content)]));
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     expected.ShouldDeepEqual(parsed);
   }
 
@@ -87,7 +87,7 @@ public class StringParserTests
     var expected = new RonDocument(
       new StringValue([new StringRawContent(new StringRawLit(content))])
     );
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     expected.ShouldDeepEqual(parsed);
   }
 
@@ -103,7 +103,7 @@ public class StringParserTests
     var expected = new RonDocument(
       new StringValue([new StringRawContent(new StringRawContent(new StringRawLit(content)))])
     );
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     expected.ShouldDeepEqual(parsed);
   }
 
@@ -124,7 +124,7 @@ public class StringParserTests
   [TestCase("r#\"\\0\"#", "\\0")]
   public void CanDecodeString(string source, string expected)
   {
-    var parsed = RonParser.Ron.Parse(RonLexer.Tokenize(source));
+    var parsed = Ron.Parse(source);
     var stringVal = parsed.As<RonDocument>()?.Value?.As<StringValue>()?.Evaluate();
     Assert.That(stringVal, Is.EqualTo(expected));
   }

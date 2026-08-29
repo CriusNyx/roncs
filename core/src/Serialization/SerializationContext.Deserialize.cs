@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Data;
 using System.Reflection;
-using CriusNyx.Results;
-using CriusNyx.Results.Extensions;
 using RonCS.AST;
 using RonCS.Exceptions;
 
@@ -32,18 +30,18 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <returns></returns>
   /// <exception cref="NotImplementedException"></exception>
-  public Result<object?, Exception> DeserializeElement(
+  public SerializationResult<object?> DeserializeElement(
     RonElement? element,
     Type? typeHint,
     string path
   )
   {
-    Result<object?, Exception> Ok(object? value)
+    SerializationResult<object?> Ok(object? value)
     {
-      return Result.Ok<object?, Exception>(value);
+      return SerializationResult<object?>.Ok(value!);
     }
 
-    Result<object?, Exception> output = element switch
+    SerializationResult<object?> output = element switch
     {
       RonDocument doc => DeserializeElement(doc.Value!, typeHint, path),
       StringValue str => Ok(str.Evaluate()),
@@ -67,7 +65,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       RonTuple tuple => DeserializeTupleClassBody(typeHint.NotNull("typeHint"), tuple, path),
       RonList list => DeserializeList(typeHint.NotNull("typeHint"), list, path),
       RonMap map => DeserializeMap(map, typeHint, path),
-      _ => RonException.CreateNotImplemented(nameof(DeserializeElement)).AsErr<Exception>(),
+      _ => RonException.CreateNotImplemented(nameof(DeserializeElement)).AsErr<object?>(),
     };
     return output.Map(x => ConvertType(x, typeHint!))!;
   }
@@ -78,7 +76,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="unitStruct"></param>
   /// <returns></returns>
-  public Result<object?, Exception> DeserializeUnitClass(Type typeHint, RonUnitStruct unitStruct)
+  public SerializationResult<object?> DeserializeUnitClass(Type typeHint, RonUnitStruct unitStruct)
   {
     if (typeHint.IsEnum)
     {
@@ -104,7 +102,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="enumType"></param>
   /// <param name="identifier"></param>
   /// <returns></returns>
-  public Result<object?, Exception> DeserializeEnum(Type enumType, RonElement identifier)
+  public SerializationResult<object?> DeserializeEnum(Type enumType, RonElement identifier)
   {
     return Enum.Parse(enumType, identifier.IdentifierName().NotNull(nameof(identifier))).AsOk()!;
   }
@@ -115,7 +113,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="element"></param>
   /// <returns></returns>
-  public Result<object?, Exception> DeserializeNamedValueClass(
+  public SerializationResult<object?> DeserializeNamedValueClass(
     Type? typeHint,
     RonNamedValueStruct element,
     string path
@@ -130,10 +128,11 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     }
     var instance = constructor.Invoke([]);
 
+    // TODO: This seems wrong?
     foreach (var field in element.Body.NotNull("Values"))
     {
       var fieldResult = DeserializeClassField(field, instance.NotNull(), $"{path}:{typeName}");
-      if (fieldResult.IsErr())
+      if (!fieldResult.isSuccess)
       {
         return fieldResult;
       }
@@ -148,7 +147,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="element"></param>
   /// <param name="instance"></param>
   /// <returns></returns>
-  public Result<object?, Exception> DeserializeClassField(
+  public SerializationResult<object?> DeserializeClassField(
     RonElement element,
     object instance,
     string path
@@ -163,19 +162,21 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       {
         return new DeserializationException(
           new NoFieldOrPropertyException($"{path}.{fieldName}", type, fieldName)
-        ).AsErr<Exception>();
+        ).AsErr<object?>();
       }
       var fieldValueResult = DeserializeElement(
         namedValue.value.NotNull("namedValue.value"),
         fieldInfo.MemberValueType(),
         $"{path}.{fieldName}"
       );
-      if (fieldValueResult.IsErr())
+
+      // TODO: This seems maybe wrong.
+      if (!fieldValueResult.isSuccess)
       {
         return fieldValueResult;
       }
 
-      fieldInfo.AssignMember(instance, fieldValueResult.Unwrap()!);
+      fieldInfo.AssignMember(instance, fieldValueResult.value!);
     }
     return instance.AsOk()!;
   }
@@ -186,7 +187,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="element"></param>
   /// <returns></returns>
-  public Result<object?, Exception> DeserializeTupleStructClass(
+  public SerializationResult<object?> DeserializeTupleStructClass(
     Type? typeHint,
     RonTupleStruct element,
     string path
@@ -204,7 +205,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="body"></param>
   /// <returns></returns>
-  public Result<object?, Exception> DeserializeTupleClassBody(
+  public SerializationResult<object?> DeserializeTupleClassBody(
     Type typeHint,
     RonTuple body,
     string path
@@ -230,9 +231,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       .Select(x => DeserializeElement(x.right, x.left, path))
       .Collect();
 
-    return argsResult
-      .Map(args => constructor.Invoke(args.ToArray()))
-      .MapErr(err => DeserializationException.FromOthers(err) as Exception)!;
+    return argsResult.Map(args => constructor.Invoke(args.ToArray()))!;
   }
 
   /// <summary>
@@ -241,7 +240,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="list"></param>
   /// <returns></returns>
-  public Result<object?, Exception> DeserializeList(Type? typeHint, RonList list, string path)
+  public SerializationResult<object?> DeserializeList(Type? typeHint, RonList list, string path)
   {
     // Null checking
     typeHint = typeHint.NotNull(nameof(typeHint));
@@ -270,23 +269,21 @@ public partial class SerializationContext(SerializationContext? parentContext = 
 
     // Attempt to initialize the type using an IEnumerable
     // This makes it possible to deserialize Lists and HashSets.
-    return arrayResult
-      .Map(
-        (array) =>
+    return arrayResult.Map(
+      (array) =>
+      {
+        if (
+          typeHint.GetConstructor([typeof(IEnumerable<>).MakeGenericType(listElementType)])
+          is ConstructorInfo cons
+        )
         {
-          if (
-            typeHint.GetConstructor([typeof(IEnumerable<>).MakeGenericType(listElementType)])
-            is ConstructorInfo cons
-          )
-          {
-            return cons.Invoke([array])!;
-          }
-
-          // Return the raw array otherwise.
-          return array;
+          return cons.Invoke([array])!;
         }
-      )
-      .MapErr<Exception>(DeserializationException.FromOthers)!;
+
+        // Return the raw array otherwise.
+        return array;
+      }
+    )!;
   }
 
   /// <summary>
@@ -296,7 +293,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <returns></returns>
   /// <exception cref="NotImplementedException"></exception>
-  public Result<object?, Exception> DeserializeMap(RonMap map, Type? typeHint, string path)
+  public SerializationResult<object?> DeserializeMap(RonMap map, Type? typeHint, string path)
   {
     // Null check
     typeHint = typeHint.NotNull(nameof(typeHint));
@@ -325,20 +322,20 @@ public partial class SerializationContext(SerializationContext? parentContext = 
       {
         var key = mapItem.Key.AsNotNull<StringValue>(nameof(mapItem.Key)).Evaluate();
         var value = DeserializeElement(mapItem.Value, valueType, $"{path}[\"{key}\"]");
-        if (value.IsErr())
+        if (!value.isSuccess)
         {
-          errors.Add(value.UnwrapErr());
+          errors.Add(value.exception);
         }
         else
         {
-          values.Add(key!, value.Unwrap());
+          values.Add(key!, value.value);
         }
       }
     }
 
     if (errors.Count > 0)
     {
-      return DeserializationException.FromOthers(errors).AsErr<Exception>();
+      return DeserializationException.FromOthers(errors).AsErr<object?>();
     }
 
     // Return the elements themselves if they are directly assignable to the output.
@@ -514,5 +511,60 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     {
       context.RegisterType(typeof(object));
     });
+  }
+}
+
+public class SerializationResult<T>
+{
+  public bool isSuccess;
+  public T? value;
+  public Exception exception = null!;
+
+  public static SerializationResult<T> Ok(T? value)
+  {
+    return new SerializationResult<T> { isSuccess = true, value = value };
+  }
+
+  public static SerializationResult<T> Err(Exception exception)
+  {
+    return new SerializationResult<T> { isSuccess = false, exception = exception };
+  }
+}
+
+public static class SerializationExtensions
+{
+  internal static SerializationResult<T> AsOk<T>(this T value) => SerializationResult<T>.Ok(value);
+
+  internal static SerializationResult<T> AsErr<T>(this Exception exception) =>
+    SerializationResult<T>.Err(exception);
+
+  internal static SerializationResult<IEnumerable<T>> Collect<T>(
+    this IEnumerable<SerializationResult<T>> source
+  )
+  {
+    if (source.All(x => x.isSuccess))
+    {
+      return SerializationResult<IEnumerable<T>>.Ok(source.Select(x => x.value)!);
+    }
+    return source
+      .Where(x => !x.isSuccess)
+      .Select(x => x.exception)
+      .Transform(DeserializationException.FromOthers)
+      .AsErr<IEnumerable<T>>();
+  }
+
+  internal static SerializationResult<U> Map<T, U>(
+    this SerializationResult<T> result,
+    Func<T, U> func
+  )
+  {
+    if (result.isSuccess)
+    {
+      return SerializationResult<U>.Ok(func(result.value!));
+    }
+    else
+    {
+      return SerializationResult<U>.Err(result.exception);
+    }
   }
 }

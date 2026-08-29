@@ -1,6 +1,7 @@
 using DeepEqual.Syntax;
 using RonCS;
 using RonCS.AST;
+using RonCS.Exceptions;
 using Superpower;
 using static RonCS.AST.RonBuilder;
 
@@ -269,13 +270,13 @@ public class ASTTests
   [Test]
   public void CanParse_Ron()
   {
-    TestParser("Struct", Ron(UnitStruct("Struct")), RonParser.Ron);
+    TestParser("Struct", Doc(UnitStruct("Struct")), RonParser.Ron);
   }
 
   [Test]
   public void CantParse_Tuple_DoubleTrailingComma()
   {
-    Assert.Throws<ParseException>(() => RonParser.Tuple.Parse(RonLexer.Tokenize("(,,)")));
+    Assert.Throws<RonParseException>(() => Ron.Parse("(,,)"));
   }
 
   [Test]
