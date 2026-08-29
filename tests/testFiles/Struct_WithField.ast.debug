@@ -3,7 +3,7 @@ RonDocument {
     Body: [
       RonNamedValue {
         name: RonIdentifier {
-          Value: "field"
+          Name: "field"
         },
         value: RonBool {
           Value: False

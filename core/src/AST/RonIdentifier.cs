@@ -31,6 +31,6 @@ public class RonIdentifier(string? name = null) : RonElement, IIdentifier
 
   string IIdentifier.IdentifierName()
   {
-    return Name.NotNull("Value");
+    return Name.NotNull("Name");
   }
 }
