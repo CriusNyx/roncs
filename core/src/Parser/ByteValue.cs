@@ -1,4 +1,3 @@
-using CriusNyx.Util;
 using RonCS.Exceptions;
 
 namespace RonCS.AST;
@@ -32,10 +31,8 @@ public class ByteValue(NumberValue inner) : RonElement, NumberValue
   }
 }
 
-[DebugPrint]
 public class AsciiEscape(char source) : StringContent, NumberValue
 {
-  [DebugField]
   public char? source = source;
 
   public Type? CSType()
@@ -78,13 +75,10 @@ public class AsciiEscape(char source) : StringContent, NumberValue
   }
 }
 
-[DebugPrint]
 public class ByteEscape(char left, char right) : StringContent, NumberValue
 {
-  [DebugField]
   public char? left = left;
 
-  [DebugField]
   public char? right = right;
 
   public Type? CSType()

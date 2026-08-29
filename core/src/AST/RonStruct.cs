@@ -1,16 +1,12 @@
-using CriusNyx.Util;
-
 namespace RonCS.AST;
 
 /// <summary>
 /// Base class for struct AST elements.
 /// </summary>
 /// <param name="name"></param>
-[DebugPrint]
 [Serializable]
 public abstract class RonStruct(RonElement? name) : RonElement
 {
-  [DebugField]
   public RonElement? Name { get; set; } = name;
 }
 
@@ -18,7 +14,6 @@ public abstract class RonStruct(RonElement? name) : RonElement
 /// AST element for a ron Unit struct with no body.
 /// </summary>
 /// <param name="name"></param>
-[DebugPrint]
 [Serializable]
 public class RonUnitStruct(RonElement? name) : RonStruct(name)
 {
@@ -33,14 +28,12 @@ public class RonUnitStruct(RonElement? name) : RonStruct(name)
 /// </summary>
 /// <param name="name"></param>
 /// <param name="body"></param>
-[DebugPrint]
 [Serializable]
 public class RonTupleStruct(RonElement? name, RonElement? body) : RonStruct(name)
 {
   /// <summary>
   /// The body of the tuple. This should be a RonTuple.
   /// </summary>
-  [DebugField]
   public RonElement? Body = body;
 
   public override string RonPrint(RonPrintOptions options)
@@ -54,14 +47,12 @@ public class RonTupleStruct(RonElement? name, RonElement? body) : RonStruct(name
 /// </summary>
 /// <param name="name"></param>
 /// <param name="body"></param>
-[DebugPrint]
 [Serializable]
 public class RonNamedValueStruct(RonElement? name, params RonElement[]? body) : RonStruct(name)
 {
   /// <summary>
   /// The body of the named value struct. These should be RonNamedValues.
   /// </summary>
-  [DebugField]
   public RonElement[]? Body = body;
 
   public override string RonPrint(RonPrintOptions options)
@@ -90,14 +81,12 @@ public class RonNamedValueStruct(RonElement? name, params RonElement[]? body) : 
 /// </summary>
 /// <param name="name"></param>
 /// <param name="mapBody"></param>
-[DebugPrint]
 [Serializable]
 public class RonMapStruct(RonElement? name, RonElement? mapBody) : RonStruct(name)
 {
   /// <summary>
   /// Body of the struct map.
   /// </summary>
-  [DebugField]
   public RonElement? MapBody => mapBody;
 
   public override string RonPrint(RonPrintOptions options)

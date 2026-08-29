@@ -1,4 +1,3 @@
-using CriusNyx.Util;
 using Superpower;
 
 namespace RonCS.AST;
@@ -25,13 +24,11 @@ public interface StringContent
 /// AST element representing a string.
 /// </summary>
 /// <param name="content"></param>
-[DebugPrint]
 public class StringValue(params StringContent[] content) : RonElement
 {
   /// <summary>
   /// The content of the RON string.
   /// </summary>
-  [DebugField]
   public StringContent[] content = content;
 
   public string Evaluate() => content.Select(x => x.EvaluateString()).StringJoin();
@@ -46,10 +43,8 @@ public class StringValue(params StringContent[] content) : RonElement
 /// Literal string content.
 /// </summary>
 /// <param name="value"></param>
-[DebugPrint]
 public class StringLit(string value) : StringContent
 {
-  [DebugField]
   public string value = value;
 
   public string EvaluateString()
@@ -67,13 +62,11 @@ public class StringLit(string value) : StringContent
 /// Unicode escape content.
 /// </summary>
 /// <param name="source"></param>
-[DebugPrint]
 public class UnicodeEscape(string source) : StringContent
 {
   /// <summary>
   /// RON source code.
   /// </summary>
-  [DebugField]
   public string source = source;
 
   public string EvaluateString()
@@ -103,10 +96,8 @@ public class UnicodeEscape(string source) : StringContent
 /// Raw string.
 /// </summary>
 /// <param name="content"></param>
-[DebugPrint]
 public class StringRawContent(StringContent content) : StringContent
 {
-  [DebugField]
   public StringContent content = content;
 
   public string EvaluateString()
@@ -124,10 +115,8 @@ public class StringRawContent(StringContent content) : StringContent
 /// Raw string literal.
 /// </summary>
 /// <param name="source"></param>
-[DebugPrint]
 public class StringRawLit(string source) : StringContent
 {
-  [DebugField]
   public string source = source;
 
   public string EvaluateString()

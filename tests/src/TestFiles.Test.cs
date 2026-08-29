@@ -1,11 +1,34 @@
 using System.Reflection;
 using CriusNyx.Util;
 using RonCS;
+using RonCS.AST;
 
 namespace RonTests;
 
 public class TestFileTests
 {
+  [OneTimeSetUp]
+  public static void Setup()
+  {
+    DebugPrint.RegisterCustomType<RonDocument>(x => ["Value".With(x.Value)!]);
+
+    DebugPrint.RegisterCustomType<RonUnitStruct>(x => []);
+    DebugPrint.RegisterCustomType<RonTupleStruct>(x => ["Body".With(x.Body)!]);
+    DebugPrint.RegisterCustomType<RonMapStruct>(x => ["MapBody".With(x.MapBody)!]);
+    DebugPrint.RegisterCustomType<RonNamedValueStruct>(x => ["Body".With(x.Body)!]);
+
+    DebugPrint.RegisterCustomType<RonTuple>(x => ["Values".With(x.Values)!]);
+    DebugPrint.RegisterCustomType<RonMap>(x => ["Values".With(x.Values)!]);
+
+    DebugPrint.RegisterCustomType<RonIdentifier>(x => ["Name".With(x.Name)!]);
+    DebugPrint.RegisterCustomType<RonMapItem>(x => ["Key".With(x.Key)!, "Value".With(x.Value)!]);
+    DebugPrint.RegisterCustomType<RonNamedValue>(x =>
+      ["name".With(x.name)!, "value".With(x.value)!]
+    );
+
+    DebugPrint.RegisterCustomType<RonBool>(x => ["Value".With(x.Value)]);
+  }
+
   [DatapointSource]
   public IEnumerable<string> filePaths
   {

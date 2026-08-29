@@ -1,12 +1,9 @@
-using CriusNyx.Util;
-
 namespace RonCS.AST;
 
 /// <summary>
 /// AST element for a Ron map
 /// </summary>
 /// <param name="values"></param>
-[DebugPrint]
 [Serializable]
 public class RonMap(params RonElement[]? values) : RonElement
 {
@@ -14,7 +11,6 @@ public class RonMap(params RonElement[]? values) : RonElement
   /// Values in the ron map.
   /// If these are correct they should be map items.
   /// </summary>
-  [DebugField]
   public RonElement[]? Values = values;
 
   public override string RonPrint(RonPrintOptions options)

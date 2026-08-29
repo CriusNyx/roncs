@@ -1,18 +1,14 @@
-using CriusNyx.Util;
-
 namespace RonCS.AST;
 
 /// <summary>
 /// AST element for a ron list.
 /// </summary>
 /// <param name="values"></param>
-[DebugPrint]
 public class RonList(params RonElement[]? values) : RonElement
 {
   /// <summary>
   /// The values in the ron list.
   /// </summary>
-  [DebugField]
   public readonly RonElement[]? Values = values;
 
   public override string RonPrint(RonPrintOptions options)

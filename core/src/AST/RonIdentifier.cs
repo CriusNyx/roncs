@@ -1,5 +1,3 @@
-using CriusNyx.Util;
-
 namespace RonCS.AST;
 
 /// <summary>
@@ -18,14 +16,12 @@ interface IIdentifier
 /// AST element for a ron identifier.
 /// </summary>
 /// <param name="name"></param>
-[DebugPrint]
 [Serializable]
 public class RonIdentifier(string? name = null) : RonElement, IIdentifier
 {
   /// <summary>
   /// The name of the identifier.
   /// </summary>
-  [DebugField]
   public string? Name = name;
 
   public override string RonPrint(RonPrintOptions options)

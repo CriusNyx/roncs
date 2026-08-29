@@ -1,5 +1,3 @@
-using CriusNyx.Util;
-
 namespace RonCS.AST;
 
 /// <summary>
@@ -17,7 +15,6 @@ public enum RonRangeOperator
 /// <param name="lower"></param>
 /// <param name="op"></param>
 /// <param name="upper"></param>
-[DebugPrint]
 public class RonRange(
   RonElement? lower = null,
   RonRangeOperator? op = null,
@@ -27,19 +24,16 @@ public class RonRange(
   /// <summary>
   /// The lower value of the range.
   /// </summary>
-  [DebugField]
   public RonElement? lower = lower;
 
   /// <summary>
   /// The operator of the range.
   /// </summary>
-  [DebugField]
   public RonRangeOperator? op = op;
 
   /// <summary>
   /// The upper value of the range.
   /// </summary>
-  [DebugField]
   public RonElement? upper = upper;
 
   public override string RonPrint(RonPrintOptions options)

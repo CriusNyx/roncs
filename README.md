@@ -5,38 +5,19 @@
 Consider copying the EBNF file directrly for already implemented parsers instead
 of trying to be clever.
 
-- [?] Extension Parser
-  - [ ] Push parser extensions to Superpower
-  - [ ] I'm not sure what this means
-- [x] String Parser
-  - [x] Tests
-- [x] Check Char Lexer
-  - [x] Tests
-- [x] ByteString Lexer
-- [x] Numeric Lexers
-  - [x] Int
-  - [x] Float
-  - [x] Unsigned
-  - [x] Byte
-- [x] Boolean Parser
-- [x] Optional Parser
-- [x] Range Parser
-- [x] List Parser
-- [x] Struct Parser
-- [x] Enum (N/A for C#) Parser
-- [x] Identifier Parser
-- [ ] Add trivia (problem for another time)
+- [ ] Add trivia for round tripping (problem for another time)
 - [ ] Fuzz Test
 
 ## AST Printer
 
-- [ ] Implement AST Printer CLI
+- [x] Implement AST Printer CLI
 
 ## Serializer/Deserializer
 
 - [x] Implement Serializer
 - [x] Implement Prototype Deserializer
-- [ ] Implement Property Deserializer
+  - [ ] Optimize deserializer
+- [x] Implement Property Deserializer
 
 ## Serializer/Deserializer Attributes
 
@@ -47,8 +28,13 @@ of trying to be clever.
 - [ ] Specify Ron type coercion
 - [ ] Attribute to control serialization of fields
 - [x] RonProxy Attribute
-- [ ] RonField
+- [n/a] RonField
+  - [x] RonInclude/RonExclude
 - [x] RonList Attribute
 - [x] RonDict Attribute
-- [ ] RonProperty (what for?)
+- [x] RonMap Attribute
 - [ ] Implement circular serialization check
+
+## Other Goals
+
+- [ ] Remove dependencies

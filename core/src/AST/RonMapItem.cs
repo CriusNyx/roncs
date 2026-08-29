@@ -1,5 +1,3 @@
-using CriusNyx.Util;
-
 namespace RonCS.AST;
 
 /// <summary>
@@ -8,20 +6,17 @@ namespace RonCS.AST;
 /// </summary>
 /// <param name="key"></param>
 /// <param name="value"></param>
-[DebugPrint]
 [Serializable]
 public class RonMapItem(RonElement? key, RonElement? value) : RonElement
 {
   /// <summary>
   /// The key for the map item.
   /// </summary>
-  [DebugField]
   public RonElement? Key = key;
 
   /// <summary>
   /// The value of the map item.
   /// </summary>
-  [DebugField]
   public RonElement? Value = value;
 
   public override string RonPrint(RonPrintOptions options)
