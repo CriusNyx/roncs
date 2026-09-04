@@ -1,0 +1,1407 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.AST.RonParser
+  commentId: T:RonCS.AST.RonParser
+  id: RonParser
+  parent: RonCS.AST
+  children:
+  - RonCS.AST.RonParser.Boolean
+  - RonCS.AST.RonParser.Char
+  - RonCS.AST.RonParser.Identifier
+  - RonCS.AST.RonParser.List
+  - RonCS.AST.RonParser.Map
+  - RonCS.AST.RonParser.MapItem
+  - RonCS.AST.RonParser.MapItemSet
+  - RonCS.AST.RonParser.MapStruct
+  - RonCS.AST.RonParser.NameFieldStruct
+  - RonCS.AST.RonParser.NamedValue
+  - RonCS.AST.RonParser.NamedValueSet
+  - RonCS.AST.RonParser.None
+  - RonCS.AST.RonParser.Number
+  - RonCS.AST.RonParser.Option
+  - RonCS.AST.RonParser.Primitive
+  - RonCS.AST.RonParser.Range
+  - RonCS.AST.RonParser.RangeBinary
+  - RonCS.AST.RonParser.RangeFrom
+  - RonCS.AST.RonParser.RangeFull
+  - RonCS.AST.RonParser.RangeOperator
+  - RonCS.AST.RonParser.RangeOperatorExclusive
+  - RonCS.AST.RonParser.RangeTo
+  - RonCS.AST.RonParser.Ron
+  - RonCS.AST.RonParser.Some
+  - RonCS.AST.RonParser.String
+  - RonCS.AST.RonParser.Struct
+  - RonCS.AST.RonParser.Tuple
+  - RonCS.AST.RonParser.TupleStruct
+  - RonCS.AST.RonParser.UnitStruct
+  - RonCS.AST.RonParser.Value
+  - RonCS.AST.RonParser.ValueSet
+  langs:
+  - csharp
+  - vb
+  name: RonParser
+  nameWithType: RonParser
+  fullName: RonCS.AST.RonParser
+  type: Class
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RonParser
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 14
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Parser for ron documents
+  example: []
+  syntax:
+    content: public static class RonParser
+    content.vb: Public Module RonParser
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: RonCS.AST.RonParser.Identifier
+  commentId: F:RonCS.AST.RonParser.Identifier
+  id: Identifier
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Identifier
+  nameWithType: RonParser.Identifier
+  fullName: RonCS.AST.RonParser.Identifier
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Identifier
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 19
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Identifier = identifier | rawIdentifier;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Identifier
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Identifier As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Value
+  commentId: F:RonCS.AST.RonParser.Value
+  id: Value
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: RonParser.Value
+  fullName: RonCS.AST.RonParser.Value
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Value
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 33
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Value = Option | Tuple | Struct | Map | Primitive
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Value
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Value As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Some
+  commentId: F:RonCS.AST.RonParser.Some
+  id: Some
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Some
+  nameWithType: RonParser.Some
+  fullName: RonCS.AST.RonParser.Some
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Some
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 50
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Some = 'Some' '(' Value ')';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Some
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Some As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.None
+  commentId: F:RonCS.AST.RonParser.None
+  id: None
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: RonParser.None
+  fullName: RonCS.AST.RonParser.None
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: None
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 58
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: None = 'None';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> None
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared None As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Option
+  commentId: F:RonCS.AST.RonParser.Option
+  id: Option
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Option
+  nameWithType: RonParser.Option
+  fullName: RonCS.AST.RonParser.Option
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Option
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 65
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Option = Some | None;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Option
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared [Option] As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.ValueSet
+  commentId: F:RonCS.AST.RonParser.ValueSet
+  id: ValueSet
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: ValueSet
+  nameWithType: RonParser.ValueSet
+  fullName: RonCS.AST.RonParser.ValueSet
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ValueSet
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 71
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: ValueSet = Value { Value ',' } [',']
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, IEnumerable<RonElement>> ValueSet
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,System.Collections.Generic.IEnumerable{RonCS.AST.RonElement}}
+    content.vb: Public Shared ValueSet As TokenListParser(Of RonTokenKind, IEnumerable(Of RonElement))
+- uid: RonCS.AST.RonParser.NamedValue
+  commentId: F:RonCS.AST.RonParser.NamedValue
+  id: NamedValue
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: NamedValue
+  nameWithType: RonParser.NamedValue
+  fullName: RonCS.AST.RonParser.NamedValue
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NamedValue
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 79
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: NamedValue = Identifier ':' Value
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> NamedValue
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared NamedValue As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.NamedValueSet
+  commentId: F:RonCS.AST.RonParser.NamedValueSet
+  id: NamedValueSet
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: NamedValueSet
+  nameWithType: RonParser.NamedValueSet
+  fullName: RonCS.AST.RonParser.NamedValueSet
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NamedValueSet
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 88
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: NamedValueSet = NamedValue { ',' NamedValue } [',']
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, IEnumerable<RonElement>> NamedValueSet
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,System.Collections.Generic.IEnumerable{RonCS.AST.RonElement}}
+    content.vb: Public Shared NamedValueSet As TokenListParser(Of RonTokenKind, IEnumerable(Of RonElement))
+- uid: RonCS.AST.RonParser.MapItem
+  commentId: F:RonCS.AST.RonParser.MapItem
+  id: MapItem
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: MapItem
+  nameWithType: RonParser.MapItem
+  fullName: RonCS.AST.RonParser.MapItem
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: MapItem
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 96
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: MapItem = Value ':' Value;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> MapItem
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared MapItem As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.MapItemSet
+  commentId: F:RonCS.AST.RonParser.MapItemSet
+  id: MapItemSet
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: MapItemSet
+  nameWithType: RonParser.MapItemSet
+  fullName: RonCS.AST.RonParser.MapItemSet
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: MapItemSet
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 105
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: MapItemSet = { MapItem } [','];
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, IEnumerable<RonElement>> MapItemSet
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,System.Collections.Generic.IEnumerable{RonCS.AST.RonElement}}
+    content.vb: Public Shared MapItemSet As TokenListParser(Of RonTokenKind, IEnumerable(Of RonElement))
+- uid: RonCS.AST.RonParser.Map
+  commentId: F:RonCS.AST.RonParser.Map
+  id: Map
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Map
+  nameWithType: RonParser.Map
+  fullName: RonCS.AST.RonParser.Map
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Map
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 113
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: RonMap
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Map
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Map As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.List
+  commentId: F:RonCS.AST.RonParser.List
+  id: List
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: List
+  nameWithType: RonParser.List
+  fullName: RonCS.AST.RonParser.List
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: List
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 120
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: RonList
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> List
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared List As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Tuple
+  commentId: F:RonCS.AST.RonParser.Tuple
+  id: Tuple
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Tuple
+  nameWithType: RonParser.Tuple
+  fullName: RonCS.AST.RonParser.Tuple
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Tuple
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 128
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Tuple = '(' [ValueSet] ')';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Tuple
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Tuple As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.TupleStruct
+  commentId: F:RonCS.AST.RonParser.TupleStruct
+  id: TupleStruct
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: TupleStruct
+  nameWithType: RonParser.TupleStruct
+  fullName: RonCS.AST.RonParser.TupleStruct
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: TupleStruct
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 135
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: TupleStruct = Identifier Tuple;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> TupleStruct
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared TupleStruct As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.NameFieldStruct
+  commentId: F:RonCS.AST.RonParser.NameFieldStruct
+  id: NameFieldStruct
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: NameFieldStruct
+  nameWithType: RonParser.NameFieldStruct
+  fullName: RonCS.AST.RonParser.NameFieldStruct
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NameFieldStruct
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 143
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: NamedFieldStruct = Identifier '(' [NamedValueSet] ')';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> NameFieldStruct
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared NameFieldStruct As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.MapStruct
+  commentId: F:RonCS.AST.RonParser.MapStruct
+  id: MapStruct
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: MapStruct
+  nameWithType: RonParser.MapStruct
+  fullName: RonCS.AST.RonParser.MapStruct
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: MapStruct
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 152
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: >-
+    Summary
+
+    MapStruct = Identifier Map
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> MapStruct
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared MapStruct As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.UnitStruct
+  commentId: F:RonCS.AST.RonParser.UnitStruct
+  id: UnitStruct
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: UnitStruct
+  nameWithType: RonParser.UnitStruct
+  fullName: RonCS.AST.RonParser.UnitStruct
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: UnitStruct
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 160
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: UnitStruct = Identifier;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> UnitStruct
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared UnitStruct As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Struct
+  commentId: F:RonCS.AST.RonParser.Struct
+  id: Struct
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Struct
+  nameWithType: RonParser.Struct
+  fullName: RonCS.AST.RonParser.Struct
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Struct
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 167
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Struct = TupleStruct | NamedFieldStruct | UnitStruct;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Struct
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Struct As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Boolean
+  commentId: F:RonCS.AST.RonParser.Boolean
+  id: Boolean
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Boolean
+  nameWithType: RonParser.Boolean
+  fullName: RonCS.AST.RonParser.Boolean
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Boolean
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 178
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Boolean = 'true' | 'false';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Boolean
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared [Boolean] As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Number
+  commentId: F:RonCS.AST.RonParser.Number
+  id: Number
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Number
+  nameWithType: RonParser.Number
+  fullName: RonCS.AST.RonParser.Number
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Number
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 186
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Number = Integer;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Number
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Number As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.RangeOperatorExclusive
+  commentId: F:RonCS.AST.RonParser.RangeOperatorExclusive
+  id: RangeOperatorExclusive
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: RangeOperatorExclusive
+  nameWithType: RonParser.RangeOperatorExclusive
+  fullName: RonCS.AST.RonParser.RangeOperatorExclusive
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeOperatorExclusive
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 195
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Ron range operator
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonRangeOperator> RangeOperatorExclusive
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonRangeOperator}
+    content.vb: Public Shared RangeOperatorExclusive As TokenListParser(Of RonTokenKind, RonRangeOperator)
+- uid: RonCS.AST.RonParser.RangeOperator
+  commentId: F:RonCS.AST.RonParser.RangeOperator
+  id: RangeOperator
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: RangeOperator
+  nameWithType: RonParser.RangeOperator
+  fullName: RonCS.AST.RonParser.RangeOperator
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeOperator
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 202
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: RangeOperator = '..' | '..=';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonRangeOperator> RangeOperator
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonRangeOperator}
+    content.vb: Public Shared RangeOperator As TokenListParser(Of RonTokenKind, RonRangeOperator)
+- uid: RonCS.AST.RonParser.RangeBinary
+  commentId: F:RonCS.AST.RonParser.RangeBinary
+  id: RangeBinary
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: RangeBinary
+  nameWithType: RonParser.RangeBinary
+  fullName: RonCS.AST.RonParser.RangeBinary
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeBinary
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 210
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: RangeBinary = Number RangeOperator Number;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> RangeBinary
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared RangeBinary As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.RangeFrom
+  commentId: F:RonCS.AST.RonParser.RangeFrom
+  id: RangeFrom
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: RangeFrom
+  nameWithType: RonParser.RangeFrom
+  fullName: RonCS.AST.RonParser.RangeFrom
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeFrom
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 219
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: RangeFrom = Number '..';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> RangeFrom
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared RangeFrom As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.RangeTo
+  commentId: F:RonCS.AST.RonParser.RangeTo
+  id: RangeTo
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: RangeTo
+  nameWithType: RonParser.RangeTo
+  fullName: RonCS.AST.RonParser.RangeTo
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeTo
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 227
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: RangeTo = RangeOperator Number;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> RangeTo
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared RangeTo As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.RangeFull
+  commentId: F:RonCS.AST.RonParser.RangeFull
+  id: RangeFull
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: RangeFull
+  nameWithType: RonParser.RangeFull
+  fullName: RonCS.AST.RonParser.RangeFull
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeFull
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 235
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: RangeFull = '..';
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> RangeFull
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared RangeFull As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Range
+  commentId: F:RonCS.AST.RonParser.Range
+  id: Range
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Range
+  nameWithType: RonParser.Range
+  fullName: RonCS.AST.RonParser.Range
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Range
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 242
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Range = RangeBinary | RangeFrom | RangeTo | RangeFull;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Range
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Range As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.String
+  commentId: F:RonCS.AST.RonParser.String
+  id: String
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: RonParser.String
+  fullName: RonCS.AST.RonParser.String
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: String
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 252
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: String parser
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> String
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared [String] As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Char
+  commentId: F:RonCS.AST.RonParser.Char
+  id: Char
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Char
+  nameWithType: RonParser.Char
+  fullName: RonCS.AST.RonParser.Char
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Char
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 259
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Character parser
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Char
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared [Char] As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Primitive
+  commentId: F:RonCS.AST.RonParser.Primitive
+  id: Primitive
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Primitive
+  nameWithType: RonParser.Primitive
+  fullName: RonCS.AST.RonParser.Primitive
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Primitive
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 267
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Primitive = Boolean;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Primitive
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Primitive As TokenListParser(Of RonTokenKind, RonElement)
+- uid: RonCS.AST.RonParser.Ron
+  commentId: F:RonCS.AST.RonParser.Ron
+  id: Ron
+  parent: RonCS.AST.RonParser
+  langs:
+  - csharp
+  - vb
+  name: Ron
+  nameWithType: RonParser.Ron
+  fullName: RonCS.AST.RonParser.Ron
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonParser.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Ron
+    path: ../core/src/Parser/RonParser.cs
+    startLine: 278
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Ron = Extensions Value;
+  example: []
+  syntax:
+    content: public static TokenListParser<RonTokenKind, RonElement> Ron
+    return:
+      type: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+    content.vb: Public Shared Ron As TokenListParser(Of RonTokenKind, RonElement)
+references:
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+  commentId: T:Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonElement}
+  parent: Superpower
+  definition: Superpower.TokenListParser`2
+  href: RonCS.AST.RonTokenKind.html
+  name: TokenListParser<RonTokenKind, RonElement>
+  nameWithType: TokenListParser<RonTokenKind, RonElement>
+  fullName: Superpower.TokenListParser<RonCS.AST.RonTokenKind, RonCS.AST.RonElement>
+  nameWithType.vb: TokenListParser(Of RonTokenKind, RonElement)
+  fullName.vb: Superpower.TokenListParser(Of RonCS.AST.RonTokenKind, RonCS.AST.RonElement)
+  name.vb: TokenListParser(Of RonTokenKind, RonElement)
+  spec.csharp:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: <
+  - uid: RonCS.AST.RonTokenKind
+    name: RonTokenKind
+    href: RonCS.AST.RonTokenKind.html
+  - name: ','
+  - name: " "
+  - uid: RonCS.AST.RonElement
+    name: RonElement
+    href: RonCS.AST.RonElement.html
+  - name: '>'
+  spec.vb:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RonCS.AST.RonTokenKind
+    name: RonTokenKind
+    href: RonCS.AST.RonTokenKind.html
+  - name: ','
+  - name: " "
+  - uid: RonCS.AST.RonElement
+    name: RonElement
+    href: RonCS.AST.RonElement.html
+  - name: )
+- uid: Superpower.TokenListParser`2
+  commentId: T:Superpower.TokenListParser`2
+  isExternal: true
+  name: TokenListParser<TKind, T>
+  nameWithType: TokenListParser<TKind, T>
+  fullName: Superpower.TokenListParser<TKind, T>
+  nameWithType.vb: TokenListParser(Of TKind, T)
+  fullName.vb: Superpower.TokenListParser(Of TKind, T)
+  name.vb: TokenListParser(Of TKind, T)
+  spec.csharp:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: <
+  - name: TKind
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKind
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: Superpower
+  commentId: N:Superpower
+  isExternal: true
+  name: Superpower
+  nameWithType: Superpower
+  fullName: Superpower
+- uid: Superpower.TokenListParser{RonCS.AST.RonTokenKind,System.Collections.Generic.IEnumerable{RonCS.AST.RonElement}}
+  commentId: T:Superpower.TokenListParser{RonCS.AST.RonTokenKind,System.Collections.Generic.IEnumerable{RonCS.AST.RonElement}}
+  parent: Superpower
+  definition: Superpower.TokenListParser`2
+  href: RonCS.AST.RonTokenKind.html
+  name: TokenListParser<RonTokenKind, IEnumerable<RonElement>>
+  nameWithType: TokenListParser<RonTokenKind, IEnumerable<RonElement>>
+  fullName: Superpower.TokenListParser<RonCS.AST.RonTokenKind, System.Collections.Generic.IEnumerable<RonCS.AST.RonElement>>
+  nameWithType.vb: TokenListParser(Of RonTokenKind, IEnumerable(Of RonElement))
+  fullName.vb: Superpower.TokenListParser(Of RonCS.AST.RonTokenKind, System.Collections.Generic.IEnumerable(Of RonCS.AST.RonElement))
+  name.vb: TokenListParser(Of RonTokenKind, IEnumerable(Of RonElement))
+  spec.csharp:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: <
+  - uid: RonCS.AST.RonTokenKind
+    name: RonTokenKind
+    href: RonCS.AST.RonTokenKind.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: RonCS.AST.RonElement
+    name: RonElement
+    href: RonCS.AST.RonElement.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RonCS.AST.RonTokenKind
+    name: RonTokenKind
+    href: RonCS.AST.RonTokenKind.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RonCS.AST.RonElement
+    name: RonElement
+    href: RonCS.AST.RonElement.html
+  - name: )
+  - name: )
+- uid: Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonRangeOperator}
+  commentId: T:Superpower.TokenListParser{RonCS.AST.RonTokenKind,RonCS.AST.RonRangeOperator}
+  parent: Superpower
+  definition: Superpower.TokenListParser`2
+  href: RonCS.AST.RonTokenKind.html
+  name: TokenListParser<RonTokenKind, RonRangeOperator>
+  nameWithType: TokenListParser<RonTokenKind, RonRangeOperator>
+  fullName: Superpower.TokenListParser<RonCS.AST.RonTokenKind, RonCS.AST.RonRangeOperator>
+  nameWithType.vb: TokenListParser(Of RonTokenKind, RonRangeOperator)
+  fullName.vb: Superpower.TokenListParser(Of RonCS.AST.RonTokenKind, RonCS.AST.RonRangeOperator)
+  name.vb: TokenListParser(Of RonTokenKind, RonRangeOperator)
+  spec.csharp:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: <
+  - uid: RonCS.AST.RonTokenKind
+    name: RonTokenKind
+    href: RonCS.AST.RonTokenKind.html
+  - name: ','
+  - name: " "
+  - uid: RonCS.AST.RonRangeOperator
+    name: RonRangeOperator
+    href: RonCS.AST.RonRangeOperator.html
+  - name: '>'
+  spec.vb:
+  - uid: Superpower.TokenListParser`2
+    name: TokenListParser
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RonCS.AST.RonTokenKind
+    name: RonTokenKind
+    href: RonCS.AST.RonTokenKind.html
+  - name: ','
+  - name: " "
+  - uid: RonCS.AST.RonRangeOperator
+    name: RonRangeOperator
+    href: RonCS.AST.RonRangeOperator.html
+  - name: )

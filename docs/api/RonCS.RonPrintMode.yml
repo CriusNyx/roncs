@@ -1,0 +1,274 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.RonPrintMode
+  commentId: T:RonCS.RonPrintMode
+  id: RonPrintMode
+  parent: RonCS
+  children:
+  - RonCS.RonPrintMode.Compact
+  - RonCS.RonPrintMode.Pretty
+  langs:
+  - csharp
+  - vb
+  name: RonPrintMode
+  nameWithType: RonPrintMode
+  fullName: RonCS.RonPrintMode
+  type: Enum
+  source:
+    remote:
+      path: core/src/Serialization/RonPrintOptions.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RonPrintMode
+    path: ../core/src/Serialization/RonPrintOptions.cs
+    startLine: 5
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: The print mode to use for Ron printing.
+  example: []
+  syntax:
+    content: public enum RonPrintMode
+    content.vb: Public Enum RonPrintMode
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.RonPrintMode.Compact
+  commentId: F:RonCS.RonPrintMode.Compact
+  id: Compact
+  parent: RonCS.RonPrintMode
+  langs:
+  - csharp
+  - vb
+  name: Compact
+  nameWithType: RonPrintMode.Compact
+  fullName: RonCS.RonPrintMode.Compact
+  type: Field
+  source:
+    remote:
+      path: core/src/Serialization/RonPrintOptions.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Compact
+    path: ../core/src/Serialization/RonPrintOptions.cs
+    startLine: 10
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: The most compact ron string possible.
+  example: []
+  syntax:
+    content: Compact = 0
+    return:
+      type: RonCS.RonPrintMode
+- uid: RonCS.RonPrintMode.Pretty
+  commentId: F:RonCS.RonPrintMode.Pretty
+  id: Pretty
+  parent: RonCS.RonPrintMode
+  langs:
+  - csharp
+  - vb
+  name: Pretty
+  nameWithType: RonPrintMode.Pretty
+  fullName: RonCS.RonPrintMode.Pretty
+  type: Field
+  source:
+    remote:
+      path: core/src/Serialization/RonPrintOptions.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Pretty
+    path: ../core/src/Serialization/RonPrintOptions.cs
+    startLine: 15
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Format ron with new lines and indent.
+  example: []
+  syntax:
+    content: Pretty = 1
+    return:
+      type: RonCS.RonPrintMode
+references:
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.RonPrintMode
+  commentId: T:RonCS.RonPrintMode
+  parent: RonCS
+  href: RonCS.RonPrintMode.html
+  name: RonPrintMode
+  nameWithType: RonPrintMode
+  fullName: RonCS.RonPrintMode

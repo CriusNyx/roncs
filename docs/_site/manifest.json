@@ -1,0 +1,1222 @@
+{
+  "source_base_path": "/home/rjr/Projects/dotnet/roncs/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.FloatSuffix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.FloatSuffix.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.FloatSuffix",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.FloatSuffix.yml\" sourcestartlinenumber=\"1\">The suffix of a float, indicating the bit size.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.INumberValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.INumberValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.INumberValue",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.INumberValue.yml\" sourcestartlinenumber=\"1\">Common interface for all number AST nodes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.IntegerSuffix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.IntegerSuffix.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.IntegerSuffix",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.IntegerSuffix.yml\" sourcestartlinenumber=\"1\">Suffix for an integer, indicating the bit width and sign.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.NumberParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.NumberParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.NumberParser",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.NumberParser.yml\" sourcestartlinenumber=\"1\">Ron parser for numbers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonAsciiEscape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonAsciiEscape.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonAsciiEscape",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonAsciiEscape.yml\" sourcestartlinenumber=\"1\">AST element for an ascii escape character.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonAsciiLiteral.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonAsciiLiteral.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonAsciiLiteral",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonAsciiLiteral.yml\" sourcestartlinenumber=\"1\">AST element for an ascii literal character.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonBool.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonBool",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonBool.yml\" sourcestartlinenumber=\"1\">AST element for a RonBool</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonBuilder",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonBuilder.yml\" sourcestartlinenumber=\"1\">Builder for RON AST's</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonByte.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonByte.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonByte",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonByte.yml\" sourcestartlinenumber=\"1\">AST element for a byte value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonByteEscape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonByteEscape.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonByteEscape",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonByteEscape.yml\" sourcestartlinenumber=\"1\">AST element for a byte escape character.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonChar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonChar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonChar",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonChar.yml\" sourcestartlinenumber=\"1\">AST element for a RonChar.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonDocument.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonDocument",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonDocument.yml\" sourcestartlinenumber=\"1\">AST element for a ron document.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonElement.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonElement",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonElement.yml\" sourcestartlinenumber=\"1\">Parent class for a ron element.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonElementExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonElementExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonElementExtensions",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonElementExtensions.yml\" sourcestartlinenumber=\"1\">Ron element extensions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonExponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonExponent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonExponent",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonExponent.yml\" sourcestartlinenumber=\"1\">AST element for a float exponent.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonFloat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonFloat",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonFloat.yml\" sourcestartlinenumber=\"1\">AST element representing a float value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonFloatNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonFloatNumber.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonFloatNumber",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonFloatNumber.yml\" sourcestartlinenumber=\"1\">Base class for differentiating standard and special float numbers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonIdentifier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonIdentifier",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonIdentifier.yml\" sourcestartlinenumber=\"1\">AST element for a ron identifier.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonInteger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonInteger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonInteger",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonInteger.yml\" sourcestartlinenumber=\"1\">AST element for an integer value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonLexer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonLexer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonLexer",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonLexer.yml\" sourcestartlinenumber=\"1\">Base class for ron tokenizer</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonList.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonList",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonList.yml\" sourcestartlinenumber=\"1\">AST element for a ron list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonMap.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonMap",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonMap.yml\" sourcestartlinenumber=\"1\">AST element for a Ron map</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonMapItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonMapItem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonMapItem",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonMapItem.yml\" sourcestartlinenumber=\"1\">AST element for an element in a ron map.\nIn most cases key should be a ron string.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonMapStruct.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonMapStruct.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonMapStruct",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonMapStruct.yml\" sourcestartlinenumber=\"1\">AST element for a ron map struct.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonNamedValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonNamedValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonNamedValue",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonNamedValue.yml\" sourcestartlinenumber=\"1\">AST element for a ron named value. These are typically body elements for a ron struct.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonNamedValueStruct.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonNamedValueStruct.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonNamedValueStruct",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonNamedValueStruct.yml\" sourcestartlinenumber=\"1\">AST element for a ron struct with named values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonNone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonNone.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonNone",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonNone.yml\" sourcestartlinenumber=\"1\">AST element representing a ron none.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonParser",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonParser.yml\" sourcestartlinenumber=\"1\">Parser for ron documents</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonRange",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonRange.yml\" sourcestartlinenumber=\"1\">AST element for a Ron range.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonRangeOperator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonRangeOperator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonRangeOperator",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonRangeOperator.yml\" sourcestartlinenumber=\"1\">The ron element operator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonRawIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonRawIdentifier.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonRawIdentifier",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonRawIdentifier.yml\" sourcestartlinenumber=\"1\">AST element for a raw identifier.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonSome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonSome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonSome",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonSome.yml\" sourcestartlinenumber=\"1\">AST element for a ron some.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonSpecialFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonSpecialFloat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonSpecialFloat",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonSpecialFloat.yml\" sourcestartlinenumber=\"1\">AST element for a special float number.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonStandardFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonStandardFloat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonStandardFloat",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonStandardFloat.yml\" sourcestartlinenumber=\"1\">AST element representing a standard float number.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonString.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonString",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonString.yml\" sourcestartlinenumber=\"1\">AST element representing a string.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonStringLit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonStringLit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonStringLit",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonStringLit.yml\" sourcestartlinenumber=\"1\">Literal string content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonStringRawContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonStringRawContent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonStringRawContent",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonStringRawContent.yml\" sourcestartlinenumber=\"1\">Raw string.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonStringRawLit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonStringRawLit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonStringRawLit",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonStringRawLit.yml\" sourcestartlinenumber=\"1\">Raw string literal.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonStruct.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonStruct.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonStruct",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonStruct.yml\" sourcestartlinenumber=\"1\">Base class for struct AST elements.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonTokenKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonTokenKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonTokenKind",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonTokenKind.yml\" sourcestartlinenumber=\"1\">Tokens for the RON language.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonTuple.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonTuple.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonTuple",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonTuple.yml\" sourcestartlinenumber=\"1\">AST element for a Ron tuple.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonTupleStruct.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonTupleStruct.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonTupleStruct",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonTupleStruct.yml\" sourcestartlinenumber=\"1\">AST element for a struct with a tuple body.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonUnicodeEscape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonUnicodeEscape.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonUnicodeEscape",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonUnicodeEscape.yml\" sourcestartlinenumber=\"1\">Unicode escape content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonUnitStruct.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonUnitStruct.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonUnitStruct",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonUnitStruct.yml\" sourcestartlinenumber=\"1\">AST element for a ron Unit struct with no body.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.RonUnsigned.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.RonUnsigned.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.RonUnsigned",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.RonUnsigned.yml\" sourcestartlinenumber=\"1\">Unsigned integer value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.SpecialFloatType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.SpecialFloatType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.SpecialFloatType",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.SpecialFloatType.yml\" sourcestartlinenumber=\"1\">Type of a special float.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.StringContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.StringContent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.StringContent",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.StringContent.yml\" sourcestartlinenumber=\"1\">Represents part of a string.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.StringParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.StringParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.StringParser",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.StringParser.yml\" sourcestartlinenumber=\"1\">Parser for Ron strings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.UnsignedPrefix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.UnsignedPrefix.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST.UnsignedPrefix",
+      "Summary": "<p sourcefile=\"api/RonCS.AST.UnsignedPrefix.yml\" sourcestartlinenumber=\"1\">Prefix for unsigned number, indicating the base.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.AST.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.AST.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.AST",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Converters.TupleFunctionConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Converters.TupleFunctionConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Converters.TupleFunctionConverter",
+      "Summary": "<p sourcefile=\"api/RonCS.Converters.TupleFunctionConverter.yml\" sourcestartlinenumber=\"1\">Type converter for a function that returns a tuple.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Converters.TupleMethodConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Converters.TupleMethodConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Converters.TupleMethodConverter",
+      "Summary": "<p sourcefile=\"api/RonCS.Converters.TupleMethodConverter.yml\" sourcestartlinenumber=\"1\">Type converter for a method that returns a tuple.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Converters.TuplePropertyConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Converters.TuplePropertyConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Converters.TuplePropertyConverter",
+      "Summary": "<p sourcefile=\"api/RonCS.Converters.TuplePropertyConverter.yml\" sourcestartlinenumber=\"1\">Type converter for a property that returns a tuple.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Converters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Converters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.DeserializationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.DeserializationException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.DeserializationException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.DeserializationException.yml\" sourcestartlinenumber=\"1\">Ron document failed to deserialize.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.DeserializationExceptionReason.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.DeserializationExceptionReason.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.DeserializationExceptionReason",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.DeserializationExceptionReason.yml\" sourcestartlinenumber=\"1\">Reason why a document failed to deserialize.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.LexerException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.LexerException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.LexerException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.LexerException.yml\" sourcestartlinenumber=\"1\">Ron document failed to be lexed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.NoDictionaryConstructorException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.NoDictionaryConstructorException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.NoDictionaryConstructorException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.NoDictionaryConstructorException.yml\" sourcestartlinenumber=\"1\">Indicates that the type could not be initialized because it does not have a constructor with a dictionary type argument.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.NoEmptyConstructorException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.NoEmptyConstructorException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.NoEmptyConstructorException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.NoEmptyConstructorException.yml\" sourcestartlinenumber=\"1\">Deserialized object could not be constructed because there is no parameterless constructor.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.NoFieldOrPropertyException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.NoFieldOrPropertyException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.NoFieldOrPropertyException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.NoFieldOrPropertyException.yml\" sourcestartlinenumber=\"1\">Indicates that a document failed to deserialize because the source type does not have the specified field.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.NotImplementedForArgumentTypeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.NotImplementedForArgumentTypeException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.NotImplementedForArgumentTypeException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.NotImplementedForArgumentTypeException.yml\" sourcestartlinenumber=\"1\">Could not call the specified method because it does not exist on the type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.RonException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.RonException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.RonException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.RonException.yml\" sourcestartlinenumber=\"1\">Base class for ron exceptions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.RonParseException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.RonParseException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.RonParseException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.RonParseException.yml\" sourcestartlinenumber=\"1\">Ron document failed to be parsed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.UnknownEnumException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.UnknownEnumException-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.UnknownEnumException<T>",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.UnknownEnumException-1.yml\" sourcestartlinenumber=\"1\">Exception for when an enum case was unknown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.UnknownEnumException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.UnknownEnumException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions.UnknownEnumException",
+      "Summary": "<p sourcefile=\"api/RonCS.Exceptions.UnknownEnumException.yml\" sourcestartlinenumber=\"1\">Exception for when an enum case was unknown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.Ron.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.Ron.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.Ron",
+      "Summary": "<p sourcefile=\"api/RonCS.Ron.yml\" sourcestartlinenumber=\"1\">Ron Serialization/Deserialization API.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonExcludeAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonExcludeAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonExcludeAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonExcludeAttribute.yml\" sourcestartlinenumber=\"1\">Field should not be serialized in a ron document.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonFromAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonFromAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonFromAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonFromAttribute.yml\" sourcestartlinenumber=\"1\">Marks a method as a candidate for RonFrom conversion when Serializing or Deserializing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonIncludeAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonIncludeAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonIncludeAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonIncludeAttribute.yml\" sourcestartlinenumber=\"1\">Element should always be serialized, regardless of visibility.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonIntoAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonIntoAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonIntoAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonIntoAttribute.yml\" sourcestartlinenumber=\"1\">Indicates that method can be used for ron auto conversion.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonListAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonListAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonListAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonListAttribute.yml\" sourcestartlinenumber=\"1\">Marks a class or field as a list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonMapAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonMapAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonMapAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonMapAttribute.yml\" sourcestartlinenumber=\"1\">Marks a class or field as a ron map.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonPrintMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonPrintMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonPrintMode",
+      "Summary": "<p sourcefile=\"api/RonCS.RonPrintMode.yml\" sourcestartlinenumber=\"1\">The print mode to use for Ron printing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonPrintOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonPrintOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonPrintOptions",
+      "Summary": "<p sourcefile=\"api/RonCS.RonPrintOptions.yml\" sourcestartlinenumber=\"1\">Ron print options.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonProxyAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonProxyAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonProxyAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonProxyAttribute.yml\" sourcestartlinenumber=\"1\">Indicates that a class should be converted to or from the proxy type for serialization.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.RonTupleAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.RonTupleAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.RonTupleAttribute",
+      "Summary": "<p sourcefile=\"api/RonCS.RonTupleAttribute.yml\" sourcestartlinenumber=\"1\">Marks a method that should be used to serialize the element as a ron tuple.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.SerializationContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.SerializationContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.SerializationContext",
+      "Summary": "<p sourcefile=\"api/RonCS.SerializationContext.yml\" sourcestartlinenumber=\"1\">Context for serializing ron elements.\nCustom overrides for Ron are stored in the local or global serialization context.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.TypeConversionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.TypeConversionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.TypeConversionExtensions",
+      "Summary": "<p sourcefile=\"api/RonCS.TypeConversionExtensions.yml\" sourcestartlinenumber=\"1\">Extension methods for converting ron objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.TypeSerializerConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.TypeSerializerConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS.TypeSerializerConverter",
+      "Summary": "<p sourcefile=\"api/RonCS.TypeSerializerConverter.yml\" sourcestartlinenumber=\"1\">Base interface for serialization converters. Serialization converters convert C# objects into Ron AST nodes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/RonCS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RonCS.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "RonCS",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

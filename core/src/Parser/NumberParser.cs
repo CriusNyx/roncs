@@ -266,7 +266,12 @@ public static class NumberParser
     return source.Value(null as object)!;
   }
 
-  internal static string ToPrefixString(this UnsignedPrefix? prefix)
+  /// <summary>
+  /// Do not use.
+  /// </summary>
+  /// <param name="prefix"></param>
+  /// <returns></returns>
+  public static string ToPrefixString(this UnsignedPrefix? prefix)
   {
     switch (prefix)
     {

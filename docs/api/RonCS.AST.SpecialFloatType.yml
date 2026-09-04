@@ -1,0 +1,296 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.AST.SpecialFloatType
+  commentId: T:RonCS.AST.SpecialFloatType
+  id: SpecialFloatType
+  parent: RonCS.AST
+  children:
+  - RonCS.AST.SpecialFloatType.NaN
+  - RonCS.AST.SpecialFloatType.inf
+  langs:
+  - csharp
+  - vb
+  name: SpecialFloatType
+  nameWithType: SpecialFloatType
+  fullName: RonCS.AST.SpecialFloatType
+  type: Enum
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonSpecialFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: SpecialFloatType
+    path: ../core/src/AST/Numbers/RonSpecialFloat.cs
+    startLine: 5
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Type of a special float.
+  example: []
+  syntax:
+    content: public enum SpecialFloatType
+    content.vb: Public Enum SpecialFloatType
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.AST.SpecialFloatType.inf
+  commentId: F:RonCS.AST.SpecialFloatType.inf
+  id: inf
+  parent: RonCS.AST.SpecialFloatType
+  langs:
+  - csharp
+  - vb
+  name: inf
+  nameWithType: SpecialFloatType.inf
+  fullName: RonCS.AST.SpecialFloatType.inf
+  type: Field
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonSpecialFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: inf
+    path: ../core/src/AST/Numbers/RonSpecialFloat.cs
+    startLine: 10
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Infinity
+  example: []
+  syntax:
+    content: inf = 0
+    return:
+      type: RonCS.AST.SpecialFloatType
+- uid: RonCS.AST.SpecialFloatType.NaN
+  commentId: F:RonCS.AST.SpecialFloatType.NaN
+  id: NaN
+  parent: RonCS.AST.SpecialFloatType
+  langs:
+  - csharp
+  - vb
+  name: NaN
+  nameWithType: SpecialFloatType.NaN
+  fullName: RonCS.AST.SpecialFloatType.NaN
+  type: Field
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonSpecialFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NaN
+    path: ../core/src/AST/Numbers/RonSpecialFloat.cs
+    startLine: 15
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Not a number
+  example: []
+  syntax:
+    content: NaN = 1
+    return:
+      type: RonCS.AST.SpecialFloatType
+references:
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: RonCS.AST.SpecialFloatType
+  commentId: T:RonCS.AST.SpecialFloatType
+  parent: RonCS.AST
+  href: RonCS.AST.SpecialFloatType.html
+  name: SpecialFloatType
+  nameWithType: SpecialFloatType
+  fullName: RonCS.AST.SpecialFloatType

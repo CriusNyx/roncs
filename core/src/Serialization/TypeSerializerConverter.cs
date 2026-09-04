@@ -3,7 +3,7 @@ using System.Reflection;
 using RonCS.AST;
 using RonCS.Converters;
 
-namespace RonCS;
+namespace RonCS.Converters;
 
 /// <summary>
 /// Base interface for serialization converters. Serialization converters convert C# objects into Ron AST nodes.

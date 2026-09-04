@@ -1,0 +1,610 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.Exceptions.NoFieldOrPropertyException
+  commentId: T:RonCS.Exceptions.NoFieldOrPropertyException
+  id: NoFieldOrPropertyException
+  parent: RonCS.Exceptions
+  children:
+  - RonCS.Exceptions.NoFieldOrPropertyException.#ctor(System.String,System.Type,System.String)
+  - RonCS.Exceptions.NoFieldOrPropertyException.Message
+  langs:
+  - csharp
+  - vb
+  name: NoFieldOrPropertyException
+  nameWithType: NoFieldOrPropertyException
+  fullName: RonCS.Exceptions.NoFieldOrPropertyException
+  type: Class
+  source:
+    remote:
+      path: core/src/Exceptions/DeserializationException.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NoFieldOrPropertyException
+    path: ../core/src/Exceptions/DeserializationException.cs
+    startLine: 49
+  assemblies:
+  - RonCS
+  namespace: RonCS.Exceptions
+  summary: Indicates that a document failed to deserialize because the source type does not have the specified field.
+  example: []
+  syntax:
+    content: 'public class NoFieldOrPropertyException : DeserializationExceptionReason'
+    content.vb: Public Class NoFieldOrPropertyException Inherits DeserializationExceptionReason
+  inheritance:
+  - System.Object
+  - RonCS.Exceptions.DeserializationExceptionReason
+  inheritedMembers:
+  - RonCS.Exceptions.DeserializationExceptionReason.ronPath
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.Exceptions.NoFieldOrPropertyException.#ctor(System.String,System.Type,System.String)
+  commentId: M:RonCS.Exceptions.NoFieldOrPropertyException.#ctor(System.String,System.Type,System.String)
+  id: '#ctor(System.String,System.Type,System.String)'
+  parent: RonCS.Exceptions.NoFieldOrPropertyException
+  langs:
+  - csharp
+  - vb
+  name: NoFieldOrPropertyException(string, Type, string)
+  nameWithType: NoFieldOrPropertyException.NoFieldOrPropertyException(string, Type, string)
+  fullName: RonCS.Exceptions.NoFieldOrPropertyException.NoFieldOrPropertyException(string, System.Type, string)
+  type: Constructor
+  source:
+    remote:
+      path: core/src/Exceptions/DeserializationException.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: .ctor
+    path: ../core/src/Exceptions/DeserializationException.cs
+    startLine: 49
+  assemblies:
+  - RonCS
+  namespace: RonCS.Exceptions
+  summary: Indicates that a document failed to deserialize because the source type does not have the specified field.
+  example: []
+  syntax:
+    content: public NoFieldOrPropertyException(string ronPath, Type deserializedType, string fieldName)
+    parameters:
+    - id: ronPath
+      type: System.String
+      description: ''
+    - id: deserializedType
+      type: System.Type
+      description: ''
+    - id: fieldName
+      type: System.String
+      description: ''
+    content.vb: Public Sub New(ronPath As String, deserializedType As Type, fieldName As String)
+  overload: RonCS.Exceptions.NoFieldOrPropertyException.#ctor*
+  nameWithType.vb: NoFieldOrPropertyException.New(String, Type, String)
+  fullName.vb: RonCS.Exceptions.NoFieldOrPropertyException.New(String, System.Type, String)
+  name.vb: New(String, Type, String)
+- uid: RonCS.Exceptions.NoFieldOrPropertyException.Message
+  commentId: P:RonCS.Exceptions.NoFieldOrPropertyException.Message
+  id: Message
+  parent: RonCS.Exceptions.NoFieldOrPropertyException
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: NoFieldOrPropertyException.Message
+  fullName: RonCS.Exceptions.NoFieldOrPropertyException.Message
+  type: Property
+  source:
+    remote:
+      path: core/src/Exceptions/DeserializationException.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Message
+    path: ../core/src/Exceptions/DeserializationException.cs
+    startLine: 53
+  assemblies:
+  - RonCS
+  namespace: RonCS.Exceptions
+  summary: Reason message.
+  example: []
+  syntax:
+    content: public override string Message { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Overrides ReadOnly Property Message As String
+  overridden: RonCS.Exceptions.DeserializationExceptionReason.Message
+  overload: RonCS.Exceptions.NoFieldOrPropertyException.Message*
+references:
+- uid: RonCS.Exceptions
+  commentId: N:RonCS.Exceptions
+  href: RonCS.html
+  name: RonCS.Exceptions
+  nameWithType: RonCS.Exceptions
+  fullName: RonCS.Exceptions
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.Exceptions
+    name: Exceptions
+    href: RonCS.Exceptions.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.Exceptions
+    name: Exceptions
+    href: RonCS.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: RonCS.Exceptions.DeserializationExceptionReason
+  commentId: T:RonCS.Exceptions.DeserializationExceptionReason
+  parent: RonCS.Exceptions
+  href: RonCS.Exceptions.DeserializationExceptionReason.html
+  name: DeserializationExceptionReason
+  nameWithType: DeserializationExceptionReason
+  fullName: RonCS.Exceptions.DeserializationExceptionReason
+- uid: RonCS.Exceptions.DeserializationExceptionReason.ronPath
+  commentId: F:RonCS.Exceptions.DeserializationExceptionReason.ronPath
+  parent: RonCS.Exceptions.DeserializationExceptionReason
+  href: RonCS.Exceptions.DeserializationExceptionReason.html#RonCS_Exceptions_DeserializationExceptionReason_ronPath
+  name: ronPath
+  nameWithType: DeserializationExceptionReason.ronPath
+  fullName: RonCS.Exceptions.DeserializationExceptionReason.ronPath
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: RonCS.Exceptions.NoFieldOrPropertyException.#ctor*
+  commentId: Overload:RonCS.Exceptions.NoFieldOrPropertyException.#ctor
+  href: RonCS.Exceptions.NoFieldOrPropertyException.html#RonCS_Exceptions_NoFieldOrPropertyException__ctor_System_String_System_Type_System_String_
+  name: NoFieldOrPropertyException
+  nameWithType: NoFieldOrPropertyException.NoFieldOrPropertyException
+  fullName: RonCS.Exceptions.NoFieldOrPropertyException.NoFieldOrPropertyException
+  nameWithType.vb: NoFieldOrPropertyException.New
+  fullName.vb: RonCS.Exceptions.NoFieldOrPropertyException.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: RonCS.Exceptions.DeserializationExceptionReason.Message
+  commentId: P:RonCS.Exceptions.DeserializationExceptionReason.Message
+  parent: RonCS.Exceptions.DeserializationExceptionReason
+  href: RonCS.Exceptions.DeserializationExceptionReason.html#RonCS_Exceptions_DeserializationExceptionReason_Message
+  name: Message
+  nameWithType: DeserializationExceptionReason.Message
+  fullName: RonCS.Exceptions.DeserializationExceptionReason.Message
+- uid: RonCS.Exceptions.NoFieldOrPropertyException.Message*
+  commentId: Overload:RonCS.Exceptions.NoFieldOrPropertyException.Message
+  href: RonCS.Exceptions.NoFieldOrPropertyException.html#RonCS_Exceptions_NoFieldOrPropertyException_Message
+  name: Message
+  nameWithType: NoFieldOrPropertyException.Message
+  fullName: RonCS.Exceptions.NoFieldOrPropertyException.Message

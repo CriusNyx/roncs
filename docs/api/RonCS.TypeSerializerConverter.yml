@@ -1,0 +1,560 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.TypeSerializerConverter
+  commentId: T:RonCS.TypeSerializerConverter
+  id: TypeSerializerConverter
+  parent: RonCS
+  children:
+  - RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary(System.Type)
+  - RonCS.TypeSerializerConverter.CreateTypeConverterForList(System.Type)
+  - RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType(System.Type)
+  - RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields(System.Type,System.String)
+  - RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs(System.Type)
+  - RonCS.TypeSerializerConverter.ToAST(RonCS.SerializationContext,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: TypeSerializerConverter
+  nameWithType: TypeSerializerConverter
+  fullName: RonCS.TypeSerializerConverter
+  type: Interface
+  source:
+    remote:
+      path: core/src/Serialization/TypeSerializerConverter.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: TypeSerializerConverter
+    path: ../core/src/Serialization/TypeSerializerConverter.cs
+    startLine: 10
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Base interface for serialization converters. Serialization converters convert C# objects into Ron AST nodes.
+  example: []
+  syntax:
+    content: public interface TypeSerializerConverter
+    content.vb: Public Interface TypeSerializerConverter
+  derivedClasses:
+  - RonCS.Converters.TupleFunctionConverter
+  - RonCS.Converters.TupleMethodConverter
+  - RonCS.Converters.TuplePropertyConverter
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.TypeSerializerConverter.ToAST(RonCS.SerializationContext,System.Object)
+  commentId: M:RonCS.TypeSerializerConverter.ToAST(RonCS.SerializationContext,System.Object)
+  id: ToAST(RonCS.SerializationContext,System.Object)
+  parent: RonCS.TypeSerializerConverter
+  langs:
+  - csharp
+  - vb
+  name: ToAST(SerializationContext, object)
+  nameWithType: TypeSerializerConverter.ToAST(SerializationContext, object)
+  fullName: RonCS.TypeSerializerConverter.ToAST(RonCS.SerializationContext, object)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/TypeSerializerConverter.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ToAST
+    path: ../core/src/Serialization/TypeSerializerConverter.cs
+    startLine: 18
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Convert the source object to an AST node.
+  example: []
+  syntax:
+    content: RonElement ToAST(SerializationContext context, object source)
+    parameters:
+    - id: context
+      type: RonCS.SerializationContext
+      description: ''
+    - id: source
+      type: System.Object
+      description: ''
+    return:
+      type: RonCS.AST.RonElement
+      description: ''
+    content.vb: Function ToAST(context As SerializationContext, source As Object) As RonElement
+  overload: RonCS.TypeSerializerConverter.ToAST*
+  nameWithType.vb: TypeSerializerConverter.ToAST(SerializationContext, Object)
+  fullName.vb: RonCS.TypeSerializerConverter.ToAST(RonCS.SerializationContext, Object)
+  name.vb: ToAST(SerializationContext, Object)
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs(System.Type)
+  commentId: M:RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs(System.Type)
+  id: CreateTypeConverterFromTypeAttrs(System.Type)
+  parent: RonCS.TypeSerializerConverter
+  langs:
+  - csharp
+  - vb
+  name: CreateTypeConverterFromTypeAttrs(Type)
+  nameWithType: TypeSerializerConverter.CreateTypeConverterFromTypeAttrs(Type)
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs(System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/TypeSerializerConverter.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: CreateTypeConverterFromTypeAttrs
+    path: ../core/src/Serialization/TypeSerializerConverter.cs
+    startLine: 26
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: >-
+    Create a type converter from attributes if possible.
+
+    If no type converter can be created return null.
+  example: []
+  syntax:
+    content: public static TypeSerializerConverter? CreateTypeConverterFromTypeAttrs(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: RonCS.TypeSerializerConverter
+      description: ''
+    content.vb: Public Shared Function CreateTypeConverterFromTypeAttrs(type As Type) As TypeSerializerConverter
+  overload: RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs*
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForList(System.Type)
+  commentId: M:RonCS.TypeSerializerConverter.CreateTypeConverterForList(System.Type)
+  id: CreateTypeConverterForList(System.Type)
+  parent: RonCS.TypeSerializerConverter
+  langs:
+  - csharp
+  - vb
+  name: CreateTypeConverterForList(Type)
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForList(Type)
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForList(System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/TypeSerializerConverter.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: CreateTypeConverterForList
+    path: ../core/src/Serialization/TypeSerializerConverter.cs
+    startLine: 62
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Create type converter for a list type if possible. Return null otherwise.
+  example: []
+  syntax:
+    content: public static TypeSerializerConverter? CreateTypeConverterForList(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: RonCS.TypeSerializerConverter
+      description: ''
+    content.vb: Public Shared Function CreateTypeConverterForList(type As Type) As TypeSerializerConverter
+  overload: RonCS.TypeSerializerConverter.CreateTypeConverterForList*
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary(System.Type)
+  commentId: M:RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary(System.Type)
+  id: CreateTypeConverterForDictionary(System.Type)
+  parent: RonCS.TypeSerializerConverter
+  langs:
+  - csharp
+  - vb
+  name: CreateTypeConverterForDictionary(Type)
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForDictionary(Type)
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary(System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/TypeSerializerConverter.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: CreateTypeConverterForDictionary
+    path: ../core/src/Serialization/TypeSerializerConverter.cs
+    startLine: 90
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Create a type converter for a dictionary type.
+  example: []
+  syntax:
+    content: public static TypeSerializerConverter? CreateTypeConverterForDictionary(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: RonCS.TypeSerializerConverter
+      description: ''
+    content.vb: Public Shared Function CreateTypeConverterForDictionary(type As Type) As TypeSerializerConverter
+  overload: RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary*
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields(System.Type,System.String)
+  commentId: M:RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields(System.Type,System.String)
+  id: CreateTypeConverterForTypeWithFields(System.Type,System.String)
+  parent: RonCS.TypeSerializerConverter
+  langs:
+  - csharp
+  - vb
+  name: CreateTypeConverterForTypeWithFields(Type, string?)
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForTypeWithFields(Type, string?)
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields(System.Type, string?)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/TypeSerializerConverter.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: CreateTypeConverterForTypeWithFields
+    path: ../core/src/Serialization/TypeSerializerConverter.cs
+    startLine: 110
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Create type converter for a type that has fields.
+  example: []
+  syntax:
+    content: public static TypeSerializerConverter CreateTypeConverterForTypeWithFields(Type type, string? typeName)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    - id: typeName
+      type: System.String
+      description: ''
+    return:
+      type: RonCS.TypeSerializerConverter
+      description: ''
+    content.vb: Public Shared Function CreateTypeConverterForTypeWithFields(type As Type, typeName As String) As TypeSerializerConverter
+  overload: RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields*
+  nameWithType.vb: TypeSerializerConverter.CreateTypeConverterForTypeWithFields(Type, String)
+  fullName.vb: RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields(System.Type, String)
+  name.vb: CreateTypeConverterForTypeWithFields(Type, String)
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType(System.Type)
+  commentId: M:RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType(System.Type)
+  id: CreateTypeConverterForObjectType(System.Type)
+  parent: RonCS.TypeSerializerConverter
+  langs:
+  - csharp
+  - vb
+  name: CreateTypeConverterForObjectType(Type)
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForObjectType(Type)
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType(System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/TypeSerializerConverter.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: CreateTypeConverterForObjectType
+    path: ../core/src/Serialization/TypeSerializerConverter.cs
+    startLine: 141
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Create type converter for an object type.
+  example: []
+  syntax:
+    content: public static TypeSerializerConverter CreateTypeConverterForObjectType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: RonCS.TypeSerializerConverter
+      description: ''
+    content.vb: Public Shared Function CreateTypeConverterForObjectType(type As Type) As TypeSerializerConverter
+  overload: RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType*
+references:
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.TypeSerializerConverter.ToAST*
+  commentId: Overload:RonCS.TypeSerializerConverter.ToAST
+  href: RonCS.TypeSerializerConverter.html#RonCS_TypeSerializerConverter_ToAST_RonCS_SerializationContext_System_Object_
+  name: ToAST
+  nameWithType: TypeSerializerConverter.ToAST
+  fullName: RonCS.TypeSerializerConverter.ToAST
+- uid: RonCS.SerializationContext
+  commentId: T:RonCS.SerializationContext
+  parent: RonCS
+  href: RonCS.SerializationContext.html
+  name: SerializationContext
+  nameWithType: SerializationContext
+  fullName: RonCS.SerializationContext
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: RonCS.AST.RonElement
+  commentId: T:RonCS.AST.RonElement
+  parent: RonCS.AST
+  href: RonCS.AST.RonElement.html
+  name: RonElement
+  nameWithType: RonElement
+  fullName: RonCS.AST.RonElement
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs*
+  commentId: Overload:RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs
+  href: RonCS.TypeSerializerConverter.html#RonCS_TypeSerializerConverter_CreateTypeConverterFromTypeAttrs_System_Type_
+  name: CreateTypeConverterFromTypeAttrs
+  nameWithType: TypeSerializerConverter.CreateTypeConverterFromTypeAttrs
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterFromTypeAttrs
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: RonCS.TypeSerializerConverter
+  commentId: T:RonCS.TypeSerializerConverter
+  parent: RonCS
+  href: RonCS.TypeSerializerConverter.html
+  name: TypeSerializerConverter
+  nameWithType: TypeSerializerConverter
+  fullName: RonCS.TypeSerializerConverter
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForList*
+  commentId: Overload:RonCS.TypeSerializerConverter.CreateTypeConverterForList
+  href: RonCS.TypeSerializerConverter.html#RonCS_TypeSerializerConverter_CreateTypeConverterForList_System_Type_
+  name: CreateTypeConverterForList
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForList
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForList
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary*
+  commentId: Overload:RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary
+  href: RonCS.TypeSerializerConverter.html#RonCS_TypeSerializerConverter_CreateTypeConverterForDictionary_System_Type_
+  name: CreateTypeConverterForDictionary
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForDictionary
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForDictionary
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields*
+  commentId: Overload:RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields
+  href: RonCS.TypeSerializerConverter.html#RonCS_TypeSerializerConverter_CreateTypeConverterForTypeWithFields_System_Type_System_String_
+  name: CreateTypeConverterForTypeWithFields
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForTypeWithFields
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForTypeWithFields
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType*
+  commentId: Overload:RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType
+  href: RonCS.TypeSerializerConverter.html#RonCS_TypeSerializerConverter_CreateTypeConverterForObjectType_System_Type_
+  name: CreateTypeConverterForObjectType
+  nameWithType: TypeSerializerConverter.CreateTypeConverterForObjectType
+  fullName: RonCS.TypeSerializerConverter.CreateTypeConverterForObjectType

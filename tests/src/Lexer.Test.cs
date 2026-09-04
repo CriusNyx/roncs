@@ -47,7 +47,7 @@ public class LexerTests
   [TestCase("'\\\\'", new RonTokenKind[] { RonTokenKind.Char })]
   public void TokenizerMatch(string source, RonTokenKind[] kinds)
   {
-    var lexed = RonLexer.Tokenizer.Tokenize(source);
+    var lexed = Ron.Tokenize(source);
     Assert.That(lexed.Select(x => x.Kind), Is.EquivalentTo(kinds));
   }
 
@@ -55,6 +55,6 @@ public class LexerTests
   [TestCase("/*")]
   public void ShouldNotTokenize(string source)
   {
-    Assert.Throws<Superpower.ParseException>(() => RonLexer.Tokenizer.Tokenize(source));
+    Assert.Throws<RonCS.Exceptions.LexerException>(() => Ron.Tokenize(source));
   }
 }

@@ -1,0 +1,1442 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.SerializationContext
+  commentId: T:RonCS.SerializationContext
+  id: SerializationContext
+  parent: RonCS
+  children:
+  - RonCS.SerializationContext.#ctor(RonCS.SerializationContext)
+  - RonCS.SerializationContext.ConvertType(System.Object,System.Type)
+  - RonCS.SerializationContext.GetIntermediateType(System.Type)
+  - RonCS.SerializationContext.GetMapIntermediateType(System.Type)
+  - RonCS.SerializationContext.GetTypeFromName(System.String,System.Type)
+  - RonCS.SerializationContext.InferType(RonCS.AST.RonElement)
+  - RonCS.SerializationContext.RegisterListType(System.Type)
+  - RonCS.SerializationContext.RegisterMapType(System.Type)
+  - RonCS.SerializationContext.RegisterProxyType(System.Type,System.Type)
+  - RonCS.SerializationContext.RegisterTupleConverter``1(System.Func{``0,System.Object[]})
+  - RonCS.SerializationContext.RegisterType(System.Type)
+  - RonCS.SerializationContext.RegisterTypeConverter(System.Type,RonCS.TypeSerializerConverter)
+  - RonCS.SerializationContext.RonTypes
+  - RonCS.SerializationContext.ToAST(System.Object,System.Type)
+  - RonCS.SerializationContext.proxyTypes
+  langs:
+  - csharp
+  - vb
+  name: SerializationContext
+  nameWithType: SerializationContext
+  fullName: RonCS.SerializationContext
+  type: Class
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.TypeManagement.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: SerializationContext
+    path: ../core/src/Serialization/SerializationContext.TypeManagement.cs
+    startLine: 4
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: >-
+    Context for serializing ron elements.
+
+    Custom overrides for Ron are stored in the local or global serialization context.
+  example: []
+  syntax:
+    content: public class SerializationContext
+    content.vb: Public Class SerializationContext
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.SerializationContext.#ctor(RonCS.SerializationContext)
+  commentId: M:RonCS.SerializationContext.#ctor(RonCS.SerializationContext)
+  id: '#ctor(RonCS.SerializationContext)'
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: SerializationContext(SerializationContext?)
+  nameWithType: SerializationContext.SerializationContext(SerializationContext?)
+  fullName: RonCS.SerializationContext.SerializationContext(RonCS.SerializationContext?)
+  type: Constructor
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: .ctor
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 13
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: >-
+    Context for serializing ron elements.
+
+    Custom overrides for Ron are stored in the local or global serialization context.
+  example: []
+  syntax:
+    content: public SerializationContext(SerializationContext? parentContext = null)
+    parameters:
+    - id: parentContext
+      type: RonCS.SerializationContext
+      description: ''
+    content.vb: Public Sub New(parentContext As SerializationContext = Nothing)
+  overload: RonCS.SerializationContext.#ctor*
+  nameWithType.vb: SerializationContext.New(SerializationContext)
+  fullName.vb: RonCS.SerializationContext.New(RonCS.SerializationContext)
+  name.vb: New(SerializationContext)
+- uid: RonCS.SerializationContext.RonTypes
+  commentId: F:RonCS.SerializationContext.RonTypes
+  id: RonTypes
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: RonTypes
+  nameWithType: SerializationContext.RonTypes
+  fullName: RonCS.SerializationContext.RonTypes
+  type: Field
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RonTypes
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 18
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Set of types recognized by this serialization context.
+  example: []
+  syntax:
+    content: public readonly HashSet<Type> RonTypes
+    return:
+      type: System.Collections.Generic.HashSet{System.Type}
+    content.vb: Public ReadOnly RonTypes As HashSet(Of Type)
+- uid: RonCS.SerializationContext.proxyTypes
+  commentId: F:RonCS.SerializationContext.proxyTypes
+  id: proxyTypes
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: proxyTypes
+  nameWithType: SerializationContext.proxyTypes
+  fullName: RonCS.SerializationContext.proxyTypes
+  type: Field
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: proxyTypes
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 23
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Proxy types recognized by this serialization context.
+  example: []
+  syntax:
+    content: public readonly Dictionary<Type, Type> proxyTypes
+    return:
+      type: System.Collections.Generic.Dictionary{System.Type,System.Type}
+    content.vb: Public ReadOnly proxyTypes As Dictionary(Of Type, Type)
+- uid: RonCS.SerializationContext.GetTypeFromName(System.String,System.Type)
+  commentId: M:RonCS.SerializationContext.GetTypeFromName(System.String,System.Type)
+  id: GetTypeFromName(System.String,System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: GetTypeFromName(string?, Type?)
+  nameWithType: SerializationContext.GetTypeFromName(string?, Type?)
+  fullName: RonCS.SerializationContext.GetTypeFromName(string?, System.Type?)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: GetTypeFromName
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 387
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Get a type from it's name.
+  example: []
+  syntax:
+    content: public Type? GetTypeFromName(string? name, Type? backupType)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    - id: backupType
+      type: System.Type
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Public Function GetTypeFromName(name As String, backupType As Type) As Type
+  overload: RonCS.SerializationContext.GetTypeFromName*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: ''
+  nameWithType.vb: SerializationContext.GetTypeFromName(String, Type)
+  fullName.vb: RonCS.SerializationContext.GetTypeFromName(String, System.Type)
+  name.vb: GetTypeFromName(String, Type)
+- uid: RonCS.SerializationContext.GetIntermediateType(System.Type)
+  commentId: M:RonCS.SerializationContext.GetIntermediateType(System.Type)
+  id: GetIntermediateType(System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: GetIntermediateType(Type?)
+  nameWithType: SerializationContext.GetIntermediateType(Type?)
+  fullName: RonCS.SerializationContext.GetIntermediateType(System.Type?)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: GetIntermediateType
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 413
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Get intermediate deserialization type, such as for a proxy.
+  example: []
+  syntax:
+    content: public Type? GetIntermediateType(Type? targetType)
+    parameters:
+    - id: targetType
+      type: System.Type
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Public Function GetIntermediateType(targetType As Type) As Type
+  overload: RonCS.SerializationContext.GetIntermediateType*
+  nameWithType.vb: SerializationContext.GetIntermediateType(Type)
+  fullName.vb: RonCS.SerializationContext.GetIntermediateType(System.Type)
+  name.vb: GetIntermediateType(Type)
+- uid: RonCS.SerializationContext.InferType(RonCS.AST.RonElement)
+  commentId: M:RonCS.SerializationContext.InferType(RonCS.AST.RonElement)
+  id: InferType(RonCS.AST.RonElement)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: InferType(RonElement?)
+  nameWithType: SerializationContext.InferType(RonElement?)
+  fullName: RonCS.SerializationContext.InferType(RonCS.AST.RonElement?)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: InferType
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 437
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: >-
+    Infer the type of the AST element.
+
+    If the type cannot be inferred then return null.
+  example: []
+  syntax:
+    content: public Type? InferType(RonElement? element)
+    parameters:
+    - id: element
+      type: RonCS.AST.RonElement
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Public Function InferType(element As RonElement) As Type
+  overload: RonCS.SerializationContext.InferType*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: ''
+  nameWithType.vb: SerializationContext.InferType(RonElement)
+  fullName.vb: RonCS.SerializationContext.InferType(RonCS.AST.RonElement)
+  name.vb: InferType(RonElement)
+- uid: RonCS.SerializationContext.GetMapIntermediateType(System.Type)
+  commentId: M:RonCS.SerializationContext.GetMapIntermediateType(System.Type)
+  id: GetMapIntermediateType(System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: GetMapIntermediateType(Type?)
+  nameWithType: SerializationContext.GetMapIntermediateType(Type?)
+  fullName: RonCS.SerializationContext.GetMapIntermediateType(System.Type?)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: GetMapIntermediateType
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 466
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Get the value type for deserializing a ron map.
+  example: []
+  syntax:
+    content: public Type? GetMapIntermediateType(Type? type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Public Function GetMapIntermediateType(type As Type) As Type
+  overload: RonCS.SerializationContext.GetMapIntermediateType*
+  nameWithType.vb: SerializationContext.GetMapIntermediateType(Type)
+  fullName.vb: RonCS.SerializationContext.GetMapIntermediateType(System.Type)
+  name.vb: GetMapIntermediateType(Type)
+- uid: RonCS.SerializationContext.ConvertType(System.Object,System.Type)
+  commentId: M:RonCS.SerializationContext.ConvertType(System.Object,System.Type)
+  id: ConvertType(System.Object,System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: ConvertType(object?, Type?)
+  nameWithType: SerializationContext.ConvertType(object?, Type?)
+  fullName: RonCS.SerializationContext.ConvertType(object?, System.Type?)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Deserialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ConvertType
+    path: ../core/src/Serialization/SerializationContext.Deserialize.cs
+    startLine: 497
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Convert type from the source to the targetType.
+  example: []
+  syntax:
+    content: public object? ConvertType(object? source, Type? targetType)
+    parameters:
+    - id: source
+      type: System.Object
+      description: ''
+    - id: targetType
+      type: System.Type
+      description: ''
+    return:
+      type: System.Object
+      description: ''
+    content.vb: Public Function ConvertType(source As Object, targetType As Type) As Object
+  overload: RonCS.SerializationContext.ConvertType*
+  nameWithType.vb: SerializationContext.ConvertType(Object, Type)
+  fullName.vb: RonCS.SerializationContext.ConvertType(Object, System.Type)
+  name.vb: ConvertType(Object, Type)
+- uid: RonCS.SerializationContext.ToAST(System.Object,System.Type)
+  commentId: M:RonCS.SerializationContext.ToAST(System.Object,System.Type)
+  id: ToAST(System.Object,System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: ToAST(object?, Type?)
+  nameWithType: SerializationContext.ToAST(object?, Type?)
+  fullName: RonCS.SerializationContext.ToAST(object?, System.Type?)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.Serialize.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ToAST
+    path: ../core/src/Serialization/SerializationContext.Serialize.cs
+    startLine: 22
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: >-
+    Convert the object to a Ron AST.
+
+    If field type is provided it will allow for inference for the element.
+  example: []
+  syntax:
+    content: public RonElement ToAST(object? source, Type? fieldType = null)
+    parameters:
+    - id: source
+      type: System.Object
+      description: ''
+    - id: fieldType
+      type: System.Type
+      description: ''
+    return:
+      type: RonCS.AST.RonElement
+      description: ''
+    content.vb: Public Function ToAST(source As Object, fieldType As Type = Nothing) As RonElement
+  overload: RonCS.SerializationContext.ToAST*
+  nameWithType.vb: SerializationContext.ToAST(Object, Type)
+  fullName.vb: RonCS.SerializationContext.ToAST(Object, System.Type)
+  name.vb: ToAST(Object, Type)
+- uid: RonCS.SerializationContext.RegisterType(System.Type)
+  commentId: M:RonCS.SerializationContext.RegisterType(System.Type)
+  id: RegisterType(System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterType(Type)
+  nameWithType: SerializationContext.RegisterType(Type)
+  fullName: RonCS.SerializationContext.RegisterType(System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.TypeManagement.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RegisterType
+    path: ../core/src/Serialization/SerializationContext.TypeManagement.cs
+    startLine: 10
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Register a new known type
+  example: []
+  syntax:
+    content: public void RegisterType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    content.vb: Public Sub RegisterType(type As Type)
+  overload: RonCS.SerializationContext.RegisterType*
+- uid: RonCS.SerializationContext.RegisterTypeConverter(System.Type,RonCS.TypeSerializerConverter)
+  commentId: M:RonCS.SerializationContext.RegisterTypeConverter(System.Type,RonCS.TypeSerializerConverter)
+  id: RegisterTypeConverter(System.Type,RonCS.TypeSerializerConverter)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterTypeConverter(Type, TypeSerializerConverter)
+  nameWithType: SerializationContext.RegisterTypeConverter(Type, TypeSerializerConverter)
+  fullName: RonCS.SerializationContext.RegisterTypeConverter(System.Type, RonCS.TypeSerializerConverter)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.TypeManagement.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RegisterTypeConverter
+    path: ../core/src/Serialization/SerializationContext.TypeManagement.cs
+    startLine: 20
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Register a custom type converter for the type.
+  example: []
+  syntax:
+    content: public void RegisterTypeConverter(Type type, TypeSerializerConverter converter)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    - id: converter
+      type: RonCS.TypeSerializerConverter
+      description: ''
+    content.vb: Public Sub RegisterTypeConverter(type As Type, converter As TypeSerializerConverter)
+  overload: RonCS.SerializationContext.RegisterTypeConverter*
+- uid: RonCS.SerializationContext.RegisterListType(System.Type)
+  commentId: M:RonCS.SerializationContext.RegisterListType(System.Type)
+  id: RegisterListType(System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterListType(Type)
+  nameWithType: SerializationContext.RegisterListType(Type)
+  fullName: RonCS.SerializationContext.RegisterListType(System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.TypeManagement.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RegisterListType
+    path: ../core/src/Serialization/SerializationContext.TypeManagement.cs
+    startLine: 29
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Register type to be serialized as a list.
+  example: []
+  syntax:
+    content: public void RegisterListType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    content.vb: Public Sub RegisterListType(type As Type)
+  overload: RonCS.SerializationContext.RegisterListType*
+- uid: RonCS.SerializationContext.RegisterMapType(System.Type)
+  commentId: M:RonCS.SerializationContext.RegisterMapType(System.Type)
+  id: RegisterMapType(System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterMapType(Type)
+  nameWithType: SerializationContext.RegisterMapType(Type)
+  fullName: RonCS.SerializationContext.RegisterMapType(System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.TypeManagement.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RegisterMapType
+    path: ../core/src/Serialization/SerializationContext.TypeManagement.cs
+    startLine: 38
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Register type to be serialized as a map.
+  example: []
+  syntax:
+    content: public void RegisterMapType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    content.vb: Public Sub RegisterMapType(type As Type)
+  overload: RonCS.SerializationContext.RegisterMapType*
+- uid: RonCS.SerializationContext.RegisterTupleConverter``1(System.Func{``0,System.Object[]})
+  commentId: M:RonCS.SerializationContext.RegisterTupleConverter``1(System.Func{``0,System.Object[]})
+  id: RegisterTupleConverter``1(System.Func{``0,System.Object[]})
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterTupleConverter<T>(Func<T, object[]>)
+  nameWithType: SerializationContext.RegisterTupleConverter<T>(Func<T, object[]>)
+  fullName: RonCS.SerializationContext.RegisterTupleConverter<T>(System.Func<T, object[]>)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.TypeManagement.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RegisterTupleConverter
+    path: ../core/src/Serialization/SerializationContext.TypeManagement.cs
+    startLine: 48
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Register converter to serialize a type as a tuple.
+  example: []
+  syntax:
+    content: public void RegisterTupleConverter<T>(Func<T, object[]> converter)
+    parameters:
+    - id: converter
+      type: System.Func{{T},System.Object[]}
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public Sub RegisterTupleConverter(Of T)(converter As Func(Of T, Object()))
+  overload: RonCS.SerializationContext.RegisterTupleConverter*
+  nameWithType.vb: SerializationContext.RegisterTupleConverter(Of T)(Func(Of T, Object()))
+  fullName.vb: RonCS.SerializationContext.RegisterTupleConverter(Of T)(System.Func(Of T, Object()))
+  name.vb: RegisterTupleConverter(Of T)(Func(Of T, Object()))
+- uid: RonCS.SerializationContext.RegisterProxyType(System.Type,System.Type)
+  commentId: M:RonCS.SerializationContext.RegisterProxyType(System.Type,System.Type)
+  id: RegisterProxyType(System.Type,System.Type)
+  parent: RonCS.SerializationContext
+  langs:
+  - csharp
+  - vb
+  name: RegisterProxyType(Type, Type)
+  nameWithType: SerializationContext.RegisterProxyType(Type, Type)
+  fullName: RonCS.SerializationContext.RegisterProxyType(System.Type, System.Type)
+  type: Method
+  source:
+    remote:
+      path: core/src/Serialization/SerializationContext.TypeManagement.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RegisterProxyType
+    path: ../core/src/Serialization/SerializationContext.TypeManagement.cs
+    startLine: 61
+  assemblies:
+  - RonCS
+  namespace: RonCS
+  summary: Register a custom proxy for the source type.
+  example: []
+  syntax:
+    content: public void RegisterProxyType(Type sourceType, Type proxyType)
+    parameters:
+    - id: sourceType
+      type: System.Type
+      description: ''
+    - id: proxyType
+      type: System.Type
+      description: ''
+    content.vb: Public Sub RegisterProxyType(sourceType As Type, proxyType As Type)
+  overload: RonCS.SerializationContext.RegisterProxyType*
+references:
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.SerializationContext.#ctor*
+  commentId: Overload:RonCS.SerializationContext.#ctor
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext__ctor_RonCS_SerializationContext_
+  name: SerializationContext
+  nameWithType: SerializationContext.SerializationContext
+  fullName: RonCS.SerializationContext.SerializationContext
+  nameWithType.vb: SerializationContext.New
+  fullName.vb: RonCS.SerializationContext.New
+  name.vb: New
+- uid: RonCS.SerializationContext
+  commentId: T:RonCS.SerializationContext
+  parent: RonCS
+  href: RonCS.SerializationContext.html
+  name: SerializationContext
+  nameWithType: SerializationContext
+  fullName: RonCS.SerializationContext
+- uid: System.Collections.Generic.HashSet{System.Type}
+  commentId: T:System.Collections.Generic.HashSet{System.Type}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.HashSet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1
+  name: HashSet<Type>
+  nameWithType: HashSet<Type>
+  fullName: System.Collections.Generic.HashSet<System.Type>
+  nameWithType.vb: HashSet(Of Type)
+  fullName.vb: System.Collections.Generic.HashSet(Of System.Type)
+  name.vb: HashSet(Of Type)
+  spec.csharp:
+  - uid: System.Collections.Generic.HashSet`1
+    name: HashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1
+  - name: <
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.HashSet`1
+    name: HashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Collections.Generic.HashSet`1
+  commentId: T:System.Collections.Generic.HashSet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1
+  name: HashSet<T>
+  nameWithType: HashSet<T>
+  fullName: System.Collections.Generic.HashSet<T>
+  nameWithType.vb: HashSet(Of T)
+  fullName.vb: System.Collections.Generic.HashSet(Of T)
+  name.vb: HashSet(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.HashSet`1
+    name: HashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.HashSet`1
+    name: HashSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.Dictionary{System.Type,System.Type}
+  commentId: T:System.Collections.Generic.Dictionary{System.Type,System.Type}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<Type, Type>
+  nameWithType: Dictionary<Type, Type>
+  fullName: System.Collections.Generic.Dictionary<System.Type, System.Type>
+  nameWithType.vb: Dictionary(Of Type, Type)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.Type, System.Type)
+  name.vb: Dictionary(Of Type, Type)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: RonCS.SerializationContext.GetTypeFromName*
+  commentId: Overload:RonCS.SerializationContext.GetTypeFromName
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_GetTypeFromName_System_String_System_Type_
+  name: GetTypeFromName
+  nameWithType: SerializationContext.GetTypeFromName
+  fullName: RonCS.SerializationContext.GetTypeFromName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: RonCS.SerializationContext.GetIntermediateType*
+  commentId: Overload:RonCS.SerializationContext.GetIntermediateType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_GetIntermediateType_System_Type_
+  name: GetIntermediateType
+  nameWithType: SerializationContext.GetIntermediateType
+  fullName: RonCS.SerializationContext.GetIntermediateType
+- uid: System.NotImplementedException
+  commentId: T:System.NotImplementedException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.notimplementedexception
+  name: NotImplementedException
+  nameWithType: NotImplementedException
+  fullName: System.NotImplementedException
+- uid: RonCS.SerializationContext.InferType*
+  commentId: Overload:RonCS.SerializationContext.InferType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_InferType_RonCS_AST_RonElement_
+  name: InferType
+  nameWithType: SerializationContext.InferType
+  fullName: RonCS.SerializationContext.InferType
+- uid: RonCS.AST.RonElement
+  commentId: T:RonCS.AST.RonElement
+  parent: RonCS.AST
+  href: RonCS.AST.RonElement.html
+  name: RonElement
+  nameWithType: RonElement
+  fullName: RonCS.AST.RonElement
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: RonCS.SerializationContext.GetMapIntermediateType*
+  commentId: Overload:RonCS.SerializationContext.GetMapIntermediateType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_GetMapIntermediateType_System_Type_
+  name: GetMapIntermediateType
+  nameWithType: SerializationContext.GetMapIntermediateType
+  fullName: RonCS.SerializationContext.GetMapIntermediateType
+- uid: RonCS.SerializationContext.ConvertType*
+  commentId: Overload:RonCS.SerializationContext.ConvertType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_ConvertType_System_Object_System_Type_
+  name: ConvertType
+  nameWithType: SerializationContext.ConvertType
+  fullName: RonCS.SerializationContext.ConvertType
+- uid: RonCS.SerializationContext.ToAST*
+  commentId: Overload:RonCS.SerializationContext.ToAST
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_ToAST_System_Object_System_Type_
+  name: ToAST
+  nameWithType: SerializationContext.ToAST
+  fullName: RonCS.SerializationContext.ToAST
+- uid: RonCS.SerializationContext.RegisterType*
+  commentId: Overload:RonCS.SerializationContext.RegisterType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_RegisterType_System_Type_
+  name: RegisterType
+  nameWithType: SerializationContext.RegisterType
+  fullName: RonCS.SerializationContext.RegisterType
+- uid: RonCS.SerializationContext.RegisterTypeConverter*
+  commentId: Overload:RonCS.SerializationContext.RegisterTypeConverter
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_RegisterTypeConverter_System_Type_RonCS_TypeSerializerConverter_
+  name: RegisterTypeConverter
+  nameWithType: SerializationContext.RegisterTypeConverter
+  fullName: RonCS.SerializationContext.RegisterTypeConverter
+- uid: RonCS.TypeSerializerConverter
+  commentId: T:RonCS.TypeSerializerConverter
+  parent: RonCS
+  href: RonCS.TypeSerializerConverter.html
+  name: TypeSerializerConverter
+  nameWithType: TypeSerializerConverter
+  fullName: RonCS.TypeSerializerConverter
+- uid: RonCS.SerializationContext.RegisterListType*
+  commentId: Overload:RonCS.SerializationContext.RegisterListType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_RegisterListType_System_Type_
+  name: RegisterListType
+  nameWithType: SerializationContext.RegisterListType
+  fullName: RonCS.SerializationContext.RegisterListType
+- uid: RonCS.SerializationContext.RegisterMapType*
+  commentId: Overload:RonCS.SerializationContext.RegisterMapType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_RegisterMapType_System_Type_
+  name: RegisterMapType
+  nameWithType: SerializationContext.RegisterMapType
+  fullName: RonCS.SerializationContext.RegisterMapType
+- uid: RonCS.SerializationContext.RegisterTupleConverter*
+  commentId: Overload:RonCS.SerializationContext.RegisterTupleConverter
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_RegisterTupleConverter__1_System_Func___0_System_Object____
+  name: RegisterTupleConverter
+  nameWithType: SerializationContext.RegisterTupleConverter
+  fullName: RonCS.SerializationContext.RegisterTupleConverter
+- uid: System.Func{{T},System.Object[]}
+  commentId: T:System.Func{``0,System.Object[]}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, object[]>
+  nameWithType: Func<T, object[]>
+  fullName: System.Func<T, object[]>
+  nameWithType.vb: Func(Of T, Object())
+  fullName.vb: System.Func(Of T, Object())
+  name.vb: Func(Of T, Object())
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: RonCS.SerializationContext.RegisterProxyType*
+  commentId: Overload:RonCS.SerializationContext.RegisterProxyType
+  href: RonCS.SerializationContext.html#RonCS_SerializationContext_RegisterProxyType_System_Type_System_Type_
+  name: RegisterProxyType
+  nameWithType: SerializationContext.RegisterProxyType
+  fullName: RonCS.SerializationContext.RegisterProxyType

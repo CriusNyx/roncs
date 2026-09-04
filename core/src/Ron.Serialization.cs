@@ -31,6 +31,20 @@ public static partial class Ron
   }
 
   /// <summary>
+  /// Tokenize the input and return the token list.
+  /// </summary>
+  /// <param name="source"></param>
+  /// <returns></returns>
+  public static TokenList<RonTokenKind> Tokenize(string source)
+  {
+    if (TryTokenize(source, out var result, out var exception))
+    {
+      return result;
+    }
+    throw exception;
+  }
+
+  /// <summary>
   /// Parse the source and return the resulting ron document. Throw an exception if not successful.
   /// </summary>
   /// <param name="source"></param>

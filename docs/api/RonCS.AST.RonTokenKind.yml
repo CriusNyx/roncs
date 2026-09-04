@@ -1,0 +1,818 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.AST.RonTokenKind
+  commentId: T:RonCS.AST.RonTokenKind
+  id: RonTokenKind
+  parent: RonCS.AST
+  children:
+  - RonCS.AST.RonTokenKind.Char
+  - RonCS.AST.RonTokenKind.ClosedCurly
+  - RonCS.AST.RonTokenKind.ClosedParen
+  - RonCS.AST.RonTokenKind.ClosedSquare
+  - RonCS.AST.RonTokenKind.Colon
+  - RonCS.AST.RonTokenKind.Comma
+  - RonCS.AST.RonTokenKind.False
+  - RonCS.AST.RonTokenKind.Hash
+  - RonCS.AST.RonTokenKind.Identifier
+  - RonCS.AST.RonTokenKind.None
+  - RonCS.AST.RonTokenKind.Number
+  - RonCS.AST.RonTokenKind.OpenCurly
+  - RonCS.AST.RonTokenKind.OpenParen
+  - RonCS.AST.RonTokenKind.OpenSquare
+  - RonCS.AST.RonTokenKind.RangeExclusive
+  - RonCS.AST.RonTokenKind.RangeInclusive
+  - RonCS.AST.RonTokenKind.RawIdentifier
+  - RonCS.AST.RonTokenKind.Some
+  - RonCS.AST.RonTokenKind.String
+  - RonCS.AST.RonTokenKind.True
+  langs:
+  - csharp
+  - vb
+  name: RonTokenKind
+  nameWithType: RonTokenKind
+  fullName: RonCS.AST.RonTokenKind
+  type: Enum
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RonTokenKind
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 11
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Tokens for the RON language.
+  example: []
+  syntax:
+    content: public enum RonTokenKind
+    content.vb: Public Enum RonTokenKind
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.AST.RonTokenKind.Comma
+  commentId: F:RonCS.AST.RonTokenKind.Comma
+  id: Comma
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: Comma
+  nameWithType: RonTokenKind.Comma
+  fullName: RonCS.AST.RonTokenKind.Comma
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Comma
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 17
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: ','
+  example: []
+  syntax:
+    content: Comma = 0
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.Colon
+  commentId: F:RonCS.AST.RonTokenKind.Colon
+  id: Colon
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: Colon
+  nameWithType: RonTokenKind.Colon
+  fullName: RonCS.AST.RonTokenKind.Colon
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Colon
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 22
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: ;
+  example: []
+  syntax:
+    content: Colon = 1
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.Hash
+  commentId: F:RonCS.AST.RonTokenKind.Hash
+  id: Hash
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: Hash
+  nameWithType: RonTokenKind.Hash
+  fullName: RonCS.AST.RonTokenKind.Hash
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Hash
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 27
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: '#'
+  example: []
+  syntax:
+    content: Hash = 2
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.RangeExclusive
+  commentId: F:RonCS.AST.RonTokenKind.RangeExclusive
+  id: RangeExclusive
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: RangeExclusive
+  nameWithType: RonTokenKind.RangeExclusive
+  fullName: RonCS.AST.RonTokenKind.RangeExclusive
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeExclusive
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 33
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: ..
+  example: []
+  syntax:
+    content: RangeExclusive = 3
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.RangeInclusive
+  commentId: F:RonCS.AST.RonTokenKind.RangeInclusive
+  id: RangeInclusive
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: RangeInclusive
+  nameWithType: RonTokenKind.RangeInclusive
+  fullName: RonCS.AST.RonTokenKind.RangeInclusive
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RangeInclusive
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 38
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: ..=
+  example: []
+  syntax:
+    content: RangeInclusive = 4
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.OpenParen
+  commentId: F:RonCS.AST.RonTokenKind.OpenParen
+  id: OpenParen
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: OpenParen
+  nameWithType: RonTokenKind.OpenParen
+  fullName: RonCS.AST.RonTokenKind.OpenParen
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: OpenParen
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 44
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: (
+  example: []
+  syntax:
+    content: OpenParen = 5
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.ClosedParen
+  commentId: F:RonCS.AST.RonTokenKind.ClosedParen
+  id: ClosedParen
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: ClosedParen
+  nameWithType: RonTokenKind.ClosedParen
+  fullName: RonCS.AST.RonTokenKind.ClosedParen
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ClosedParen
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 49
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: )
+  example: []
+  syntax:
+    content: ClosedParen = 6
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.OpenSquare
+  commentId: F:RonCS.AST.RonTokenKind.OpenSquare
+  id: OpenSquare
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: OpenSquare
+  nameWithType: RonTokenKind.OpenSquare
+  fullName: RonCS.AST.RonTokenKind.OpenSquare
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: OpenSquare
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 54
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: '['
+  example: []
+  syntax:
+    content: OpenSquare = 7
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.ClosedSquare
+  commentId: F:RonCS.AST.RonTokenKind.ClosedSquare
+  id: ClosedSquare
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: ClosedSquare
+  nameWithType: RonTokenKind.ClosedSquare
+  fullName: RonCS.AST.RonTokenKind.ClosedSquare
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ClosedSquare
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 59
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: ']'
+  example: []
+  syntax:
+    content: ClosedSquare = 8
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.OpenCurly
+  commentId: F:RonCS.AST.RonTokenKind.OpenCurly
+  id: OpenCurly
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: OpenCurly
+  nameWithType: RonTokenKind.OpenCurly
+  fullName: RonCS.AST.RonTokenKind.OpenCurly
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: OpenCurly
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 64
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: '{'
+  example: []
+  syntax:
+    content: OpenCurly = 9
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.ClosedCurly
+  commentId: F:RonCS.AST.RonTokenKind.ClosedCurly
+  id: ClosedCurly
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: ClosedCurly
+  nameWithType: RonTokenKind.ClosedCurly
+  fullName: RonCS.AST.RonTokenKind.ClosedCurly
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ClosedCurly
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 69
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: '}'
+  example: []
+  syntax:
+    content: ClosedCurly = 10
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.Some
+  commentId: F:RonCS.AST.RonTokenKind.Some
+  id: Some
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: Some
+  nameWithType: RonTokenKind.Some
+  fullName: RonCS.AST.RonTokenKind.Some
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Some
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 75
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Some
+  example: []
+  syntax:
+    content: Some = 11
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.None
+  commentId: F:RonCS.AST.RonTokenKind.None
+  id: None
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: RonTokenKind.None
+  fullName: RonCS.AST.RonTokenKind.None
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: None
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 80
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: None
+  example: []
+  syntax:
+    content: None = 12
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.Char
+  commentId: F:RonCS.AST.RonTokenKind.Char
+  id: Char
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: Char
+  nameWithType: RonTokenKind.Char
+  fullName: RonCS.AST.RonTokenKind.Char
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Char
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 86
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Any XID character.
+  example: []
+  syntax:
+    content: Char = 13
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.True
+  commentId: F:RonCS.AST.RonTokenKind.True
+  id: "True"
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: "True"
+  nameWithType: RonTokenKind.True
+  fullName: RonCS.AST.RonTokenKind.True
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: "True"
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 91
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: "true"
+  example: []
+  syntax:
+    content: True = 14
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.False
+  commentId: F:RonCS.AST.RonTokenKind.False
+  id: "False"
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: "False"
+  nameWithType: RonTokenKind.False
+  fullName: RonCS.AST.RonTokenKind.False
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: "False"
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 96
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: "false"
+  example: []
+  syntax:
+    content: False = 15
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.Number
+  commentId: F:RonCS.AST.RonTokenKind.Number
+  id: Number
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: Number
+  nameWithType: RonTokenKind.Number
+  fullName: RonCS.AST.RonTokenKind.Number
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Number
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 102
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Any ron number
+  example: []
+  syntax:
+    content: Number = 16
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.String
+  commentId: F:RonCS.AST.RonTokenKind.String
+  id: String
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: RonTokenKind.String
+  fullName: RonCS.AST.RonTokenKind.String
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: String
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 108
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Any ron string
+  example: []
+  syntax:
+    content: String = 17
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.Identifier
+  commentId: F:RonCS.AST.RonTokenKind.Identifier
+  id: Identifier
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: Identifier
+  nameWithType: RonTokenKind.Identifier
+  fullName: RonCS.AST.RonTokenKind.Identifier
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Identifier
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 114
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: XID identifier
+  example: []
+  syntax:
+    content: Identifier = 18
+    return:
+      type: RonCS.AST.RonTokenKind
+- uid: RonCS.AST.RonTokenKind.RawIdentifier
+  commentId: F:RonCS.AST.RonTokenKind.RawIdentifier
+  id: RawIdentifier
+  parent: RonCS.AST.RonTokenKind
+  langs:
+  - csharp
+  - vb
+  name: RawIdentifier
+  nameWithType: RonTokenKind.RawIdentifier
+  fullName: RonCS.AST.RonTokenKind.RawIdentifier
+  type: Field
+  source:
+    remote:
+      path: core/src/Parser/RonLexer.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RawIdentifier
+    path: ../core/src/Parser/RonLexer.cs
+    startLine: 119
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Raw identifier
+  example: []
+  syntax:
+    content: RawIdentifier = 19
+    return:
+      type: RonCS.AST.RonTokenKind
+references:
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: RonCS.AST.RonTokenKind
+  commentId: T:RonCS.AST.RonTokenKind
+  parent: RonCS.AST
+  href: RonCS.AST.RonTokenKind.html
+  name: RonTokenKind
+  nameWithType: RonTokenKind
+  fullName: RonCS.AST.RonTokenKind

@@ -1,0 +1,136 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.Exceptions
+  commentId: N:RonCS.Exceptions
+  id: RonCS.Exceptions
+  children:
+  - RonCS.Exceptions.DeserializationException
+  - RonCS.Exceptions.DeserializationExceptionReason
+  - RonCS.Exceptions.LexerException
+  - RonCS.Exceptions.NoDictionaryConstructorException
+  - RonCS.Exceptions.NoEmptyConstructorException
+  - RonCS.Exceptions.NoFieldOrPropertyException
+  - RonCS.Exceptions.NotImplementedForArgumentTypeException
+  - RonCS.Exceptions.RonException
+  - RonCS.Exceptions.RonParseException
+  - RonCS.Exceptions.UnknownEnumException
+  - RonCS.Exceptions.UnknownEnumException`1
+  langs:
+  - csharp
+  - vb
+  name: RonCS.Exceptions
+  nameWithType: RonCS.Exceptions
+  fullName: RonCS.Exceptions
+  type: Namespace
+  assemblies:
+  - RonCS
+references:
+- uid: RonCS.Exceptions.DeserializationException
+  commentId: T:RonCS.Exceptions.DeserializationException
+  parent: RonCS.Exceptions
+  href: RonCS.Exceptions.DeserializationException.html
+  name: DeserializationException
+  nameWithType: DeserializationException
+  fullName: RonCS.Exceptions.DeserializationException
+- uid: RonCS.Exceptions.DeserializationExceptionReason
+  commentId: T:RonCS.Exceptions.DeserializationExceptionReason
+  parent: RonCS.Exceptions
+  href: RonCS.Exceptions.DeserializationExceptionReason.html
+  name: DeserializationExceptionReason
+  nameWithType: DeserializationExceptionReason
+  fullName: RonCS.Exceptions.DeserializationExceptionReason
+- uid: RonCS.Exceptions.NoFieldOrPropertyException
+  commentId: T:RonCS.Exceptions.NoFieldOrPropertyException
+  href: RonCS.Exceptions.NoFieldOrPropertyException.html
+  name: NoFieldOrPropertyException
+  nameWithType: NoFieldOrPropertyException
+  fullName: RonCS.Exceptions.NoFieldOrPropertyException
+- uid: RonCS.Exceptions.UnknownEnumException`1
+  commentId: T:RonCS.Exceptions.UnknownEnumException`1
+  href: RonCS.Exceptions.UnknownEnumException-1.html
+  name: UnknownEnumException<T>
+  nameWithType: UnknownEnumException<T>
+  fullName: RonCS.Exceptions.UnknownEnumException<T>
+  nameWithType.vb: UnknownEnumException(Of T)
+  fullName.vb: RonCS.Exceptions.UnknownEnumException(Of T)
+  name.vb: UnknownEnumException(Of T)
+  spec.csharp:
+  - uid: RonCS.Exceptions.UnknownEnumException`1
+    name: UnknownEnumException
+    href: RonCS.Exceptions.UnknownEnumException-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: RonCS.Exceptions.UnknownEnumException`1
+    name: UnknownEnumException
+    href: RonCS.Exceptions.UnknownEnumException-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: RonCS.Exceptions.UnknownEnumException
+  commentId: T:RonCS.Exceptions.UnknownEnumException
+  href: RonCS.Exceptions.UnknownEnumException.html
+  name: UnknownEnumException
+  nameWithType: UnknownEnumException
+  fullName: RonCS.Exceptions.UnknownEnumException
+- uid: RonCS.Exceptions.LexerException
+  commentId: T:RonCS.Exceptions.LexerException
+  href: RonCS.Exceptions.LexerException.html
+  name: LexerException
+  nameWithType: LexerException
+  fullName: RonCS.Exceptions.LexerException
+- uid: RonCS.Exceptions.NoDictionaryConstructorException
+  commentId: T:RonCS.Exceptions.NoDictionaryConstructorException
+  href: RonCS.Exceptions.NoDictionaryConstructorException.html
+  name: NoDictionaryConstructorException
+  nameWithType: NoDictionaryConstructorException
+  fullName: RonCS.Exceptions.NoDictionaryConstructorException
+- uid: RonCS.Exceptions.NoEmptyConstructorException
+  commentId: T:RonCS.Exceptions.NoEmptyConstructorException
+  href: RonCS.Exceptions.NoEmptyConstructorException.html
+  name: NoEmptyConstructorException
+  nameWithType: NoEmptyConstructorException
+  fullName: RonCS.Exceptions.NoEmptyConstructorException
+- uid: RonCS.Exceptions.NotImplementedForArgumentTypeException
+  commentId: T:RonCS.Exceptions.NotImplementedForArgumentTypeException
+  href: RonCS.Exceptions.NotImplementedForArgumentTypeException.html
+  name: NotImplementedForArgumentTypeException
+  nameWithType: NotImplementedForArgumentTypeException
+  fullName: RonCS.Exceptions.NotImplementedForArgumentTypeException
+- uid: RonCS.Exceptions.RonException
+  commentId: T:RonCS.Exceptions.RonException
+  href: RonCS.Exceptions.RonException.html
+  name: RonException
+  nameWithType: RonException
+  fullName: RonCS.Exceptions.RonException
+- uid: RonCS.Exceptions.RonParseException
+  commentId: T:RonCS.Exceptions.RonParseException
+  href: RonCS.Exceptions.RonParseException.html
+  name: RonParseException
+  nameWithType: RonParseException
+  fullName: RonCS.Exceptions.RonParseException
+- uid: RonCS.Exceptions
+  commentId: N:RonCS.Exceptions
+  href: RonCS.html
+  name: RonCS.Exceptions
+  nameWithType: RonCS.Exceptions
+  fullName: RonCS.Exceptions
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.Exceptions
+    name: Exceptions
+    href: RonCS.Exceptions.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.Exceptions
+    name: Exceptions
+    href: RonCS.Exceptions.html

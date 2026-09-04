@@ -1,0 +1,728 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.AST.RonStandardFloat
+  commentId: T:RonCS.AST.RonStandardFloat
+  id: RonStandardFloat
+  parent: RonCS.AST
+  children:
+  - RonCS.AST.RonStandardFloat.#ctor(System.String,RonCS.AST.RonExponent)
+  - RonCS.AST.RonStandardFloat.Serialize
+  - RonCS.AST.RonStandardFloat.ValueString
+  - RonCS.AST.RonStandardFloat.digits
+  - RonCS.AST.RonStandardFloat.exponent
+  langs:
+  - csharp
+  - vb
+  name: RonStandardFloat
+  nameWithType: RonStandardFloat
+  fullName: RonCS.AST.RonStandardFloat
+  type: Class
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonStandardFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RonStandardFloat
+    path: ../core/src/AST/Numbers/RonStandardFloat.cs
+    startLine: 7
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: AST element representing a standard float number.
+  example: []
+  syntax:
+    content: 'public class RonStandardFloat : RonFloatNumber'
+    content.vb: Public Class RonStandardFloat Inherits RonFloatNumber
+  inheritance:
+  - System.Object
+  - RonCS.AST.RonFloatNumber
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.AST.RonStandardFloat.#ctor(System.String,RonCS.AST.RonExponent)
+  commentId: M:RonCS.AST.RonStandardFloat.#ctor(System.String,RonCS.AST.RonExponent)
+  id: '#ctor(System.String,RonCS.AST.RonExponent)'
+  parent: RonCS.AST.RonStandardFloat
+  langs:
+  - csharp
+  - vb
+  name: RonStandardFloat(string?, RonExponent?)
+  nameWithType: RonStandardFloat.RonStandardFloat(string?, RonExponent?)
+  fullName: RonCS.AST.RonStandardFloat.RonStandardFloat(string?, RonCS.AST.RonExponent?)
+  type: Constructor
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonStandardFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: .ctor
+    path: ../core/src/AST/Numbers/RonStandardFloat.cs
+    startLine: 7
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: AST element representing a standard float number.
+  example: []
+  syntax:
+    content: public RonStandardFloat(string? digits, RonExponent? exponent)
+    parameters:
+    - id: digits
+      type: System.String
+      description: ''
+    - id: exponent
+      type: RonCS.AST.RonExponent
+      description: ''
+    content.vb: Public Sub New(digits As String, exponent As RonExponent)
+  overload: RonCS.AST.RonStandardFloat.#ctor*
+  nameWithType.vb: RonStandardFloat.New(String, RonExponent)
+  fullName.vb: RonCS.AST.RonStandardFloat.New(String, RonCS.AST.RonExponent)
+  name.vb: New(String, RonExponent)
+- uid: RonCS.AST.RonStandardFloat.digits
+  commentId: F:RonCS.AST.RonStandardFloat.digits
+  id: digits
+  parent: RonCS.AST.RonStandardFloat
+  langs:
+  - csharp
+  - vb
+  name: digits
+  nameWithType: RonStandardFloat.digits
+  fullName: RonCS.AST.RonStandardFloat.digits
+  type: Field
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonStandardFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: digits
+    path: ../core/src/AST/Numbers/RonStandardFloat.cs
+    startLine: 12
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: The digits of the float, if provided.
+  example: []
+  syntax:
+    content: public string? digits
+    return:
+      type: System.String
+    content.vb: Public digits As String
+- uid: RonCS.AST.RonStandardFloat.exponent
+  commentId: F:RonCS.AST.RonStandardFloat.exponent
+  id: exponent
+  parent: RonCS.AST.RonStandardFloat
+  langs:
+  - csharp
+  - vb
+  name: exponent
+  nameWithType: RonStandardFloat.exponent
+  fullName: RonCS.AST.RonStandardFloat.exponent
+  type: Field
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonStandardFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: exponent
+    path: ../core/src/AST/Numbers/RonStandardFloat.cs
+    startLine: 17
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: The exponent of the float, if provided.
+  example: []
+  syntax:
+    content: public RonExponent? exponent
+    return:
+      type: RonCS.AST.RonExponent
+    content.vb: Public exponent As RonExponent
+- uid: RonCS.AST.RonStandardFloat.ValueString
+  commentId: M:RonCS.AST.RonStandardFloat.ValueString
+  id: ValueString
+  parent: RonCS.AST.RonStandardFloat
+  langs:
+  - csharp
+  - vb
+  name: ValueString()
+  nameWithType: RonStandardFloat.ValueString()
+  fullName: RonCS.AST.RonStandardFloat.ValueString()
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonStandardFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: ValueString
+    path: ../core/src/AST/Numbers/RonStandardFloat.cs
+    startLine: 20
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Get a string representing the value of the element.
+  example: []
+  syntax:
+    content: public override string ValueString()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Overrides Function ValueString() As String
+  overridden: RonCS.AST.RonFloatNumber.ValueString
+  overload: RonCS.AST.RonStandardFloat.ValueString*
+- uid: RonCS.AST.RonStandardFloat.Serialize
+  commentId: M:RonCS.AST.RonStandardFloat.Serialize
+  id: Serialize
+  parent: RonCS.AST.RonStandardFloat
+  langs:
+  - csharp
+  - vb
+  name: Serialize()
+  nameWithType: RonStandardFloat.Serialize()
+  fullName: RonCS.AST.RonStandardFloat.Serialize()
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonStandardFloat.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Serialize
+    path: ../core/src/AST/Numbers/RonStandardFloat.cs
+    startLine: 26
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Convert the element to a Ron string.
+  example: []
+  syntax:
+    content: public override string Serialize()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Overrides Function Serialize() As String
+  overridden: RonCS.AST.RonFloatNumber.Serialize
+  overload: RonCS.AST.RonStandardFloat.Serialize*
+references:
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: RonCS.AST.RonFloatNumber
+  commentId: T:RonCS.AST.RonFloatNumber
+  parent: RonCS.AST
+  href: RonCS.AST.RonFloatNumber.html
+  name: RonFloatNumber
+  nameWithType: RonFloatNumber
+  fullName: RonCS.AST.RonFloatNumber
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: RonCS.AST.RonStandardFloat.#ctor*
+  commentId: Overload:RonCS.AST.RonStandardFloat.#ctor
+  href: RonCS.AST.RonStandardFloat.html#RonCS_AST_RonStandardFloat__ctor_System_String_RonCS_AST_RonExponent_
+  name: RonStandardFloat
+  nameWithType: RonStandardFloat.RonStandardFloat
+  fullName: RonCS.AST.RonStandardFloat.RonStandardFloat
+  nameWithType.vb: RonStandardFloat.New
+  fullName.vb: RonCS.AST.RonStandardFloat.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: RonCS.AST.RonExponent
+  commentId: T:RonCS.AST.RonExponent
+  parent: RonCS.AST
+  href: RonCS.AST.RonExponent.html
+  name: RonExponent
+  nameWithType: RonExponent
+  fullName: RonCS.AST.RonExponent
+- uid: RonCS.AST.RonFloatNumber.ValueString
+  commentId: M:RonCS.AST.RonFloatNumber.ValueString
+  parent: RonCS.AST.RonFloatNumber
+  href: RonCS.AST.RonFloatNumber.html#RonCS_AST_RonFloatNumber_ValueString
+  name: ValueString()
+  nameWithType: RonFloatNumber.ValueString()
+  fullName: RonCS.AST.RonFloatNumber.ValueString()
+  spec.csharp:
+  - uid: RonCS.AST.RonFloatNumber.ValueString
+    name: ValueString
+    href: RonCS.AST.RonFloatNumber.html#RonCS_AST_RonFloatNumber_ValueString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: RonCS.AST.RonFloatNumber.ValueString
+    name: ValueString
+    href: RonCS.AST.RonFloatNumber.html#RonCS_AST_RonFloatNumber_ValueString
+  - name: (
+  - name: )
+- uid: RonCS.AST.RonStandardFloat.ValueString*
+  commentId: Overload:RonCS.AST.RonStandardFloat.ValueString
+  href: RonCS.AST.RonStandardFloat.html#RonCS_AST_RonStandardFloat_ValueString
+  name: ValueString
+  nameWithType: RonStandardFloat.ValueString
+  fullName: RonCS.AST.RonStandardFloat.ValueString
+- uid: RonCS.AST.RonFloatNumber.Serialize
+  commentId: M:RonCS.AST.RonFloatNumber.Serialize
+  parent: RonCS.AST.RonFloatNumber
+  href: RonCS.AST.RonFloatNumber.html#RonCS_AST_RonFloatNumber_Serialize
+  name: Serialize()
+  nameWithType: RonFloatNumber.Serialize()
+  fullName: RonCS.AST.RonFloatNumber.Serialize()
+  spec.csharp:
+  - uid: RonCS.AST.RonFloatNumber.Serialize
+    name: Serialize
+    href: RonCS.AST.RonFloatNumber.html#RonCS_AST_RonFloatNumber_Serialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: RonCS.AST.RonFloatNumber.Serialize
+    name: Serialize
+    href: RonCS.AST.RonFloatNumber.html#RonCS_AST_RonFloatNumber_Serialize
+  - name: (
+  - name: )
+- uid: RonCS.AST.RonStandardFloat.Serialize*
+  commentId: Overload:RonCS.AST.RonStandardFloat.Serialize
+  href: RonCS.AST.RonStandardFloat.html#RonCS_AST_RonStandardFloat_Serialize
+  name: Serialize
+  nameWithType: RonStandardFloat.Serialize
+  fullName: RonCS.AST.RonStandardFloat.Serialize

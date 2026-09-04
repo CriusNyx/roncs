@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.Converters
+  commentId: N:RonCS.Converters
+  id: RonCS.Converters
+  children:
+  - RonCS.Converters.TupleFunctionConverter
+  - RonCS.Converters.TupleMethodConverter
+  - RonCS.Converters.TuplePropertyConverter
+  langs:
+  - csharp
+  - vb
+  name: RonCS.Converters
+  nameWithType: RonCS.Converters
+  fullName: RonCS.Converters
+  type: Namespace
+  assemblies:
+  - RonCS
+references:
+- uid: RonCS.Converters.TupleMethodConverter
+  commentId: T:RonCS.Converters.TupleMethodConverter
+  href: RonCS.Converters.TupleMethodConverter.html
+  name: TupleMethodConverter
+  nameWithType: TupleMethodConverter
+  fullName: RonCS.Converters.TupleMethodConverter
+- uid: RonCS.Converters.TuplePropertyConverter
+  commentId: T:RonCS.Converters.TuplePropertyConverter
+  href: RonCS.Converters.TuplePropertyConverter.html
+  name: TuplePropertyConverter
+  nameWithType: TuplePropertyConverter
+  fullName: RonCS.Converters.TuplePropertyConverter
+- uid: RonCS.Converters.TupleFunctionConverter
+  commentId: T:RonCS.Converters.TupleFunctionConverter
+  href: RonCS.Converters.TupleFunctionConverter.html
+  name: TupleFunctionConverter
+  nameWithType: TupleFunctionConverter
+  fullName: RonCS.Converters.TupleFunctionConverter

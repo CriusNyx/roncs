@@ -1,0 +1,325 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.AST.UnsignedPrefix
+  commentId: T:RonCS.AST.UnsignedPrefix
+  id: UnsignedPrefix
+  parent: RonCS.AST
+  children:
+  - RonCS.AST.UnsignedPrefix.binary
+  - RonCS.AST.UnsignedPrefix.hex
+  - RonCS.AST.UnsignedPrefix.octal
+  langs:
+  - csharp
+  - vb
+  name: UnsignedPrefix
+  nameWithType: UnsignedPrefix
+  fullName: RonCS.AST.UnsignedPrefix
+  type: Enum
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonUnsigned.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: UnsignedPrefix
+    path: ../core/src/AST/Numbers/RonUnsigned.cs
+    startLine: 8
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Prefix for unsigned number, indicating the base.
+  example: []
+  syntax:
+    content: public enum UnsignedPrefix
+    content.vb: Public Enum UnsignedPrefix
+  extensionMethods:
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  - System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+- uid: RonCS.AST.UnsignedPrefix.binary
+  commentId: F:RonCS.AST.UnsignedPrefix.binary
+  id: binary
+  parent: RonCS.AST.UnsignedPrefix
+  langs:
+  - csharp
+  - vb
+  name: binary
+  nameWithType: UnsignedPrefix.binary
+  fullName: RonCS.AST.UnsignedPrefix.binary
+  type: Field
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonUnsigned.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: binary
+    path: ../core/src/AST/Numbers/RonUnsigned.cs
+    startLine: 13
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: 0b
+  example: []
+  syntax:
+    content: binary = 2
+    return:
+      type: RonCS.AST.UnsignedPrefix
+- uid: RonCS.AST.UnsignedPrefix.octal
+  commentId: F:RonCS.AST.UnsignedPrefix.octal
+  id: octal
+  parent: RonCS.AST.UnsignedPrefix
+  langs:
+  - csharp
+  - vb
+  name: octal
+  nameWithType: UnsignedPrefix.octal
+  fullName: RonCS.AST.UnsignedPrefix.octal
+  type: Field
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonUnsigned.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: octal
+    path: ../core/src/AST/Numbers/RonUnsigned.cs
+    startLine: 18
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: 0o
+  example: []
+  syntax:
+    content: octal = 8
+    return:
+      type: RonCS.AST.UnsignedPrefix
+- uid: RonCS.AST.UnsignedPrefix.hex
+  commentId: F:RonCS.AST.UnsignedPrefix.hex
+  id: hex
+  parent: RonCS.AST.UnsignedPrefix
+  langs:
+  - csharp
+  - vb
+  name: hex
+  nameWithType: UnsignedPrefix.hex
+  fullName: RonCS.AST.UnsignedPrefix.hex
+  type: Field
+  source:
+    remote:
+      path: core/src/AST/Numbers/RonUnsigned.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: hex
+    path: ../core/src/AST/Numbers/RonUnsigned.cs
+    startLine: 23
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: 0x
+  example: []
+  syntax:
+    content: hex = 16
+    return:
+      type: RonCS.AST.UnsignedPrefix
+references:
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert(System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Object.RonCS.TypeConversionExtensions.RonConvert``1
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  parent: RonCS.TypeConversionExtensions
+  definition: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  name: RonConvert(object, Type)
+  nameWithType: TypeConversionExtensions.RonConvert(object, Type)
+  fullName: RonCS.TypeConversionExtensions.RonConvert(object, System.Type)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Object, Type)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Object, System.Type)
+  name.vb: RonConvert(Object, Type)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert(System.Object,System.Type)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert_System_Object_System_Type_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: RonCS.TypeConversionExtensions
+  commentId: T:RonCS.TypeConversionExtensions
+  parent: RonCS
+  href: RonCS.TypeConversionExtensions.html
+  name: TypeConversionExtensions
+  nameWithType: TypeConversionExtensions
+  fullName: RonCS.TypeConversionExtensions
+- uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  commentId: M:RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+  isExternal: true
+  href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  name: RonConvert<T>(object)
+  nameWithType: TypeConversionExtensions.RonConvert<T>(object)
+  fullName: RonCS.TypeConversionExtensions.RonConvert<T>(object)
+  nameWithType.vb: TypeConversionExtensions.RonConvert(Of T)(Object)
+  fullName.vb: RonCS.TypeConversionExtensions.RonConvert(Of T)(Object)
+  name.vb: RonConvert(Of T)(Object)
+  spec.csharp:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: RonCS.TypeConversionExtensions.RonConvert``1(System.Object)
+    name: RonConvert
+    href: RonCS.TypeConversionExtensions.html#RonCS_TypeConversionExtensions_RonConvert__1_System_Object_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: RonCS
+  commentId: N:RonCS
+  href: RonCS.html
+  name: RonCS
+  nameWithType: RonCS
+  fullName: RonCS
+- uid: RonCS.AST.UnsignedPrefix
+  commentId: T:RonCS.AST.UnsignedPrefix
+  parent: RonCS.AST
+  href: RonCS.AST.UnsignedPrefix.html
+  name: UnsignedPrefix
+  nameWithType: UnsignedPrefix
+  fullName: RonCS.AST.UnsignedPrefix

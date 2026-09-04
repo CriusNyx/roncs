@@ -1,0 +1,1181 @@
+### YamlMime:ManagedReference
+items:
+- uid: RonCS.AST.RonBuilder
+  commentId: T:RonCS.AST.RonBuilder
+  id: RonBuilder
+  parent: RonCS.AST
+  children:
+  - RonCS.AST.RonBuilder.Bool(System.Boolean)
+  - RonCS.AST.RonBuilder.Doc(RonCS.AST.RonElement)
+  - RonCS.AST.RonBuilder.Ident(System.String)
+  - RonCS.AST.RonBuilder.List(RonCS.AST.RonElement[])
+  - RonCS.AST.RonBuilder.Map(RonCS.AST.RonElement[])
+  - RonCS.AST.RonBuilder.MapItem(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  - RonCS.AST.RonBuilder.NamedValue(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  - RonCS.AST.RonBuilder.NamedValue(System.String,RonCS.AST.RonElement)
+  - RonCS.AST.RonBuilder.NamedValueStruct(System.String,RonCS.AST.RonElement[])
+  - RonCS.AST.RonBuilder.None
+  - RonCS.AST.RonBuilder.Range(RonCS.AST.RonElement,RonCS.AST.RonRangeOperator,RonCS.AST.RonElement)
+  - RonCS.AST.RonBuilder.RawIdent(System.String)
+  - RonCS.AST.RonBuilder.Some(RonCS.AST.RonElement)
+  - RonCS.AST.RonBuilder.Tuple(RonCS.AST.RonElement[])
+  - RonCS.AST.RonBuilder.TupleStruct(System.String,RonCS.AST.RonElement[])
+  - RonCS.AST.RonBuilder.UnitStruct(System.String)
+  langs:
+  - csharp
+  - vb
+  name: RonBuilder
+  nameWithType: RonBuilder
+  fullName: RonCS.AST.RonBuilder
+  type: Class
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RonBuilder
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 5
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Builder for RON AST's
+  example: []
+  syntax:
+    content: public static class RonBuilder
+    content.vb: Public Module RonBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: RonCS.AST.RonBuilder.Some(RonCS.AST.RonElement)
+  commentId: M:RonCS.AST.RonBuilder.Some(RonCS.AST.RonElement)
+  id: Some(RonCS.AST.RonElement)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Some(RonElement)
+  nameWithType: RonBuilder.Some(RonElement)
+  fullName: RonCS.AST.RonBuilder.Some(RonCS.AST.RonElement)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Some
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 12
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a some value
+  example: []
+  syntax:
+    content: public static RonSome Some(RonElement value)
+    parameters:
+    - id: value
+      type: RonCS.AST.RonElement
+      description: ''
+    return:
+      type: RonCS.AST.RonSome
+      description: ''
+    content.vb: Public Shared Function Some(value As RonElement) As RonSome
+  overload: RonCS.AST.RonBuilder.Some*
+- uid: RonCS.AST.RonBuilder.Tuple(RonCS.AST.RonElement[])
+  commentId: M:RonCS.AST.RonBuilder.Tuple(RonCS.AST.RonElement[])
+  id: Tuple(RonCS.AST.RonElement[])
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Tuple(params RonElement[])
+  nameWithType: RonBuilder.Tuple(params RonElement[])
+  fullName: RonCS.AST.RonBuilder.Tuple(params RonCS.AST.RonElement[])
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Tuple
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 22
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a tuple with the specified child values
+  example: []
+  syntax:
+    content: public static RonTuple Tuple(params RonElement[] values)
+    parameters:
+    - id: values
+      type: RonCS.AST.RonElement[]
+      description: ''
+    return:
+      type: RonCS.AST.RonTuple
+      description: ''
+    content.vb: Public Shared Function Tuple(ParamArray values As RonElement()) As RonTuple
+  overload: RonCS.AST.RonBuilder.Tuple*
+  nameWithType.vb: RonBuilder.Tuple(ParamArray RonElement())
+  fullName.vb: RonCS.AST.RonBuilder.Tuple(ParamArray RonCS.AST.RonElement())
+  name.vb: Tuple(ParamArray RonElement())
+- uid: RonCS.AST.RonBuilder.Ident(System.String)
+  commentId: M:RonCS.AST.RonBuilder.Ident(System.String)
+  id: Ident(System.String)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Ident(string)
+  nameWithType: RonBuilder.Ident(string)
+  fullName: RonCS.AST.RonBuilder.Ident(string)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Ident
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 32
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create an identifier with the specified name
+  example: []
+  syntax:
+    content: public static RonIdentifier Ident(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: RonCS.AST.RonIdentifier
+      description: ''
+    content.vb: Public Shared Function Ident(name As String) As RonIdentifier
+  overload: RonCS.AST.RonBuilder.Ident*
+  nameWithType.vb: RonBuilder.Ident(String)
+  fullName.vb: RonCS.AST.RonBuilder.Ident(String)
+  name.vb: Ident(String)
+- uid: RonCS.AST.RonBuilder.RawIdent(System.String)
+  commentId: M:RonCS.AST.RonBuilder.RawIdent(System.String)
+  id: RawIdent(System.String)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: RawIdent(string)
+  nameWithType: RonBuilder.RawIdent(string)
+  fullName: RonCS.AST.RonBuilder.RawIdent(string)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: RawIdent
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 42
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a raw identifier with the specified name
+  example: []
+  syntax:
+    content: public static RonRawIdentifier RawIdent(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: RonCS.AST.RonRawIdentifier
+      description: ''
+    content.vb: Public Shared Function RawIdent(name As String) As RonRawIdentifier
+  overload: RonCS.AST.RonBuilder.RawIdent*
+  nameWithType.vb: RonBuilder.RawIdent(String)
+  fullName.vb: RonCS.AST.RonBuilder.RawIdent(String)
+  name.vb: RawIdent(String)
+- uid: RonCS.AST.RonBuilder.NamedValue(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  commentId: M:RonCS.AST.RonBuilder.NamedValue(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  id: NamedValue(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: NamedValue(RonElement, RonElement)
+  nameWithType: RonBuilder.NamedValue(RonElement, RonElement)
+  fullName: RonCS.AST.RonBuilder.NamedValue(RonCS.AST.RonElement, RonCS.AST.RonElement)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NamedValue
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 53
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a name value with a specified name and value.
+  example: []
+  syntax:
+    content: public static RonNamedValue NamedValue(RonElement name, RonElement value)
+    parameters:
+    - id: name
+      type: RonCS.AST.RonElement
+      description: ''
+    - id: value
+      type: RonCS.AST.RonElement
+      description: ''
+    return:
+      type: RonCS.AST.RonNamedValue
+      description: ''
+    content.vb: Public Shared Function NamedValue(name As RonElement, value As RonElement) As RonNamedValue
+  overload: RonCS.AST.RonBuilder.NamedValue*
+- uid: RonCS.AST.RonBuilder.NamedValue(System.String,RonCS.AST.RonElement)
+  commentId: M:RonCS.AST.RonBuilder.NamedValue(System.String,RonCS.AST.RonElement)
+  id: NamedValue(System.String,RonCS.AST.RonElement)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: NamedValue(string, RonElement)
+  nameWithType: RonBuilder.NamedValue(string, RonElement)
+  fullName: RonCS.AST.RonBuilder.NamedValue(string, RonCS.AST.RonElement)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NamedValue
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 64
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a named value with the specified name and value.
+  example: []
+  syntax:
+    content: public static RonNamedValue NamedValue(string name, RonElement value)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    - id: value
+      type: RonCS.AST.RonElement
+      description: ''
+    return:
+      type: RonCS.AST.RonNamedValue
+      description: ''
+    content.vb: Public Shared Function NamedValue(name As String, value As RonElement) As RonNamedValue
+  overload: RonCS.AST.RonBuilder.NamedValue*
+  nameWithType.vb: RonBuilder.NamedValue(String, RonElement)
+  fullName.vb: RonCS.AST.RonBuilder.NamedValue(String, RonCS.AST.RonElement)
+  name.vb: NamedValue(String, RonElement)
+- uid: RonCS.AST.RonBuilder.UnitStruct(System.String)
+  commentId: M:RonCS.AST.RonBuilder.UnitStruct(System.String)
+  id: UnitStruct(System.String)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: UnitStruct(string)
+  nameWithType: RonBuilder.UnitStruct(string)
+  fullName: RonCS.AST.RonBuilder.UnitStruct(string)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: UnitStruct
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 74
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a struct with a name and no body.
+  example: []
+  syntax:
+    content: public static RonUnitStruct UnitStruct(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: RonCS.AST.RonUnitStruct
+      description: ''
+    content.vb: Public Shared Function UnitStruct(name As String) As RonUnitStruct
+  overload: RonCS.AST.RonBuilder.UnitStruct*
+  nameWithType.vb: RonBuilder.UnitStruct(String)
+  fullName.vb: RonCS.AST.RonBuilder.UnitStruct(String)
+  name.vb: UnitStruct(String)
+- uid: RonCS.AST.RonBuilder.Bool(System.Boolean)
+  commentId: M:RonCS.AST.RonBuilder.Bool(System.Boolean)
+  id: Bool(System.Boolean)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Bool(bool)
+  nameWithType: RonBuilder.Bool(bool)
+  fullName: RonCS.AST.RonBuilder.Bool(bool)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Bool
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 84
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a ron boolean with the specified value.
+  example: []
+  syntax:
+    content: public static RonBool Bool(bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+      description: ''
+    return:
+      type: RonCS.AST.RonBool
+      description: ''
+    content.vb: Public Shared Function Bool(value As Boolean) As RonBool
+  overload: RonCS.AST.RonBuilder.Bool*
+  nameWithType.vb: RonBuilder.Bool(Boolean)
+  fullName.vb: RonCS.AST.RonBuilder.Bool(Boolean)
+  name.vb: Bool(Boolean)
+- uid: RonCS.AST.RonBuilder.TupleStruct(System.String,RonCS.AST.RonElement[])
+  commentId: M:RonCS.AST.RonBuilder.TupleStruct(System.String,RonCS.AST.RonElement[])
+  id: TupleStruct(System.String,RonCS.AST.RonElement[])
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: TupleStruct(string, params RonElement[])
+  nameWithType: RonBuilder.TupleStruct(string, params RonElement[])
+  fullName: RonCS.AST.RonBuilder.TupleStruct(string, params RonCS.AST.RonElement[])
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: TupleStruct
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 95
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a tuple struct with the specified name and elements.
+  example: []
+  syntax:
+    content: public static RonTupleStruct TupleStruct(string name, params RonElement[] body)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    - id: body
+      type: RonCS.AST.RonElement[]
+      description: ''
+    return:
+      type: RonCS.AST.RonTupleStruct
+      description: ''
+    content.vb: Public Shared Function TupleStruct(name As String, ParamArray body As RonElement()) As RonTupleStruct
+  overload: RonCS.AST.RonBuilder.TupleStruct*
+  nameWithType.vb: RonBuilder.TupleStruct(String, ParamArray RonElement())
+  fullName.vb: RonCS.AST.RonBuilder.TupleStruct(String, ParamArray RonCS.AST.RonElement())
+  name.vb: TupleStruct(String, ParamArray RonElement())
+- uid: RonCS.AST.RonBuilder.NamedValueStruct(System.String,RonCS.AST.RonElement[])
+  commentId: M:RonCS.AST.RonBuilder.NamedValueStruct(System.String,RonCS.AST.RonElement[])
+  id: NamedValueStruct(System.String,RonCS.AST.RonElement[])
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: NamedValueStruct(string, params RonElement[])
+  nameWithType: RonBuilder.NamedValueStruct(string, params RonElement[])
+  fullName: RonCS.AST.RonBuilder.NamedValueStruct(string, params RonCS.AST.RonElement[])
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: NamedValueStruct
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 106
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a named value struct with the specified name, and body.
+  example: []
+  syntax:
+    content: public static RonNamedValueStruct NamedValueStruct(string name, params RonElement[] body)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    - id: body
+      type: RonCS.AST.RonElement[]
+      description: ''
+    return:
+      type: RonCS.AST.RonNamedValueStruct
+      description: ''
+    content.vb: Public Shared Function NamedValueStruct(name As String, ParamArray body As RonElement()) As RonNamedValueStruct
+  overload: RonCS.AST.RonBuilder.NamedValueStruct*
+  nameWithType.vb: RonBuilder.NamedValueStruct(String, ParamArray RonElement())
+  fullName.vb: RonCS.AST.RonBuilder.NamedValueStruct(String, ParamArray RonCS.AST.RonElement())
+  name.vb: NamedValueStruct(String, ParamArray RonElement())
+- uid: RonCS.AST.RonBuilder.MapItem(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  commentId: M:RonCS.AST.RonBuilder.MapItem(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  id: MapItem(RonCS.AST.RonElement,RonCS.AST.RonElement)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: MapItem(RonElement, RonElement)
+  nameWithType: RonBuilder.MapItem(RonElement, RonElement)
+  fullName: RonCS.AST.RonBuilder.MapItem(RonCS.AST.RonElement, RonCS.AST.RonElement)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: MapItem
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 118
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: >-
+    Create a map item with the specified key and value.
+
+    Typically the key should be a string.
+  example: []
+  syntax:
+    content: public static RonMapItem MapItem(RonElement key, RonElement value)
+    parameters:
+    - id: key
+      type: RonCS.AST.RonElement
+      description: ''
+    - id: value
+      type: RonCS.AST.RonElement
+      description: ''
+    return:
+      type: RonCS.AST.RonMapItem
+      description: ''
+    content.vb: Public Shared Function MapItem(key As RonElement, value As RonElement) As RonMapItem
+  overload: RonCS.AST.RonBuilder.MapItem*
+- uid: RonCS.AST.RonBuilder.Map(RonCS.AST.RonElement[])
+  commentId: M:RonCS.AST.RonBuilder.Map(RonCS.AST.RonElement[])
+  id: Map(RonCS.AST.RonElement[])
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Map(params RonElement[])
+  nameWithType: RonBuilder.Map(params RonElement[])
+  fullName: RonCS.AST.RonBuilder.Map(params RonCS.AST.RonElement[])
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Map
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 128
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a map with the specified values.
+  example: []
+  syntax:
+    content: public static RonMap Map(params RonElement[] values)
+    parameters:
+    - id: values
+      type: RonCS.AST.RonElement[]
+      description: ''
+    return:
+      type: RonCS.AST.RonMap
+      description: ''
+    content.vb: Public Shared Function Map(ParamArray values As RonElement()) As RonMap
+  overload: RonCS.AST.RonBuilder.Map*
+  nameWithType.vb: RonBuilder.Map(ParamArray RonElement())
+  fullName.vb: RonCS.AST.RonBuilder.Map(ParamArray RonCS.AST.RonElement())
+  name.vb: Map(ParamArray RonElement())
+- uid: RonCS.AST.RonBuilder.List(RonCS.AST.RonElement[])
+  commentId: M:RonCS.AST.RonBuilder.List(RonCS.AST.RonElement[])
+  id: List(RonCS.AST.RonElement[])
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: List(params RonElement[])
+  nameWithType: RonBuilder.List(params RonElement[])
+  fullName: RonCS.AST.RonBuilder.List(params RonCS.AST.RonElement[])
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: List
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 138
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a list with the specified values.
+  example: []
+  syntax:
+    content: public static RonList List(params RonElement[] values)
+    parameters:
+    - id: values
+      type: RonCS.AST.RonElement[]
+      description: ''
+    return:
+      type: RonCS.AST.RonList
+      description: ''
+    content.vb: Public Shared Function List(ParamArray values As RonElement()) As RonList
+  overload: RonCS.AST.RonBuilder.List*
+  nameWithType.vb: RonBuilder.List(ParamArray RonElement())
+  fullName.vb: RonCS.AST.RonBuilder.List(ParamArray RonCS.AST.RonElement())
+  name.vb: List(ParamArray RonElement())
+- uid: RonCS.AST.RonBuilder.Range(RonCS.AST.RonElement,RonCS.AST.RonRangeOperator,RonCS.AST.RonElement)
+  commentId: M:RonCS.AST.RonBuilder.Range(RonCS.AST.RonElement,RonCS.AST.RonRangeOperator,RonCS.AST.RonElement)
+  id: Range(RonCS.AST.RonElement,RonCS.AST.RonRangeOperator,RonCS.AST.RonElement)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Range(RonElement?, RonRangeOperator, RonElement?)
+  nameWithType: RonBuilder.Range(RonElement?, RonRangeOperator, RonElement?)
+  fullName: RonCS.AST.RonBuilder.Range(RonCS.AST.RonElement?, RonCS.AST.RonRangeOperator, RonCS.AST.RonElement?)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Range
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 150
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a range with the specified values.
+  example: []
+  syntax:
+    content: public static RonRange Range(RonElement? left, RonRangeOperator op, RonElement? right)
+    parameters:
+    - id: left
+      type: RonCS.AST.RonElement
+      description: ''
+    - id: op
+      type: RonCS.AST.RonRangeOperator
+      description: ''
+    - id: right
+      type: RonCS.AST.RonElement
+      description: ''
+    return:
+      type: RonCS.AST.RonRange
+      description: ''
+    content.vb: Public Shared Function Range(left As RonElement, op As RonRangeOperator, right As RonElement) As RonRange
+  overload: RonCS.AST.RonBuilder.Range*
+  nameWithType.vb: RonBuilder.Range(RonElement, RonRangeOperator, RonElement)
+  fullName.vb: RonCS.AST.RonBuilder.Range(RonCS.AST.RonElement, RonCS.AST.RonRangeOperator, RonCS.AST.RonElement)
+  name.vb: Range(RonElement, RonRangeOperator, RonElement)
+- uid: RonCS.AST.RonBuilder.Doc(RonCS.AST.RonElement)
+  commentId: M:RonCS.AST.RonBuilder.Doc(RonCS.AST.RonElement)
+  id: Doc(RonCS.AST.RonElement)
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Doc(RonElement)
+  nameWithType: RonBuilder.Doc(RonElement)
+  fullName: RonCS.AST.RonBuilder.Doc(RonCS.AST.RonElement)
+  type: Method
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: Doc
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 160
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: Create a document with the specified element.
+  example: []
+  syntax:
+    content: public static RonDocument Doc(RonElement value)
+    parameters:
+    - id: value
+      type: RonCS.AST.RonElement
+      description: ''
+    return:
+      type: RonCS.AST.RonDocument
+      description: ''
+    content.vb: Public Shared Function Doc(value As RonElement) As RonDocument
+  overload: RonCS.AST.RonBuilder.Doc*
+- uid: RonCS.AST.RonBuilder.None
+  commentId: P:RonCS.AST.RonBuilder.None
+  id: None
+  parent: RonCS.AST.RonBuilder
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: RonBuilder.None
+  fullName: RonCS.AST.RonBuilder.None
+  type: Property
+  source:
+    remote:
+      path: core/src/AST/RonBuilder.cs
+      branch: main
+      repo: git@github.com:CriusNyx/roncs.git
+    id: None
+    path: ../core/src/AST/RonBuilder.cs
+    startLine: 168
+  assemblies:
+  - RonCS
+  namespace: RonCS.AST
+  summary: A Ron None.
+  example: []
+  syntax:
+    content: public static RonNone None { get; }
+    parameters: []
+    return:
+      type: RonCS.AST.RonNone
+    content.vb: Public Shared ReadOnly Property None As RonNone
+  overload: RonCS.AST.RonBuilder.None*
+references:
+- uid: RonCS.AST
+  commentId: N:RonCS.AST
+  href: RonCS.html
+  name: RonCS.AST
+  nameWithType: RonCS.AST
+  fullName: RonCS.AST
+  spec.csharp:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+  spec.vb:
+  - uid: RonCS
+    name: RonCS
+    href: RonCS.html
+  - name: .
+  - uid: RonCS.AST
+    name: AST
+    href: RonCS.AST.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: RonCS.AST.RonBuilder.Some*
+  commentId: Overload:RonCS.AST.RonBuilder.Some
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_Some_RonCS_AST_RonElement_
+  name: Some
+  nameWithType: RonBuilder.Some
+  fullName: RonCS.AST.RonBuilder.Some
+- uid: RonCS.AST.RonElement
+  commentId: T:RonCS.AST.RonElement
+  parent: RonCS.AST
+  href: RonCS.AST.RonElement.html
+  name: RonElement
+  nameWithType: RonElement
+  fullName: RonCS.AST.RonElement
+- uid: RonCS.AST.RonSome
+  commentId: T:RonCS.AST.RonSome
+  parent: RonCS.AST
+  href: RonCS.AST.RonSome.html
+  name: RonSome
+  nameWithType: RonSome
+  fullName: RonCS.AST.RonSome
+- uid: RonCS.AST.RonBuilder.Tuple*
+  commentId: Overload:RonCS.AST.RonBuilder.Tuple
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_Tuple_RonCS_AST_RonElement___
+  name: Tuple
+  nameWithType: RonBuilder.Tuple
+  fullName: RonCS.AST.RonBuilder.Tuple
+- uid: RonCS.AST.RonElement[]
+  isExternal: true
+  href: RonCS.AST.RonElement.html
+  name: RonElement[]
+  nameWithType: RonElement[]
+  fullName: RonCS.AST.RonElement[]
+  nameWithType.vb: RonElement()
+  fullName.vb: RonCS.AST.RonElement()
+  name.vb: RonElement()
+  spec.csharp:
+  - uid: RonCS.AST.RonElement
+    name: RonElement
+    href: RonCS.AST.RonElement.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: RonCS.AST.RonElement
+    name: RonElement
+    href: RonCS.AST.RonElement.html
+  - name: (
+  - name: )
+- uid: RonCS.AST.RonTuple
+  commentId: T:RonCS.AST.RonTuple
+  parent: RonCS.AST
+  href: RonCS.AST.RonTuple.html
+  name: RonTuple
+  nameWithType: RonTuple
+  fullName: RonCS.AST.RonTuple
+- uid: RonCS.AST.RonBuilder.Ident*
+  commentId: Overload:RonCS.AST.RonBuilder.Ident
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_Ident_System_String_
+  name: Ident
+  nameWithType: RonBuilder.Ident
+  fullName: RonCS.AST.RonBuilder.Ident
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: RonCS.AST.RonIdentifier
+  commentId: T:RonCS.AST.RonIdentifier
+  parent: RonCS.AST
+  href: RonCS.AST.RonIdentifier.html
+  name: RonIdentifier
+  nameWithType: RonIdentifier
+  fullName: RonCS.AST.RonIdentifier
+- uid: RonCS.AST.RonBuilder.RawIdent*
+  commentId: Overload:RonCS.AST.RonBuilder.RawIdent
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_RawIdent_System_String_
+  name: RawIdent
+  nameWithType: RonBuilder.RawIdent
+  fullName: RonCS.AST.RonBuilder.RawIdent
+- uid: RonCS.AST.RonRawIdentifier
+  commentId: T:RonCS.AST.RonRawIdentifier
+  parent: RonCS.AST
+  href: RonCS.AST.RonRawIdentifier.html
+  name: RonRawIdentifier
+  nameWithType: RonRawIdentifier
+  fullName: RonCS.AST.RonRawIdentifier
+- uid: RonCS.AST.RonBuilder.NamedValue*
+  commentId: Overload:RonCS.AST.RonBuilder.NamedValue
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_NamedValue_RonCS_AST_RonElement_RonCS_AST_RonElement_
+  name: NamedValue
+  nameWithType: RonBuilder.NamedValue
+  fullName: RonCS.AST.RonBuilder.NamedValue
+- uid: RonCS.AST.RonNamedValue
+  commentId: T:RonCS.AST.RonNamedValue
+  parent: RonCS.AST
+  href: RonCS.AST.RonNamedValue.html
+  name: RonNamedValue
+  nameWithType: RonNamedValue
+  fullName: RonCS.AST.RonNamedValue
+- uid: RonCS.AST.RonBuilder.UnitStruct*
+  commentId: Overload:RonCS.AST.RonBuilder.UnitStruct
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_UnitStruct_System_String_
+  name: UnitStruct
+  nameWithType: RonBuilder.UnitStruct
+  fullName: RonCS.AST.RonBuilder.UnitStruct
+- uid: RonCS.AST.RonUnitStruct
+  commentId: T:RonCS.AST.RonUnitStruct
+  parent: RonCS.AST
+  href: RonCS.AST.RonUnitStruct.html
+  name: RonUnitStruct
+  nameWithType: RonUnitStruct
+  fullName: RonCS.AST.RonUnitStruct
+- uid: RonCS.AST.RonBuilder.Bool*
+  commentId: Overload:RonCS.AST.RonBuilder.Bool
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_Bool_System_Boolean_
+  name: Bool
+  nameWithType: RonBuilder.Bool
+  fullName: RonCS.AST.RonBuilder.Bool
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: RonCS.AST.RonBool
+  commentId: T:RonCS.AST.RonBool
+  parent: RonCS.AST
+  href: RonCS.AST.RonBool.html
+  name: RonBool
+  nameWithType: RonBool
+  fullName: RonCS.AST.RonBool
+- uid: RonCS.AST.RonBuilder.TupleStruct*
+  commentId: Overload:RonCS.AST.RonBuilder.TupleStruct
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_TupleStruct_System_String_RonCS_AST_RonElement___
+  name: TupleStruct
+  nameWithType: RonBuilder.TupleStruct
+  fullName: RonCS.AST.RonBuilder.TupleStruct
+- uid: RonCS.AST.RonTupleStruct
+  commentId: T:RonCS.AST.RonTupleStruct
+  parent: RonCS.AST
+  href: RonCS.AST.RonTupleStruct.html
+  name: RonTupleStruct
+  nameWithType: RonTupleStruct
+  fullName: RonCS.AST.RonTupleStruct
+- uid: RonCS.AST.RonBuilder.NamedValueStruct*
+  commentId: Overload:RonCS.AST.RonBuilder.NamedValueStruct
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_NamedValueStruct_System_String_RonCS_AST_RonElement___
+  name: NamedValueStruct
+  nameWithType: RonBuilder.NamedValueStruct
+  fullName: RonCS.AST.RonBuilder.NamedValueStruct
+- uid: RonCS.AST.RonNamedValueStruct
+  commentId: T:RonCS.AST.RonNamedValueStruct
+  parent: RonCS.AST
+  href: RonCS.AST.RonNamedValueStruct.html
+  name: RonNamedValueStruct
+  nameWithType: RonNamedValueStruct
+  fullName: RonCS.AST.RonNamedValueStruct
+- uid: RonCS.AST.RonBuilder.MapItem*
+  commentId: Overload:RonCS.AST.RonBuilder.MapItem
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_MapItem_RonCS_AST_RonElement_RonCS_AST_RonElement_
+  name: MapItem
+  nameWithType: RonBuilder.MapItem
+  fullName: RonCS.AST.RonBuilder.MapItem
+- uid: RonCS.AST.RonMapItem
+  commentId: T:RonCS.AST.RonMapItem
+  parent: RonCS.AST
+  href: RonCS.AST.RonMapItem.html
+  name: RonMapItem
+  nameWithType: RonMapItem
+  fullName: RonCS.AST.RonMapItem
+- uid: RonCS.AST.RonBuilder.Map*
+  commentId: Overload:RonCS.AST.RonBuilder.Map
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_Map_RonCS_AST_RonElement___
+  name: Map
+  nameWithType: RonBuilder.Map
+  fullName: RonCS.AST.RonBuilder.Map
+- uid: RonCS.AST.RonMap
+  commentId: T:RonCS.AST.RonMap
+  parent: RonCS.AST
+  href: RonCS.AST.RonMap.html
+  name: RonMap
+  nameWithType: RonMap
+  fullName: RonCS.AST.RonMap
+- uid: RonCS.AST.RonBuilder.List*
+  commentId: Overload:RonCS.AST.RonBuilder.List
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_List_RonCS_AST_RonElement___
+  name: List
+  nameWithType: RonBuilder.List
+  fullName: RonCS.AST.RonBuilder.List
+- uid: RonCS.AST.RonList
+  commentId: T:RonCS.AST.RonList
+  parent: RonCS.AST
+  href: RonCS.AST.RonList.html
+  name: RonList
+  nameWithType: RonList
+  fullName: RonCS.AST.RonList
+- uid: RonCS.AST.RonBuilder.Range*
+  commentId: Overload:RonCS.AST.RonBuilder.Range
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_Range_RonCS_AST_RonElement_RonCS_AST_RonRangeOperator_RonCS_AST_RonElement_
+  name: Range
+  nameWithType: RonBuilder.Range
+  fullName: RonCS.AST.RonBuilder.Range
+- uid: RonCS.AST.RonRangeOperator
+  commentId: T:RonCS.AST.RonRangeOperator
+  parent: RonCS.AST
+  href: RonCS.AST.RonRangeOperator.html
+  name: RonRangeOperator
+  nameWithType: RonRangeOperator
+  fullName: RonCS.AST.RonRangeOperator
+- uid: RonCS.AST.RonRange
+  commentId: T:RonCS.AST.RonRange
+  parent: RonCS.AST
+  href: RonCS.AST.RonRange.html
+  name: RonRange
+  nameWithType: RonRange
+  fullName: RonCS.AST.RonRange
+- uid: RonCS.AST.RonBuilder.Doc*
+  commentId: Overload:RonCS.AST.RonBuilder.Doc
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_Doc_RonCS_AST_RonElement_
+  name: Doc
+  nameWithType: RonBuilder.Doc
+  fullName: RonCS.AST.RonBuilder.Doc
+- uid: RonCS.AST.RonDocument
+  commentId: T:RonCS.AST.RonDocument
+  parent: RonCS.AST
+  href: RonCS.AST.RonDocument.html
+  name: RonDocument
+  nameWithType: RonDocument
+  fullName: RonCS.AST.RonDocument
+- uid: RonCS.AST.RonBuilder.None*
+  commentId: Overload:RonCS.AST.RonBuilder.None
+  href: RonCS.AST.RonBuilder.html#RonCS_AST_RonBuilder_None
+  name: None
+  nameWithType: RonBuilder.None
+  fullName: RonCS.AST.RonBuilder.None
+- uid: RonCS.AST.RonNone
+  commentId: T:RonCS.AST.RonNone
+  parent: RonCS.AST
+  href: RonCS.AST.RonNone.html
+  name: RonNone
+  nameWithType: RonNone
+  fullName: RonCS.AST.RonNone
