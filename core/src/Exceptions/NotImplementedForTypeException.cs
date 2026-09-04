@@ -7,5 +7,6 @@ namespace RonCS.Exceptions;
 /// <param name="type"></param>
 public class NotImplementedForArgumentTypeException(string methodName, Type type) : Exception
 {
+  /// <inheritdoc/>
   public override string Message => $"{methodName} is not implemented for type ${type}";
 }

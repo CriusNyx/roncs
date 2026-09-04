@@ -1,7 +1,7 @@
 using System.Collections;
 using RonCS.AST;
 
-namespace RonCS;
+namespace RonCS.Converters;
 
 /// <summary>
 /// Converter for a dictionary type.
@@ -17,7 +17,7 @@ internal class DictionaryConverter : TypeSerializerConverter
       var value = dict[key];
       elements.Add(
         new RonMapItem(
-          new StringValue(new StringLit(key.ToString().NotNull())),
+          new RonString(new RonStringLit(key.ToString().NotNull())),
           context.ToAST(value)
         )
       );

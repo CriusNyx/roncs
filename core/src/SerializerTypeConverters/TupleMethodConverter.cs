@@ -1,7 +1,7 @@
 using System.Reflection;
 using RonCS.AST;
 
-namespace RonCS;
+namespace RonCS.Converters;
 
 /// <summary>
 /// Type converter for a method that returns a tuple.
@@ -10,6 +10,7 @@ namespace RonCS;
 /// <param name="method"></param>
 public class TupleMethodConverter(string name, MethodInfo method) : TypeSerializerConverter
 {
+  /// <inheritdoc/>
   public RonElement ToAST(SerializationContext context, object source)
   {
     var result = method
@@ -29,6 +30,7 @@ public class TupleMethodConverter(string name, MethodInfo method) : TypeSerializ
 /// <param name="property"></param>
 public class TuplePropertyConverter(string name, PropertyInfo property) : TypeSerializerConverter
 {
+  /// <inheritdoc/>
   public RonElement ToAST(SerializationContext context, object source)
   {
     var result = property
@@ -49,6 +51,7 @@ public class TuplePropertyConverter(string name, PropertyInfo property) : TypeSe
 public class TupleFunctionConverter(string name, Func<object, object[]> converter)
   : TypeSerializerConverter
 {
+  /// <inheritdoc/>
   public RonElement ToAST(SerializationContext context, object source)
   {
     var result = converter.Invoke(source).AsNotNull<object[]>($"{source.GetType()}.${name}");

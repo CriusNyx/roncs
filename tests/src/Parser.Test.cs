@@ -209,9 +209,9 @@ public class ASTTests
     TestParser(
       "0..0",
       Range(
-        new IntegerValue(null, new(null, "0")),
+        new RonInteger(null, new(null, "0")),
         RonRangeOperator.Exclusive,
-        new IntegerValue(null, new(null, "0"))
+        new RonInteger(null, new(null, "0"))
       ),
       RonParser.Range
     );
@@ -223,9 +223,9 @@ public class ASTTests
     TestParser(
       "0..=0",
       Range(
-        new IntegerValue(null, new(null, "0")),
+        new RonInteger(null, new(null, "0")),
         RonRangeOperator.Inclusive,
-        new IntegerValue(null, new(null, "0"))
+        new RonInteger(null, new(null, "0"))
       ),
       RonParser.Range
     );
@@ -236,7 +236,7 @@ public class ASTTests
   {
     TestParser(
       "0..",
-      Range(new IntegerValue(null, new(null, "0")), RonRangeOperator.Exclusive, null),
+      Range(new RonInteger(null, new(null, "0")), RonRangeOperator.Exclusive, null),
       RonParser.Range
     );
   }
@@ -246,7 +246,7 @@ public class ASTTests
   {
     TestParser(
       "..0",
-      Range(null, RonRangeOperator.Exclusive, new IntegerValue(null, new(null, "0"))),
+      Range(null, RonRangeOperator.Exclusive, new RonInteger(null, new(null, "0"))),
       RonParser.Range
     );
   }
@@ -256,7 +256,7 @@ public class ASTTests
   {
     TestParser(
       "..=0",
-      Range(null, RonRangeOperator.Inclusive, new IntegerValue(null, new(null, "0"))),
+      Range(null, RonRangeOperator.Inclusive, new RonInteger(null, new(null, "0"))),
       RonParser.Range
     );
   }

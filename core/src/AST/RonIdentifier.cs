@@ -24,6 +24,7 @@ public class RonIdentifier(string? name = null) : RonElement, IIdentifier
   /// </summary>
   public string? Name = name;
 
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return Name ?? "";

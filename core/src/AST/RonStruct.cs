@@ -1,3 +1,5 @@
+using RonCS.Exceptions;
+
 namespace RonCS.AST;
 
 /// <summary>
@@ -7,6 +9,9 @@ namespace RonCS.AST;
 [Serializable]
 public abstract class RonStruct(RonElement? name) : RonElement
 {
+  /// <summary>
+  /// The name of the struct, or null if it is not provided.
+  /// </summary>
   public RonElement? Name { get; set; } = name;
 }
 
@@ -17,6 +22,7 @@ public abstract class RonStruct(RonElement? name) : RonElement
 [Serializable]
 public class RonUnitStruct(RonElement? name) : RonStruct(name)
 {
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return Name?.RonPrint(options) ?? "";
@@ -36,6 +42,7 @@ public class RonTupleStruct(RonElement? name, RonElement? body) : RonStruct(name
   /// </summary>
   public RonElement? Body = body;
 
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return Name?.RonPrint(options) + Body?.RonPrint(options);
@@ -55,6 +62,7 @@ public class RonNamedValueStruct(RonElement? name, params RonElement[]? body) : 
   /// </summary>
   public RonElement[]? Body = body;
 
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     switch (options.mode)
@@ -89,6 +97,7 @@ public class RonMapStruct(RonElement? name, RonElement? mapBody) : RonStruct(nam
   /// </summary>
   public RonElement? MapBody => mapBody;
 
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return Name?.RonPrint(options) + MapBody?.RonPrint(options);

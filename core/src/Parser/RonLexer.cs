@@ -4,7 +4,7 @@ using Superpower.Model;
 using Superpower.Parsers;
 using Superpower.Tokenizers;
 
-namespace RonCS;
+namespace RonCS.AST;
 
 /// <summary>
 /// Tokens for the RON language.
@@ -12,42 +12,117 @@ namespace RonCS;
 public enum RonTokenKind
 {
   // Symbols
+  /// <summary>
+  /// ,
+  /// </summary>
   Comma,
+
+  /// <summary>
+  /// ;
+  /// </summary>
   Colon,
+
+  /// <summary>
+  /// #
+  /// </summary>
   Hash,
 
   // Operators
+  /// <summary>
+  /// ..
+  /// </summary>
   RangeExclusive,
+
+  /// <summary>
+  /// ..=
+  /// </summary>
   RangeInclusive,
 
   // Braces and Parens
+  /// <summary>
+  /// (
+  /// </summary>
   OpenParen,
+
+  /// <summary>
+  /// )
+  /// </summary>
   ClosedParen,
+
+  /// <summary>
+  /// [
+  /// </summary>
   OpenSquare,
+
+  /// <summary>
+  /// ]
+  /// </summary>
   ClosedSquare,
+
+  /// <summary>
+  /// {
+  /// </summary>
   OpenCurly,
+
+  /// <summary>
+  /// }
+  /// </summary>
   ClosedCurly,
 
   // Options
+  /// <summary>
+  /// Some
+  /// </summary>
   Some,
+
+  /// <summary>
+  /// None
+  /// </summary>
   None,
 
   // Primitives
+  /// <summary>
+  /// Any XID character.
+  /// </summary>
   Char,
+
+  /// <summary>
+  /// true
+  /// </summary>
   True,
+
+  /// <summary>
+  /// false
+  /// </summary>
   False,
 
   // Numbers
+  /// <summary>
+  /// Any ron number
+  /// </summary>
   Number,
 
   // Strings
+  /// <summary>
+  /// Any ron string
+  /// </summary>
   String,
 
   // Identifiers
+  /// <summary>
+  /// XID identifier
+  /// </summary>
   Identifier,
+
+  /// <summary>
+  /// Raw identifier
+  /// </summary>
   RawIdentifier,
 };
 
+/// <summary>
+/// Base class for ron tokenizer
+/// </summary>
 public class RonLexer
 {
   static bool IsIdentStdFirst(char c)
@@ -74,7 +149,7 @@ public class RonLexer
       .Value(true)
   );
 
-  public static Tokenizer<RonTokenKind> Tokenizer { get; private set; } =
+  internal static Tokenizer<RonTokenKind> Tokenizer { get; private set; } =
     new TokenizerBuilder<RonTokenKind>()
       // Whitespace
       .Ignore(Span.WhiteSpace)
@@ -127,6 +202,13 @@ public class RonLexer
       )
       .Build();
 
+  /// <summary>
+  /// Try to tokenize the input.
+  /// </summary>
+  /// <param name="source">The source code</param>
+  /// <param name="tokens">The token list if successful</param>
+  /// <param name="exception">The exception if failed</param>
+  /// <returns></returns>
   public static bool TryTokenize(
     string source,
     out TokenList<RonTokenKind> tokens,
@@ -149,6 +231,11 @@ public class RonLexer
     }
   }
 
+  /// <summary>
+  /// Tokenize the ron document and return the token list
+  /// </summary>
+  /// <param name="source"></param>
+  /// <returns></returns>
   public static TokenList<RonTokenKind> Tokenize(string source)
   {
     if (TryTokenize(source, out var list, out var exception))

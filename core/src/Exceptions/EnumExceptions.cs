@@ -1,4 +1,4 @@
-namespace RonCS;
+namespace RonCS.Exceptions;
 
 /// <summary>
 /// Exception for when an enum case was unknown.
@@ -7,6 +7,7 @@ namespace RonCS;
 /// <param name="value"></param>
 public class UnknownEnumException<T>(T? value) : Exception
 {
+  /// <inheritdoc/>
   public override string Message => $"Unexpected enum of type {value}";
 }
 
@@ -15,13 +16,13 @@ public class UnknownEnumException<T>(T? value) : Exception
 /// </summary>
 public class UnknownEnumException
 {
-  public static UnknownEnumException<T> Create<T>(T? value)
+  internal static UnknownEnumException<T> Create<T>(T? value)
   {
     return new UnknownEnumException<T>(value);
   }
 }
 
-public static class ExceptionExtensions
+internal static class ExceptionExtensions
 {
   /// <summary>
   /// Creates an enum exception for the value.

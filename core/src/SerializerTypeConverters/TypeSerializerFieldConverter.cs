@@ -1,6 +1,6 @@
 using RonCS.AST;
 
-namespace RonCS;
+namespace RonCS.Converters;
 
 /// <summary>
 /// Converts objects to RON AST trees that can be serialized.

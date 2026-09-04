@@ -6,6 +6,7 @@ namespace RonCS.Exceptions;
 /// <param name="type"></param>
 public class NoDictionaryConstructorException(Type type) : Exception
 {
+  /// <inheritdoc/>
   public override string Message =>
     $"Expected {type} to have a constructor that accepts a dictionary, or a set of key value pairs, but it does not.";
 }

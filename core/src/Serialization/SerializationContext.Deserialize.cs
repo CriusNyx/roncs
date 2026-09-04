@@ -6,6 +6,11 @@ using RonCS.Exceptions;
 
 namespace RonCS;
 
+/// <summary>
+/// Context for serializing ron elements.
+/// Custom overrides for Ron are stored in the local or global serialization context.
+/// </summary>
+/// <param name="parentContext"></param>
 public partial class SerializationContext(SerializationContext? parentContext = null)
 {
   /// <summary>
@@ -28,9 +33,10 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="element"></param>
   /// <param name="typeHint"></param>
+  /// <param name="path"></param>
   /// <returns></returns>
   /// <exception cref="NotImplementedException"></exception>
-  public SerializationResult<object?> DeserializeElement(
+  internal SerializationResult<object?> DeserializeElement(
     RonElement? element,
     Type? typeHint,
     string path
@@ -44,8 +50,8 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     SerializationResult<object?> output = element switch
     {
       RonDocument doc => DeserializeElement(doc.Value!, typeHint, path),
-      StringValue str => Ok(str.Evaluate()),
-      NumberValue numValue => Ok(numValue.EvaluateNumber(typeHint)),
+      RonString str => Ok(str.Evaluate()),
+      INumberValue numValue => Ok(numValue.EvaluateNumber(typeHint)),
       RonBool boolVal => Ok(boolVal.Value),
       RonChar charVal => Ok(charVal.Value),
       RonSome some => DeserializeElement(some.value, typeHint, path),
@@ -76,7 +82,10 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="typeHint"></param>
   /// <param name="unitStruct"></param>
   /// <returns></returns>
-  public SerializationResult<object?> DeserializeUnitClass(Type typeHint, RonUnitStruct unitStruct)
+  internal SerializationResult<object?> DeserializeUnitClass(
+    Type typeHint,
+    RonUnitStruct unitStruct
+  )
   {
     if (typeHint.IsEnum)
     {
@@ -102,7 +111,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// <param name="enumType"></param>
   /// <param name="identifier"></param>
   /// <returns></returns>
-  public SerializationResult<object?> DeserializeEnum(Type enumType, RonElement identifier)
+  internal SerializationResult<object?> DeserializeEnum(Type enumType, RonElement identifier)
   {
     return Enum.Parse(enumType, identifier.IdentifierName().NotNull(nameof(identifier))).AsOk()!;
   }
@@ -112,8 +121,9 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="typeHint"></param>
   /// <param name="element"></param>
+  /// <param name="path"></param>
   /// <returns></returns>
-  public SerializationResult<object?> DeserializeNamedValueClass(
+  internal SerializationResult<object?> DeserializeNamedValueClass(
     Type? typeHint,
     RonNamedValueStruct element,
     string path
@@ -146,8 +156,9 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="element"></param>
   /// <param name="instance"></param>
+  /// <param name="path"></param>
   /// <returns></returns>
-  public SerializationResult<object?> DeserializeClassField(
+  internal SerializationResult<object?> DeserializeClassField(
     RonElement element,
     object instance,
     string path
@@ -186,8 +197,9 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="typeHint"></param>
   /// <param name="element"></param>
+  /// <param name="path"></param>
   /// <returns></returns>
-  public SerializationResult<object?> DeserializeTupleStructClass(
+  internal SerializationResult<object?> DeserializeTupleStructClass(
     Type? typeHint,
     RonTupleStruct element,
     string path
@@ -204,8 +216,9 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="typeHint"></param>
   /// <param name="body"></param>
+  /// <param name="path"></param>
   /// <returns></returns>
-  public SerializationResult<object?> DeserializeTupleClassBody(
+  internal SerializationResult<object?> DeserializeTupleClassBody(
     Type typeHint,
     RonTuple body,
     string path
@@ -239,8 +252,9 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="typeHint"></param>
   /// <param name="list"></param>
+  /// <param name="path"></param>
   /// <returns></returns>
-  public SerializationResult<object?> DeserializeList(Type? typeHint, RonList list, string path)
+  internal SerializationResult<object?> DeserializeList(Type? typeHint, RonList list, string path)
   {
     // Null checking
     typeHint = typeHint.NotNull(nameof(typeHint));
@@ -291,9 +305,10 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   /// </summary>
   /// <param name="map"></param>
   /// <param name="typeHint"></param>
+  /// <param name="path"></param>
   /// <returns></returns>
   /// <exception cref="NotImplementedException"></exception>
-  public SerializationResult<object?> DeserializeMap(RonMap map, Type? typeHint, string path)
+  internal SerializationResult<object?> DeserializeMap(RonMap map, Type? typeHint, string path)
   {
     // Null check
     typeHint = typeHint.NotNull(nameof(typeHint));
@@ -320,7 +335,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     {
       if (element is RonMapItem mapItem)
       {
-        var key = mapItem.Key.AsNotNull<StringValue>(nameof(mapItem.Key)).Evaluate();
+        var key = mapItem.Key.AsNotNull<RonString>(nameof(mapItem.Key)).Evaluate();
         var value = DeserializeElement(mapItem.Value, valueType, $"{path}[\"{key}\"]");
         if (!value.isSuccess)
         {
@@ -425,8 +440,8 @@ public partial class SerializationContext(SerializationContext? parentContext = 
     return element switch
     {
       RonBool => typeof(bool),
-      StringValue => typeof(string),
-      NumberValue numVal => numVal.CSType(),
+      RonString => typeof(string),
+      INumberValue numVal => numVal.CSType(),
       RonDocument doc => InferType(doc.Value.NotNull("doc.value")),
       RonIdentifier ident => GetTypeFromName(ident.Name, null),
       RonRawIdentifier ident => GetTypeFromName(ident.Name, null),
@@ -514,24 +529,24 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   }
 }
 
-public class SerializationResult<T>
+internal class SerializationResult<T>
 {
   public bool isSuccess;
   public T? value;
   public Exception exception = null!;
 
-  public static SerializationResult<T> Ok(T? value)
+  internal static SerializationResult<T> Ok(T? value)
   {
     return new SerializationResult<T> { isSuccess = true, value = value };
   }
 
-  public static SerializationResult<T> Err(Exception exception)
+  internal static SerializationResult<T> Err(Exception exception)
   {
     return new SerializationResult<T> { isSuccess = false, exception = exception };
   }
 }
 
-public static class SerializationExtensions
+internal static class SerializationExtensions
 {
   internal static SerializationResult<T> AsOk<T>(this T value) => SerializationResult<T>.Ok(value);
 

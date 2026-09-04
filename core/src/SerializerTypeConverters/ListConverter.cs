@@ -1,7 +1,7 @@
 using System.Collections;
 using RonCS.AST;
 
-namespace RonCS;
+namespace RonCS.Converters;
 
 /// <summary>
 /// Type converter for a list.

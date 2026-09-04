@@ -7,8 +7,12 @@ namespace RonCS.AST;
 [Serializable]
 public class RonSome(RonElement? value = null) : RonElement
 {
+  /// <summary>
+  /// The value inside the some.
+  /// </summary>
   public RonElement? value = value;
 
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return $"Some({value?.RonPrint(options)})";

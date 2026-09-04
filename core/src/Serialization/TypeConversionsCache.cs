@@ -102,6 +102,9 @@ internal class TypeConversionCache
   }
 }
 
+/// <summary>
+/// Extension methods for converting ron objects.
+/// </summary>
 public static class TypeConversionExtensions
 {
   /// <summary>

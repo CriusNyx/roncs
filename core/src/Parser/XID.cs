@@ -1,6 +1,6 @@
-namespace RonCS;
+namespace RonCS.AST;
 
-public static class XID
+internal static class XID
 {
   public static (char, char)[] XID_Start =
   [

@@ -5,7 +5,7 @@ namespace RonCS;
 /// <summary>
 /// Sign kind for type.
 /// </summary>
-public enum SignKind
+internal enum SignKind
 {
   Unsigned = 0,
   Signed = 1,
@@ -14,7 +14,7 @@ public enum SignKind
 /// <summary>
 /// Decimal kind for type.
 /// </summary>
-public enum DecimalKind
+internal enum DecimalKind
 {
   Integer = 0,
   FloatingPoint = 1,
@@ -23,7 +23,7 @@ public enum DecimalKind
 /// <summary>
 /// Bit depth for type.
 /// </summary>
-public enum BitDepth
+internal enum BitDepth
 {
   b8 = 8,
   b16 = 16,
@@ -38,7 +38,7 @@ public enum BitDepth
 /// The designated type is not a number.
 /// </summary>
 /// <param name="type"></param>
-public class TypeIsNotANumberException(Type type) : Exception
+internal class TypeIsNotANumberException(Type type) : Exception
 {
   public override string Message => $"Type {type.Name} is not a number type.";
 }
@@ -46,7 +46,7 @@ public class TypeIsNotANumberException(Type type) : Exception
 /// <summary>
 /// Type extension methods.
 /// </summary>
-public static class TypeUtil
+internal static class TypeUtil
 {
   private static HashSet<Type> UnsignedIntegerTypes =
   [

@@ -50,6 +50,7 @@ public abstract class DeserializationExceptionReason(string ronPath)
 public class NoFieldOrPropertyException(string ronPath, Type deserializedType, string fieldName)
   : DeserializationExceptionReason(ronPath)
 {
+  /// <inheritdoc/>
   public override string Message =>
     $"Ron element at {ronPath} could not be assigned to {deserializedType}.{fieldName} because {deserializedType} does not have the specified field or property.";
 }

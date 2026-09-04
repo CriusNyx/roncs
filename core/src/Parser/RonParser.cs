@@ -1,14 +1,17 @@
-using RonCS.AST;
 using Superpower;
 using Superpower.Parsers;
 using MultiParser = Superpower.TokenListParser<
-  RonCS.RonTokenKind,
+  RonCS.AST.RonTokenKind,
   System.Collections.Generic.IEnumerable<RonCS.AST.RonElement>
 >;
-using TParser = Superpower.TokenListParser<RonCS.RonTokenKind, RonCS.AST.RonElement>;
+using RonToken = Superpower.Model.Token<RonCS.AST.RonTokenKind>;
+using TParser = Superpower.TokenListParser<RonCS.AST.RonTokenKind, RonCS.AST.RonElement>;
 
-namespace RonCS;
+namespace RonCS.AST;
 
+/// <summary>
+/// Parser for ron documents
+/// </summary>
 public static class RonParser
 {
   /// <summary>
@@ -112,6 +115,9 @@ public static class RonParser
     .InCurly()
     .Select(values => new RonMap(values.ToArray()).AsNotNull<RonElement>());
 
+  /// <summary>
+  /// RonList
+  /// </summary>
   public static TParser List = ValueSet
     .InSquare()
     .Select(values => new RonList(values.ToArray()).AsNotNull<RonElement>());
@@ -184,6 +190,9 @@ public static class RonParser
       NumberParser.Number_Parser.Parse(x.ToStringValue()).AsNotNull<RonElement>("Number")
     );
 
+  /// <summary>
+  /// Ron range operator
+  /// </summary>
   public static TokenListParser<RonTokenKind, RonRangeOperator> RangeOperatorExclusive = Token
     .EqualTo(RonTokenKind.RangeExclusive)
     .Value(RonRangeOperator.Exclusive);
@@ -228,7 +237,9 @@ public static class RonParser
     (op) => new RonRange(null, op, null) as RonElement
   );
 
-  // Range = RangeBinary | RangeFrom | RangeTo | RangeFull;
+  /// <summary>
+  /// Range = RangeBinary | RangeFrom | RangeTo | RangeFull;
+  /// </summary>
   public static TParser Range = Parse.OneOf(
     RangeBinary.Try(),
     RangeFrom.Try(),
@@ -236,10 +247,16 @@ public static class RonParser
     RangeFull.Try()
   );
 
+  /// <summary>
+  /// String parser
+  /// </summary>
   public static TParser String = Token
     .EqualTo(RonTokenKind.String)
     .Select(token => StringParser.String_Parser.Parse(token.ToStringValue()) as RonElement);
 
+  /// <summary>
+  /// Character parser
+  /// </summary>
   public static TParser Char = Token
     .EqualTo(RonTokenKind.Char)
     .Select(token => StringParser.Char_Parser.Parse(token.ToStringValue()));
@@ -268,7 +285,7 @@ internal static class RonParserExtensions
     this TokenListParser<RonTokenKind, T> self
   )
   {
-    return self.Between(
+    return self.Between<RonTokenKind, T, RonToken, RonToken>(
       Token.EqualTo(RonTokenKind.OpenParen),
       Token.EqualTo(RonTokenKind.ClosedParen)
     );
@@ -278,7 +295,7 @@ internal static class RonParserExtensions
     this TokenListParser<RonTokenKind, T> self
   )
   {
-    return self.Between(
+    return self.Between<RonTokenKind, T, RonToken, RonToken>(
       Token.EqualTo(RonTokenKind.OpenCurly),
       Token.EqualTo(RonTokenKind.ClosedCurly)
     );
@@ -288,7 +305,7 @@ internal static class RonParserExtensions
     this TokenListParser<RonTokenKind, T> self
   )
   {
-    return self.Between(
+    return self.Between<RonTokenKind, T, RonToken, RonToken>(
       Token.EqualTo(RonTokenKind.OpenSquare),
       Token.EqualTo(RonTokenKind.ClosedSquare)
     );

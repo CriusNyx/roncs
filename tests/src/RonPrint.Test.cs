@@ -14,95 +14,95 @@ public class RonPrintTests
       yield return [new RonBool(true), RonPrintOptions.Compact(), "true"];
       yield return
       [
-        new StringValue(new StringLit("Hello")),
+        new RonString(new RonStringLit("Hello")),
         RonPrintOptions.Compact(),
         "\"Hello\"",
       ];
-      yield return [new StringValue(new AsciiEscape('\\')), RonPrintOptions.Compact(), "\"\\\\\""];
+      yield return [new RonString(new RonAsciiEscape('\\')), RonPrintOptions.Compact(), "\"\\\\\""];
       yield return
       [
-        new StringValue(new UnicodeEscape("1F339")),
+        new RonString(new RonUnicodeEscape("1F339")),
         RonPrintOptions.Compact(),
         "\"\\u{1F339}\"",
       ];
-      yield return [new IntegerValue(null, new(null, "1"), null), RonPrintOptions.Compact(), "1"];
-      yield return [new IntegerValue('+', new(null, "1"), null), RonPrintOptions.Compact(), "+1"];
-      yield return [new IntegerValue('-', new(null, "1"), null), RonPrintOptions.Compact(), "-1"];
+      yield return [new RonInteger(null, new(null, "1"), null), RonPrintOptions.Compact(), "1"];
+      yield return [new RonInteger('+', new(null, "1"), null), RonPrintOptions.Compact(), "+1"];
+      yield return [new RonInteger('-', new(null, "1"), null), RonPrintOptions.Compact(), "-1"];
       yield return
       [
-        new IntegerValue(null, new(null, "1"), IntegerSuffix.u32),
+        new RonInteger(null, new(null, "1"), IntegerSuffix.u32),
         RonPrintOptions.Compact(),
         "1u32",
       ];
       yield return
       [
-        new IntegerValue('-', new(null, "1"), IntegerSuffix.i32),
+        new RonInteger('-', new(null, "1"), IntegerSuffix.i32),
         RonPrintOptions.Compact(),
         "-1i32",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum("1.", null), null),
+        new RonFloat(null, new RonStandardFloat("1.", null), null),
         RonPrintOptions.Compact(),
         "1.",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum(".1", null), null),
+        new RonFloat(null, new RonStandardFloat(".1", null), null),
         RonPrintOptions.Compact(),
         ".1",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum("0.1", null), null),
+        new RonFloat(null, new RonStandardFloat("0.1", null), null),
         RonPrintOptions.Compact(),
         "0.1",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum("0.0", null), null),
+        new RonFloat(null, new RonStandardFloat("0.0", null), null),
         RonPrintOptions.Compact(),
         "0.0",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum("1.0", null), null),
+        new RonFloat(null, new RonStandardFloat("1.0", null), null),
         RonPrintOptions.Compact(),
         "1.0",
       ];
       yield return
       [
-        new FloatValue('+', new StandardFloatNum("1.0", null), null),
+        new RonFloat('+', new RonStandardFloat("1.0", null), null),
         RonPrintOptions.Compact(),
         "+1.0",
       ];
       yield return
       [
-        new FloatValue('-', new StandardFloatNum("1.0", null), null),
+        new RonFloat('-', new RonStandardFloat("1.0", null), null),
         RonPrintOptions.Compact(),
         "-1.0",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum("1", new('e', null, "12")), null),
+        new RonFloat(null, new RonStandardFloat("1", new('e', null, "12")), null),
         RonPrintOptions.Compact(),
         "1e12",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum("1", new('e', '-', "12")), null),
+        new RonFloat(null, new RonStandardFloat("1", new('e', '-', "12")), null),
         RonPrintOptions.Compact(),
         "1e-12",
       ];
       yield return
       [
-        new FloatValue(null, new StandardFloatNum("1", null), FloatSuffix.f32),
+        new RonFloat(null, new RonStandardFloat("1", null), FloatSuffix.f32),
         RonPrintOptions.Compact(),
         "1f32",
       ];
       yield return
       [
-        new FloatValue('-', new StandardFloatNum("1", new('e', '-', "12")), FloatSuffix.f32),
+        new RonFloat('-', new RonStandardFloat("1", new('e', '-', "12")), FloatSuffix.f32),
         RonPrintOptions.Compact(),
         "-1e-12f32",
       ];
@@ -110,21 +110,21 @@ public class RonPrintTests
       yield return [new RonList(), RonPrintOptions.Compact(), "[]"];
       yield return
       [
-        new RonList(new StringValue(new StringLit("Hello World"))),
+        new RonList(new RonString(new RonStringLit("Hello World"))),
         RonPrintOptions.Compact(),
         "[\"Hello World\"]",
       ];
       yield return
       [
-        new RonList(new StringValue(new StringLit("Hello World"))),
+        new RonList(new RonString(new RonStringLit("Hello World"))),
         RonPrintOptions.Pretty(),
         "[\n  \"Hello World\"\n]",
       ];
       yield return
       [
         new RonList(
-          new StringValue(new StringLit("Hello")),
-          new StringValue(new StringLit("World"))
+          new RonString(new RonStringLit("Hello")),
+          new RonString(new RonStringLit("World"))
         ),
         RonPrintOptions.Compact(),
         "[\"Hello\",\"World\"]",
@@ -132,8 +132,8 @@ public class RonPrintTests
       yield return
       [
         new RonList(
-          new StringValue(new StringLit("Hello")),
-          new StringValue(new StringLit("World"))
+          new RonString(new RonStringLit("Hello")),
+          new RonString(new RonStringLit("World"))
         ),
         RonPrintOptions.Pretty(),
         "[\n  \"Hello\",\n  \"World\"\n]",
@@ -142,21 +142,21 @@ public class RonPrintTests
       yield return [new RonTuple(), RonPrintOptions.Compact(), "()"];
       yield return
       [
-        new RonTuple(new StringValue(new StringLit("Hello"))),
+        new RonTuple(new RonString(new RonStringLit("Hello"))),
         RonPrintOptions.Compact(),
         "(\"Hello\")",
       ];
       yield return
       [
-        new RonTuple(new StringValue(new StringLit("Hello"))),
+        new RonTuple(new RonString(new RonStringLit("Hello"))),
         RonPrintOptions.Pretty(),
         "(\n  \"Hello\"\n)",
       ];
       yield return
       [
         new RonTuple(
-          new StringValue(new StringLit("Hello")),
-          new StringValue(new StringLit("World"))
+          new RonString(new RonStringLit("Hello")),
+          new RonString(new RonStringLit("World"))
         ),
         RonPrintOptions.Compact(),
         "(\"Hello\",\"World\")",
@@ -164,8 +164,8 @@ public class RonPrintTests
       yield return
       [
         new RonTuple(
-          new StringValue(new StringLit("Hello")),
-          new StringValue(new StringLit("World"))
+          new RonString(new RonStringLit("Hello")),
+          new RonString(new RonStringLit("World"))
         ),
         RonPrintOptions.Pretty(),
         "(\n  \"Hello\",\n  \"World\"\n)",
@@ -187,7 +187,7 @@ public class RonPrintTests
       [
         new RonTupleStruct(
           new RonIdentifier("MyCoolClass"),
-          new RonTuple(new StringValue(new StringLit("Hello World")))
+          new RonTuple(new RonString(new RonStringLit("Hello World")))
         ),
         RonPrintOptions.Compact(),
         "MyCoolClass(\"Hello World\")",
@@ -197,7 +197,7 @@ public class RonPrintTests
       [
         new RonNamedValueStruct(
           null,
-          new RonNamedValue(new RonIdentifier("foo"), new StringValue(new StringLit("bar")))
+          new RonNamedValue(new RonIdentifier("foo"), new RonString(new RonStringLit("bar")))
         ),
         RonPrintOptions.Compact(),
         "(foo:\"bar\")",
@@ -206,7 +206,7 @@ public class RonPrintTests
       [
         new RonNamedValueStruct(
           null,
-          new RonNamedValue(new RonIdentifier("foo"), new StringValue(new StringLit("bar")))
+          new RonNamedValue(new RonIdentifier("foo"), new RonString(new RonStringLit("bar")))
         ),
         RonPrintOptions.Pretty(),
         "(\n  foo: \"bar\"\n)",
@@ -215,7 +215,7 @@ public class RonPrintTests
       [
         new RonNamedValueStruct(
           new RonIdentifier("MyCoolClass"),
-          new RonNamedValue(new RonIdentifier("foo"), new StringValue(new StringLit("bar")))
+          new RonNamedValue(new RonIdentifier("foo"), new RonString(new RonStringLit("bar")))
         ),
         RonPrintOptions.Compact(),
         "MyCoolClass(foo:\"bar\")",
@@ -224,7 +224,7 @@ public class RonPrintTests
       [
         new RonNamedValueStruct(
           new RonIdentifier("MyCoolClass"),
-          new RonNamedValue(new RonIdentifier("foo"), new StringValue(new StringLit("bar")))
+          new RonNamedValue(new RonIdentifier("foo"), new RonString(new RonStringLit("bar")))
         ),
         RonPrintOptions.Pretty(),
         "MyCoolClass(\n  foo: \"bar\"\n)",
@@ -243,8 +243,8 @@ public class RonPrintTests
           null,
           new RonMap(
             new RonMapItem(
-              new StringValue(new StringLit("hello")),
-              new StringValue(new StringLit("world"))
+              new RonString(new RonStringLit("hello")),
+              new RonString(new RonStringLit("world"))
             )
           )
         ),
@@ -257,8 +257,8 @@ public class RonPrintTests
           null,
           new RonMap(
             new RonMapItem(
-              new StringValue(new StringLit("hello")),
-              new StringValue(new StringLit("world"))
+              new RonString(new RonStringLit("hello")),
+              new RonString(new RonStringLit("world"))
             )
           )
         ),
@@ -271,8 +271,8 @@ public class RonPrintTests
           new RonIdentifier("MyCoolMap"),
           new RonMap(
             new RonMapItem(
-              new StringValue(new StringLit("hello")),
-              new StringValue(new StringLit("world"))
+              new RonString(new RonStringLit("hello")),
+              new RonString(new RonStringLit("world"))
             )
           )
         ),
@@ -285,12 +285,12 @@ public class RonPrintTests
           null,
           new RonMap(
             new RonMapItem(
-              new StringValue(new StringLit("hello")),
-              new StringValue(new StringLit("world"))
+              new RonString(new RonStringLit("hello")),
+              new RonString(new RonStringLit("world"))
             ),
             new RonMapItem(
-              new StringValue(new StringLit("foo")),
-              new StringValue(new StringLit("bar"))
+              new RonString(new RonStringLit("foo")),
+              new RonString(new RonStringLit("bar"))
             )
           )
         ),
@@ -303,12 +303,12 @@ public class RonPrintTests
           null,
           new RonMap(
             new RonMapItem(
-              new StringValue(new StringLit("hello")),
-              new StringValue(new StringLit("world"))
+              new RonString(new RonStringLit("hello")),
+              new RonString(new RonStringLit("world"))
             ),
             new RonMapItem(
-              new StringValue(new StringLit("foo")),
-              new StringValue(new StringLit("bar"))
+              new RonString(new RonStringLit("foo")),
+              new RonString(new RonStringLit("bar"))
             )
           )
         ),

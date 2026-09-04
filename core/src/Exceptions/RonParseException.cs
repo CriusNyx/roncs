@@ -9,5 +9,8 @@ namespace RonCS.Exceptions;
 /// <param name="result"></param>
 public class RonParseException(TokenListParserResult<RonTokenKind, RonDocument> result) : Exception
 {
+  /// <summary>
+  /// Superpower parser result.
+  /// </summary>
   public readonly TokenListParserResult<RonTokenKind, RonDocument> Result = result;
 }

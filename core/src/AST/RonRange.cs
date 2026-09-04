@@ -5,7 +5,14 @@ namespace RonCS.AST;
 /// </summary>
 public enum RonRangeOperator
 {
+  /// <summary>
+  /// Exclude the upper bound.
+  /// </summary>
   Exclusive,
+
+  /// <summary>
+  /// Include the upper bound.
+  /// </summary>
   Inclusive,
 }
 
@@ -36,6 +43,7 @@ public class RonRange(
   /// </summary>
   public RonElement? upper = upper;
 
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return lower?.RonPrint(options) + op + upper?.RonPrint(options);

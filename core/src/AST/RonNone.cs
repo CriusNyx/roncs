@@ -6,6 +6,7 @@ namespace RonCS.AST;
 [Serializable]
 public class RonNone : RonElement
 {
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return "None";

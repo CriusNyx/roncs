@@ -5,7 +5,14 @@ namespace RonCS;
 /// </summary>
 public enum RonPrintMode
 {
+  /// <summary>
+  /// The most compact ron string possible.
+  /// </summary>
   Compact,
+
+  /// <summary>
+  /// Format ron with new lines and indent.
+  /// </summary>
   Pretty,
 }
 

@@ -42,7 +42,7 @@ public class NumberParserTests
       }
       else
       {
-        var expected = new IntegerValue(sign, new(prefix, digits), suffix);
+        var expected = new RonInteger(sign, new(prefix, digits), suffix);
         var actual = parser.Parse(source);
         actual.ShouldDeepEqual(expected);
       }
@@ -131,13 +131,11 @@ public class NumberParserTests
       string source =
         $"{sign}{digitsBeforeDecimal}{decChar}{digitsAfterDecimal}{exponentChar}{exponentSign}{exponentDigits}{suffix}";
 
-      var expected = new FloatValue(
+      var expected = new RonFloat(
         sign,
-        new StandardFloatNum(
+        new RonStandardFloat(
           $"{digitsBeforeDecimal}{decChar}{digitsAfterDecimal}",
-          exponentChar != null
-            ? new FloatExponent(exponentChar, exponentSign, exponentDigits)
-            : null
+          exponentChar != null ? new RonExponent(exponentChar, exponentSign, exponentDigits) : null
         ),
         suffix
       );
@@ -148,21 +146,13 @@ public class NumberParserTests
     }
   }
 
-  public static IEnumerable<(
-    char?,
-    SpecialFloatNumType,
-    FloatSuffix?
-  )> SpecialFloatParsesCorrectlyData
+  public static IEnumerable<(char?, SpecialFloatType, FloatSuffix?)> SpecialFloatParsesCorrectlyData
   {
     get
     {
       foreach (var c in new char?[] { '-', '+', null })
       foreach (
-        var specialType in new SpecialFloatNumType[]
-        {
-          SpecialFloatNumType.inf,
-          SpecialFloatNumType.NaN,
-        }
+        var specialType in new SpecialFloatType[] { SpecialFloatType.inf, SpecialFloatType.NaN }
       )
       foreach (var suffix in new FloatSuffix?[] { FloatSuffix.f32, FloatSuffix.f64, null })
       {
@@ -178,7 +168,7 @@ public class NumberParserTests
     {
       string source = $"{sign}{type}{suffix}";
       var parsed = NumberParser.Number_Parser.Parse(source);
-      var expected = new FloatValue(sign, new SpecialFloatNum(type), suffix);
+      var expected = new RonFloat(sign, new RonSpecialFloat(type), suffix);
       parsed.ShouldDeepEqual(expected);
     }
   }
@@ -210,6 +200,6 @@ public class NumberParserTests
     {
       return 16;
     }
-    throw RonException.CreateNotImplemented(nameof(GetIntegerBase));
+    throw new NotImplementedException();
   }
 }

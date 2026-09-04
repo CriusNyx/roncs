@@ -1,6 +1,6 @@
 namespace RonCS;
 
-public static class SetExtensions
+internal static class SetExtensions
 {
   /// <summary>
   /// Try to find the element in the set.

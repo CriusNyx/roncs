@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace RonCS;
 
-public static class ReflectionExtensions
+internal static class ReflectionExtensions
 {
   /// <summary>
   /// Return the first element that matches the options provided.

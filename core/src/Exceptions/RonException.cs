@@ -5,7 +5,7 @@ namespace RonCS.Exceptions;
 /// </summary>
 public static class RonException
 {
-  public static NotImplementedException CreateNotImplemented(
+  internal static NotImplementedException CreateNotImplemented(
     string methodName,
     params object[] args
   )

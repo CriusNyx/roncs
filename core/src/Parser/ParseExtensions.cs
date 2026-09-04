@@ -1,9 +1,13 @@
+using RonCS.AST;
 using Superpower;
 using Superpower.Parsers;
 
-namespace RonCS;
+namespace RonCS.AST;
 
-public static class ParseExtensions
+/// <summary>
+/// Extensions for Superpower parsers.
+/// </summary>
+internal static class ParseExtensions
 {
   /// <summary>
   /// Try self, and then other. If both succeed then return the value of self.
@@ -18,6 +22,15 @@ public static class ParseExtensions
     return self.Then((value) => other.Value(value));
   }
 
+  /// <summary>
+  /// Parse self, then other, returning the result of self.
+  /// </summary>
+  /// <typeparam name="TKind"></typeparam>
+  /// <typeparam name="T"></typeparam>
+  /// <typeparam name="U"></typeparam>
+  /// <param name="self"></param>
+  /// <param name="other"></param>
+  /// <returns></returns>
   public static TokenListParser<TKind, T> ThenIgnore<TKind, T, U>(
     this TokenListParser<TKind, T> self,
     TokenListParser<TKind, U> other

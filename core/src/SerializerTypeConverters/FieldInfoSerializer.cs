@@ -1,7 +1,7 @@
 using System.Reflection;
 using RonCS.AST;
 
-namespace RonCS;
+namespace RonCS.Converters;
 
 /// <summary>
 /// Type converter for a member.s

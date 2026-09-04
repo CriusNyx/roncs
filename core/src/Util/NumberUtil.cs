@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace RonCS;
 
-public static class NumberUtil
+internal static class NumberUtil
 {
   /// <summary>
   /// Convert string in any base to base 10.

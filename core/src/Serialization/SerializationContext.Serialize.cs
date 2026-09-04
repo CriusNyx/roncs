@@ -52,7 +52,7 @@ public partial class SerializationContext
 
       // Strings
       char value => new RonChar(value),
-      string str => new StringValue([new StringLit(str)]),
+      string str => new RonString([new RonStringLit(str)]),
 
       // Integers
       byte value => CreateIntValue(value, IntType(IntegerSuffix.u8)),
@@ -87,9 +87,9 @@ public partial class SerializationContext
   /// <param name="source"></param>
   /// <param name="suffix"></param>
   /// <returns></returns>
-  private static IntegerValue CreateIntValue(object source, IntegerSuffix? suffix)
+  private static RonInteger CreateIntValue(object source, IntegerSuffix? suffix)
   {
-    return new IntegerValue(
+    return new RonInteger(
       Convert.ToInt64(source) < 0 ? '-' : null,
       new(null, source.ToString().NotNull().Replace("-", "")),
       suffix
@@ -102,22 +102,22 @@ public partial class SerializationContext
   /// <param name="source"></param>
   /// <param name="suffix"></param>
   /// <returns></returns>
-  private static FloatValue CreateFloatValue(object source, FloatSuffix? suffix)
+  private static RonFloat CreateFloatValue(object source, FloatSuffix? suffix)
   {
     var asDouble = Convert.ToDouble(source);
     if (double.IsNaN(asDouble))
     {
-      return new FloatValue(null, new SpecialFloatNum(SpecialFloatNumType.NaN), null);
+      return new RonFloat(null, new RonSpecialFloat(SpecialFloatType.NaN), null);
     }
     char? sign = asDouble < 0 ? '-' : null;
     if (double.IsInfinity(asDouble))
     {
-      return new FloatValue(sign, new SpecialFloatNum(SpecialFloatNumType.inf), null);
+      return new RonFloat(sign, new RonSpecialFloat(SpecialFloatType.inf), null);
     }
     var str = ShortestRound(source);
     var output = NumberParser.Float_Parser.Parse(str.NotNull("str"));
     output.suffix = suffix;
-    if (output.num is StandardFloatNum { exponent: { sign: '+' } } std)
+    if (output.num is RonStandardFloat { exponent: { sign: '+' } } std)
     {
       std.exponent.sign = null;
     }

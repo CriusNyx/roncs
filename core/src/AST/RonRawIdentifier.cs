@@ -12,11 +12,13 @@ public class RonRawIdentifier(string? name = null) : RonElement, IIdentifier
   /// </summary>
   public string? Name = name;
 
+  /// <inheritdoc/>
   public string IdentifierName()
   {
     return Name.NotNull("Identifier");
   }
 
+  /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)
   {
     return $"r#{Name}";

@@ -5,6 +5,9 @@ using Superpower.Model;
 
 namespace RonCS;
 
+/// <summary>
+/// Ron Serialization/Deserialization API.
+/// </summary>
 public static partial class Ron
 {
   static SerializationContext globalContext = SerializationContext.CreateGlobalContext();
@@ -58,8 +61,9 @@ public static partial class Ron
   /// <summary>
   /// Try to parse the source, returning the document if successful, or the exception if not successful.
   /// </summary>
-  /// <param name="source"></param>
-  /// <param name="document"></param>
+  /// <param name="source">The source document to parse.</param>
+  /// <param name="document">The document if successful.</param>
+  /// <param name="exception">The exception thrown if not successful.</param>
   /// <returns></returns>
   public static bool TryParse(string source, out RonDocument document, out Exception exception)
   {
