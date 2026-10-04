@@ -23,6 +23,8 @@ void GenerateRegressionTests(ParseResult parsed)
   }
 }
 
+var outFileArgument = new Argument<string>("outFile");
+
 new RootCommand("RonCS CLI")
 {
   Subcommands =
@@ -30,8 +32,40 @@ new RootCommand("RonCS CLI")
     new Command("GenerateRegressionTests", "Generate Regression Tests").WithAction(
       GenerateRegressionTests
     ),
+    new Command("GenerateXMLDocs", "Generate Xml Docs")
+      .WithArgument(outFileArgument)
+      .WithAction(
+        (parsedArgs) =>
+          XMLDocGenerator.GenerateXMLDocsFile(
+            parsedArgs.GetValue(outFileArgument).NotNull("outFile")
+          )
+      ),
+    new Command("GenerateSearchCache", "Generate Search Cache")
+      .WithArgument(outFileArgument)
+      .WithAction(
+        (parsedArgs) =>
+          SearchCacheGenerator.GenerateSearchCacheFile(
+            parsedArgs.GetValue(outFileArgument).NotNull("outFile")
+          )
+      ),
+    new Command("GenerateRouteCache", "Generate Route Cache")
+      .WithArgument(outFileArgument)
+      .WithAction(
+        (parsedArgs) =>
+          RouteCacheGenerator.GenerateRouteCacheFile(
+            parsedArgs.GetValue(outFileArgument).NotNull("outFile")
+          )
+      ),
   },
 }
   .WithAction((parsed) => { })
   .Parse(args)
   .Invoke();
+
+class Disposable(Action dispose) : IDisposable
+{
+  public void Dispose()
+  {
+    dispose();
+  }
+}

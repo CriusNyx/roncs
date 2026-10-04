@@ -9,14 +9,14 @@ public interface INumberValue
   /// String representing the value of the number.
   /// Used for C# type conversion.
   /// </summary>
-  /// <returns></returns>
+  /// <returns>The string value of the number.</returns>
   public string ValueString();
 
   /// <summary>
   /// Convert the value to a number.
   /// </summary>
   /// <param name="hint"></param>
-  /// <returns></returns>
+  /// <returns>The value of the number as a C# value.</returns>
   public object EvaluateNumber(Type? hint);
 
   internal Type? CSType();

@@ -19,9 +19,9 @@ public enum FloatSuffix
 /// <summary>
 /// AST element representing a float value.
 /// </summary>
-/// <param name="sign"></param>
-/// <param name="num"></param>
-/// <param name="suffix"></param>
+/// <param name="sign">The sign of the floating point number.</param>
+/// <param name="num">The floating point number.</param>
+/// <param name="suffix">The suffix for the floating point number.</param>
 public class RonFloat(char? sign = null, RonFloatNumber? num = null, FloatSuffix? suffix = null)
   : RonElement,
     INumberValue
@@ -50,9 +50,9 @@ public class RonFloat(char? sign = null, RonFloatNumber? num = null, FloatSuffix
   /// <summary>
   /// Evaluate the float if it is a special number type.
   /// </summary>
-  /// <param name="specialNum"></param>
-  /// <param name="hint"></param>
-  /// <returns></returns>
+  /// <param name="specialNum">The value of the special number.</param>
+  /// <param name="hint">The type hint to deserialize to.</param>
+  /// <returns>A C# value for this element.</returns>
   /// <exception cref="InvalidOperationException"></exception>
   private object EvaluateSpecialNum(RonSpecialFloat specialNum, Type? hint)
   {
@@ -98,8 +98,8 @@ public class RonFloat(char? sign = null, RonFloatNumber? num = null, FloatSuffix
   /// <summary>
   /// Evaluate the number into a C# type.
   /// </summary>
-  /// <param name="hint"></param>
-  /// <returns></returns>
+  /// <param name="hint">The type hint for the number.</param>
+  /// <returns>The C# value of the number.</returns>
   public object EvaluateNumber(Type? hint)
   {
     if (num is RonSpecialFloat specialNum)

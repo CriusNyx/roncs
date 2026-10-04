@@ -19,13 +19,21 @@ public enum SpecialFloatType
 /// <summary>
 /// AST element for a special float number.
 /// </summary>
-/// <param name="type"></param>
-public class RonSpecialFloat(SpecialFloatType? type) : RonFloatNumber
+public class RonSpecialFloat : RonFloatNumber
 {
   /// <summary>
   /// The type of the float.
   /// </summary>
-  public SpecialFloatType? type = type;
+  public SpecialFloatType? type;
+
+  /// <summary>
+  /// Create a new special float.
+  /// </summary>
+  /// <param name="type">The type of the special float.</param>
+  public RonSpecialFloat(SpecialFloatType? type)
+  {
+    this.type = type;
+  }
 
   /// <inheritdoc/>
   public override string Serialize()

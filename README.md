@@ -38,3 +38,17 @@ of trying to be clever.
 ## Other Goals
 
 - [ ] Remove dependencies
+  - [x] Util
+  - [x] Result
+  - [ ] Superpower
+    - This is a lot harder to remove
+- [ ] Add generic support
+  - Generics can be encoded as raw identifiers. The + character can be used to
+    indicate the number of generic parameters, separated by periods.
+  - The number can be omitted if it's 1.
+  - `List+string`
+  - `Dictionary+2string.string`
+  - `Dictionary+2string.List+string`
+  - `Tuple+2List+string.List+string`
+
+TODO: Implement inheritdoc for Properties

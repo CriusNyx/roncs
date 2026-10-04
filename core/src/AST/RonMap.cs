@@ -5,15 +5,23 @@ namespace RonCS.AST;
 /// <summary>
 /// AST element for a Ron map
 /// </summary>
-/// <param name="values"></param>
 [Serializable]
-public class RonMap(params RonElement[]? values) : RonElement
+public class RonMap : RonElement
 {
   /// <summary>
   /// Values in the ron map.
   /// If these are correct they should be map items.
   /// </summary>
-  public RonElement[]? Values = values;
+  public RonElement[]? Values;
+
+  /// <summary>
+  /// AST element for a Ron map
+  /// </summary>
+  /// <param name="values">Values in the ron map.</param>
+  public RonMap(params RonElement[]? values)
+  {
+    this.Values = values;
+  }
 
   /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)

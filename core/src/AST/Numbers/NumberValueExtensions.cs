@@ -11,8 +11,8 @@ internal static class NumberValueExtensions
   /// <summary>
   /// Get the CS type for the number suffix if it is unambiguous.
   /// </summary>
-  /// <param name="suffix"></param>
-  /// <returns></returns>
+  /// <param name="suffix">The suffix of the integer, if provided.</param>
+  /// <returns>The type represented by this integer if it is unambiguous.</returns>
   public static Type? CSType(this IntegerSuffix? suffix)
   {
     return suffix switch
@@ -36,7 +36,7 @@ internal static class NumberValueExtensions
   /// Get the C# type if it is unambiguous.
   /// </summary>
   /// <param name="suffix"></param>
-  /// <returns></returns>
+  /// <returns>The C# type if it is unambiguous.</returns>
   public static Type? CSType(this FloatSuffix? suffix)
   {
     return suffix switch

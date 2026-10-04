@@ -27,19 +27,28 @@ public enum UnsignedPrefix
 /// <summary>
 /// Unsigned integer value.
 /// </summary>
-/// <param name="prefix"></param>
-/// <param name="digits"></param>
-public class RonUnsigned(UnsignedPrefix? prefix = null, string? digits = null) : INumberValue
+public class RonUnsigned : INumberValue
 {
   /// <summary>
   /// Unsigned prefix value.
   /// </summary>
-  public UnsignedPrefix? prefix = prefix;
+  public UnsignedPrefix? prefix;
 
   /// <summary>
   /// The digits for the unsigned value.
   /// </summary>
-  public string? digits = digits;
+  public string? digits;
+
+  /// <summary>
+  /// Create a new unsigned integer.
+  /// </summary>
+  /// <param name="prefix">The prefix for the unsigned integer.</param>
+  /// <param name="digits">The digits of the unsigned integer.</param>
+  public RonUnsigned(UnsignedPrefix? prefix = null, string? digits = null)
+  {
+    this.prefix = prefix;
+    this.digits = digits;
+  }
 
   /// <inheritdoc/>
   public string ValueString()
