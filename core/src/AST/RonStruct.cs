@@ -5,14 +5,22 @@ namespace RonCS.AST;
 /// <summary>
 /// Base class for struct AST elements.
 /// </summary>
-/// <param name="name"></param>
 [Serializable]
-public abstract class RonStruct(RonElement? name) : RonElement
+public abstract class RonStruct : RonElement
 {
   /// <summary>
   /// The name of the struct, or null if it is not provided.
   /// </summary>
-  public RonElement? Name { get; set; } = name;
+  public RonElement? Name { get; set; }
+
+  /// <summary>
+  /// Create new Ron struct
+  /// </summary>
+  /// <param name="name">The name of the struct, if it has a name.</param>
+  public RonStruct(RonElement? name)
+  {
+    Name = name;
+  }
 }
 
 /// <summary>
@@ -32,15 +40,24 @@ public class RonUnitStruct(RonElement? name) : RonStruct(name)
 /// <summary>
 /// AST element for a struct with a tuple body.
 /// </summary>
-/// <param name="name"></param>
-/// <param name="body"></param>
 [Serializable]
-public class RonTupleStruct(RonElement? name, RonElement? body) : RonStruct(name)
+public class RonTupleStruct : RonStruct
 {
   /// <summary>
   /// The body of the tuple. This should be a RonTuple.
   /// </summary>
-  public RonElement? Body = body;
+  public RonElement? Body;
+
+  /// <summary>
+  /// Create a new ron tuple struct.
+  /// </summary>
+  /// <param name="name">The name, if it has one.</param>
+  /// <param name="body">Struct body.</param>
+  public RonTupleStruct(RonElement? name, RonElement? body)
+    : base(name)
+  {
+    this.Body = body;
+  }
 
   /// <inheritdoc/>
   public override string RonPrint(RonPrintOptions options)

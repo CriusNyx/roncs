@@ -3,29 +3,39 @@ namespace RonCS.AST;
 /// <summary>
 /// AST element for an integer value.
 /// </summary>
-/// <param name="sign"></param>
-/// <param name="digits"></param>
-/// <param name="integerSuffix"></param>
-public class RonInteger(
-  char? sign = null,
-  RonUnsigned? digits = null,
-  IntegerSuffix? integerSuffix = null
-) : RonElement, INumberValue
+public class RonInteger : RonElement, INumberValue
 {
   /// <summary>
   /// Integer sign, is provided.
   /// </summary>
-  public char? sign = sign;
+  public char? sign;
 
   /// <summary>
   /// The digits for the number.
   /// </summary>
-  public RonUnsigned? digits = digits;
+  public RonUnsigned? digits;
 
   /// <summary>
   /// The suffix for the number.
   /// </summary>
-  public IntegerSuffix? integerSuffix = integerSuffix;
+  public IntegerSuffix? integerSuffix;
+
+  /// <summary>
+  /// Create a new RonInteger.
+  /// </summary>
+  /// <param name="sign">The sign of the integer.</param>
+  /// <param name="digits">The digits for the integer.</param>
+  /// <param name="integerSuffix">The suffix of the integer.</param>
+  public RonInteger(
+    char? sign = null,
+    RonUnsigned? digits = null,
+    IntegerSuffix? integerSuffix = null
+  )
+  {
+    this.sign = sign;
+    this.digits = digits;
+    this.integerSuffix = integerSuffix;
+  }
 
   /// <inheritdoc/>
   public string ValueString()

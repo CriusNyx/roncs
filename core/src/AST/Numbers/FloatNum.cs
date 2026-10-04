@@ -8,12 +8,12 @@ public abstract class RonFloatNumber
   /// <summary>
   /// Get a string representing the value of the element.
   /// </summary>
-  /// <returns></returns>
+  /// <returns>The string value of the number.</returns>
   public abstract string ValueString();
 
   /// <summary>
   /// Convert the element to a Ron string.
   /// </summary>
-  /// <returns></returns>
+  /// <returns>Ron string for the number.</returns>
   public abstract string Serialize();
 };

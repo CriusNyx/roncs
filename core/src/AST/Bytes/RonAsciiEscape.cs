@@ -5,13 +5,21 @@ namespace RonCS.AST;
 /// <summary>
 /// AST element for an ascii escape character.
 /// </summary>
-/// <param name="source"></param>
-public class RonAsciiEscape(char source) : StringContent, INumberValue
+public class RonAsciiEscape : StringContent, INumberValue
 {
+  /// <summary>
+  /// Create new RonAsciiEscape
+  /// </summary>
+  /// <param name="source">Source character to be scaped.</param>
+  public RonAsciiEscape(char source)
+  {
+    this.source = source;
+  }
+
   /// <summary>
   /// The source code for the ascii character.
   /// </summary>
-  public char? source = source;
+  public char? source;
 
   Type? INumberValue.CSType()
   {

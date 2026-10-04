@@ -1,0 +1,15 @@
+{
+  "tasks": {
+    "once": "deno run --allow-run --allow-read --allow-write --allow-env main.ts"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/fs": "jsr:@std/fs@^1.0.24",
+    "@std/path": "jsr:@std/path@^1.1.6",
+    "@xml-tools/parser": "npm:@xml-tools/parser@^1.0.11",
+    "chalk": "npm:chalk@^6.0.0",
+    "fast-xml-parser": "npm:fast-xml-parser@^5.11.1",
+    "xml-parser-xo": "npm:xml-parser-xo@^4.1.6",
+    "zod": "npm:zod@^4.5.4"
+  }
+}

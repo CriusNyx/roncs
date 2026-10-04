@@ -24,7 +24,7 @@ public partial class SerializationContext(SerializationContext? parentContext = 
   public readonly Dictionary<Type, Type> proxyTypes = new Dictionary<Type, Type>();
 
   /// <summary>
-  /// The parent serializtion context to inherrit.
+  /// The parent serializtion context to inherit.
   /// </summary>
   private SerializationContext? parentContext = parentContext;
 

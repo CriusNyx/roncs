@@ -17,7 +17,7 @@ internal static class ParseExtensions
   /// <param name="self"></param>
   /// <param name="other"></param>
   /// <returns></returns>
-  public static TextParser<T> ThenIgnore<T, U>(this TextParser<T> self, TextParser<U> other)
+  internal static TextParser<T> ThenIgnore<T, U>(this TextParser<T> self, TextParser<U> other)
   {
     return self.Then((value) => other.Value(value));
   }
@@ -31,7 +31,7 @@ internal static class ParseExtensions
   /// <param name="self"></param>
   /// <param name="other"></param>
   /// <returns></returns>
-  public static TokenListParser<TKind, T> ThenIgnore<TKind, T, U>(
+  internal static TokenListParser<TKind, T> ThenIgnore<TKind, T, U>(
     this TokenListParser<TKind, T> self,
     TokenListParser<TKind, U> other
   )
@@ -48,7 +48,7 @@ internal static class ParseExtensions
   /// <param name="self"></param>
   /// <param name="separator"></param>
   /// <returns></returns>
-  public static TokenListParser<TKind, IEnumerable<T>> SeparatedBy<TKind, T, U>(
+  internal static TokenListParser<TKind, IEnumerable<T>> SeparatedBy<TKind, T, U>(
     this TokenListParser<TKind, T> self,
     TokenListParser<TKind, U> separator
   )
@@ -69,7 +69,7 @@ internal static class ParseExtensions
   /// <param name="before"></param>
   /// <param name="after"></param>
   /// <returns></returns>
-  public static TokenListParser<TKind, T> Between<TKind, T, U, V>(
+  internal static TokenListParser<TKind, T> Between<TKind, T, U, V>(
     this TokenListParser<TKind, T> self,
     TokenListParser<TKind, U> before,
     TokenListParser<TKind, V> after
@@ -86,7 +86,7 @@ internal static class ParseExtensions
   /// <param name="self"></param>
   /// <param name="other"></param>
   /// <returns></returns>
-  public static TextParser<T> Between<T, U>(this TextParser<T> self, TextParser<U> other)
+  internal static TextParser<T> Between<T, U>(this TextParser<T> self, TextParser<U> other)
   {
     return self.Between(other, other);
   }
@@ -101,7 +101,7 @@ internal static class ParseExtensions
   /// <param name="self"></param>
   /// <param name="other"></param>
   /// <returns></returns>
-  public static TokenListParser<TKind, T> Between<TKind, T, U, V>(
+  internal static TokenListParser<TKind, T> Between<TKind, T, U, V>(
     this TokenListParser<TKind, T> self,
     TokenListParser<TKind, U> other
   )
@@ -114,7 +114,7 @@ internal static class ParseExtensions
   /// </summary>
   /// <typeparam name="T"></typeparam>
   /// <returns></returns>
-  public static TextParser<T> EnumParser<T>()
+  internal static TextParser<T> EnumParser<T>()
     where T : struct, Enum
   {
     return Parse.OneOf(
@@ -129,7 +129,7 @@ internal static class ParseExtensions
   /// </summary>
   /// <param name="source"></param>
   /// <returns></returns>
-  public static TextParser<string> StringIn(params string[] source)
+  internal static TextParser<string> StringIn(params string[] source)
   {
     return Parse.OneOf(source.Select(source => Span.EqualTo(source).Try().AsString()).ToArray());
   }
@@ -140,7 +140,7 @@ internal static class ParseExtensions
   /// <param name="charParser"></param>
   /// <param name="atLeastOnce"></param>
   /// <returns></returns>
-  public static TextParser<string> AsString(
+  internal static TextParser<string> AsString(
     this TextParser<char> charParser,
     bool atLeastOnce = false
   )
@@ -162,7 +162,7 @@ internal static class ParseExtensions
   /// <param name="source"></param>
   /// <param name="value"></param>
   /// <returns></returns>
-  public static TextParser<IEnumerable<T>> UpTo<T>(this TextParser<T> source, int value)
+  internal static TextParser<IEnumerable<T>> UpTo<T>(this TextParser<T> source, int value)
   {
     if (value == 1)
     {

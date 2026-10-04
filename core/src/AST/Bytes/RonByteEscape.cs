@@ -5,19 +5,28 @@ namespace RonCS.AST;
 /// <summary>
 /// AST element for a byte escape character.
 /// </summary>
-/// <param name="left"></param>
-/// <param name="right"></param>
-public class RonByteEscape(char left, char right) : StringContent, INumberValue
+public class RonByteEscape : StringContent, INumberValue
 {
   /// <summary>
-  /// The left portion of the byte.
+  /// The left hex of the byte.
   /// </summary>
-  public char? left = left;
+  public char? left;
 
   /// <summary>
-  /// The right portion of the byte.
+  /// The right hex of the byte.
   /// </summary>
-  public char? right = right;
+  public char? right;
+
+  /// <summary>
+  /// Create a new RonByteEscape.
+  /// </summary>
+  /// <param name="left">The left hex byte.</param>
+  /// <param name="right">The right hex byte.</param>
+  public RonByteEscape(char left, char right)
+  {
+    this.left = left;
+    this.right = right;
+  }
 
   Type? INumberValue.CSType()
   {

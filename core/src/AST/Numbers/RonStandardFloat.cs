@@ -3,19 +3,28 @@ namespace RonCS.AST;
 /// <summary>
 /// AST element representing a standard float number.
 /// </summary>
-/// <param name="digits"></param>
-/// <param name="exponent"></param>
-public class RonStandardFloat(string? digits, RonExponent? exponent) : RonFloatNumber
+public class RonStandardFloat : RonFloatNumber
 {
   /// <summary>
   /// The digits of the float, if provided.
   /// </summary>
-  public string? digits = digits;
+  public string? digits;
 
   /// <summary>
   /// The exponent of the float, if provided.
   /// </summary>
-  public RonExponent? exponent = exponent;
+  public RonExponent? exponent;
+
+  /// <summary>
+  /// Create a new standard floating point number.
+  /// </summary>
+  /// <param name="digits">The digits of the number.</param>
+  /// <param name="exponent">The exponent of the number.</param>
+  public RonStandardFloat(string? digits, RonExponent? exponent)
+  {
+    this.digits = digits;
+    this.exponent = exponent;
+  }
 
   /// <inheritdoc/>
   public override string ValueString()
