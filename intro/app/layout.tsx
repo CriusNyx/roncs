@@ -4,7 +4,7 @@ import "./globals.css"
 import { ConfigProvider, theme } from "antd"
 import { ServiceProvider } from "./services"
 import { PropsWithChildren } from "react"
-import { Page } from "./appPage"
+import { AppPage } from "./appPage/AppPage"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body className={`${inter.className} w-[100vw] h-[100vh]`}>
         <ServiceProvider>
           <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
-            <Page>{children}</Page>
+            <AppPage>{children}</AppPage>
           </ConfigProvider>
         </ServiceProvider>
       </body>

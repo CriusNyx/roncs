@@ -1,6 +1,5 @@
 import { remarkCodeHike, recmaCodeHike } from "codehike/mdx"
 import createMDX from "@next/mdx"
-import {visit} from 'unist-util-visit'; 
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,6 +7,7 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   output: 'export',
   // Optionally, add any other Next.js config below
+  // basePath: "/"
 }
 
 /** @type {import('codehike/mdx').CodeHikeConfig} */
@@ -22,6 +22,7 @@ const withMDX = createMDX({
     recmaPlugins: [[recmaCodeHike, chConfig]],
     jsx: true,
   },
+
 })
 
 // Merge MDX config with Next.js config

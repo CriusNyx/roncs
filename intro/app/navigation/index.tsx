@@ -1,8 +1,10 @@
 "use client"
 import { useCookie } from "@reactuses/core"
 import _ from "lodash"
-
 import { ChevronRight, ChevronLeft } from "react-feather"
+import { Pages } from "../pages"
+import Link from "next/link"
+import typeRoutes from "../../generated/RonCS.routeCache.json"
 
 function useCookieBool(key: string, value: boolean = false) {
   const [state, setState] = useCookie(
@@ -33,43 +35,59 @@ function Route(name: string, href: string, ...children: Route[]): Route {
 }
 
 const Root: Route[] = [
-  Route("Home", "/"),
-  Route("Getting Started", "/docs/gettingStarted"),
+  Route("Home", `${Pages._path}`),
+  Route("Getting Started", Pages.docs.gettingStarted._path),
   Route(
     "API",
-    "/docs/api",
-    Route("Serialize", "/docs/api#serialize"),
-    Route("Deserialize", "/docs/api#deserialize"),
-    Route("RegisterType", "/docs/api#registertype"),
-    Route("RegisterTypeConverter", "/docs/api#registertypeconverter"),
-    Route("RegisterListType", "/docs/api#registerlisttype"),
-    Route("RegisterDictionaryType", "/docs/api#registerdictionarytype"),
-    Route("RegisterTupleConverter", "/docs/api#registertupleconverter"),
-    Route("RegisterProxyType", "/docs/api#registerproxytype"),
+    Pages.docs.api._path,
+    Route("Serialize", `${Pages.docs.api._path}#serialize`),
+    Route("Deserialize", `${Pages.docs.api._path}#deserialize`),
+    Route("RegisterType", `${Pages.docs.api._path}#registertype`),
+    Route(
+      "RegisterTypeConverter",
+      `${Pages.docs.api._path}#registertypeconverter`,
+    ),
+    Route("RegisterListType", `${Pages.docs.api._path}#registerlisttype`),
+    Route(
+      "RegisterDictionaryType",
+      `${Pages.docs.api._path}#registerdictionarytype`,
+    ),
+    Route(
+      "RegisterTupleConverter",
+      `${Pages.docs.api._path}#registertupleconverter`,
+    ),
+    Route("RegisterProxyType", `${Pages.docs.api._path}#registerproxytype`),
   ),
   Route(
     "Attributes",
-    "/docs/serializationAttributes",
-    Route("RonInclude", "/docs/serializationAttributes#ronexcluderoninclude"),
-    Route("RonExclude", "/docs/serializationAttributes#ronexcluderoninclude"),
-    Route("RonInto", "/docs/serializationAttributes#roninto"),
-    Route("RonFrom", "/docs/serializationAttributes#ronfrom"),
-    Route("RonList", "/docs/serializationAttributes#ronlist"),
-    Route("RonMap", "/docs/serializationAttributes#ronmap"),
-    Route("RonProxy", "/docs/serializationAttributes#ronproxy"),
-    Route("RonTuple", "/docs/serializationAttributes#rontuple"),
+    Pages.docs.serializationAttributes._path,
+    Route(
+      "RonInclude",
+      `${Pages.docs.serializationAttributes._path}#ronexcluderoninclude`,
+    ),
+    Route(
+      "RonExclude",
+      `${Pages.docs.serializationAttributes._path}#ronexcluderoninclude`,
+    ),
+    Route("RonInto", `${Pages.docs.serializationAttributes._path}#roninto`),
+    Route("RonFrom", `${Pages.docs.serializationAttributes._path}#ronfrom`),
+    Route("RonList", `${Pages.docs.serializationAttributes._path}#ronlist`),
+    Route("RonMap", `${Pages.docs.serializationAttributes._path}#ronmap`),
+    Route("RonProxy", `${Pages.docs.serializationAttributes._path}#ronproxy`),
+    Route("RonTuple", `${Pages.docs.serializationAttributes._path}#rontuple`),
   ),
+  Route("Types", Pages.types._path, ...(typeRoutes as any)),
 ]
 
 export function Navigation() {
   const [expanded, setExpanded] = useCookieBool("nav-expanded")
 
   return (
-    <div className="flex flex-row h-full">
+    <div className="flex flex-row h-screen">
       <div
-        className={`flex flex-col ${expanded ? "w-60" : "w-0"} overflow-clip transition-all`}
+        className={`flex flex-col ${expanded ? "w-[380px]" : "w-0"} overflow-clip transition-all`}
       >
-        <div className="flex flex-col overflow-clip w-[500px] py-5 pl-5">
+        <div className="flex flex-col overflow-scroll w-full max-h-screen py-5 pl-5 pr-2">
           {Root.map((x, i) => (
             <RouteButton key={`route-${i}`} route={x} isRoot />
           ))}
@@ -77,7 +95,7 @@ export function Navigation() {
       </div>
 
       <div
-        className="w-8 h-full flex flex-col justify-center items-center cursor-pointer"
+        className={`h-full flex flex-col justify-center items-end cursor-pointer pr-1 transition-all ${expanded ? "pl-0" : "pl-1"}`}
         onClick={() => setExpanded(!expanded)}
       >
         {expanded ? <ChevronLeft /> : <ChevronRight />}
@@ -92,7 +110,7 @@ export function ExpandButton(props: {
 }) {
   return (
     <div
-      className="cursor-pointer w-5 flex flex-col items-center justify-start"
+      className="cursor-pointer min-w-5 flex flex-col items-center justify-start"
       onClick={() => props.setExpanded(!props.expanded)}
     >
       {props.expanded ? "-" : "+"}
@@ -104,22 +122,25 @@ export function RouteButton(props: { route: Route; isRoot?: boolean }) {
   const [expanded, setExpanded] = useCookieBool(`expanded-${props.route.name}`)
 
   return (
-    <div className="flex flex-col w-full select-none">
-      <div className="flex flex-row items-center">
+    <div className="flex flex-col w-full max-w-full select-none overflow-clip">
+      <div className="flex flex-row w-full items-center">
         {(props.isRoot && !_.isEmpty(props.route.children) && (
           <ExpandButton
             expanded={!!expanded}
             setExpanded={() => setExpanded(!expanded)}
           />
-        )) || <div className="w-5" />}
-        <a href={props.route.href} className={props.isRoot ? "" : "text-sm"}>
+        )) || <div className="min-w-5" />}
+        <Link
+          href={props.route.href}
+          className={`text-clip text-nowrap ${props.isRoot ? "" : "text-sm"}`}
+        >
           {props.route.name}
-        </a>
+        </Link>
       </div>
 
       {!_.isEmpty(props.route.children) && (
         <div
-          className={`${expanded ? "max-h-screen" : "max-h-0"} transition-all overflow-hidden `}
+          className={`${expanded ? "" : "max-h-0"} transition-all overflow-hidden `}
         >
           <div className="flex flex-col gap-1 py-3">
             {props.route.children.map((x, i) => (

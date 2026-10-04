@@ -1,0 +1,47 @@
+h3 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 20px;
+}
+
+p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  /* padding-top: 20px; */
+  padding-bottom: 20px;
+}
+
+.break {
+  flex-basis: 100%;
+}
+
+.member {
+  padding: 20px;
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+}
+.type > h1 {
+  align-self: center;
+}
+
+.type > .summary {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  font-weight: bold;
+}
+
+.member:nth-of-type(even) {
+  background-color: oklch(21% 0.006 285.885);
+}
+
+.member:nth-of-type(odd) {
+  background-color: oklch(27.4% 0.006 286.033);
+}
+
+.member > p:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
