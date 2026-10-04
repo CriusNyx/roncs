@@ -1,9 +1,7 @@
+import Link from "next/link"
+
 const env = process.env.NODE_ENV
 
-export function a(props: React.HTMLProps<"a">) {
-  if (env === "production") {
-    return <a href={`${props.href}.html`}>{props.children}</a>
-  } else {
-    return <a href={props.href}>{props.children}</a>
-  }
+export function a(props: React.ComponentProps<typeof Link>) {
+  return <Link href={props.href}>{props.children}</Link>
 }
