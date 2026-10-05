@@ -35,3 +35,10 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Build Frontend
       run: (cd intro; npm install; npm run deps; npm run build)
+    - name: Deploy Frontend
+      uses: cloudflare/wrangler-action@v4
+      with: 
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        command: |
+          pages deploy intro/out --project-name roncs-net
