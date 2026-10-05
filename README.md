@@ -16,7 +16,7 @@ of trying to be clever.
 
 - [x] Implement Serializer
 - [x] Implement Prototype Deserializer
-  - [ ] Optimize deserializer
+  - [ ] Optimize deserializer with reflection caching.
 - [x] Implement Property Deserializer
 
 ## Serializer/Deserializer Attributes
@@ -50,5 +50,3 @@ of trying to be clever.
   - `Dictionary+2string.string`
   - `Dictionary+2string.List+string`
   - `Tuple+2List+string.List+string`
-
-TODO: Implement inheritdoc for Properties
