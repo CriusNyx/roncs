@@ -33,7 +33,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Generate Frontend Deps
-      run: (cd intro; npm install; npm run deps)
     - name: Build Frontend
-      run: (cd intro; npm run build)
+      run: (cd intro; npm install; npm run deps; npm run build)
