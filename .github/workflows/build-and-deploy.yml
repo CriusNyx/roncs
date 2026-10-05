@@ -41,4 +41,4 @@ jobs:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         command: |
-          pages deploy intro/out --project-name roncs-net
+          deploy intro/out --name roncs-net
