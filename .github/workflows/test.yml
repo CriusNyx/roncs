@@ -1,6 +1,6 @@
 # Build and test .NET project
 
-name: .NET
+name: Build and Test
 
 on:
   push:
