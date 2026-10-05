@@ -45,6 +45,12 @@ export function Search(props: SearchProps) {
     document.addEventListener("click", (e) => {
       if (e.target !== inputRef.current) setVisible(false)
     })
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.key === "p") {
+        inputRef.current?.focus()
+        e.preventDefault()
+      }
+    })
   }, [])
 
   const results = search && miniSearch.search(search)
@@ -70,7 +76,7 @@ export function Search(props: SearchProps) {
     <div className="w-full relative">
       <Input
         className="w-full"
-        placeholder="search"
+        placeholder="Search (ctrl+p)"
         value={search}
         onFocus={() => {
           setVisible(true)
@@ -81,7 +87,7 @@ export function Search(props: SearchProps) {
         }}
       />
       {visible && results && (
-        <div className="absolute top-10 left-0 right-0 bg-zinc-800 flex flex-col rounded-md py-3 z-10 shadow-2xl shadow-black">
+        <div className="absolute top-10 left-0 right-0 bg-zinc-800 flex flex-col rounded-md py-3 z-20 shadow-2xl shadow-black">
           {results.slice(0, 10).map((x) => (
             <Link
               className="text-white w-full cursor-pointer hover:bg-zinc-700 px-5 no-underline"

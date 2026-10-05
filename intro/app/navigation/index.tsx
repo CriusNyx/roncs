@@ -83,11 +83,11 @@ export function Navigation() {
   const [expanded, setExpanded] = useCookieBool("nav-expanded")
 
   return (
-    <div className="flex flex-row h-screen">
+    <div className="flex flex-row h-screen z-10">
       <div
         className={`flex flex-col ${expanded ? "w-[380px]" : "w-0"} overflow-clip transition-all`}
       >
-        <div className="flex flex-col overflow-scroll w-full max-h-screen py-5 pl-5 pr-2">
+        <div className="flex flex-col overflow-y-scroll scrollbar-thin w-full h-screen py-5 pl-5 pr-2">
           {Root.map((x, i) => (
             <RouteButton key={`route-${i}`} route={x} isRoot />
           ))}
