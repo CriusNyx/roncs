@@ -53,6 +53,8 @@ async function main() {
 
   if (generateXMLDocsResult.code) {
     throw `Build failed with exit code ${generateXMLDocsResult.code}`;
+  } else {
+    console.log("Wrote RonCS.xml");
   }
 
   const searchCacheResult = await run(
@@ -64,6 +66,8 @@ async function main() {
 
   if (searchCacheResult.code) {
     throw `Build failed with exit code ${searchCacheTargetPath}`;
+  } else {
+    console.log("Wrote RonCS.searchCache.json");
   }
 
   const routeCacheResult = await run(
@@ -74,6 +78,8 @@ async function main() {
 
   if (routeCacheResult.code) {
     throw `Build failed with exit code ${routeCacheResult.code}`;
+  } else {
+    console.log("Wrote RonCS.routeCache.json");
   }
 }
 
