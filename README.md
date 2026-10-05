@@ -1,52 +1,100 @@
-# TODO
+# RonCS
 
-## Parser
+Serialize and Deserialize C# objects as ron files.
 
-Consider copying the EBNF file directrly for already implemented parsers instead
-of trying to be clever.
+```ts
+// A file encoded as RON.
+Sequence(
+  children: [
+    FindFood(
+      variableName: "food"
+    ),
+    NavigateTo(
+      target: "food"
+    ),
+    Acquire(
+      target: "food"
+    )
+  ]
+)
+```
 
-- [ ] Add trivia for round tripping (problem for another time)
-- [ ] Fuzz Test
+See the docs website for information on how to use ron.
 
-## AST Printer
+<!-- TODO Link docs website -->
 
-- [x] Implement AST Printer CLI
+- Docs
+  - Getting Started Guide
+  - API quick start guide
+  - Full API docs
 
-## Serializer/Deserializer
+# Getting Started
 
-- [x] Implement Serializer
-- [x] Implement Prototype Deserializer
-  - [ ] Optimize deserializer with reflection caching.
-- [x] Implement Property Deserializer
+## Installation
 
-## Serializer/Deserializer Attributes
+TBD
 
-- [x] RonFromAttribute
-- [x] RonIntoAttribute
-- [x] Memoize RonFrom RonInto
-- [ ] Specify AST (It doesn't match the RON RS AST exactly)
-- [ ] Specify Ron type coercion
-- [ ] Attribute to control serialization of fields
-- [x] RonProxy Attribute
-- [n/a] RonField
-  - [x] RonInclude/RonExclude
-- [x] RonList Attribute
-- [x] RonDict Attribute
-- [x] RonMap Attribute
-- [ ] Implement circular serialization check
+## Serializing and Deserializing
 
-## Other Goals
+Convert an object to a ron string.
 
-- [ ] Remove dependencies
-  - [x] Util
-  - [x] Result
-  - [ ] Superpower
-    - This is a lot harder to remove
-- [ ] Add generic support
-  - Generics can be encoded as raw identifiers. The + character can be used to
-    indicate the number of generic parameters, separated by periods.
-  - The number can be omitted if it's 1.
-  - `List+string`
-  - `Dictionary+2string.string`
-  - `Dictionary+2string.List+string`
-  - `Tuple+2List+string.List+string`
+```cs
+// C# source code
+User user = new User {
+  username = "foo@bar.com",
+  name = "Foo"
+};
+
+string ron = Ron.Serialize(user);
+```
+
+```ts
+// Ron document
+User(
+  username: "foo@bar.com",
+  name: "Foo"
+)
+```
+
+Converting an object back to C#
+
+```cs
+User original = Ron.Deserialize<User>(ron);
+
+// Original will be the same as the user that was originally constructed
+```
+
+## Deserializing polymorphic types
+
+To deserialize polymorphic types they have to be registered first so that the
+deserializer knows about them.
+
+```rs
+// Example Ron document
+Sequence(
+  children: [
+    FindFood(
+      variableName: "food"
+    ),
+    NavigateTo(
+      target: "food"
+    )
+    Acquire(
+      target: "food"
+    )
+  ]
+)
+```
+
+```cs
+// Register polymorphic types
+Ron.RegisterTypes(
+  typeof(Sequence), 
+  typeof(FindFood), 
+  typeof(NavigateTo), 
+  typeof(Acquire)
+);
+
+// Deserialize ron document.
+BehaviorTree behaviorTree = Ron.Deserialize<BehaviorTree>(ronString);
+```

@@ -1,0 +1,52 @@
+# TODO
+
+## Parser
+
+Consider copying the EBNF file directrly for already implemented parsers instead
+of trying to be clever.
+
+- [ ] Add trivia for round tripping (problem for another time)
+- [ ] Fuzz Test
+
+## AST Printer
+
+- [x] Implement AST Printer CLI
+
+## Serializer/Deserializer
+
+- [x] Implement Serializer
+- [x] Implement Prototype Deserializer
+  - [ ] Optimize deserializer with reflection caching.
+- [x] Implement Property Deserializer
+
+## Serializer/Deserializer Attributes
+
+- [x] RonFromAttribute
+- [x] RonIntoAttribute
+- [x] Memoize RonFrom RonInto
+- [ ] Specify AST (It doesn't match the RON RS AST exactly)
+- [ ] Specify Ron type coercion
+- [ ] Attribute to control serialization of fields
+- [x] RonProxy Attribute
+- [n/a] RonField
+  - [x] RonInclude/RonExclude
+- [x] RonList Attribute
+- [x] RonDict Attribute
+- [x] RonMap Attribute
+- [ ] Implement circular serialization check
+
+## Other Goals
+
+- [ ] Remove dependencies
+  - [x] Util
+  - [x] Result
+  - [ ] Superpower
+    - This is a lot harder to remove
+- [ ] Add generic support
+  - Generics can be encoded as raw identifiers. The + character can be used to
+    indicate the number of generic parameters, separated by periods.
+  - The number can be omitted if it's 1.
+  - `List+string`
+  - `Dictionary+2string.string`
+  - `Dictionary+2string.List+string`
+  - `Tuple+2List+string.List+string`
