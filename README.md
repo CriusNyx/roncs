@@ -1,6 +1,13 @@
 # RonCS
 
-Serialize and Deserialize C# objects as ron files.
+Ron CS is a serializer/deserializer library for Ron and C#, letting you convert
+C# objects into Ron files, and Ron files back into C# objects.
+
+Compared to JSON and XML, Ron is more human readable and has built in type
+names.
+
+For most types they're public fields/properties and be serialized using
+`Ron.Serialize(o)` and deserialized with `Ron.Deserialize<MyType>(ronString)`.
 
 ```ts
 // A file encoded as RON.
