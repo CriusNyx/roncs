@@ -42,3 +42,7 @@ jobs:
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         command: |
           deploy intro/out --name roncs-net --compatibility-date 2026-10-01
+    - name: Create nuget package
+      run: dotnet pack --configuration Release
+    - name: Publish nuget package
+      run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
