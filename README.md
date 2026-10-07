@@ -39,7 +39,7 @@ See the docs website for information on how to use ron.
 
 ## Installation
 
-TBD
+Run `dotnet add package RonCS`
 
 ## Serializing and Deserializing
 
