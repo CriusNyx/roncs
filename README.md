@@ -26,7 +26,7 @@ Sequence(
 )
 ```
 
-See the docs website for information on how to use ron.
+# Docs
 
 - [Docs](https://RonCS.net)
   - [Getting Started Guide](https://roncs.net/docs/gettingStarted)
