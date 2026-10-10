@@ -5,6 +5,8 @@ import { ChevronRight, ChevronLeft } from "react-feather"
 import { Pages } from "../pages"
 import Link from "next/link"
 import typeRoutes from "../../generated/RonCS.routeCache.json"
+import useIsMobile from "../util/hooks"
+import { createContext, useContext } from "react"
 
 function useCookieBool(key: string, value: boolean = false) {
   const [state, setState] = useCookie(
@@ -79,28 +81,38 @@ const Root: Route[] = [
   Route("Types", Pages.types._path, ...(typeRoutes as any)),
 ]
 
+interface NavigationContext {
+  setExpanded: (value: boolean) => void
+}
+
+const navigationContext = createContext<NavigationContext>({
+  setExpanded: () => {},
+})
+
 export function Navigation() {
   const [expanded, setExpanded] = useCookieBool("nav-expanded")
 
   return (
-    <div className="flex flex-row h-screen z-10">
-      <div
-        className={`flex flex-col ${expanded ? "w-[380px]" : "w-0"} overflow-clip transition-all`}
-      >
-        <div className="flex flex-col overflow-y-scroll scrollbar-thin w-full h-screen py-5 pl-5 pr-2">
-          {Root.map((x, i) => (
-            <RouteButton key={`route-${i}`} route={x} isRoot />
-          ))}
+    <navigationContext.Provider value={{ setExpanded }}>
+      <div className="flex flex-row h-screen z-10">
+        <div
+          className={`flex flex-col ${expanded ? "w-[380px]" : "w-0"} overflow-clip transition-all`}
+        >
+          <div className="flex flex-col overflow-y-scroll scrollbar-thin w-full h-screen py-5 pl-5 pr-2">
+            {Root.map((x, i) => (
+              <RouteButton key={`route-${i}`} route={x} isRoot />
+            ))}
+          </div>
+        </div>
+
+        <div
+          className={`h-full flex flex-col justify-center items-end cursor-pointer pr-1 transition-all ${expanded ? "pl-0" : "pl-1"}`}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? <ChevronLeft /> : <ChevronRight />}
         </div>
       </div>
-
-      <div
-        className={`h-full flex flex-col justify-center items-end cursor-pointer pr-1 transition-all ${expanded ? "pl-0" : "pl-1"}`}
-        onClick={() => setExpanded(!expanded)}
-      >
-        {expanded ? <ChevronLeft /> : <ChevronRight />}
-      </div>
-    </div>
+    </navigationContext.Provider>
   )
 }
 
@@ -120,6 +132,8 @@ export function ExpandButton(props: {
 
 export function RouteButton(props: { route: Route; isRoot?: boolean }) {
   const [expanded, setExpanded] = useCookieBool(`expanded-${props.route.name}`)
+  const { isMobile } = useIsMobile()
+  const navContext = useContext(navigationContext)
 
   return (
     <div className="flex flex-col w-full max-w-full select-none overflow-clip">
@@ -133,6 +147,11 @@ export function RouteButton(props: { route: Route; isRoot?: boolean }) {
         <Link
           href={props.route.href}
           className={`text-clip text-nowrap ${props.isRoot ? "" : "text-sm"}`}
+          onClick={() => {
+            if (isMobile) {
+              navContext.setExpanded(false)
+            }
+          }}
         >
           {props.route.name}
         </Link>

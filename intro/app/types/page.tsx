@@ -1,7 +1,6 @@
 import * as fs from "node:fs/promises"
 import "./csDocs.css"
 import _ from "lodash"
-import { DOMParser } from "@xmldom/xmldom"
 import XMLToReact from "xml-to-react"
 import { PropsWithChildren } from "react"
 import { SearchSignature } from "../components/SearchSignature"

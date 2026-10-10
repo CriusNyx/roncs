@@ -68,7 +68,7 @@ export const DocComponents = {
   // XDoc components
 
   Doc(props: PropsWithChildren) {
-    return <div>{props.children}</div>
+    return <div className="text-sm md:text-base">{props.children}</div>
   },
   Name(props: PropsWithChildren) {
     return <h1 className="text-wrap">{props.children}</h1>
@@ -137,11 +137,13 @@ export const DocComponents = {
     switch (props.type) {
       case "type":
         return (
-          <h1 className="flex flex-row font-mono text-2xl">{props.children}</h1>
+          <h1 className="flex flex-row flex-wrap font-mono text-sm md:text-2xl">
+            {props.children}
+          </h1>
         )
       default:
         return (
-          <h3 className="flex flex-row font-mono text-wrap text-base flex-wrap">
+          <h3 className="flex flex-row font-mono text-wrap text-sm md:text-base flex-wrap">
             {props.children}
           </h3>
         )
